@@ -29,12 +29,82 @@ Copyright @ 2018
 						<a href="index.html">Home</a>
 						<a href="index.html">How We Work</a>
 						<a href="index.html">FAQ</a>
-						<a href="index.html">Log in</a>
-						<a href="index.html">Sign Up</a>
+						<a href="LogInView">Log in</a>
+						<button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button">Sign Up</button>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
+			
+		
+				<!-- A signup popup window when clicks "Sign Up" button-->
+				<div id="myPopup" class="popup">
+
+					<!-- Popup content -->
+						<div class="popup-content">
+							<span class="close">&times;</span>
+							
+							<section class="popup_container">
+								<div class="popup-left_half">
+									<article>
+										<h4>I want to sign up as a*</h4>
+											<div class="btn-group">
+												<button>Host</button>
+												<button>Renter</button>
+											</div>
+									</article>
+								</div>
+								<hr>
+								<div class="popup-right_half">
+									<article>
+											<div class="btn-group">
+												<div><a href="renterRegister.html"><button id="emailBtn" >Sign up with email</button></a></div>
+												<div><button>Sign up with Facebook</button></div>
+												<div><button>Sign up with Linkedin</button></div>
+												<div><button>Sign up with Google</button></div>
+											</div>
+									</article>
+							
+							</section>
+							
+						</div>
+
+				</div>
 			</header>
+		
+		<!-- JavaScript functions for popup windows -->
+		<script>
+			// Get the popup
+			var popup = document.getElementById('myPopup');
+
+			// Get the button that opens the popup
+			var signupBtn = document.getElementById("signupBtn");
+
+			// Get the <span> element that closes the popup
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the popup 
+			signupBtn.onclick = function() {
+				popup.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the popup
+			span.onclick = function() {
+				popup.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the popup, close it
+			window.onclick = function(event) {
+				if (event.target == popup) {
+					popup.style.display = "none";
+				}
+			}
+		</script>
+		
+		
+		
+		
+		
+		
 			
 		<!-- Banner: the text shows within the main image -->
 			<section id="banner">
@@ -211,7 +281,6 @@ Copyright @ 2018
 						</div>
 					</div>
 				</div>
-                        </footer>
+			</footer>
     </body>
 </html>
-

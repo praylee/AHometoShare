@@ -1,22 +1,67 @@
 <!DOCTYPE html>
 <!--
 File: signup.html
-Description:
+Description:sign up pop up window
 Create: Sep,30,2018
-Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+Author: Zhan Shen
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
 Project: A Home to Share
 Copyright @ 2018
 -->
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>SignUp</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/style.css" />
+	</head>
+
+	<body>
+		<h2>Modal Example</h2>
+
+	<!-- Trigger/Open The Modal -->
+		<button id="myBtn">Open Modal</button>
+
+	<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+	<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Some text in the Modal..</p>
+		</div>
+
+	</div>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+
+	</body>
 </html>
+

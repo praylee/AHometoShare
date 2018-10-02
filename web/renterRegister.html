@@ -1,22 +1,319 @@
 <!DOCTYPE html>
 <!--
 File: renterRegister.html
-Description:
+Description: renter register form based on the requirement
 Create: Sep,30,2018
-Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+Author: Zhan Shen
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
 Project: A Home to Share
 Copyright @ 2018
 -->
+<!DOCTYPE HTML>
+<!--
+	Theory by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
-    <head>
-        <title>Renter Register</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+	<head>
+		<title>Elements - Theory by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">A Home To Share</a>
+					<nav id="nav">
+						<a href="index.html">Home</a>
+						<a href="index.html">How We Work</a>
+						<a href="index.html">FAQ</a>
+						<a href="index.html">Log in</a>
+						<button id="signupBtn" class="unstyled-button">Sign Up</button>
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+
+					<!-- Text stuff -->
+						<h3>Text</h3>
+						<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+						This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+						This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>.</p>
+								
+
+					<!-- Form -->
+						<h2>Renter Registration</h2>
+						
+
+						<form method="get" action="RegisterRenterView">
+							<div class="row uniform">
+								<div class="6u 12u$(xsmall)">
+									<h4>First Name*</h4>
+									<input type="text" name="firstname" id="name" value="" placeholder="First Name" />
+								</div>
+								<div class="6u$ 12u$(xsmall)">
+									<h4>Last Name*</h4>
+									<input type="text" name="lastname" id="name" value="" placeholder="Last Name" />
+								</div>
+								<!-- Break -->
+								<div class="6u 12u$(xsmall)">
+									<h4>Email Address*</h4>
+									<input type="email" name="email" id="email" value="" placeholder="Email Address" />
+								</div>
+								<div class="6u$ 12u$(xsmall)">
+									<h4>Phone Number</h4>
+									<input type="tel" name="phoneNum" id="phoneNum" value="" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+									<span class="validity"></span>
+								</div>
+								
+								<!-- Break -->
+									<div class="6u 12u$">
+										<div class="select-wrapper">
+											<h4>Gender</h4>
+											<select name="gender" id="gender">
+												<option value="">- Gender -</option>
+												<option value="1">Male</option>
+												<option value="1">Female</option>
+											</select>
+										</div>
+									</div>
+									<div class="6u$ 12u$(xsmall)">
+										<div class="select-wrapper">
+											<h4>Year Born*</h4>
+											<select name="yearBorn" id="yearBorn">
+												<option value="">- Select -</option>
+												<option value="2000">2000</option>
+												<option value="1999">1999</option>
+												<option value="1998">1998</option>
+												<option value="1997">1997</option>
+												<option value="1996">1996</option>
+												<option value="1995">1995</option>
+												<option value="1994">1994</option>
+												<option value="1993">1993</option>
+												<option value="1992">1992</option>
+												<option value="1991">1991</option>
+												<option value="1990">1990</option>
+												<option value="1989">1989</option>
+												<option value="1988">1988</option>
+												<option value="1987">1987</option>
+												<option value="1986">1986</option>
+												<option value="1985">1985</option>
+												<option value="1984">1984</option>
+												<option value="1983">1983</option>
+											</select>	
+										</div>
+									</div>
+									
+									<!-- Break -->
+										<div class="select-wrapper">
+											<h4>Pets</h4>
+											<select name="pet" id="pet">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+										<div class="select-wrapper">
+											<h4>Smoker</h4>
+											<select name="smoker" id="smoker">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+									
+									<!-- Break -->
+										<div class="select-wrapper">
+											<h4>Owns a car</h4>
+											<select name="ownCar" id="ownCar">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+										<div class="select-wrapper">
+											<h4>Working</h4>
+											<select name="working" id="working">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+										
+										<!-- Break -->
+										<div class="select-wrapper">
+											<h4>Enrolled in school</h4>
+											<select name="enrollSchool" id="enrollSchool">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+										<div class="select-wrapper">
+											<h4>Criminal record check completed</h4>
+											<select name="criminal" id="criminal">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+										
+										<!-- Break -->
+										<div class="select-wrapper">
+											<h4>Location of home</h4>
+											<select name="homeLocation" id="homeLocation">
+												<option value="1">Missisauga</option>
+												<option value="1">Brampton</option>
+												<option value="1">Caledon</option>
+												<option value="1">Oakville</option>
+												<option value="1">Burlington</option>
+												<option value="1">Hamilton</option>
+												<option value="1">Toronto</option>
+											</select>
+										</div>
+										<div class="select-wrapper">
+											<h4>Room details</h4>
+											<select name="roomDetails" id="roomDetails">
+												<option value="">- Select -</option>
+												<option value="1">Private room with private washroom</option>
+												<option value="1">Private appartment with private washroom and kitchen</option>
+											</select>
+										</div>
+										
+										<!-- Break -->
+										<div class="select-wrapper">
+											<h4>Utilities</h4>
+											<select name="utilities" id="utilities">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+										<div class="select-wrapper">
+											<h4>If not, what must be paid for?</h4>
+											<select name="noUtilities" id="noUtilities">
+												<option value="">- Select -</option>
+												<option value="1">Hydro</option>
+												<option value="1">Cable</option>
+												<option value="1">Internet</option>
+											</select>
+										</div>
+									
+										<!-- Break -->
+										<div class="select-wrapper">
+											<h4>Utilities</h4>
+											<select name="utilities" id="utilities">
+												<option value="">- Select -</option>
+												<option value="1">Yes</option>
+												<option value="1">No</option>
+											</select>
+										</div>
+										<div class="select-wrapper">
+											<h4>If not, what must be paid for?</h4>
+											<select name="noUtilities" id="noUtilities">
+												<option value="">- Select -</option>
+												<option value="1">Hydro</option>
+												<option value="1">Cable</option>
+												<option value="1">Internet</option>
+											</select>
+										</div>
+									
+										<!-- Break -->
+										<div class="select-wrapper">
+											<h4>Share spaces</h4>
+											<select name="shareSpaces" id="shareSpaces">
+												<option value="1">Kitchen</option>
+												<option value="1">Family room</option>
+												<option value="1">Laundry</option>
+												<option value="1">Parking room</option>
+											</select>
+										</div>
+										<!-- <div class="select-wrapper">
+											<h4>If not, what must be paid for?</h4>
+											<select name="noUtilities" id="noUtilities">
+												<option value="">- Select -</option>
+												<option value="1">Hydro</option>
+												<option value="1">Cable</option>
+												<option value="1">Internet</option>
+											</select>
+										</div> -->
+									
+										
+							</div>
+						</form>
+
+					<hr />
+
+
+
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="single-footer-widget">
+							<h6>Get in Touch</h6>
+          
+							<div class='get-in-touch-section'>
+								<img alt="logo" class="" src="images/team_logo.png" />
+								<ul class="footer-nav-section-nav pL0">
+									<li><a href="mailto:hello@nesterly.io">info@ahometoshare.ca</a></li>
+									<li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
+								</ul>
+							</div>
+          
+						</div>
+					
+						<div class="col-lg-3  col-md-3">
+							<div class="single-footer-widget">
+								<h6>Join Our Community</h6>
+								<ul class="footer-nav-section-nav pL0">
+									<li><a href="/how-it-works">How it Works</a></li>
+									<li><a href="/faq">Frequently Asked Questions</a></li>
+									<li><a href="/homesharing_resources">Homesharing Resources</a></li>
+									<li><a href="/community_compact">Community Compact</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="col-lg-3 col-md-3">
+							<div class="single-footer-widget">
+								<h6>Get Engaged</h6>
+									<ul class="footer-nav-section-nav pL0">
+										<li>Live in Toronto and want to help us tackle the affordable housing crisis. <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7Rtng9Dwi1uEH9A86Z9Jd1IFDRJoHeW-LMHBtUsYPOh571Q/viewform" target="_blank"> <u>Apply</u></a> to be an Ambassador today.
+										</li>
+									</ul>
+							</div>
+						</div>
+						
+						<div class="col-lg-3  col-md-3">
+							<div class="single-footer-widget">
+								<h6>Follow us on Social</h6>
+									<a href="https://www.facebook.com/nesterlyhome" class="btn btn-facebook waves-effect waves-light">
+										<i class="fa fa-facebook" aria-hidden="true"></i>
+									</a>
+									&nbsp;&nbsp;
+									<a href="https://twitter.com/nesterlyhome" class="btn btn-twitter waves-effect waves-light">
+										<i class="fa fa-twitter" aria-hidden="true"></i>
+									</a>
+         
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+	</body>
 </html>

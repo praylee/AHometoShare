@@ -10,11 +10,17 @@
  * Copyright @ 2018
  */
 package dataaccess;
-
+import java.sql.Date;
+import java.util.List;
+import transferobjects.Host;
 /**
  *
  * @author 29751
  */
-public class HostDAO {
-    
+public interface HostDAO {
+   List<Host> getAllHost();
+    void addHost(Host host);
+    Host getHostByHostId(int hostId);  
+    void deleteHost(int hostId);
+    void updateHost(int hostId, String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource);
 }

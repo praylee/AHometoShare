@@ -10,11 +10,16 @@
  * Copyright @ 2018
  */
 package dataaccess;
-
+import java.util.List;
+import transferobjects.Resource;
 /**
  *
  * @author 29751
  */
-public class ResourceDAO {
-    
+public interface ResourceDAO {
+     List<Resource> getAllResource();
+    void addResource(Resource resource);
+    Resource getResourceByResourceId(int resourceId);  
+    void deleteReource(int resourceId);
+    void updateResource( String type, int resourceId);
 }

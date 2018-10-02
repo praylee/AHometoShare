@@ -1,2 +1,5 @@
-/test/Registrar/src/nbproject/private/
-/test/Registrar/src/build/
+
+/nbproject/private/
+/build/
+/dist/
+

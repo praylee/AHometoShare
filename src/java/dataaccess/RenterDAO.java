@@ -10,11 +10,17 @@
  * Copyright @ 2018
  */
 package dataaccess;
-
+import java.sql.Date;
+import java.util.List;
+import transferobjects.Renter;
 /**
  *
- * @author 29751
+ * @author Xia Sheng
  */
-public class RenterDAO {
-    
+public interface RenterDAO {
+    List<Renter> getAllRenter();
+    void addRenter(Renter renter);
+    Renter getRenterByRenterId(int renterId);  
+    void deleteRenter(int renterId);
+    void updateRenter(String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck,int renterId);
 }

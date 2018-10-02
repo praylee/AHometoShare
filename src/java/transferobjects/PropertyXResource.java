@@ -13,8 +13,40 @@ package transferobjects;
 
 /**
  *
- * @author 29751
+ * @author Xia Sheng
  */
 public class PropertyXResource {
+    private int id;
+    private int propertyId;
+   private int resourceId;
+   
+   public PropertyXResource(){
+    }
+
+    public PropertyXResource(int id, int property_id, int resource_id) {
+    setId(id);
+    setPropertyId(propertyId);
+    setResourceId(resourceId);   
+    }
+
+    public int getID() {
+        return id;
+    }
+    public int getPropertyID() {
+        return propertyId;
+    }
+     
+    public int getResourceID() {
+        return resourceId;
+    }
     
+    public void setId(int id){
+        this.id=id;
+    }
+    public void setPropertyId(int propertyId){
+        this.propertyId=propertyId;
+    }
+        public void setResourceId(int resourceId){
+        this.resourceId=resourceId;
+    }
 }

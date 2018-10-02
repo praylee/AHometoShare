@@ -10,11 +10,16 @@
  * Copyright @ 2018
  */
 package dataaccess;
-
+import java.util.List;
+import transferobjects.PropertyXResource;
 /**
  *
- * @author 29751
+ * @author Xia Sheng
  */
-public class PropertyXResourceDAO {
-    
+public interface PropertyXResourceDAO {
+    List<PropertyXResource> getAllPropertyXResource();
+    void addPropertyXResource(PropertyXResource PR);
+    PropertyXResource getResourceByResourceId(int id);  
+    void deletePropertyXResource(int id);
+    void updatePropertyXResource(int propertyId, int resourceId,int id);
 }

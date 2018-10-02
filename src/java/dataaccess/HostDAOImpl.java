@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 import transferobjects.Host;
 /**
  *
- * @author 29751
+ * @author Xia Sheng
  */
 public class HostDAOImpl implements HostDAO{
 
@@ -42,7 +42,7 @@ public class HostDAOImpl implements HostDAO{
             +"FROM host WHERE host_id = ?";
     private static final String DELETE_HOST= "DELETE FROM host WHERE host_id = ?";
     private static final String UPDATE_HOST = "UPDATE host SET "
-            +"host_id = ?,email= ?, password= ?, first_name= ?, last_name= ?,"
+            +"email= ?, password= ?, first_name= ?, last_name= ?,"
             +"phone = ?, gender= ?, date_of_birth= ?, retired= ?, "
             +"pets= ?,smoker= ?, referral_source= ?"
                     +"WHERE host_id= ?";
@@ -128,7 +128,7 @@ public class HostDAOImpl implements HostDAO{
     
     @Override
     public Host getHostByHostId(int hostId){
-      //List<Student> students = Collections.EMPTY_LIST;
+      
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -141,7 +141,7 @@ public class HostDAOImpl implements HostDAO{
             //pstmt.executeUpdate();
            
             rs = pstmt.executeQuery();
-            //students = new ArrayList<>(400);
+            
             if(rs.next()){              
                 host.setHostId(rs.getInt("host_id"));
                 host.setEmail(rs.getString("email"));
@@ -219,26 +219,27 @@ public class HostDAOImpl implements HostDAO{
         }    
      }
      
-      public void updateHost(int hostId, String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource){
+     @Override
+      public void updateHost( String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId){
             Connection con = null;
         PreparedStatement pstmt = null;
       
         try{
             DataSource ds = new DataSource();
             con = ds.createConnection();
-            pstmt = con.prepareStatement(UPDATE_HOST);
-            pstmt.setInt(1,hostId);
-            pstmt.setString(2,email);
-            pstmt.setString(3,passWord);           
-            pstmt.setString(4,firstName);
-            pstmt.setString(5,lastName);
-            pstmt.setString(6,phone);
-            pstmt.setInt(7,gender);
-            pstmt.setDate(8,dateBirth);
-            pstmt.setBoolean(9,retired);
-            pstmt.setBoolean(10,pets);
-            pstmt.setBoolean(11,smoker);
-            pstmt.setString(12,referralSource);         
+            pstmt = con.prepareStatement(UPDATE_HOST);   
+            pstmt.setString(1,email);
+            pstmt.setString(2,passWord);           
+            pstmt.setString(3,firstName);
+            pstmt.setString(4,lastName);
+            pstmt.setString(5,phone);
+            pstmt.setInt(6,gender);
+            pstmt.setDate(7,dateBirth);
+            pstmt.setBoolean(8,retired);
+            pstmt.setBoolean(9,pets);
+            pstmt.setBoolean(10,smoker);
+            pstmt.setString(11,referralSource);    
+            pstmt.setInt(12,hostId);
             pstmt.executeUpdate();
            
         }catch(SQLException ex){

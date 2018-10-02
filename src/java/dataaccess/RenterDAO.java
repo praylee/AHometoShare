@@ -22,5 +22,5 @@ public interface RenterDAO {
     void addRenter(Renter renter);
     Renter getRenterByRenterId(int renterId);  
     void deleteRenter(int renterId);
-    void updateRenter(int renterId, String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck);
+    void updateRenter(String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck,int renterId);
 }

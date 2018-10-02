@@ -47,7 +47,7 @@ public class RenterDAOImpl implements RenterDAO {
             +"FROM renter WHERE id = ?";
     private static final String DELETE_RENTER= "DELETE FROM renter WHERE id = ?";
     private static final String UPDATE_RENTER = "UPDATE renter SET "
-            +"id = ?,email = ?, password= ?, "
+            +"email = ?, password= ?, "
             +"first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
             +"employed= ?, smoker= ?, rent_start_date= ?, rent_end_date= ?,availability= ?, "
             +"low_price= ?, high_price= ?, referral_source= ?,criminality_check = ?"
@@ -146,7 +146,6 @@ public class RenterDAOImpl implements RenterDAO {
     
     @Override
     public Renter getRenterByRenterId(int renterId){
-      //List<Student> students = Collections.EMPTY_LIST;
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -156,10 +155,7 @@ public class RenterDAOImpl implements RenterDAO {
             con = ds.createConnection();
             pstmt = con.prepareStatement(GET_BY_RENTER_ID);
             pstmt.setInt(1, renterId);
-            //pstmt.executeUpdate();
-           
             rs = pstmt.executeQuery();
-            //students = new ArrayList<>(400);
             if(rs.next()){              
                 renter.setRenterId(rs.getInt("id"));
                 renter.setEmail(rs.getString("email"));
@@ -243,32 +239,33 @@ public class RenterDAOImpl implements RenterDAO {
         }    
      }
      
-      public void updateRenter(int renterId, String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck){
+     @Override
+      public void updateRenter(String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck,int renterId){
             Connection con = null;
         PreparedStatement pstmt = null;
       
         try{
             DataSource ds = new DataSource();
             con = ds.createConnection();
-            pstmt = con.prepareStatement(UPDATE_RENTER);
-            pstmt.setInt(1,renterId);
-            pstmt.setString(2,email);
-            pstmt.setString(3,passWord);           
-            pstmt.setString(4,firstName);
-            pstmt.setString(5,lastName);
-            pstmt.setString(6,phone);
-            pstmt.setInt(7,gender);
-            pstmt.setDate(8,dateBirth);
-            pstmt.setBoolean(9,isStudent);
-            pstmt.setBoolean(10,isEmployed);
-            pstmt.setBoolean(11,isSmoker);
-            pstmt.setDate(12,startDate);
-            pstmt.setDate(13,endDate);
-            pstmt.setInt(14,availability);
-            pstmt.setDouble(15,lowPrice);
-            pstmt.setDouble(16,highPrice);
-            pstmt.setString(17,referralSource);
-            pstmt.setBoolean(18,hasCRCheck);
+            pstmt = con.prepareStatement(UPDATE_RENTER); 
+            pstmt.setString(1,email);
+            pstmt.setString(2,passWord);           
+            pstmt.setString(3,firstName);
+            pstmt.setString(4,lastName);
+            pstmt.setString(5,phone);
+            pstmt.setInt(6,gender);
+            pstmt.setDate(7,dateBirth);
+            pstmt.setBoolean(8,isStudent);
+            pstmt.setBoolean(9,isEmployed);
+            pstmt.setBoolean(10,isSmoker);
+            pstmt.setDate(11,startDate);
+            pstmt.setDate(12,endDate);
+            pstmt.setInt(13,availability);
+            pstmt.setDouble(14,lowPrice);
+            pstmt.setDouble(15,highPrice);
+            pstmt.setString(16,referralSource);
+            pstmt.setBoolean(17,hasCRCheck);
+            pstmt.setInt(18,renterId);
             
             
             pstmt.executeUpdate();

@@ -47,6 +47,9 @@ public class SignUpView extends HttpServlet {
             out.println("<h1>Servlet SignUpView at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+            
+            String s = "This is a string for a test push by Chris";
+            String t = "This is a string for a test push by Chris";
         }
     }
 

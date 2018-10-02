@@ -1,8 +1,8 @@
-/*
+/**
  * File: PropertyXResourceDAO.java
- * Description:
+ * Description:This is an abstract Data Access Object interface defines the standard operations to be performed.
  * Create: Sep,30,2018
- * Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+ * Author: Xia Sheng
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -12,14 +12,10 @@
 package dataaccess;
 import java.util.List;
 import transferobjects.PropertyXResource;
-/**
- *
- * @author Xia Sheng
- */
+
 public interface PropertyXResourceDAO {
     List<PropertyXResource> getAllPropertyXResource();
     void addPropertyXResource(PropertyXResource PR);
     PropertyXResource getResourceByResourceId(int id);  
     void deletePropertyXResource(int id);
-    void updatePropertyXResource(int propertyId, int resourceId,int id);
 }

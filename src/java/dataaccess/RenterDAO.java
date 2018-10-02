@@ -1,8 +1,8 @@
-/*
+/**
  * File: RenterDAO.java
- * Description:
+ * Description:This is an abstract Data Access Object interface defines the standard operations to be performed.
  * Create: Sep,30,2018
- * Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+ * Author: Xia Sheng
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -13,10 +13,7 @@ package dataaccess;
 import java.sql.Date;
 import java.util.List;
 import transferobjects.Renter;
-/**
- *
- * @author Xia Sheng
- */
+
 public interface RenterDAO {
     List<Renter> getAllRenter();
     void addRenter(Renter renter);

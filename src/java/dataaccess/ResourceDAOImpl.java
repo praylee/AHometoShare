@@ -1,4 +1,4 @@
-/*
+/**
  * File: ResourceDAOImpl.java
  * Description:
  * Create: Sep,30,2018
@@ -23,8 +23,10 @@ import java.util.logging.Logger;
 import transferobjects.Resource;
 
 /**
+ * This class implements interface ResourceDAO. This class is responsible to get
+ * data from Table Resource.
  *
- * @author 29751
+ * @author Xia Sheng
  */
 public class ResourceDAOImpl implements ResourceDAO {
 
@@ -37,15 +39,9 @@ public class ResourceDAOImpl implements ResourceDAO {
     @Override
     public List<Resource> getAllResource() {
         List<Resource> resources = Collections.EMPTY_LIST;
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        try {
-            DataSource ds = new DataSource();
-            con = ds.createConnection();
-            pstmt = con.prepareStatement(GET_ALL_RESOURCE);
-            rs = pstmt.executeQuery();
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_ALL_RESOURCE);
+                ResultSet rs = pstmt.executeQuery();) {
             resources = new ArrayList<>(400);
             while (rs.next()) {
                 Resource resource = new Resource();
@@ -55,37 +51,14 @@ public class ResourceDAOImpl implements ResourceDAO {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-            try {
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
         return resources;
     }
 
     @Override
     public void addResource(Resource resource) {
-        try {
-            Connection con = new DataSource().createConnection();
-            PreparedStatement pstmt = con.prepareStatement(INSERT_RESOURCE);
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(INSERT_RESOURCE);) {
             pstmt.setInt(1, resource.getResourceID());
             pstmt.setString(2, resource.getType());
             pstmt.executeUpdate();
@@ -96,115 +69,44 @@ public class ResourceDAOImpl implements ResourceDAO {
 
     @Override
     public Resource getResourceByResourceId(int resourceId) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+
         Resource resource = new Resource();
-        try {
-            DataSource ds = new DataSource();
-            con = ds.createConnection();
-            pstmt = con.prepareStatement(GET_BY_RESOURCE_ID);
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_RESOURCE_ID);
+                ResultSet rs = pstmt.executeQuery();) {
             pstmt.setInt(1, resourceId);
-            rs = pstmt.executeQuery();
             if (rs.next()) {
                 resource.setResourceId(rs.getInt("resource_id"));
                 resource.setType(rs.getString("type"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-            try {
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
         return resource;
     }
 
     @Override
     public void deleteReource(int resourceId) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-
-        try {
-            DataSource ds = new DataSource();
-            con = ds.createConnection();
-            pstmt = con.prepareStatement(DELETE_RESOURCE);
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(DELETE_RESOURCE);) {
             pstmt.setInt(1, resourceId);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-
-            try {
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
     }
 
     @Override
-    public void updateResource(String type,int resourceId){
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        try{
-            DataSource ds = new DataSource();
-            con = ds.createConnection();
-            pstmt = con.prepareStatement(UPDATE_RESOURCE);
-            
-            pstmt.setString(1,type);
-            pstmt.setInt(2,resourceId);
-        pstmt.executeUpdate();
-           
-        }catch(SQLException ex){
-            Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
-        }finally{
-           
-            try{
-                if(pstmt !=null){
-                    pstmt.close();
-                }
-            }catch(SQLException ex){
-                System.out.println(ex.getMessage());
-            }
-            try{
-                if(con !=null){
-                    con.close();
-                }
-            }catch(SQLException ex){
-                System.out.println(ex.getMessage());
-            }         
+    public void updateResource(String type, int resourceId) {
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_RESOURCE);) {
+            pstmt.setString(1, type);
+            pstmt.setInt(2, resourceId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-      }
-    
-    } 
-           
+    }
+}

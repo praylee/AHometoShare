@@ -1,8 +1,8 @@
-/*
+/**
  * File: Renter.java
- * Description:
+ * Description:This class describes attributes of Table Renter. This table records all renters’ general information
  * Create: Sep,30,2018
- * Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+ * Author: Xia Sheng
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -11,10 +11,7 @@
  */
 package transferobjects;
 import java.sql.Date;
-/**
- *
- * @author Xia Sheng
- */
+
 public class Renter {
     private int renterId;
     private String email;

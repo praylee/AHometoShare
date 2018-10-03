@@ -134,9 +134,13 @@
 				z-index: 10003;
 			}
 
-				#header a.navPanelToggle .fa {
-					font-size: 1.25em;
-				}
+			#header a.navPanelToggle .fa {
+				font-size: 1.25em;
+			}
+			
+			#header button:hover {
+				color: #ffcc00;
+			}
 
 
 				
@@ -422,7 +426,7 @@
 			}
 
 		.flex.flex-4 .box {
-			width: 21%;
+			width: 25%;
 		}
 	
 	
@@ -456,4 +460,89 @@
 	
 
 
+	
+	
+	
+/* Popup window */	
+	body {font-family: Arial, Helvetica, sans-serif;}
 
+	/* The Popup (background) */
+	.popup {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		padding-top: 120px; /* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+	}
+
+	/* Popup Content */
+	.popup-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 20px;
+		border: 2px solid #ffcc00;
+		width: 35%;
+		text-align: center;
+	}
+
+	/* The Close Button */
+	.close {
+		color: #aaaaaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.unstyled-button {
+		border: none;
+		padding: 0;
+		background: none;
+		color: #ffffff;
+	}
+
+
+	/* Pattern styles */
+	.popup_container {
+		display: flex;
+		text-align: center;
+		
+	}
+	
+	.popup-left_half {
+		background-color: #ff9e2c;
+		flex: 1;
+		padding: 0px 50px 0px 0px;
+}
+
+	.popup-right_half {
+		background-color: #b6701e;
+		flex: 1;
+		padding: 1rem;
+	}
+
+	
+	/* Registraton form: Renter */
+	input:invalid + span:after {
+    content: '✖';
+    color: #f00;
+    padding-left: 5px;
+}
+
+	input:valid + span:after {
+		content: '✓';
+		color: #26b72b;
+		padding-left: 5px;
+	}

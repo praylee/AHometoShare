@@ -1,8 +1,8 @@
 /*
  * File: LogInView.java
  * Description:
- * Create: Sep,30,2018
- * Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+ * Create: Oct 5,2018
+ * Author: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -11,12 +11,15 @@
  */
 package view;
 
+import dataaccess.RenterDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import transferobjects.Renter;
 
 /**
  *
@@ -36,18 +39,11 @@ public class LogInView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LogInView</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LogInView at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+        RequestDispatcher rd = request.getRequestDispatcher("login.html");  //show login.html page
+        rd.forward(request,response);  
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,6 +73,27 @@ public class LogInView extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+             
+        response.setContentType("text/html;charset=UTF-8");
+
+        
+        String email = request.getParameter("email");
+        String password = request.getParameter("pswd");
+
+        
+        RenterDAOImpl renterDAO = new RenterDAOImpl();
+        Renter renter;
+        renter = renterDAO.getRenterByRenterUname(email);
+
+        System.out.println(renter.getEmail());
+        response.sendRedirect("renterProfile.html");
+        
+        if (renter.getPassWord().equals(password)) { //username and password match
+//            response.sendRedirect("/renterProfile.html");
+//            RequestDispatcher rs = request.getRequestDispatcher("renterProfile.html");
+//            rs.forward(request, response);
+        }
+        
     }
 
     /**

@@ -17,7 +17,8 @@ import transferobjects.Renter;
 public interface RenterDAO {
     List<Renter> getAllRenter();
     void addRenter(Renter renter);
-    Renter getRenterByRenterId(int renterId);  
+    Renter getRenterByRenterId(int renterId); 
+    Renter getRenterByRenterUname(String username);  //added by Melissa
     void deleteRenter(int renterId);
     void updateRenter(String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck,int renterId);
 }

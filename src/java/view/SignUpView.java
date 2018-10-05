@@ -36,21 +36,8 @@ public class SignUpView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SignUpView</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SignUpView at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            
-            String s = "This is a string for a test push by Chris";
-            String t = "This is a string for a test push by Chris";
-        }
+        
+        response.sendRedirect("renterRegister.html");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

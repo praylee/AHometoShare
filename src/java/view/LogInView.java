@@ -11,6 +11,7 @@
  */
 package view;
 
+import business.RenterBusinessLayer;
 import dataaccess.RenterDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -81,11 +82,10 @@ public class LogInView extends HttpServlet {
         String password = request.getParameter("pswd");
 
         
-        RenterDAOImpl renterDAO = new RenterDAOImpl();
+        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
         Renter renter;
-        renter = renterDAO.getRenterByRenterUname(email);
+        renter = renterBusiness.getRenterByRenterId(1);
 
-        System.out.println(renter.getEmail());
         response.sendRedirect("renterProfile.html");
         
         if (renter.getPassWord().equals(password)) { //username and password match

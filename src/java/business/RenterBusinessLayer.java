@@ -11,10 +11,31 @@
  */
 package business;
 
+import dataaccess.RenterDAO;
+import dataaccess.RenterDAOImpl;
+import transferobjects.Renter;
+
 /**
  *
  * @author 29751
  */
 public class RenterBusinessLayer {
+ 
+    private RenterDAO renterDAO = null;
+    
+    public RenterBusinessLayer() {
+        renterDAO = new RenterDAOImpl();
+    }
+    
+    
+    public Renter getRenterByRenterId(int renterId) {
+        return renterDAO.getRenterByRenterId(renterId);
+    }
+    
+    public Renter getRenterByRenterUname(String username) {
+        return renterDAO.getRenterByRenterUname(username);
+    }
+    
     
 }
+

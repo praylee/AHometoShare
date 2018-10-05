@@ -37,22 +37,7 @@ public class LogInView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        
-        if(renterBusiness.passwordCorrect(email, password)) {
-            response.sendRedirect("renterProfile.html");
-        }
-        else {
-            if(renterBusiness.renterExists(email)) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid password");
-            }
-            else {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid email");
-            }
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

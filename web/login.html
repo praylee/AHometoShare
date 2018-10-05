@@ -2,21 +2,165 @@
 <!--
 File: login.html
 Description:
-Create: Sep,30,2018
-Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+Create: Oct 5,2018
+Author: Melissa Rajala
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
 Project: A Home to Share
 Copyright @ 2018
 -->
+
+<!DOCTYPE html>
+
 <html>
     <head>
-        <title>Log In</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A Home To Share</title>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="assets/css/style.css" />
     </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+	
+	<body>
+		
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">A Home To Share</a>
+					<nav id="nav">
+						<a href="index.html">Home</a>
+						<a href="index.html">How We Work</a>
+						<a href="index.html">FAQ</a>
+						<a href="login.html">Log in</a>
+						<button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button">Sign Up</button>
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			
+		
+				<!-- A signup popup window when clicks "Sign Up" button-->
+				<div id="myPopup" class="popup">
+
+					<!-- Popup content -->
+						<div class="popup-content">
+							<span class="close">&times;</span>
+							
+							<section class="popup_container">
+								<div class="popup-left_half">
+									<article>
+										<h4>I want to sign up as a*</h4>
+											<div class="btn-group">
+												<button>Host</button>
+												<button>Renter</button>
+											</div>
+									</article>
+								</div>
+								<hr>
+								<div class="popup-right_half">
+									<article>
+											<div class="btn-group">
+												<div><a href="renterRegister.html"><button id="emailBtn" >Sign up with email</button></a></div>
+												<div><button>Sign up with Facebook</button></div>
+												<div><button>Sign up with Linkedin</button></div>
+												<div><button>Sign up with Google</button></div>
+											</div>
+									</article>
+							
+							</section>
+							
+						</div>
+
+				</div>
+			</header>
+
+                
+                <!-- Banner: the text shows within the main image-->
+			<section id="banner">
+
+			</section>
+
+		<!-- Block 1: Core benifits info -->
+			<section id="one" class="wrapper">
+				<div class="inner">
+                                    <form action="LogInView" method="post">
+
+                                        <div class="container">
+                                            
+                                            <label for="email"><b>Email</b></label>
+                                            <input type="text" placeholder="Enter Email" name="email" required>
+
+                                            <label for="pswd"><b>Password</b></label>
+                                            <input type="password" placeholder="Enter Password" name="pswd" required>
+
+                                            <button type="submit">Login</button>
+                                            <label>
+                                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                                            </label>
+                                            
+                                        </div>
+
+                                        
+                                    </form>
+                                    
+				</div>
+			</section>
+
+			
+		
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="single-footer-widget">
+							<h6>Get in Touch</h6>
+          
+							<div class='get-in-touch-section'>
+								<img alt="logo" class="" src="images/team_logo.png" />
+								<ul class="footer-nav-section-nav pL0">
+									<li><a href="mailto:hello@nesterly.io">info@ahometoshare.ca</a></li>
+									<li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
+								</ul>
+							</div>
+          
+						</div>
+					
+						<div class="col-lg-3  col-md-3">
+							<div class="single-footer-widget">
+								<h6>Join Our Community</h6>
+								<ul class="footer-nav-section-nav pL0">
+									<li><a href="/how-it-works">How it Works</a></li>
+									<li><a href="/faq">Frequently Asked Questions</a></li>
+									<li><a href="/homesharing_resources">Homesharing Resources</a></li>
+									<li><a href="/community_compact">Community Compact</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="col-lg-3 col-md-3">
+							<div class="single-footer-widget">
+								<h6>Get Engaged</h6>
+									<ul class="footer-nav-section-nav pL0">
+										<li>Live in Toronto and want to help us tackle the affordable housing crisis. <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7Rtng9Dwi1uEH9A86Z9Jd1IFDRJoHeW-LMHBtUsYPOh571Q/viewform" target="_blank"> <u>Apply</u></a> to be an Ambassador today.
+										</li>
+									</ul>
+							</div>
+						</div>
+						
+						<div class="col-lg-3  col-md-3">
+							<div class="single-footer-widget">
+								<h6>Follow us on Social</h6>
+									<a href="https://www.facebook.com/nesterlyhome" class="btn btn-facebook waves-effect waves-light">
+										<i class="fa fa-facebook" aria-hidden="true"></i>
+									</a>
+									&nbsp;&nbsp;
+									<a href="https://twitter.com/nesterlyhome" class="btn btn-twitter waves-effect waves-light">
+										<i class="fa fa-twitter" aria-hidden="true"></i>
+									</a>
+         
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+                
+        </body>
 </html>

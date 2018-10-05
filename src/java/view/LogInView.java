@@ -1,8 +1,8 @@
 /*
  * File: LogInView.java
  * Description:
- * Create: Sep,30,2018
- * Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+ * Create: Oct 5,2018
+ * Author: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -11,13 +11,22 @@
  */
 package view;
 
+import business.RenterBusinessLayer;
+import dataaccess.RenterDAOImpl;
 import java.io.IOException;
-//import java.io.PrintWriter;
+
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import transferobjects.Renter;
+
 import business.RenterBusinessLayer;
+
 
 /**
  *
@@ -37,6 +46,12 @@ public class LogInView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        
+        RequestDispatcher rd = request.getRequestDispatcher("login.html");  //show login.html page
+        rd.forward(request,response);  
+
+
 
     }
 
@@ -67,6 +82,26 @@ public class LogInView extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+             
+        response.setContentType("text/html;charset=UTF-8");
+
+        
+        String email = request.getParameter("email");
+        String password = request.getParameter("pswd");
+
+        
+        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
+        Renter renter;
+        renter = renterBusiness.getRenterByRenterId(1);
+
+        response.sendRedirect("renterProfile.html");
+        
+        if (renter.getPassWord().equals(password)) { //username and password match
+//            response.sendRedirect("/renterProfile.html");
+//            RequestDispatcher rs = request.getRequestDispatcher("renterProfile.html");
+//            rs.forward(request, response);
+        }
+        
     }
 
     /**

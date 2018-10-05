@@ -20,6 +20,22 @@ import transferobjects.Renter;
  * @author Chris
  */
 public class RenterBusinessLayer {
+ 
+    private RenterDAO renterDAO = null;
+    
+    public RenterBusinessLayer() {
+        renterDAO = new RenterDAOImpl();
+    }
+    
+    
+    public Renter getRenterByRenterId(int renterId) {
+        return renterDAO.getRenterByRenterId(renterId);
+    }
+    
+    public Renter getRenterByRenterUname(String username) {
+        return renterDAO.getRenterByRenterUname(username);
+    }
+    
     
     RenterDAO renterDAO;
     
@@ -67,3 +83,4 @@ public class RenterBusinessLayer {
         // if price range isn't a number, or is a negative number   then throw exception
     }
 }
+

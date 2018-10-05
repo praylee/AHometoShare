@@ -12,7 +12,7 @@
 package view;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ import business.RenterBusinessLayer;
 
 /**
  *
- * @author 29751
+ * @author Chris
  */
 public class LogInView extends HttpServlet {
 
@@ -38,22 +38,21 @@ public class LogInView extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        RenterBusinessLayer renter = new RenterBusinessLayer();
-        
+        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
-        /*
-        if(renter.userExists(email, password)) {
-        
+        if(renterBusiness.passwordCorrect(email, password)) {
             response.sendRedirect("renterProfile.html");
         }
         else {
-            response.sendError(SC_UNAUTHORIZED, "Invalid Username or Password");
+            if(renterBusiness.renterExists(email)) {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid password");
+            }
+            else {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid email");
+            }
         }
-        
-        
-        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

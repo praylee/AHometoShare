@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 29751
+ * @author Chris
  */
 public class SignUpView extends HttpServlet {
 

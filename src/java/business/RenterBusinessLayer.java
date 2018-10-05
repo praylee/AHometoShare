@@ -17,7 +17,7 @@ import transferobjects.Renter;
 
 /**
  *
- * @author 29751
+ * @author Chris
  */
 public class RenterBusinessLayer {
  
@@ -37,5 +37,50 @@ public class RenterBusinessLayer {
     }
     
     
+    RenterDAO renterDAO;
+    
+    public RenterBusinessLayer() {
+        renterDAO = new RenterDAOImpl();
+    }
+    
+    public void addRenter(Renter renter) throws ValidationException {
+        try {
+            validateFields(renter);
+            renterDAO.addRenter(renter);
+        }
+        catch(ValidationException e) {
+            throw e;
+        }
+    }   
+    
+    public Renter getRenterByEmail(String email) {
+        return renterDAO.getRenterByEmail(email);
+    }
+    
+    public Renter getRenterByRenterId(int id) {
+        return renterDAO.getRenterByRenterId(id);
+    }
+    
+    public boolean renterExists(String email) {
+        boolean exists = true;
+        if(renterDAO.getRenterByEmail(email) == null) {
+            exists = false;
+        }
+        return exists;
+    }
+    
+    public boolean passwordCorrect(String email, String password) {
+        boolean correct = false;
+        if(renterDAO.passwordCorrect(email, password)) {
+            correct = true;
+        }
+        return correct;
+    }
+    
+    private void validateFields(Renter renter) throws ValidationException {
+        // if email doesn't match [\w\d\._\-!#$%&'*+/=?^_`{|}~]+@[\w\d\.\[\]]+  then throw exception
+        // if password doesn't match whatever we need it to     then throw exception
+        // if price range isn't a number, or is a negative number   then throw exception
+    }
 }
 

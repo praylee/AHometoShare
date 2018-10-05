@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Registrar">
+    <Resource name="jdbc/Registrar" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="cst8288" password="8288" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/Registrar"/>
+</Context>

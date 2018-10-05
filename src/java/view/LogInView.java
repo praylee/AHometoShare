@@ -14,17 +14,23 @@ package view;
 import business.RenterBusinessLayer;
 import dataaccess.RenterDAOImpl;
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import transferobjects.Renter;
+
+import business.RenterBusinessLayer;
+
 
 /**
  *
- * @author 29751
+ * @author Chris
  */
 public class LogInView extends HttpServlet {
 
@@ -40,9 +46,11 @@ public class LogInView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         
         RequestDispatcher rd = request.getRequestDispatcher("login.html");  //show login.html page
         rd.forward(request,response);  
+
 
 
     }

@@ -59,6 +59,15 @@ public class RenterDAOImpl implements RenterDAO {
             + "employed= ?, smoker= ?, rent_start_date= ?, rent_end_date= ?,availability= ?, "
             + "low_price= ?, high_price= ?, referral_source= ?,criminality_check = ?"
             + "WHERE id= ?";
+    
+    private static final String GET_RENTER_BY_EMAIL = "SELECT"
+            + "id,email, password, "
+            + "first_name, last_name,phone, gender, date_of_birth, student, "
+            + "employed, smoker, rent_start_date, rent_end_date,availability, "
+            + "low_price, high_price, referral_source,criminality_check "
+            + "FROM renter WHERE email = ?";
+    
+    private static final String PASSWORD_CORRECT = "SELECT id FROM renter WHERE email = ?, AND password = ?";
 
     @Override
     public List<Renter> getAllRenter() {
@@ -234,6 +243,67 @@ public class RenterDAOImpl implements RenterDAO {
 
         } catch (SQLException ex) {
             Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public Renter getRenterByEmail(String email) {
+        
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_RENTER_BY_EMAIL);) {
+            
+            Renter renter = new Renter();
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.first()) {
+                renter.setRenterId(rs.getInt("id"));
+                renter.setEmail(rs.getString("email"));
+                renter.setPassWord(rs.getString("password"));
+                renter.setFirstName(rs.getString("first_name"));
+                renter.setLastName(rs.getString("last_name"));
+                renter.setPhone(rs.getString("phone"));
+                renter.setGender(rs.getInt("gender"));
+                renter.setDOB(rs.getDate("date_of_birth"));
+                renter.setIsStudent(rs.getBoolean("student"));
+                renter.setIsEmployed(rs.getBoolean("employed"));
+                renter.setIsSmoker(rs.getBoolean("smoker"));
+                renter.setStartDate(rs.getDate("rent_start_date"));
+                renter.setEndDate(rs.getDate("rent_end_date"));
+                renter.setAvailability(rs.getInt("availability"));
+                renter.setLowPrice(rs.getInt("low_price"));
+                renter.setLowPrice(rs.getInt("high_price"));
+                renter.setReferralSource(rs.getString("referral_source"));
+                renter.setHasCRCheck(rs.getBoolean("criminality_check"));
+            }
+            else {
+                renter = null;
+            }
+            try {rs.close();}
+            catch(SQLException ex) {}
+            return renter;
+        }
+        catch(SQLException e) {
+             Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+             return null;
+        }
+    }
+    
+    @Override
+    public boolean passwordCorrect(String email, String password) {
+        try (Connection con = new DataSource().createConnection();
+         PreparedStatement pstmt = con.prepareStatement(PASSWORD_CORRECT);) {
+
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+            boolean isCorrect = rs.first();
+            try {rs.close();}
+            catch(SQLException ex) {}
+            return isCorrect;
+        }
+        catch(SQLException e) {
+             Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+             return false;
         }
     }
 }

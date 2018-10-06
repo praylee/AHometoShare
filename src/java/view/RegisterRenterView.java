@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import transferobjects.Renter;
 import business.ValidationException;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
@@ -40,6 +41,8 @@ public class RegisterRenterView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          
+        response.setContentType("text/html;charset=UTF-8");
+        
         String fName = request.getParameter("firstName");
         String lName = request.getParameter("lastName");
         String email = request.getParameter("email");
@@ -54,17 +57,12 @@ public class RegisterRenterView extends HttpServlet {
         String criminal = request.getParameter("criminal");
         String homeLocation = request.getParameter("homeLocation");
         String roomDetails = request.getParameter("roomDetails");
-        
-        
-
-        
-       Date birth = java.sql.Date.valueOf(request.getParameter("birth"));
-        Date enrolled = java.sql.Date.valueOf(request.getParameter("enrolled"));
+//        Date birth = java.sql.Date.valueOf(request.getParameter("birth"));
+//        Date enrolled = java.sql.Date.valueOf(request.getParameter("enrolled"));
       
         RenterBusinessLayer renterLayer = new RenterBusinessLayer();
-        Renter renter = new Renter(1,"chrislabelle@gmail.com", "password","Chris","Chris","5555555555",1,new java.sql.Date(938478278),false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2.0,2.0,"newspaper",true);
-        
-        
+        Renter renter = new Renter(1,"chrislabelle@gmail.com", "password","Chris","Chris","5555555555",1,new java.sql.Date(938478278),false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,"newspaper",true);
+
 //        try{
 //            renterLayer.addRenter(renter);
 //        }
@@ -72,20 +70,9 @@ public class RegisterRenterView extends HttpServlet {
 //            
 //        }
         
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-        /*    out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterRenterView</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegisterRenterView at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        */
-        }
+        // Only do this if user was successfully added to database!!!!
+        RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  //go to registerConfirm if signUp successful
+        rd.forward(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

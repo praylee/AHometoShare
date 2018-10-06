@@ -29,7 +29,7 @@ public class DataSource {
         try {
             Context initCtx = new InitialContext();
             Context envCtx = (Context) initCtx.lookup("java:comp/env");
-            javax.sql.DataSource ds = (javax.sql.DataSource) envCtx.lookup("jdbc/Ahometoshare");
+            javax.sql.DataSource ds = (javax.sql.DataSource) envCtx.lookup("jdbc/ahometoshare");
             connection = ds.getConnection();
         } catch (NamingException | SQLException ex) {
             Logger.getLogger(DataSource.class.getName()).log(Level.SEVERE, null, ex);

@@ -13,6 +13,7 @@ package view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +38,8 @@ public class SignUpView extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        response.sendRedirect("renterRegister.html");
+        //RequestDispatcher rd = request.getRequestDispatcher("renterRegister.html");  //show registerRenter.html page
+        //rd.forward(request,response);  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

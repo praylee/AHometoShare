@@ -58,8 +58,8 @@ public class RegisterRenterView extends HttpServlet {
         
 
         
-       // Date birth = java.sql.Date.valueOf(request.getParameter("birth"));
-        //Date enrolled = java.sql.Date.valueOf(request.getParameter("enrolled"));
+       Date birth = java.sql.Date.valueOf(request.getParameter("birth"));
+        Date enrolled = java.sql.Date.valueOf(request.getParameter("enrolled"));
       
         RenterBusinessLayer renterLayer = new RenterBusinessLayer();
         Renter renter = new Renter(1,"chrislabelle@gmail.com", "password","Chris","Chris","5555555555",1,new java.sql.Date(938478278),false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2.0,2.0,"newspaper",true);

@@ -47,12 +47,30 @@ public class LogInView extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        String email = request.getParameter("email");
+        String password = request.getParameter("pswd");
+//        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
+//        if(renterBusiness.passwordCorrect(email, password)) {
+//            Renter renter = renterBusiness.getRenterByEmail(email);
+//            request.setAttribute("fName", renter.getFirstName());
+//            request.setAttribute("lName", renter.getLastName());
+//            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
+//            rd.forward(request,response);
+//        }
+//        else {
+//            //here you can pass error messages back to login screen
+//            RequestDispatcher rd = request.getRequestDispatcher("login.html");  //go to renterProfile if login successful
+//            rd.forward(request,response);
+//        }
         
-        RequestDispatcher rd = request.getRequestDispatcher("login.html");  //show login.html page
-        rd.forward(request,response);  
-
-
-
+        request.setAttribute("fName", "Christopher"); // just for practice without database
+        request.setAttribute("lName", "Labelle");
+        request.setAttribute("email", email);
+        request.setAttribute("password", password);
+        RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
+        rd.forward(request,response);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -247,7 +247,7 @@ public class RenterDAOImpl implements RenterDAO {
     }
     
     @Override
-    public Renter getRenterByEmail(String email) {
+    public Renter getRenterByEmail(String email) { //added by Chris
         
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(GET_RENTER_BY_EMAIL);) {
@@ -289,7 +289,7 @@ public class RenterDAOImpl implements RenterDAO {
     }
     
     @Override
-    public boolean passwordCorrect(String email, String password) {
+    public boolean passwordCorrect(String email, String password) { // added by Chris
         try (Connection con = new DataSource().createConnection();
          PreparedStatement pstmt = con.prepareStatement(PASSWORD_CORRECT);) {
 

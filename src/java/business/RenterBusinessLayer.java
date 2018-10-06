@@ -35,14 +35,7 @@ public class RenterBusinessLayer {
     public Renter getRenterByRenterUname(String username) {
         return renterDAO.getRenterByRenterUname(username);
     }
-    
-    
-    RenterDAO renterDAO;
-    
-    public RenterBusinessLayer() {
-        renterDAO = new RenterDAOImpl();
-    }
-    
+
     public void addRenter(Renter renter) throws ValidationException {
         try {
             validateFields(renter);
@@ -55,10 +48,6 @@ public class RenterBusinessLayer {
     
     public Renter getRenterByEmail(String email) {
         return renterDAO.getRenterByEmail(email);
-    }
-    
-    public Renter getRenterByRenterId(int id) {
-        return renterDAO.getRenterByRenterId(id);
     }
     
     public boolean renterExists(String email) {

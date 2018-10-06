@@ -62,11 +62,8 @@ public class LogInView extends HttpServlet {
 //            RequestDispatcher rd = request.getRequestDispatcher("login.html");  //go to renterProfile if login successful
 //            rd.forward(request,response);
 //        }
-        
-        request.setAttribute("fName", "Christopher"); // just for practice without database
-        request.setAttribute("lName", "Labelle");
-        request.setAttribute("email", email);
-        request.setAttribute("password", password);
+
+        request.setAttribute("email", email); // just for practice without database
         RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
         rd.forward(request,response);
         

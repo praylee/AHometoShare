@@ -107,9 +107,9 @@ public class RenterDAOImpl implements RenterDAO {
 
     @Override
     public void addRenter(Renter renter) {
-        try{
+        try(
             Connection con=new DataSource().createConnection();
-            PreparedStatement pstmt = con.prepareStatement(INSERT_RENTER);
+            PreparedStatement pstmt = con.prepareStatement(INSERT_RENTER);){
             pstmt.setInt(1,renter.getRenterID());
             pstmt.setString(2,renter.getEmail());
             pstmt.setString(3,renter.getPassWord());           

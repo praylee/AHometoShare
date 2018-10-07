@@ -13,11 +13,13 @@ package business;
 
 import dataaccess.RenterDAO;
 import dataaccess.RenterDAOImpl;
+import java.util.List;
 import transferobjects.Renter;
 
 /**
  *
  * @author Chris
+ * Modified by Liangliang: add getAllRenter()
  */
 public class RenterBusinessLayer {
  
@@ -27,6 +29,9 @@ public class RenterBusinessLayer {
         renterDAO = new RenterDAOImpl();
     }
     
+    public List<Renter> getAllRenter() {
+        return renterDAO.getAllRenter();
+    }
     
     public Renter getRenterByRenterId(int renterId) {
         return renterDAO.getRenterByRenterId(renterId);

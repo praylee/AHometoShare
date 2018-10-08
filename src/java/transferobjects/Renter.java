@@ -20,7 +20,7 @@ public class Renter {
     private String lastName;
     private String phone;
     private int gender;
-    private String dateBirth;
+    private Date dateBirth;
     private Boolean isStudent;
     private Boolean isEmployed;
     private Boolean isSmoker;
@@ -35,9 +35,8 @@ public class Renter {
     
     public Renter(){
     }
-    
 
-    public Renter(int renterId, String email, String passWord, String firstName, String lastName,String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck) {
+    public Renter(int renterId, String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,Boolean hasCRCheck) {
     setRenterId(renterId);
     setEmail(email);
     setPassWord(passWord);
@@ -83,7 +82,7 @@ public class Renter {
     public int getGender(){
         return gender;
     }
-    public String getDateBirth() {
+    public Date getDateBirth() {
         return dateBirth;
     }
 
@@ -142,7 +141,7 @@ public class Renter {
      public void setGender(int gender){
          this.gender=gender;
      }
-     public void setDOB(String dateBirth){
+     public void setDOB(Date dateBirth){
          this.dateBirth=dateBirth;
      }
      public void setIsStudent(Boolean isStudent){

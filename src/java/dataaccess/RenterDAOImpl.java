@@ -25,7 +25,8 @@ import transferobjects.Renter;
 
 public class RenterDAOImpl implements RenterDAO {
 
-    private static final String GET_ALL_RENTER = "SELECT"
+  //  private static final String GET_ALL_RENTER = "SELECT * FROM renter ORDER BY id";
+    private static final String GET_ALL_RENTER = "SELECT "
             + "id,email, password, "
             + "first_name, last_name,phone, gender, date_of_birth, student, "
             + "employed, smoker, rent_start_date, rent_end_date,availability, "
@@ -38,14 +39,14 @@ public class RenterDAOImpl implements RenterDAO {
             + "employed, smoker, rent_start_date, rent_end_date,availability, "
             + "low_price, high_price, referral_source,criminality_check "
             + ") VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    private static final String GET_BY_RENTER_ID = "SELECT"
+    private static final String GET_BY_RENTER_ID = "SELECT "
             + "id,email, password, "
             + "first_name, last_name,phone, gender, date_of_birth, student, "
             + "employed, smoker, rent_start_date, rent_end_date,availability, "
             + "low_price, high_price, referral_source,criminality_check "
             + "FROM renter WHERE id = ?";
     
-    private static final String GET_BY_RENTER_EMAIL = "SELECT" 
+    private static final String GET_BY_RENTER_EMAIL = "SELECT " 
             + "id,email, password, "
             + "first_name, last_name,phone, gender, date_of_birth, student, "
             + "employed, smoker, rent_start_date, rent_end_date,availability, "
@@ -70,7 +71,7 @@ public class RenterDAOImpl implements RenterDAO {
     private static final String PASSWORD_CORRECT = "SELECT id FROM renter WHERE email = ?, AND password = ?";
 
     @Override
-    public List<Renter> getAllRenter() {
+    public List<Renter> getAllRenter() {      
         List<Renter> renters = Collections.EMPTY_LIST;
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(GET_ALL_RENTER);

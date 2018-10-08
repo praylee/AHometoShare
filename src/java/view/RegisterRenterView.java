@@ -49,33 +49,27 @@ public class RegisterRenterView extends HttpServlet {
          
         response.setContentType("text/html;charset=UTF-8");
    
-        String fName = request.getParameter("firstName");
-        String lName = request.getParameter("lastName");
+        String fName = request.getParameter("firstname");
+        String lName = request.getParameter("lastname");
         String email = request.getParameter("email");
         String phoneNum = request.getParameter("phoneNum");
-        String gender = request.getParameter("gender");
-      //  Date yearBorn = java.sql.Date.valueOf(request.getParameter("yearBorn"));
-        String yearBorn = request.getParameter("yearBorn");
-     //   Date year = new SimpleDateFormat("yyyy").parse(yearBorn);
-        
+        String gender = request.getParameter("gender");     
+        String yearBorn = request.getParameter("yearBorn");       
         String referralSource = request.getParameter("referralSrc");
         String passWord = request.getParameter("pwd1");
         String ConPassWord = request.getParameter("pwd2");
-        
-        
-        System.out.printf("%s,%s,%s,%s,%s,%s,%s,%s,%s",fName,lName,email,phoneNum,gender,yearBorn,referralSource,passWord,ConPassWord);
         
          
         RenterBusinessLayer renterLayer = new RenterBusinessLayer();
         List<Renter> renterList = renterLayer.getAllRenter();
         int index = renterList.size();
-        Renter renter = new Renter(index+1,email, passWord,fName,lName,phoneNum,1,new java.sql.Date(93847878),false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,referralSource,true);
+        Renter renter = new Renter(index+1,email, passWord,fName,lName,phoneNum,Integer.parseInt(gender),yearBorn,false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,referralSource,true);
   //      Renter renter = new Renter(1,"chrislabelle@gmail.com", "password","Chris","Chris","5555555555",1,new java.sql.Date(93847878),false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,"newspaper",true);
 
         try{
             renterLayer.addRenter(renter);
         }
-        catch(Exception e) {
+        catch(ValidationException e) {
             
         }
         

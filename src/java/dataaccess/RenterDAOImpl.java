@@ -85,7 +85,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setLastName(rs.getString("last_name"));
                 renter.setPhone(rs.getString("phone"));
                 renter.setGender(rs.getInt("gender"));
-                renter.setDOB(rs.getDate("date_of_birth"));
+                renter.setDOB(rs.getString("date_of_birth"));
                 renter.setIsStudent(rs.getBoolean("student"));
                 renter.setIsEmployed(rs.getBoolean("employed"));
                 renter.setIsSmoker(rs.getBoolean("smoker"));
@@ -116,7 +116,7 @@ public class RenterDAOImpl implements RenterDAO {
             pstmt.setString(5, renter.getLastName());
             pstmt.setString(6, renter.getPhone());
             pstmt.setInt(7, renter.getGender());
-            pstmt.setDate(8, renter.getDateBirth());
+            pstmt.setString(8, renter.getDateBirth());
             pstmt.setBoolean(9, renter.getIsStudent());
             pstmt.setBoolean(10, renter.getIsEmployed());
             pstmt.setBoolean(11, renter.getIsSmoker());
@@ -149,7 +149,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setLastName(rs.getString("last_name"));
                 renter.setPhone(rs.getString("phone"));
                 renter.setGender(rs.getInt("gender"));
-                renter.setDOB(rs.getDate("date_of_birth"));
+                renter.setDOB(rs.getString("date_of_birth"));
                 renter.setIsStudent(rs.getBoolean("student"));
                 renter.setIsEmployed(rs.getBoolean("employed"));
                 renter.setIsSmoker(rs.getBoolean("smoker"));
@@ -183,7 +183,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setLastName(rs.getString("last_name"));
                 renter.setPhone(rs.getString("phone"));
                 renter.setGender(rs.getInt("gender"));
-                renter.setDOB(rs.getDate("date_of_birth"));
+                renter.setDOB(rs.getString("date_of_birth"));
                 renter.setIsStudent(rs.getBoolean("student"));
                 renter.setIsEmployed(rs.getBoolean("employed"));
                 renter.setIsSmoker(rs.getBoolean("smoker"));
@@ -217,7 +217,7 @@ public class RenterDAOImpl implements RenterDAO {
     }
 
     @Override
-    public void updateRenter(String email, String passWord, String firstName, String lastName, String phone, int gender, Date dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, Date startDate, Date endDate, int availability, double lowPrice, double highPrice, String referralSource, Boolean hasCRCheck, int renterId) {
+    public void updateRenter(String email, String passWord, String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, Date startDate, Date endDate, int availability, double lowPrice, double highPrice, String referralSource, Boolean hasCRCheck, int renterId) {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER);) {
 
@@ -227,7 +227,7 @@ public class RenterDAOImpl implements RenterDAO {
             pstmt.setString(4, lastName);
             pstmt.setString(5, phone);
             pstmt.setInt(6, gender);
-            pstmt.setDate(7, dateBirth);
+            pstmt.setString(7, dateBirth);
             pstmt.setBoolean(8, isStudent);
             pstmt.setBoolean(9, isEmployed);
             pstmt.setBoolean(10, isSmoker);
@@ -263,7 +263,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setLastName(rs.getString("last_name"));
                 renter.setPhone(rs.getString("phone"));
                 renter.setGender(rs.getInt("gender"));
-                renter.setDOB(rs.getDate("date_of_birth"));
+                renter.setDOB(rs.getString("date_of_birth"));
                 renter.setIsStudent(rs.getBoolean("student"));
                 renter.setIsEmployed(rs.getBoolean("employed"));
                 renter.setIsSmoker(rs.getBoolean("smoker"));

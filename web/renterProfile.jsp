@@ -30,7 +30,7 @@
 			
         <!-- Banner: the text shows within the main image -->
         <section id="banner">
-                <h1>Welcome <%out.print(request.getAttribute("email"));%></h1>
+                <h1>Welcome <%out.print(request.getAttribute("fName"));%></h1>
         </section>
 
         <!-- Block 1: Renter information info -->

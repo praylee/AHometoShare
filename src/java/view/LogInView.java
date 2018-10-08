@@ -94,6 +94,10 @@ public class LogInView extends HttpServlet {
             //here you can pass error messages back to login screen
             RequestDispatcher rd = request.getRequestDispatcher("login.html");  //go to renterProfile if login successful
             rd.forward(request,response);
+            
+//            request.setAttribute("message", "Invalid login credentials");
+//            request.getRequestDispatcher("login.html").forward(request,response);
+            
         }
 
         

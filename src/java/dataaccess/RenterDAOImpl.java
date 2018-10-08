@@ -61,14 +61,14 @@ public class RenterDAOImpl implements RenterDAO {
             + "low_price= ?, high_price= ?, referral_source= ?,criminality_check = ?"
             + "WHERE id= ?";
     
-    private static final String GET_RENTER_BY_EMAIL = "SELECT"
+    private static final String GET_RENTER_BY_EMAIL = "SELECT "
             + "id,email, password, "
             + "first_name, last_name,phone, gender, date_of_birth, student, "
             + "employed, smoker, rent_start_date, rent_end_date,availability, "
             + "low_price, high_price, referral_source,criminality_check "
             + "FROM renter WHERE email = ?";
     
-    private static final String PASSWORD_CORRECT = "SELECT id FROM renter WHERE email = ?, AND password = ?";
+    private static final String PASSWORD_CORRECT = "SELECT id FROM renter WHERE email = ? AND password = ?";
 
     @Override
     public List<Renter> getAllRenter() {      

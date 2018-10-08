@@ -19,5 +19,5 @@ public interface HostDAO {
     void addHost(Host host);
     Host getHostByHostId(int hostId);  
     void deleteHost(int hostId);
-    void updateHost( String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId);
+    void updateHost( String email, String passWord, String firstName, String lastName,String phone,int gender,String dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId);
 }

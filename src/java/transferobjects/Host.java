@@ -20,7 +20,7 @@ public class Host {
     private String lastName;
     private String phone;
     private int gender;
-    private Date dateBirth;
+    private String dateBirth;
     private Boolean retired;
     private Boolean pets;
     private Boolean smoker;
@@ -29,7 +29,7 @@ public class Host {
     public Host(){
     }
 
-    public Host(int hostId, String email, String passWord, String firstName, String lastName,String phone,int gender,Date dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource) {
+    public Host(int hostId, String email, String passWord, String firstName, String lastName,String phone,int gender,String dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource) {
     setHostId(hostId);
     setEmail(email);
     setPassWord(passWord);
@@ -69,7 +69,7 @@ public class Host {
     public int getGender(){
         return gender;
     }
-    public Date getDateBirth() {
+    public String getDateBirth() {
         return dateBirth;
     }
 
@@ -111,7 +111,7 @@ public class Host {
      public void setGender(int gender){
          this.gender=gender;
      }
-     public void setDOB(Date dateBirth){
+     public void setDOB(String dateBirth){
          this.dateBirth=dateBirth;
      }
      public void setRetired(Boolean retired){

@@ -62,7 +62,7 @@ public class HostDAOImpl implements HostDAO {
                 host.setLastName(rs.getString("last_name"));
                 host.setPhone(rs.getString("phone"));
                 host.setGender(rs.getInt("gender"));
-                host.setDOB(rs.getDate("date_of_birth"));
+                host.setDOB(rs.getString("date_of_birth"));
                 host.setRetired(rs.getBoolean("retired"));
                 host.setPets(rs.getBoolean("pets"));
                 host.setSmoker(rs.getBoolean("smoker"));
@@ -86,7 +86,7 @@ public class HostDAOImpl implements HostDAO {
             pstmt.setString(5, host.getLastName());
             pstmt.setString(6, host.getPhone());
             pstmt.setInt(7, host.getGender());
-            pstmt.setDate(8, host.getDateBirth());
+            pstmt.setString(8, host.getDateBirth());
             pstmt.setBoolean(9, host.getRetired());
             pstmt.setBoolean(10, host.getPets());
             pstmt.setBoolean(11, host.getSmoker());
@@ -111,7 +111,7 @@ public class HostDAOImpl implements HostDAO {
                 host.setLastName(rs.getString("last_name"));
                 host.setPhone(rs.getString("phone"));
                 host.setGender(rs.getInt("gender"));
-                host.setDOB(rs.getDate("date_of_birth"));
+                host.setDOB(rs.getString("date_of_birth"));
                 host.setRetired(rs.getBoolean("retired"));
                 host.setPets(rs.getBoolean("ptes"));
                 host.setSmoker(rs.getBoolean("smoker"));
@@ -137,7 +137,7 @@ public class HostDAOImpl implements HostDAO {
     }
 
     @Override
-    public void updateHost(String email, String passWord, String firstName, String lastName, String phone, int gender, Date dateBirth, Boolean retired, Boolean pets, Boolean smoker, String referralSource, int hostId) {
+    public void updateHost(String email, String passWord, String firstName, String lastName, String phone, int gender, String dateBirth, Boolean retired, Boolean pets, Boolean smoker, String referralSource, int hostId) {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(UPDATE_HOST);) {
             pstmt.setString(1, email);
@@ -146,7 +146,7 @@ public class HostDAOImpl implements HostDAO {
             pstmt.setString(4, lastName);
             pstmt.setString(5, phone);
             pstmt.setInt(6, gender);
-            pstmt.setDate(7, dateBirth);
+            pstmt.setString(7, dateBirth);
             pstmt.setBoolean(8, retired);
             pstmt.setBoolean(9, pets);
             pstmt.setBoolean(10, smoker);

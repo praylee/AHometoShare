@@ -46,7 +46,31 @@ public class LogInView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-             
+        
+        String email = request.getParameter("loginEmail");
+        String password = request.getParameter("loginPassword");
+        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
+        if(renterBusiness.passwordCorrect(email, password)) {
+            Renter renter = renterBusiness.getRenterByEmail(email);
+            request.setAttribute("fName", "Welcome, "+renter.getFirstName());
+            request.setAttribute("lName", renter.getLastName());
+            request.setAttribute("Info","This is your Renter Profile.");
+            request.setAttribute("subInfo","This will be information about you.");
+            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
+            rd.forward(request,response);
+        }
+        else {
+            //here you can pass error messages back to login screen
+            request.setAttribute("fName", "Login Failed. Please go back to login.");
+            request.setAttribute("Info", "Login Failed.");
+            request.setAttribute("subInfo", "Please go back to login.");
+            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login not successful
+            rd.forward(request,response);
+            
+//            request.setAttribute("message", "Invalid login credentials");
+//            request.getRequestDispatcher("login.html").forward(request,response);
+            
+        }     
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,25 +104,7 @@ public class LogInView extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
 
-        String email = request.getParameter("email");
-        String password = request.getParameter("pswd");
-        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-        if(renterBusiness.passwordCorrect(email, password)) {
-            Renter renter = renterBusiness.getRenterByEmail(email);
-            request.setAttribute("fName", renter.getFirstName());
-            request.setAttribute("lName", renter.getLastName());
-            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
-            rd.forward(request,response);
-        }
-        else {
-            //here you can pass error messages back to login screen
-            RequestDispatcher rd = request.getRequestDispatcher("login.html");  //go to renterProfile if login successful
-            rd.forward(request,response);
-            
-//            request.setAttribute("message", "Invalid login credentials");
-//            request.getRequestDispatcher("login.html").forward(request,response);
-            
-        }
+        
 
         
     }

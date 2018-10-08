@@ -67,6 +67,7 @@ public class RegisterRenterView extends HttpServlet {
         
          
         RenterBusinessLayer renterLayer = new RenterBusinessLayer();
+
         List<Renter> renterList = renterLayer.getAllRenter();
         int index = renterList.size();
         Renter renter = new Renter(index+1,email, passWord,fName,lName,phoneNum,1,new java.sql.Date(93847878),false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,referralSource,true);

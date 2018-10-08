@@ -46,28 +46,7 @@ public class LogInView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String email = request.getParameter("email");
-        String password = request.getParameter("pswd");
-//        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-//        if(renterBusiness.passwordCorrect(email, password)) {
-//            Renter renter = renterBusiness.getRenterByEmail(email);
-//            request.setAttribute("fName", renter.getFirstName());
-//            request.setAttribute("lName", renter.getLastName());
-//            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
-//            rd.forward(request,response);
-//        }
-//        else {
-//            //here you can pass error messages back to login screen
-//            RequestDispatcher rd = request.getRequestDispatcher("login.html");  //go to renterProfile if login successful
-//            rd.forward(request,response);
-//        }
-
-        request.setAttribute("email", email); // just for practice without database
-        RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
-        rd.forward(request,response);
-        
-        
+             
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -100,22 +79,23 @@ public class LogInView extends HttpServlet {
              
         response.setContentType("text/html;charset=UTF-8");
 
-        
+
         String email = request.getParameter("email");
         String password = request.getParameter("pswd");
-
-        
         RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-        Renter renter;
-        renter = renterBusiness.getRenterByRenterId(1);
-
-        response.sendRedirect("renterProfile.html");
-        
-        if (renter.getPassWord().equals(password)) { //username and password match
-//            response.sendRedirect("/renterProfile.html");
-//            RequestDispatcher rs = request.getRequestDispatcher("renterProfile.html");
-//            rs.forward(request, response);
+        if(renterBusiness.passwordCorrect(email, password)) {
+            Renter renter = renterBusiness.getRenterByEmail(email);
+            request.setAttribute("fName", renter.getFirstName());
+            request.setAttribute("lName", renter.getLastName());
+            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
+            rd.forward(request,response);
         }
+        else {
+            //here you can pass error messages back to login screen
+            RequestDispatcher rd = request.getRequestDispatcher("login.html");  //go to renterProfile if login successful
+            rd.forward(request,response);
+        }
+
         
     }
 

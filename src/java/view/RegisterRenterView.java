@@ -68,14 +68,15 @@ public class RegisterRenterView extends HttpServlet {
 
         try{
             renterLayer.addRenter(renter);
+            // Only do this if user was successfully added to database!!!!
+            RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  //go to registerConfirm if signUp successful
+            rd.forward(request,response);
         }
         catch(ValidationException e) {
             
         }
         
-        // Only do this if user was successfully added to database!!!!
-        RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  //go to registerConfirm if signUp successful
-        rd.forward(request,response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

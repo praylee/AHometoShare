@@ -1,8 +1,7 @@
-
 <!--
 File: renterRegister.html
-Description: renter register form based on the requirement
-Create: Sep,30,2018
+Description: Renter registration form
+Create: Oct,05,2018
 Author: Zhan Shen
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
@@ -12,231 +11,252 @@ Copyright @ 2018
 -->
 
 <!DOCTYPE HTML>
-<!--
-	Theory by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html>
-	<head>
-		<title>A Home To Share</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/subpage_style.css" />
-	</head>
+    <head>
+        <title>A Home To Share</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/subpage_style.css" />
+    </head>
 	
-	<body class="subpage">
+    <body class="subpage">
+        <!-- Header -->
+            <header id="header">
+                <div class="inner">
+                    <a href="index.html" class="logo">A Home To Share</a>
+                    <nav id="nav">
+                        <a href="index.html">Home</a>
+                        <a href="index.html">How We Work</a>
+                        <a href="index.html">FAQ</a>
+                        <a href="index.html">Log in</a>
+                        <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button">Sign Up</button>
+                    </nav>
+                </div>
+            </header>
+       
+        <!-- Signup popup window when clicks button: Sign Up-->
+            <div id="signupPopup" class="signupPopup">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="index.html" class="logo">A Home To Share</a>
-					<nav id="nav">
-						<a href="index.html">Home</a>
-						<a href="index.html">How We Work</a>
-						<a href="index.html">FAQ</a>
-						<a href="index.html">Log in</a>
-						<button id="signupBtn" class="unstyled-button">Sign Up</button>
-					</nav>
-					<!-- <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a> -->
-				</div>
-			</header>
+            <!-- Popup content -->
+                <div class="signupPopup-content">
+                    <span class="close">&times;</span>
 
-		<!-- Main -->
-			<section id="main_section" class="wrapper">
-				<!-- <div class="inner"> -->
+                    <section class="signupPopup_container">
+                        <div class="signupPopup-left_half">
+                            <h4>I want to sign up as a<span style="color:red; font-weight:bold">*</span></h4>
+                            <div class="btn-group1">
+                                <a href="#" class="buttonRole" >Host</a>
+                                <div></div>
+                                <a href="#" class="buttonRole">Renter</a>
+                            </div>
+                        </div>
+                    <hr>
+                        <div class="signupPopup-right_half">
+                                <div class="btn-group2">
+                                    <a href="renterRegister.html" class="signupBtn" ><button id="emailBtn" class="unstyled-button2" >Sign up with email</button></a>
+                                    <a href="#" class="signupBtn">Sign up with Facebook</a>
+                                    <a href="#" class="signupBtn">Sign up with Linkedin</a>
+                                    <a href="#" class="signupBtn">Sign up with Google</a>
+                                </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Javascript functions for popup windows: Sign Up -->
+                <script>
+                    // Get the popup
+                    var signupPopup = document.getElementById("signupPopup");
+                    // Get the button that opens the popup
+                    var signupBtn = document.getElementById("signupBtn");
+                    // Get the <span> element that closes the popup
+                    var span = document.getElementsByClassName("close")[0];
+                    // When the user clicks the button, open the popup 
+                    signupBtn.onclick = function() {
+                        signupPopup.style.display = "block";
+                    }
+                    // When the user clicks on <span> (x), close the popup
+                    span.onclick = function() {
+                        signupPopup.style.display = "none";
+                    }
+                    // When the user clicks anywhere outside of the popup, close it
+                    window.onclick = function(event) {
+                        if (event.target === signupPopup) {
+                            signupPopup.style.display = "none";
+                        }
+                    }
+                </script>
 
-					<!-- Left side text & image -->
-						<div>
-							<header>
-								<h2>Let's get started</h2>
-								<p>Sign up and start home sharing! Joining our community will just take a couple of minutes.</p>
-								<img src="images/renter_registration.jpg" />
-							</header>
-						</div>
-								
+        <!-- Main -->
+            <section id="main_section" class="wrapper">
+                <!-- Left side text & image -->
+                    <div>
+                        <header>
+                                <h2>Let's get started</h2>
+                                <p>Sign up and start home sharing! Joining our community will just take a couple of minutes.</p>
+                                <img src="images/renter_registration.jpg" alt="Renter registration image" />
+                        </header>
+                    </div>
+                
+                <!-- Form -->
+                    <div>
+                        <form method="get" action="RegisterRenterView" onsubmit="return checkForm(this)" >
+                            <!--<div class="row uniform">-->
 
-					<!-- Form -->
-					<div>
-						<form method="get" action="RegisterRenterView" onsubmit="return checkForm(this)">
-							<div class="row uniform">
-							
-							<h2>Renter Registration</h2>
-							
-								<!-- Break: First Name(db:first_name), Last Name(db:last_name) -->
-								<div>
-									
-									<h4>First Name*</h4>
-									<input type="text" name="firstname" id="firstname" value="" placeholder="First Name" maxlength="45" pattern="[A-Za-z]{1,45}" required/>
-								</div>
-								
-								<div>
-									<h4>Last Name*</h4>
-									<input type="text" name="lastname" id="lastname" value="" placeholder="Last Name" maxlength="45" pattern="[A-Za-z]{1,45}" required/>
-								</div>
-								
-								<!-- Break: Email Address(db:email), Phone Number(db:phone) -->
-								<div>
-									<h4>Email Address*</h4>
-									<input type="email" name="email" id="email" value="" placeholder="Email Address" maxlength="42" required/>
-								</div>
-								
-								<div>
-									<h4>Phone Number</h4>
-									<input type="tel" name="phoneNum" id="phoneNum" value="" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
-									<span class="validity"></span>
-								</div>
-								
-								<!-- Break: Gender(db:gender), Year Born(db:date_of_birth) -->
-								<div>
-									<h4>Gender</h4>
-									<select required name="gender" id="gender" >
-										<option value="">- Gender -</option>
-										<option value="0">Male</option>
-										<option value="1">Female</option>
-									</select>
-								</div>
-								
-								<div>
-									<h4>Year Born*</h4>
-									<select required name="yearBorn" id="yearBorn" >
-										<option value="">- Select -</option>
-										<option value="2000">2000</option>
-										<option value="1999">1999</option>
-										<option value="1998">1998</option>
-										<option value="1997">1997</option>
-										<option value="1996">1996</option>
-										<option value="1995">1995</option>
-										<option value="1994">1994</option>
-										<option value="1993">1993</option>
-										<option value="1992">1992</option>
-										<option value="1991">1991</option>
-										<option value="1990">1990</option>
-										<option value="1989">1989</option>
-										<option value="1988">1988</option>
-										<option value="1987">1987</option>
-										<option value="1986">1986</option>
-										<option value="1985">1985</option>
-										<option value="1984">1984</option>
-										<option value="1983">1983</option>
-									</select>	
-								</div>
-								
-								<!-- Referral Source(db:referral_source) -->								
-									<div>
-										<h4>Referral Source*</h4>
-										<input type="text" name="referralSrc" id="referralSrc" value="" placeholder="Where and how did you specifically learn about us" maxlength="45" required/>
-									</div>
-								
-								
-								<!-- Password(db: password), Confirm Password(db:) -->
-									<div>
-										<h4>Password*</h4>
-										<input type="password" name="pwd1" required>
-									</div>
-									<div>
-										<h4>Confirm Password*</h4>
-										<input type="password" name="pwd2" required>
-									</div>
+                            <h2>Renter Registration</h2>
+                                    
+                            <!-- Break: First Name(db:first_name), Last Name(db:last_name) -->
+                                <div class="formRow">
+                                    <h4>First Name<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="text" name="firstname" id="firstname" value="" size="30" placeholder="First Name" maxlength="45" pattern="[A-Za-z]{1,45}" required />
+                                </div>
 
-									
-									<div>
-										<ul class="actions">                                                                             
-											<li><input type="submit" value="Sign Up" /></li>
-											<li><input type="reset" value="Reset" class="alt" /></li>
-										</ul>
-									</div>
-										
-						</form>
-					<!-- </div> -->
-					<!-- <hr /> -->
+                                <div class="formRow">
+                                    <h4>Last Name<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="text" name="lastname" id="lastname" value="" size="30" placeholder="Last Name" maxlength="45" pattern="[A-Za-z]{1,45}" required />
+                                </div>
+
+                            <!-- Break: Email Address(db:email), Phone Number(db:phone) -->
+                                <div class="formRow">
+                                    <h4>Email Address<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="email" name="email" id="email" value="" size="30" placeholder="Email Address" maxlength="42" required />
+                                </div>
+
+                                <div class="formRow">
+                                    <h4>Phone Number</h4>
+                                    <input type="tel" name="phoneNum" id="phoneNum" value="" size="30" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+                                    <!--<span class="validity"></span>-->
+                                </div>
+
+                            <!-- Break: Gender(db:gender), Year Born(db:date_of_birth) -->
+                                <div class="formRow">
+                                    <h4>Gender<span style="color:red; font-weight:bold">*</span></h4>
+                                    <select name="gender" id="gender" required >
+                                            <option value="">- Select your gender -</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Female</option>
+                                    </select>
+                                </div>
+
+                                <div class="formRow">
+                                    <h4>Birth Year<span style="color:red; font-weight:bold">*</span></h4>
+                                    <select name="yearBorn" id="yearBorn" required >
+                                            <option value="">- Select the year you were born  -</option>
+                                            <option value="2000">2000</option>
+                                            <option value="1999">1999</option>
+                                            <option value="1998">1998</option>
+                                            <option value="1997">1997</option>
+                                            <option value="1996">1996</option>
+                                            <option value="1995">1995</option>
+                                            <option value="1994">1994</option>
+                                            <option value="1993">1993</option>
+                                            <option value="1992">1992</option>
+                                            <option value="1991">1991</option>
+                                            <option value="1990">1990</option>
+                                            <option value="1989">1989</option>
+                                            <option value="1988">1988</option>
+                                            <option value="1987">1987</option>
+                                            <option value="1986">1986</option>
+                                            <option value="1985">1985</option>
+                                            <option value="1984">1984</option>
+                                            <option value="1983">1983</option>
+                                    </select>	
+                                </div>
+
+                            <!-- Referral Source(db:referral_source) -->								
+                                <div class="formRow">
+                                    <h4>Referral Source<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="text" name="referralSrc" id="referralSrc" size="30" value="" placeholder="How did you specifically learn about us?" maxlength="45" required/>
+                                </div>
+
+                            <!-- Password(db: password), Confirm Password -->
+                                <div class="formRow">
+                                    <h4>Password<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="password" name="pwd1" size="30" required>
+                                </div>
+                                <div class="formRow">
+                                    <h4>Confirm Password<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="password" name="pwd2" size="30" required>
+                                </div>
+
+                            <!-- Buttons: Sign Up, Reset -->
+                                <div>
+                                    <ul class="actions fit">                                                                             
+                                        <li><input type="reset" value="Reset" class="alt" /></li>
+                                        <li><input type="submit" value="Sign Up" /></li>
+                                        
+                                    </ul>
+                                </div>
+                        </form>
+                    </div>
+            </section>
+
+        <!-- Footer -->
+            <footer id="footer">
+                <div class="flex">
+
+                    <div>
+                        <h6>Get in Touch</h6>
+                        <div>
+                            <img alt="logo" src="images/team_logo.png" />
+                            <ul>
+                                <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
+                                <li><a href="#">(123) 456-7890</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6>Join Our Community</h6>
+                        <ul>
+                            <li><a href=index.html>How it Works</a></li>
+                            <li><a href=index.html>Frequently Asked Questions</a></li>
+                            <li><a href=index.html>Homesharing Resources</a></li>
+                            <li><a href=index.html>Community Compact</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h6>Get Engaged</h6>
+                            <ul>
+                                <li>Live in Toronto and want to help us tackle the affordable housing crisis.</li>
+                                <li><a href="" target="_blank"> <u>Apply</u></a> to be an Ambassador today.</li>
+                            </ul>
+                    </div>
+
+                    <div>
+                        <h6>Follow us on Social</h6>
+                            <a href="https://www.facebook.com/ahometoshare" class=""></a>
+                            &nbsp;&nbsp;
+                            <a href="https://twitter.com/ahometoshare" class=""></a>
+                    </div>
+                </div>
+            </footer>
+
+        <script>
+                function checkPassword(str)
+                {
+                        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+                        return re.test(str);
+                }
+                function checkForm(form)
+                {
+        //					if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+        //					  if(!checkPassword(form.pwd1.value)) {
+        //						alert("The password you have entered is not valid!");
+        //						form.pwd1.focus();
+        //						return false;
+        //					  }
+        //					} else {
+        //					  alert("Error: Please check that you've entered and confirmed your password!");
+        //					  form.pwd1.focus();
+        //					  return false;
+        //					}
+                        return true;
+                }
+        </script>
 
 
-
-				</div>
-			</section>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<div class="flex">
-						<div class="single-footer-widget">
-							<h6>Get in Touch</h6>
-          
-							<div class='get-in-touch-section'>
-								<img alt="logo" class="" src="images/team_logo.png" />
-								<ul class="footer-nav-section-nav pL0">
-									<li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
-									<li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
-								</ul>
-							</div>
-          
-						</div>
-					
-						<div class="col-lg-3  col-md-3">
-							<div class="single-footer-widget">
-								<h6>Join Our Community</h6>
-								<ul class="footer-nav-section-nav pL0">
-									<li><a href="/how-it-works">How it Works</a></li>
-									<li><a href="/faq">Frequently Asked Questions</a></li>
-									<li><a href="/homesharing_resources">Homesharing Resources</a></li>
-									<li><a href="/community_compact">Community Compact</a></li>
-								</ul>
-							</div>
-						</div>
-						
-						<div class="col-lg-3 col-md-3">
-							<div class="single-footer-widget">
-								<h6>Get Engaged</h6>
-									<ul class="footer-nav-section-nav pL0">
-										<li>Live in Toronto and want to help us tackle the affordable housing crisis. <a href="" target="_blank"> <u>Apply</u></a> to be an Ambassador today.
-										</li>
-									</ul>
-							</div>
-						</div>
-						
-						<div class="col-lg-3  col-md-3">
-							<div class="single-footer-widget">
-								<h6>Follow us on Social</h6>
-									<a href="https://www.facebook.com/nesterlyhome" class="btn btn-facebook waves-effect waves-light">
-										<i class="fa fa-facebook" aria-hidden="true"></i>
-									</a>
-									&nbsp;&nbsp;
-									<a href="https://twitter.com/nesterlyhome" class="btn btn-twitter waves-effect waves-light">
-										<i class="fa fa-twitter" aria-hidden="true"></i>
-									</a>
-         
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
-			
-			<script>
-				function checkPassword(str)
-				{
-					var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-					return re.test(str);
-				}
-  
-				function checkForm(form)
-				{
-//					if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
-//					  if(!checkPassword(form.pwd1.value)) {
-//						alert("The password you have entered is not valid!");
-//						form.pwd1.focus();
-//						return false;
-//					  }
-//					} else {
-//					  alert("Error: Please check that you've entered and confirmed your password!");
-//					  form.pwd1.focus();
-//					  return false;
-//					}
-					return true;
-				}
-
-			</script>
-			
-			
-	</body>
+    </body>
 </html>

@@ -33,7 +33,7 @@ public class HostDAOImpl implements HostDAO {
     private static final String INSERT_HOST = "INSERT INTO host ("
             + "host_id,email, password, first_name, last_name,phone, gender, date_of_birth, retired, "
             + "pets,smoker, referral_source"
-            + ") VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+            + ") VALUES(?,?,AES_ENCRYPT(?,'secret'),?,?,?,?,?,?,?,?,?)";          //Encrypt password - Bin
     private static final String GET_BY_HOST_ID = "SELECT"
             + "host_id,email, password, first_name, last_name,phone, gender, date_of_birth, retired, "
             + "pets,smoker, referral_source"
@@ -44,6 +44,8 @@ public class HostDAOImpl implements HostDAO {
             + "phone = ?, gender= ?, date_of_birth= ?, retired= ?, "
             + "pets= ?,smoker= ?, referral_source= ?"
             + "WHERE host_id= ?";
+    
+    private static final String PASSWORD_CORRECT = "SELECT id FROM renter WHERE email = ? AND password = AES_ENCRYPT(?,'secret')";      //Validate encrypted password - Bin
 
     @Override
     public List<Host> getAllHost() {
@@ -156,6 +158,25 @@ public class HostDAOImpl implements HostDAO {
 
         } catch (SQLException ex) {
             Logger.getLogger(HostDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public boolean passwordCorrect(String email, String password) { // added by Bin
+        try (Connection con = new DataSource().createConnection();
+         PreparedStatement pstmt = con.prepareStatement(PASSWORD_CORRECT);) {
+
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+            boolean isCorrect = rs.first();
+            try {rs.close();}
+            catch(SQLException ex) {}
+            return isCorrect;
+        }
+        catch(SQLException e) {
+             Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+             return false;
         }
     }
 }

@@ -1,8 +1,9 @@
 /*
  * File: RegisterHostView.java
- * Description:
+ * Description:Dealing with host register form and insert into Host table in database
  * Create: Sep,30,2018
- * Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+ * Author: Liangliang Du
+ * Modifed:Oct,13,2018
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -11,12 +12,19 @@
  */
 package view;
 
+
+import business.HostBusinessLayer;
+import business.ValidationException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import transferobjects.Host;
+
 
 /**
  *
@@ -36,17 +44,34 @@ public class RegisterHostView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterHostView</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegisterHostView at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String fName = request.getParameter("firstname");
+        String lName = request.getParameter("lastname");
+        String email = request.getParameter("email");
+        String phoneNum = request.getParameter("phoneNum");
+        String gender = request.getParameter("gender");     
+        String yearBorn = request.getParameter("yearBorn");       
+        String referralSource = request.getParameter("referralSrc");
+        String passWord = request.getParameter("pwd1");
+        String ConPassWord = request.getParameter("pwd2");
+
+        HostBusinessLayer hostLayer = new HostBusinessLayer();
+
+        List<Host> hostList = hostLayer.getAllHost();
+        int index = hostList.size();
+        
+        Host host = new Host(index+1,email, passWord,fName,lName,phoneNum,Integer.parseInt(gender),yearBorn,false,false,false,referralSource);
+          
+        try{
+            hostLayer.addHost(host);
+            // Only do this if user was successfully added to database!!!!
+            request.setAttribute("Info", "Host Registration Successful.");
+            
+            RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  //go to registerConfirm if signUp successful
+            
+            rd.forward(request,response);
+        }
+        catch(ValidationException e) {
+
         }
     }
 

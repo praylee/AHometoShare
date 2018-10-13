@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<!--
-File: login.html
-Description:
-Create: Oct 5,2018
-Author: Melissa Rajala
-Clients: Michelle Bilek,Farheen Khan
-Course: Software Development Project
-Professor: Dr. Anu Thomas
-Project: A Home to Share
-Copyright @ 2018
--->
+<%-- 
+    Document   : hostProfile
+    Created on : 5-Oct-2018, 11:56:26 PM
+    Author     : chris
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
     <head>
-        <title>A Home To Share</title>
-        <meta charset="utf-8">
-		<link rel="stylesheet" href="assets/css/style.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Renter Profile</title>
+        <link rel="stylesheet" href="assets/css/style.css" />
     </head>
-	
     <body>
-
+        
         <!-- Header -->
         <header id="header">
             <div class="inner">
@@ -30,82 +22,30 @@ Copyright @ 2018
                         <a href="index.html">Home</a>
                         <a href="index.html">How We Work</a>
                         <a href="index.html">FAQ</a>
-                        <a href="login.html">Log in</a>
-                        <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button">Sign Up</button>
                 </nav>
                 <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
             </div>
-
-
-            <!-- A signup popup window when clicks "Sign Up" button-->
-            <div id="myPopup" class="popup">
-
-                <!-- Popup content -->
-                <div class="popup-content">
-                    <span class="close">&times;</span>
-
-                    <section class="popup_container">
-                        <div class="popup-left_half">
-                            <article>
-                                <h4>I want to sign up as a*</h4>
-                                <div class="btn-group">
-                                    <button>Host</button>
-                                    <button>Renter</button>
-                                </div>
-                            </article>
-                        </div>
-                        <hr>
-                        <div class="popup-right_half">
-                            <article>
-                                <div class="btn-group">
-                                    <div><a href="renterRegister.html"><button id="emailBtn" >Sign up with email</button></a></div>
-                                    <div><button>Sign up with Facebook</button></div>
-                                    <div><button>Sign up with Linkedin</button></div>
-                                    <div><button>Sign up with Google</button></div>
-                                </div>
-                            </article>
-
-                        </section>
-
-                </div>
-
-            </div>
         </header>
 
-
-        <!-- Banner: the text shows within the main image-->
+			
+        <!-- Banner: the text shows within the main image -->
         <section id="banner">
-
+                <h1><%out.print(request.getAttribute("fName"));%></h1>
         </section>
 
-        <!-- Block 1: Core benefits info -->
+        <!-- Block 1: Renter information info -->
         <section id="one" class="wrapper">
             <div class="inner">
-                <form action="LogInView" method="post">
-
-                    <div class="container">
-
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
-
-                        <label for="pswd"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="pswd" required>
-
-                        <button type="submit">Login</button>
-                        <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-
+                    <div class="flex flex-3">
+                        <header>
+                                <h2><%out.print(request.getAttribute("Info"));%></h2>
+                                <p><%out.print(request.getAttribute("subInfo"));%></p>
+                 
+                        </header>
                     </div>
-
-
-                </form>
-
             </div>
         </section>
-
-
-
+        
         <!-- Footer -->
         <footer id="footer">
                 <div class="inner">
@@ -161,6 +101,6 @@ Copyright @ 2018
                         </div>
                 </div>
         </footer>
-
+        
     </body>
 </html>

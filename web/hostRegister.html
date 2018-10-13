@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
-File: hostRegister.html
-Description:
-Create: Sep,30,2018
-Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+File: renterRegister.html
+Description: Renter registration form
+Create: Oct,12,2018
+Author: Zhan Shen
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -12,11 +12,240 @@ Copyright @ 2018
 -->
 <html>
     <head>
-        <title>Host Register</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A Home To Share</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/subpage_style.css" />
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body class="subpage">
+        <!-- Header -->
+            <header id="header">
+                <div class="inner">
+                    <a href="index.html" class="logo">A Home To Share</a>
+                    <nav id="nav">
+                        <a href="index.html">Home</a>
+                        <a href="index.html">How We Work</a>
+                        <a href="index.html">FAQ</a>
+                        <a href="index.html">Log in</a>
+                        <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button">Sign Up</button>
+                    </nav>
+                </div>
+            </header>
+       
+        <!--Signup Popup Window when clicks button: Sign Up-->
+            <div id="signupPopup" class="signupPopup">
+
+             <!--Signup Popup content--> 
+                <div class="signupPopup-content">
+                    <span class="close1">&times;</span>
+
+                    <section class="signupPopup_container">
+                        <div class="signupPopup-left_half">
+                            <h4>I want to sign up as a<span style="color:red; font-weight:bold">*</span></h4>
+                            <div class="switch">
+                                <input type="radio" class="switch-input" name="view" value="userHost" id="userHost" checked>
+                                <label for="userHost" class="switch-label switch-label-off">Host</label>
+                                <input type="radio" class="switch-input" name="view" value="userRenter" id="userRenter" >
+                                <label for="userRenter" class="switch-label switch-label-on">Renter</label>
+                                <span class="switch-selection"></span>
+                            </div>
+                        </div>
+                    <hr>
+                        <div class="signupPopup-right_half">
+                            <div class="btn-group2">
+                                <a id="emailBtn" class="signupBtn" >Sign up with email</a>
+                                <a href="" class="signupBtn">Sign up with Facebook</a>
+                                <a href="" class="signupBtn">Sign up with Linkedin</a>
+                                <a href="" class="signupBtn">Sign up with Google</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+             <!--Javascript functions for popup windows: Sign Up--> 
+                <script>
+                    // Get the popup
+                    var signupPopup = document.getElementById("signupPopup");
+                    // Get the button that opens the popup
+                    var signupBtn = document.getElementById("signupBtn");
+                    // Get the <span1> element that closes the popup
+                    var span1 = document.getElementsByClassName("close1")[0];
+                    // When the user clicks the button, open the popup 
+                    signupBtn.onclick = function() {
+                        signupPopup.style.display = "block";
+                    };
+                    // When the user clicks on <span1> (x), close the popup
+                    span1.onclick = function() {
+                        signupPopup.style.display = "none";
+                    };
+                    // When the user clicks anywhere outside of the popup, close it
+                    window.onclick = function(event) {
+                        if (event.target === signupPopup) {
+                            signupPopup.style.display = "none";
+                        }
+                    };
+                    
+                    // Host & Renter toggle switch 
+                    var signupEmailBtn = document.getElementById("emailBtn");
+                    signupEmailBtn.onclick = function(){
+                        var hostSelected = document.getElementById("userHost");
+                        //When Host is selected, the page goes to Host Registratoin form                
+                        if (hostSelected.checked) { 
+                            window.location.href="hostRegister.html";                
+                        }
+                        //When Rrenter is selected, the page goes to Renter Registration form
+                        else 
+                            window.location.href="renterRegister.html";  
+                    };
+                    
+                </script>
+
+        <!-- Main -->
+            <section id="main_section" class="wrapper">
+                <!-- Left side text & image -->
+                    <div>
+                        <header>
+                                <h2>Let's get started</h2>
+                                <p>Sign up and start home sharing! Joining our community will just take a couple of minutes.</p>
+                                <img src="images/renter_registration.jpg" alt="Renter registration image" />
+                        </header>
+                    </div>
+                
+                <!-- Form -->
+                    <div>
+                        <form method="get" action="RegisterHostView" onsubmit="return checkForm(this)" >
+                            <!--<div class="row uniform">-->
+
+                            <h2>Host Registration</h2>
+                                    
+                            <!-- Break: First Name(db:first_name), Last Name(db:last_name) -->
+                                <div class="formRow">
+                                    <h4>First Name<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="text" name="firstname" id="firstname" value="" size="30" placeholder="First Name" maxlength="45" pattern="[A-Za-z]{1,45}" required />
+                                </div>
+
+                                <div class="formRow">
+                                    <h4>Last Name<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="text" name="lastname" id="lastname" value="" size="30" placeholder="Last Name" maxlength="45" pattern="[A-Za-z]{1,45}" required />
+                                </div>
+
+                            <!-- Break: Email Address(db:email), Phone Number(db:phone) -->
+                                <div class="formRow">
+                                    <h4>Email Address<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="email" name="email" id="email" value="" size="30" placeholder="Email Address" maxlength="42" required />
+                                </div>
+
+                                <div class="formRow">
+                                    <h4>Phone Number</h4>
+                                    <input type="tel" name="phoneNum" id="phoneNum" value="" size="30" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+                                    <!--<span class="validity"></span>-->
+                                </div>
+
+                            <!-- Break: Gender(db:gender), Year Born(db:date_of_birth) -->
+                                <div class="formRow">
+                                    <h4>Gender<span style="color:red; font-weight:bold">*</span></h4>
+                                    <select name="gender" id="gender" required >
+                                            <option value="">- Select your gender -</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Female</option>
+                                    </select>
+                                </div>
+
+                                <div class="formRow">
+                                    <h4>Birth Year<span style="color:red; font-weight:bold">*</span></h4>
+                                    <select name="yearBorn" id="yearBorn" required >
+                                            <option value="">- Select the year you were born  -</option>
+                                            <option value="2000">2000</option>
+                                            <option value="1999">1999</option>
+                                            <option value="1998">1998</option>
+                                            <option value="1997">1997</option>
+                                            <option value="1996">1996</option>
+                                            <option value="1995">1995</option>
+                                            <option value="1994">1994</option>
+                                            <option value="1993">1993</option>
+                                            <option value="1992">1992</option>
+                                            <option value="1991">1991</option>
+                                            <option value="1990">1990</option>
+                                            <option value="1989">1989</option>
+                                            <option value="1988">1988</option>
+                                            <option value="1987">1987</option>
+                                            <option value="1986">1986</option>
+                                            <option value="1985">1985</option>
+                                            <option value="1984">1984</option>
+                                            <option value="1983">1983</option>
+                                    </select>	
+                                </div>
+
+                            <!-- Referral Source(db:referral_source) -->								
+                                <div class="formRow">
+                                    <h4>Referral Source<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="text" name="referralSrc" id="referralSrc" size="30" value="" placeholder="How did you specifically learn about us?" maxlength="45" required/>
+                                </div>
+
+                            <!-- Password(db: password), Confirm Password -->
+                                <div class="formRow">
+                                    <h4>Password<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="password" name="pwd1" size="30" required>
+                                </div>
+                                <div class="formRow">
+                                    <h4>Confirm Password<span style="color:red; font-weight:bold">*</span></h4>
+                                    <input type="password" name="pwd2" size="30" required>
+                                </div>
+
+                            <!-- Buttons: Sign Up, Reset -->
+                                <div>
+                                    <ul class="actions fit">                                                                             
+                                        <li><input type="reset" value="Reset" class="alt" /></li>
+                                        <li><input type="submit" value="Sign Up" /></li>
+                                        
+                                    </ul>
+                                </div>
+                        </form>
+                    </div>
+            </section>
+
+        <!-- Footer -->
+            <footer id="footer">
+                <div class="flex">
+
+                    <div>
+                        <h6>Get in Touch</h6>
+                        <div>
+                            <img alt="logo" src="images/team_logo.png" />
+                            <ul>
+                                <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
+                                <li><a href="#">(123) 456-7890</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6>Join Our Community</h6>
+                        <ul>
+                            <li><a href=index.html>How it Works</a></li>
+                            <li><a href=index.html>Frequently Asked Questions</a></li>
+                            <li><a href=index.html>Homesharing Resources</a></li>
+                            <li><a href=index.html>Community Compact</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h6>Get Engaged</h6>
+                            <ul>
+                                <li>Live in Toronto and want to help us tackle the affordable housing crisis.</li>
+                                <li><a href="" target="_blank"> <u>Apply</u></a> to be an Ambassador today.</li>
+                            </ul>
+                    </div>
+
+                    <div>
+                        <h6>Follow us on Social</h6>
+                            <a href="https://www.facebook.com/ahometoshare" class=""></a>
+                            &nbsp;&nbsp;
+                            <a href="https://twitter.com/ahometoshare" class=""></a>
+                    </div>
+                </div>
+            </footer>
+
     </body>
 </html>

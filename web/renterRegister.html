@@ -35,57 +35,73 @@ Copyright @ 2018
                 </div>
             </header>
        
-        <!-- Signup popup window when clicks button: Sign Up-->
+        <!--Signup Popup Window when clicks button: Sign Up-->
             <div id="signupPopup" class="signupPopup">
 
-            <!-- Popup content -->
+             <!--Signup Popup content--> 
                 <div class="signupPopup-content">
-                    <span class="close">&times;</span>
+                    <span class="close1">&times;</span>
 
                     <section class="signupPopup_container">
                         <div class="signupPopup-left_half">
                             <h4>I want to sign up as a<span style="color:red; font-weight:bold">*</span></h4>
-                            <div class="btn-group1">
-                                <a href="#" class="buttonRole" >Host</a>
-                                <div></div>
-                                <a href="#" class="buttonRole">Renter</a>
+                            <div class="switch">
+                                <input type="radio" class="switch-input" name="view" value="userHost" id="userHost" checked>
+                                <label for="userHost" class="switch-label switch-label-off">Host</label>
+                                <input type="radio" class="switch-input" name="view" value="userRenter" id="userRenter" >
+                                <label for="userRenter" class="switch-label switch-label-on">Renter</label>
+                                <span class="switch-selection"></span>
                             </div>
                         </div>
                     <hr>
                         <div class="signupPopup-right_half">
-                                <div class="btn-group2">
-                                    <a href="renterRegister.html" class="signupBtn" ><button id="emailBtn" class="unstyled-button2" >Sign up with email</button></a>
-                                    <a href="#" class="signupBtn">Sign up with Facebook</a>
-                                    <a href="#" class="signupBtn">Sign up with Linkedin</a>
-                                    <a href="#" class="signupBtn">Sign up with Google</a>
-                                </div>
+                            <div class="btn-group2">
+                                <a id="emailBtn" class="signupBtn" >Sign up with email</a>
+                                <a href="" class="signupBtn">Sign up with Facebook</a>
+                                <a href="" class="signupBtn">Sign up with Linkedin</a>
+                                <a href="" class="signupBtn">Sign up with Google</a>
+                            </div>
                         </div>
                     </section>
                 </div>
             </div>
             
-            <!-- Javascript functions for popup windows: Sign Up -->
+             <!--Javascript functions for popup windows: Sign Up--> 
                 <script>
                     // Get the popup
                     var signupPopup = document.getElementById("signupPopup");
                     // Get the button that opens the popup
                     var signupBtn = document.getElementById("signupBtn");
-                    // Get the <span> element that closes the popup
-                    var span = document.getElementsByClassName("close")[0];
+                    // Get the <span1> element that closes the popup
+                    var span1 = document.getElementsByClassName("close1")[0];
                     // When the user clicks the button, open the popup 
                     signupBtn.onclick = function() {
                         signupPopup.style.display = "block";
-                    }
-                    // When the user clicks on <span> (x), close the popup
-                    span.onclick = function() {
+                    };
+                    // When the user clicks on <span1> (x), close the popup
+                    span1.onclick = function() {
                         signupPopup.style.display = "none";
-                    }
+                    };
                     // When the user clicks anywhere outside of the popup, close it
                     window.onclick = function(event) {
                         if (event.target === signupPopup) {
                             signupPopup.style.display = "none";
                         }
-                    }
+                    };
+                    
+                    // Host & Renter toggle switch 
+                    var signupEmailBtn = document.getElementById("emailBtn");
+                    signupEmailBtn.onclick = function(){
+                        var hostSelected = document.getElementById("userHost");
+                        //When Host is selected, the page goes to Host Registratoin form                
+                        if (hostSelected.checked) { 
+                            window.location.href="hostRegister.html";                
+                        }
+                        //When Rrenter is selected, the page goes to Renter Registration form
+                        else 
+                            window.location.href="renterRegister.html";  
+                    };
+                    
                 </script>
 
         <!-- Main -->
@@ -188,6 +204,7 @@ Copyright @ 2018
                                         
                                     </ul>
                                 </div>
+                                
                         </form>
                     </div>
             </section>
@@ -233,30 +250,6 @@ Copyright @ 2018
                     </div>
                 </div>
             </footer>
-
-        <script>
-                function checkPassword(str)
-                {
-                        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-                        return re.test(str);
-                }
-                function checkForm(form)
-                {
-        //					if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
-        //					  if(!checkPassword(form.pwd1.value)) {
-        //						alert("The password you have entered is not valid!");
-        //						form.pwd1.focus();
-        //						return false;
-        //					  }
-        //					} else {
-        //					  alert("Error: Please check that you've entered and confirmed your password!");
-        //					  form.pwd1.focus();
-        //					  return false;
-        //					}
-                        return true;
-                }
-        </script>
-
 
     </body>
 </html>

@@ -25,27 +25,31 @@ import transferobjects.Host;
 
 public class HostDAOImpl implements HostDAO {
 
-    private static final String GET_ALL_HOST = "SELECT"
+    private static final String GET_ALL_HOST = "SELECT "
             + "host_id,email, password, first_name, last_name,phone, gender, date_of_birth, retired, "
-            + "pets,smoker, referral_source"
+            + "pets,smoker, referral_source "
             + "FROM host ORDER BY host_id";
 
     private static final String INSERT_HOST = "INSERT INTO host ("
             + "host_id,email, password, first_name, last_name,phone, gender, date_of_birth, retired, "
-            + "pets,smoker, referral_source"
+            + "pets,smoker, referral_source "
             + ") VALUES(?,?,AES_ENCRYPT(?,'secret'),?,?,?,?,?,?,?,?,?)";          //Encrypt password - Bin
-    private static final String GET_BY_HOST_ID = "SELECT"
+    private static final String GET_BY_HOST_ID = "SELECT "
             + "host_id,email, password, first_name, last_name,phone, gender, date_of_birth, retired, "
-            + "pets,smoker, referral_source"
+            + "pets,smoker, referral_source "
             + "FROM host WHERE host_id = ?";
+    private static final String GET_BY_HOST_EMAIL = "SELECT "
+            + "host_id,email, password, first_name, last_name,phone, gender, date_of_birth, retired, "
+            + "pets,smoker, referral_source "
+            + "FROM host WHERE email = ?";
     private static final String DELETE_HOST = "DELETE FROM host WHERE host_id = ?";
     private static final String UPDATE_HOST = "UPDATE host SET "
             + "email= ?, password= ?, first_name= ?, last_name= ?,"
             + "phone = ?, gender= ?, date_of_birth= ?, retired= ?, "
             + "pets= ?,smoker= ?, referral_source= ?"
             + "WHERE host_id= ?";
-    
-    private static final String PASSWORD_CORRECT = "SELECT id FROM renter WHERE email = ? AND password = AES_ENCRYPT(?,'secret')";      //Validate encrypted password - Bin
+
+    private static final String PASSWORD_CORRECT = "SELECT host_id FROM host WHERE email = ? AND password = AES_ENCRYPT(?,'secret')";      //Validate encrypted password - Bin
 
     @Override
     public List<Host> getAllHost() {
@@ -125,6 +129,43 @@ public class HostDAOImpl implements HostDAO {
         }
         return host;
     }
+    
+    @Override
+    public Host getHostByEmail(String email) {//added by Liangliang 
+     
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_EMAIL);) {
+            
+            Host host = new Host();
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.first()) {
+                host.setHostId(rs.getInt("host_id"));
+                host.setEmail(rs.getString("email"));
+                host.setPassWord(rs.getString("password"));
+                host.setFirstName(rs.getString("first_name"));
+                host.setLastName(rs.getString("last_name"));
+                host.setPhone(rs.getString("phone"));
+                host.setGender(rs.getInt("gender"));
+                host.setDOB(rs.getString("date_of_birth"));
+                host.setRetired(rs.getBoolean("retired"));
+                host.setPets(rs.getBoolean("pets"));
+                host.setSmoker(rs.getBoolean("smoker"));
+                host.setReferralSource(rs.getString("referral_source"));
+
+            }
+            else {
+                host = null;
+            }
+            try {rs.close();}
+            catch(SQLException ex) {}
+            return host;
+        }
+        catch(SQLException e) {
+             Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+             return null;
+        }
+    }
 
     @Override
     public void deleteHost(int hostId) {
@@ -179,4 +220,6 @@ public class HostDAOImpl implements HostDAO {
              return false;
         }
     }
+
+   
 }

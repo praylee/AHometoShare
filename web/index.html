@@ -16,7 +16,8 @@ Copyright @ 2018
     <head>
         <title>A Home To Share</title>
         <meta charset="utf-8">
-		<link rel="stylesheet" href="assets/css/mainpage_style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/mainpage_style.css" />
     </head>
 	
     <body>
@@ -45,20 +46,22 @@ Copyright @ 2018
                     <section class="signupPopup_container">
                         <div class="signupPopup-left_half">
                             <h4>I want to sign up as a<span style="color:red; font-weight:bold">*</span></h4>
-                            <div class="btn-group1">
-                                <a href="#" class="buttonRole" >Host</a>
-                                <div></div>
-                                <a href="#" class="buttonRole">Renter</a>
+                            <div class="switch">
+                                <input type="radio" class="switch-input" name="view" value="userHost" id="userHost" checked>
+                                <label for="userHost" class="switch-label switch-label-off">Host</label>
+                                <input type="radio" class="switch-input" name="view" value="userRenter" id="userRenter" >
+                                <label for="userRenter" class="switch-label switch-label-on">Renter</label>
+                                <span class="switch-selection"></span>
                             </div>
                         </div>
                     <hr>
                         <div class="signupPopup-right_half">
-                                <div class="btn-group2">
-                                    <a href="renterRegister.html" class="signupBtn" ><button id="emailBtn" class="unstyled-button2" >Sign up with email</button></a>
-                                    <a href="#" class="signupBtn">Sign up with Facebook</a>
-                                    <a href="#" class="signupBtn">Sign up with Linkedin</a>
-                                    <a href="#" class="signupBtn">Sign up with Google</a>
-                                </div>
+                            <div class="btn-group2">
+                                <a id="emailBtn" class="signupBtn" >Sign up with email</a>
+                                <a href="" class="signupBtn">Sign up with Facebook</a>
+                                <a href="" class="signupBtn">Sign up with Linkedin</a>
+                                <a href="" class="signupBtn">Sign up with Google</a>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -86,6 +89,20 @@ Copyright @ 2018
                             signupPopup.style.display = "none";
                         }
                     };
+                    
+                    // Host & Renter toggle switch 
+                    var signupEmailBtn = document.getElementById("emailBtn");
+                    signupEmailBtn.onclick = function(){
+                        var hostSelected = document.getElementById("userHost");
+                        //When Host is selected, the page goes to Host Registratoin form                
+                        if (hostSelected.checked) { 
+                            window.location.href="hostRegister.html";                
+                        }
+                        //When Rrenter is selected, the page goes to Renter Registration form
+                        else 
+                            window.location.href="renterRegister.html";  
+                    };
+                    
                 </script>
                 
                 
@@ -167,7 +184,7 @@ Copyright @ 2018
                 <p>Benefit from the extra space in your home</p>
             </section>
 
-    <!-- Block 1: Core benifits info -->
+    <!-- Block 1: Core benefits info -->
         <section id="one" class="wrapper">
             <div class="inner">
                 <div class="flex flex-3">

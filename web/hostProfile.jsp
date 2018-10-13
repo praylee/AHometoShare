@@ -1,6 +1,6 @@
 <%-- 
-    Document   : registerConfirm
-    Created on : 6-Oct-2018, 11:13:05 AM
+    Document   : hostProfile
+    Created on : 5-Oct-2018, 11:56:26 PM
     Author     : chris
 --%>
 
@@ -9,10 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Confirm Registration</title>
+        <title>Renter Profile</title>
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
+        
         <!-- Header -->
         <header id="header">
             <div class="inner">
@@ -29,7 +30,7 @@
 			
         <!-- Banner: the text shows within the main image -->
         <section id="banner">
-                <h1><%out.print(request.getAttribute("Info"));%></h1>
+                <h1><%out.print(request.getAttribute("fName"));%></h1>
         </section>
 
         <!-- Block 1: Renter information info -->
@@ -37,7 +38,9 @@
             <div class="inner">
                     <div class="flex flex-3">
                         <header>
-                                <h2>A confirmation email will be sent to the email address you provided.</h2>
+                                <h2><%out.print(request.getAttribute("Info"));%></h2>
+                                <p><%out.print(request.getAttribute("subInfo"));%></p>
+                 
                         </header>
                     </div>
             </div>
@@ -98,5 +101,6 @@
                         </div>
                 </div>
         </footer>
+        
     </body>
 </html>

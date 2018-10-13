@@ -58,24 +58,40 @@ public class RegisterRenterView extends HttpServlet {
         String referralSource = request.getParameter("referralSrc");
         String passWord = request.getParameter("pwd1");
         String ConPassWord = request.getParameter("pwd2");
+//        String reminder = "";
         
+//        if(!ConPassWord.equalsIgnoreCase(passWord)) //passWord wrong match
+//            reminder="The password not match, please reset.";
+//        else
+            {
          
-        RenterBusinessLayer renterLayer = new RenterBusinessLayer();
-        List<Renter> renterList = renterLayer.getAllRenter();
-        int index = renterList.size();
-        Renter renter = new Renter(index+1,email, passWord,fName,lName,phoneNum,Integer.parseInt(gender),yearBorn,false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,referralSource,true);
-  //      Renter renter = new Renter(1,"chrislabelle@gmail.com", "password","Chris","Chris","5555555555",1,new java.sql.Date(93847878),false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,"newspaper",true);
+            RenterBusinessLayer renterLayer = new RenterBusinessLayer();
+            Renter emailRenter = renterLayer.getRenterByEmail(email);
+//            if (emailRenter == null)//if email is not exist, register continue
+            {
+                List<Renter> renterList = renterLayer.getAllRenter();
+                int index = renterList.size();
+                Renter renter = new Renter(index+1,email, passWord,fName,lName,phoneNum,Integer.parseInt(gender),yearBorn,false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,referralSource,true);
+          //      Renter renter = new Renter(1,"chrislabelle@gmail.com", "password","Chris","Chris","5555555555",1,"1999",false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,"newspaper",true);
 
-        try{
-            renterLayer.addRenter(renter);
-            // Only do this if user was successfully added to database!!!!
-            RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  //go to registerConfirm if signUp successful
-            rd.forward(request,response);
-        }
-        catch(ValidationException e) {
-            
-        }
+                try{
+                    renterLayer.addRenter(renter);
+                    // Only do this if user was successfully added to database!!!!
+                    request.setAttribute("Info", "Renter Registration Successful.");
+                    RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  //go to registerConfirm if signUp successful
+                    rd.forward(request,response);
+                }
+                catch(ValidationException e) {
+
+                }
+            }
+//            else{//if email is already existed, need to change a new one
+//                reminder = "Email is alrady registered.\nPlease use another Email to register or login with this Email.";
+            }
         
+//        try (PrintWriter out = response.getWriter()) {
+//            out.println("<h1>"+reminder+" </h1>");
+//        }
         
     }
 

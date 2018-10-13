@@ -11,6 +11,7 @@
  */
 package view;
 
+import business.HostBusinessLayer;
 import business.RenterBusinessLayer;
 import dataaccess.RenterDAOImpl;
 import java.io.IOException;
@@ -26,11 +27,13 @@ import javax.servlet.http.HttpServletResponse;
 import transferobjects.Renter;
 
 import business.RenterBusinessLayer;
+import transferobjects.Host;
 
 
 /**
  *
  * @author Chris
+ * Modified by Liangliang Du: checking user is a renter or host by email 
  */
 public class LogInView extends HttpServlet {
 
@@ -50,27 +53,58 @@ public class LogInView extends HttpServlet {
         String email = request.getParameter("loginEmail");
         String password = request.getParameter("loginPassword");
         RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-        if(renterBusiness.passwordCorrect(email, password)) {
-            Renter renter = renterBusiness.getRenterByEmail(email);
-            request.setAttribute("fName", "Welcome, "+renter.getFirstName());
-            request.setAttribute("lName", renter.getLastName());
-            request.setAttribute("Info","This is your Renter Profile.");
-            request.setAttribute("subInfo","This will be information about you.");
-            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
-            rd.forward(request,response);
+        HostBusinessLayer hostBusiness = new HostBusinessLayer();
+
+        Renter emailIsRenter = renterBusiness.getRenterByEmail(email);
+        Host emailIsHost = hostBusiness.getHostByEmail(email);
+        
+        if(emailIsRenter!= null && emailIsHost == null){ //user is a Renter
+                if(renterBusiness.passwordCorrect(email, password)) {
+                    Renter renter = renterBusiness.getRenterByEmail(email);
+                    request.setAttribute("fName", "Welcome your Renter Profile, "+renter.getFirstName());
+                    request.setAttribute("lName", renter.getLastName());
+                    request.setAttribute("Info","This is your Renter Profile.");
+                    request.setAttribute("subInfo","This will be information about you.");
+                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
+                    rd.forward(request,response);
+                }
+                else {
+                    //here you can pass error messages back to login screen
+                    request.setAttribute("fName", "Login Failed. Please go back to login.");
+                    request.setAttribute("Info", "Login Failed.");
+                    request.setAttribute("subInfo", "Please go back to login.");
+                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login not successful
+                    rd.forward(request,response);       
+                }  
         }
-        else {
-            //here you can pass error messages back to login screen
-            request.setAttribute("fName", "Login Failed. Please go back to login.");
-            request.setAttribute("Info", "Login Failed.");
-            request.setAttribute("subInfo", "Please go back to login.");
-            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login not successful
-            rd.forward(request,response);
-            
-//            request.setAttribute("message", "Invalid login credentials");
-//            request.getRequestDispatcher("login.html").forward(request,response);
-            
-        }     
+        else if(emailIsRenter == null && emailIsHost != null){ //user is a Host
+                if(hostBusiness.passwordCorrect(email, password)) {
+                    Host host = hostBusiness.getHostByEmail(email);
+                    request.setAttribute("fName", "Welcome your Host Profile, "+host.getFirstName());
+                    request.setAttribute("lName", host.getLastName());
+                    request.setAttribute("Info","This is your Host Profile.");
+                    request.setAttribute("subInfo","This will be information about you.");
+                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login successful
+                    rd.forward(request,response);
+                }
+                else {
+                    //here you can pass error messages back to login screen
+                    request.setAttribute("fName", "Login Failed. Please go back to login.");
+                    request.setAttribute("Info", "Login Failed.");
+                    request.setAttribute("subInfo", "Please go back to login.");
+                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login not successful
+                    rd.forward(request,response);       
+                }  
+            }
+        else{
+                request.setAttribute("fName", "Cannot find your login info. Please sign up first.");
+                request.setAttribute("Info", "Login Failed.");
+                request.setAttribute("subInfo", "Please go back to login.");
+                RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login not successful
+                rd.forward(request,response);       
+        }
+        
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

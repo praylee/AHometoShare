@@ -18,6 +18,7 @@ public interface HostDAO {
    List<Host> getAllHost();
     void addHost(Host host);
     Host getHostByHostId(int hostId);  
+    Host getHostByEmail(String email);
     void deleteHost(int hostId);
     void updateHost( String email, String passWord, String firstName, String lastName,String phone,int gender,String dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId);
     boolean passwordCorrect(String email, String password);    // added by Bin

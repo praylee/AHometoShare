@@ -13,13 +13,14 @@ package business;
 
 import dataaccess.RenterDAO;
 import dataaccess.RenterDAOImpl;
+import java.sql.Date;
 import java.util.List;
 import transferobjects.Renter;
 
 /**
  *
  * @author Chris
- * Modified by Liangliang: add getAllRenter()
+ * Modified by Liangliang: add getAllRenter(),deleteRenter(), and updateRenter()
  */
 public class RenterBusinessLayer {
  
@@ -71,10 +72,26 @@ public class RenterBusinessLayer {
         return correct;
     }
     
+    public void deleteRenter(int renterId){
+        renterDAO.deleteRenter(renterId);
+    }
+    
+    public void updateRenter(String email, String passWord, String firstName, String lastName,
+            String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,
+            Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,
+            Boolean hasCRCheck,int renterId){
+        renterDAO.updateRenter(email, passWord, firstName, lastName, phone, gender, dateBirth, 
+                isStudent, isEmployed, isSmoker, startDate, endDate, availability, lowPrice, highPrice, 
+                referralSource, hasCRCheck, renterId);
+    }
+
+    
     private void validateFields(Renter renter) throws ValidationException {
         // if email doesn't match [\w\d\._\-!#$%&'*+/=?^_`{|}~]+@[\w\d\.\[\]]+  then throw exception
         // if password doesn't match whatever we need it to     then throw exception
         // if price range isn't a number, or is a negative number   then throw exception
     }
+    
+    
 }
 

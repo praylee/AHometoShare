@@ -38,7 +38,7 @@
             <div class="inner">
                     <div class="flex flex-3">
                         <header>
-                                <h2><%out.print(request.getAttribute("Info"));%></h2>
+                                <h2><%out.print(request.getAttribute("info"));%></h2>
                                 <p><%out.print(request.getAttribute("subInfo"));%></p>
                  
                         </header>

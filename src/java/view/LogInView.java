@@ -57,23 +57,24 @@ public class LogInView extends HttpServlet {
 
         Renter emailIsRenter = renterBusiness.getRenterByEmail(email);
         Host emailIsHost = hostBusiness.getHostByEmail(email);
-        
+
         if(emailIsRenter!= null && emailIsHost == null){ //user is a Renter
                 if(renterBusiness.passwordCorrect(email, password)) {
                     Renter renter = renterBusiness.getRenterByEmail(email);
                     request.setAttribute("fName", "Welcome your Renter Profile, "+renter.getFirstName());
                     request.setAttribute("lName", renter.getLastName());
-                    request.setAttribute("Info","This is your Renter Profile.");
+                    request.setAttribute("info","This is your Renter Profile.");
                     request.setAttribute("subInfo","This will be information about you.");
                     RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
                     rd.forward(request,response);
                 }
                 else {
                     //here you can pass error messages back to login screen
-                    request.setAttribute("fName", "Login Failed. Please go back to login.");
-                    request.setAttribute("Info", "Login Failed.");
-                    request.setAttribute("subInfo", "Please go back to login.");
-                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login not successful
+                    request.setAttribute("email", email);
+                    request.setAttribute("info", "Password does not match username");
+                    //request.setAttribute("subInfo", "Please go back to login.");
+                    request.setAttribute("isLoginValid", false);
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  //go to back to index if login not successful
                     rd.forward(request,response);       
                 }  
         }
@@ -82,25 +83,27 @@ public class LogInView extends HttpServlet {
                     Host host = hostBusiness.getHostByEmail(email);
                     request.setAttribute("fName", "Welcome your Host Profile, "+host.getFirstName());
                     request.setAttribute("lName", host.getLastName());
-                    request.setAttribute("Info","This is your Host Profile.");
+                    request.setAttribute("info","This is your Host Profile.");
                     request.setAttribute("subInfo","This will be information about you.");
-                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login successful
+                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to hostProfile if login successful
                     rd.forward(request,response);
                 }
                 else {
                     //here you can pass error messages back to login screen
-                    request.setAttribute("fName", "Login Failed. Please go back to login.");
-                    request.setAttribute("Info", "Login Failed.");
-                    request.setAttribute("subInfo", "Please go back to login.");
-                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login not successful
+                    request.setAttribute("email", email);
+                    request.setAttribute("info", "Password does not match username");
+                    //request.setAttribute("subInfo", "Please go back to login.");
+                    request.setAttribute("isLoginValid", false);
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  //go back to index if login not successful
                     rd.forward(request,response);       
                 }  
             }
         else{
-                request.setAttribute("fName", "Cannot find your login info. Please sign up first.");
-                request.setAttribute("Info", "Login Failed.");
-                request.setAttribute("subInfo", "Please go back to login.");
-                RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login not successful
+                //request.setAttribute("fName", "Cannot find your login info. Please sign up first.");
+                request.setAttribute("info", "Email provided does not exist");
+                //request.setAttribute("subInfo", "Please go back to login.");
+                request.setAttribute("isLoginValid", false);
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  //go back to index if login not successful
                 rd.forward(request,response);       
         }
         

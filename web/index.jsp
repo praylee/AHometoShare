@@ -1,7 +1,13 @@
 <%-- 
-    Document   : index
-    Created on : 16-Oct-2018, 2:27:41 PM
-    Author     : chris
+File: index.html
+Description: Home page for A Home to Share website
+Create: Sept.30,2018
+Author: Zhan Shen
+Clients: Michelle Bilek,Farheen Khan
+Course: Software Development Project
+Professor: Dr. Anu Thomas
+Project: A Home to Share
+Copyright @ 2018
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -121,7 +127,8 @@
                             <form method="get" action="LogInView" onsubmit="" >
                                 <div class="formRow">
                                     <h4 align="left">Login with email</h4>
-                                    <input type="email" name="loginEmail" id="loginEmail" value="<%=(request.getAttribute("email") == null ? "" : request.getAttribute("email"))%>" size="30" placeholder="Email Address" maxlength="42" required />
+                                    <!-- Modified by Chris -->
+                                    <input type="email" name="loginEmail" id="loginEmail" value="<%=(request.getAttribute("email") == null ? "" : request.getAttribute("email"))%>" size="30" placeholder="Email Address" maxlength="42" required />                                    
                                 </div>
 
                                 <div class="formRow">
@@ -131,6 +138,7 @@
                                 
                                 <span class="loginError">
                                     <%
+                                        // added by Chris
                                         if(request.getAttribute("info") != null) {
                                             out.print(request.getAttribute("info"));
                                         }

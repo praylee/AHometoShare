@@ -23,6 +23,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import transferobjects.Renter;
 
@@ -61,10 +62,9 @@ public class LogInView extends HttpServlet {
         if(emailIsRenter!= null && emailIsHost == null){ //user is a Renter
                 if(renterBusiness.passwordCorrect(email, password)) {
                     Renter renter = renterBusiness.getRenterByEmail(email);
-                    request.setAttribute("fName", "Welcome your Renter Profile, "+renter.getFirstName());
-                    request.setAttribute("lName", renter.getLastName());
-                    request.setAttribute("info","This is your Renter Profile.");
-                    request.setAttribute("subInfo","This will be information about you.");
+                    
+                    this.setRenterSessionAttributes(request.getSession(), renter); // store renterinfo in Session
+                    
                     RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
                     rd.forward(request,response);
                 }
@@ -108,6 +108,26 @@ public class LogInView extends HttpServlet {
         }
         
            
+    }
+    
+    private void setRenterSessionAttributes(HttpSession session, Renter renter) {
+        session.setAttribute("isLoggedIn", true);
+        session.setAttribute("userType", "renter");
+        session.setAttribute("email", renter.getEmail());
+        session.setAttribute("firstName", renter.getFirstName());
+        session.setAttribute("lastName", renter.getLastName());
+        session.setAttribute("phone", renter.getPhone());
+        session.setAttribute("gender", renter.getGender());
+        session.setAttribute("dateBirth", renter.getDateBirth());
+        session.setAttribute("isStudent", renter.getIsStudent());
+        session.setAttribute("isEmployed", renter.getIsEmployed());
+        session.setAttribute("isSmoker", renter.getIsSmoker());
+        session.setAttribute("startDate", renter.getStartDate());
+        session.setAttribute("endDate", renter.getEndDate());
+        session.setAttribute("lowPrice", renter.getLowPrice());
+        session.setAttribute("highPrice", renter.getHighPrice());
+        session.setAttribute("referralSource", renter.getReferralSource());
+        session.setAttribute("hasCRCheck", renter.getHasCRCheck());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

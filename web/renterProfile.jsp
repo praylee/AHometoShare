@@ -1,7 +1,13 @@
 <%-- 
-    Document   : renterProfile
-    Created on : 5-Oct-2018, 11:56:26 PM
-    Author     : chris
+File: index.html
+Description: Home page for A Home to Share website
+Create: Sept.30,2018
+Author: Chris Labelle
+Clients: Michelle Bilek,Farheen Khan
+Course: Software Development Project
+Professor: Dr. Anu Thomas
+Project: A Home to Share
+Copyright @ 2018
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,6 +28,7 @@
                         <a href="index.html">Home</a>
                         <a href="index.html">How We Work</a>
                         <a href="index.html">FAQ</a>
+                        <a href="">Log out</a>
                 </nav>
                 <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
             </div>
@@ -30,7 +37,7 @@
 			
         <!-- Banner: the text shows within the main image -->
         <section id="banner">
-                <h1><%out.print(request.getAttribute("fName"));%></h1>
+                <h1>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h1>
         </section>
 
         <!-- Block 1: Renter information info -->
@@ -38,8 +45,7 @@
             <div class="inner">
                     <div class="flex flex-3">
                         <header>
-                                <h2><%out.print(request.getAttribute("info"));%></h2>
-                                <p><%out.print(request.getAttribute("subInfo"));%></p>
+                                
                  
                         </header>
                     </div>

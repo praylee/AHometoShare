@@ -1,8 +1,8 @@
 <%-- 
-File: index.html
-Description: Home page for A Home to Share website
-Create: Sept.30,2018
-Author: Chris Labelle
+File: renterProfileSearch.jsp
+Description: Page for searching host listings within the renter profile.
+Create: Oct 21,2018
+Author: Melissa Rajala
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -44,8 +44,9 @@ Copyright @ 2018
         <section id="one" class="wrapper">
             <div class="inner">
                     <div class="flex flex-3">
-                        <header>    
-                            <a href="renterProfileSearch.jsp">Search Host Listings (this is a placeholder to get to Search page)</a>
+                        <header>
+                                
+                 
                         </header>
                     </div>
             </div>

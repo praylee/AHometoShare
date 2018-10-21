@@ -23,6 +23,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import transferobjects.Renter;
 
@@ -57,23 +58,23 @@ public class LogInView extends HttpServlet {
 
         Renter emailIsRenter = renterBusiness.getRenterByEmail(email);
         Host emailIsHost = hostBusiness.getHostByEmail(email);
-        
+
         if(emailIsRenter!= null && emailIsHost == null){ //user is a Renter
                 if(renterBusiness.passwordCorrect(email, password)) {
                     Renter renter = renterBusiness.getRenterByEmail(email);
-                    request.setAttribute("fName", "Welcome your Renter Profile, "+renter.getFirstName());
-                    request.setAttribute("lName", renter.getLastName());
-                    request.setAttribute("Info","This is your Renter Profile.");
-                    request.setAttribute("subInfo","This will be information about you.");
+                    
+                    this.setRenterSessionAttributes(request.getSession(), renter); // store renterinfo in Session
+                    
                     RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
                     rd.forward(request,response);
                 }
                 else {
                     //here you can pass error messages back to login screen
-                    request.setAttribute("fName", "Login Failed. Please go back to login.");
-                    request.setAttribute("Info", "Login Failed.");
-                    request.setAttribute("subInfo", "Please go back to login.");
-                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login not successful
+                    request.setAttribute("email", email);
+                    request.setAttribute("info", "Password does not match username");
+                    //request.setAttribute("subInfo", "Please go back to login.");
+                    request.setAttribute("isLoginValid", false);
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  //go to back to index if login not successful
                     rd.forward(request,response);       
                 }  
         }
@@ -82,29 +83,51 @@ public class LogInView extends HttpServlet {
                     Host host = hostBusiness.getHostByEmail(email);
                     request.setAttribute("fName", "Welcome your Host Profile, "+host.getFirstName());
                     request.setAttribute("lName", host.getLastName());
-                    request.setAttribute("Info","This is your Host Profile.");
+                    request.setAttribute("info","This is your Host Profile.");
                     request.setAttribute("subInfo","This will be information about you.");
-                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login successful
+                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to hostProfile if login successful
                     rd.forward(request,response);
                 }
                 else {
                     //here you can pass error messages back to login screen
-                    request.setAttribute("fName", "Login Failed. Please go back to login.");
-                    request.setAttribute("Info", "Login Failed.");
-                    request.setAttribute("subInfo", "Please go back to login.");
-                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login not successful
+                    request.setAttribute("email", email);
+                    request.setAttribute("info", "Password does not match username");
+                    //request.setAttribute("subInfo", "Please go back to login.");
+                    request.setAttribute("isLoginValid", false);
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  //go back to index if login not successful
                     rd.forward(request,response);       
                 }  
             }
         else{
-                request.setAttribute("fName", "Cannot find your login info. Please sign up first.");
-                request.setAttribute("Info", "Login Failed.");
-                request.setAttribute("subInfo", "Please go back to login.");
-                RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to renterProfile if login not successful
+                //request.setAttribute("fName", "Cannot find your login info. Please sign up first.");
+                request.setAttribute("info", "Email provided does not exist");
+                //request.setAttribute("subInfo", "Please go back to login.");
+                request.setAttribute("isLoginValid", false);
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  //go back to index if login not successful
                 rd.forward(request,response);       
         }
         
            
+    }
+    
+    private void setRenterSessionAttributes(HttpSession session, Renter renter) {
+        session.setAttribute("isLoggedIn", true);
+        session.setAttribute("userType", "renter");
+        session.setAttribute("email", renter.getEmail());
+        session.setAttribute("firstName", renter.getFirstName());
+        session.setAttribute("lastName", renter.getLastName());
+        session.setAttribute("phone", renter.getPhone());
+        session.setAttribute("gender", renter.getGender());
+        session.setAttribute("dateBirth", renter.getDateBirth());
+        session.setAttribute("isStudent", renter.getIsStudent());
+        session.setAttribute("isEmployed", renter.getIsEmployed());
+        session.setAttribute("isSmoker", renter.getIsSmoker());
+        session.setAttribute("startDate", renter.getStartDate());
+        session.setAttribute("endDate", renter.getEndDate());
+        session.setAttribute("lowPrice", renter.getLowPrice());
+        session.setAttribute("highPrice", renter.getHighPrice());
+        session.setAttribute("referralSource", renter.getReferralSource());
+        session.setAttribute("hasCRCheck", renter.getHasCRCheck());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

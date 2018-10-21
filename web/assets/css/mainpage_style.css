@@ -662,6 +662,12 @@ footer {
         height: 28px;
     }
     
+    .loginError {
+        font-size: 10px;
+        color: #FE2020;
+        padding-bottom: 0px;
+    }
+    
     h4 {
         font-weight: 600;
         font-size: 18px;

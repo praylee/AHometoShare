@@ -107,7 +107,11 @@ Copyright @ 2018
                         <table class="hosttable">
                             <%
                                 List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
-                                for (Entry entry: pairList){
+                                if (pairList.isEmpty()) { %>
+                                <h6>There are no available listings at this time.</h6>
+                                <%
+                                    } else {
+                                    for (Entry entry: pairList){
                                     Host host = (Host) entry.getKey();
                                     Property property = (Property) entry.getValue();
                             %>
@@ -123,7 +127,10 @@ Copyright @ 2018
                                     Price: <%=property.getPrice()%> <br>
                                 </td>
                             </tr>
-                            <%}%>                         
+                            <%}
+
+                             }
+                            %>                         
                         </table>
                     </div>
             </div>

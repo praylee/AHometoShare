@@ -17,6 +17,24 @@ Copyright @ 2018
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Renter Profile</title>
         <link rel="stylesheet" href="assets/css/style.css" />
+        <style>
+            td { padding:0 15px 0 15px; }
+            table.hosttable { 
+                align-self:center;
+                border-collapse: collapse;
+                border: 1px solid black;
+                border-spacing: 10px;
+                width: 90%; 
+                margin-left: auto;
+                margin-right: auto;
+            }
+            td.hosttable { 
+                border: 1px solid black;
+                text-align: center;
+            }
+            
+            
+        </style>
     </head>
     <body>
         
@@ -40,14 +58,54 @@ Copyright @ 2018
                 <h1>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h1>
         </section>
 
-        <!-- Block 1: Renter information info -->
+        <!-- Block 1: Filter Options -->
         <section id="one" class="wrapper">
             <div class="inner">
                     <div class="flex flex-3">
                         <header>
+                            <table class="filtertable">
+                                <tr>
+                                    <th>Filter by location</th>
+                                    <th>Sort by price</th> 
+                                    <th>Filter by requirements</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select>
+                                            <option value="mississauga">Mississauga</option>
+                                            <option value="hamilton">Hamilton</option>
+                                            <option value="peel">Peel Region</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option value="low">Low to High</option>
+                                            <option value="high">High to Low</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
+                                        <input type="checkbox" name="req" value="parking"> Parking <br>
+                                        <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
+                                    </td>
+                                </tr>
+                            </table>
                                 
-                 
                         </header>
+                    </div>
+            </div>
+        </section>
+        
+        <section id="two" class="wrapper">
+            <div class="inner">
+                    <div class="flex flex-3">
+                        <table class="hosttable">
+                            <% for (int i = 1; i < 11; i ++) {%>
+                            <tr>
+                                <td> Placeholder for host <%=i%> </td>
+                            </tr>
+                            <% } %>                           
+                        </table>
                     </div>
             </div>
         </section>

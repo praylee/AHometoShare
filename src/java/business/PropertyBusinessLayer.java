@@ -29,7 +29,7 @@ public class PropertyBusinessLayer {
         propertyDAO = new PropertyDAOImpl();
     }
       
-    public List<Property> getAllHost(){
+    public List<Property> getAllProperty(){
         return propertyDAO.getAllProperty();
     }
     
@@ -40,8 +40,6 @@ public class PropertyBusinessLayer {
     public Property getPropertyById(int propertyId){
         return propertyDAO.getPropertyByPropertyId(propertyId);
     } 
-    
-    //get property by hostid? - join!
     
     public void deleteProperty(int propertyId){
         propertyDAO.deleteProperty(propertyId);

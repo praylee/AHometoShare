@@ -10,6 +10,11 @@ Project: A Home to Share
 Copyright @ 2018
 --%>
 
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="transferobjects.Host"%>
+<%@page import="transferobjects.Property"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +29,7 @@ Copyright @ 2018
                 border-collapse: collapse;
                 border: 1px solid black;
                 border-spacing: 10px;
-                width: 90%; 
+                width: 95%; 
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -62,7 +67,7 @@ Copyright @ 2018
         <section id="one" class="wrapper">
             <div class="inner">
                     <div class="flex flex-3">
-                        <header>
+                        
                             <table class="filtertable">
                                 <tr>
                                     <th>Filter by location</th>
@@ -91,7 +96,7 @@ Copyright @ 2018
                                 </tr>
                             </table>
                                 
-                        </header>
+                       
                     </div>
             </div>
         </section>
@@ -100,11 +105,25 @@ Copyright @ 2018
             <div class="inner">
                     <div class="flex flex-3">
                         <table class="hosttable">
-                            <% for (int i = 1; i < 11; i ++) {%>
+                            <%
+                                List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
+                                for (Entry entry: pairList){
+                                    Host host = (Host) entry.getKey();
+                                    Property property = (Property) entry.getValue();
+                            %>
                             <tr>
-                                <td> Placeholder for host <%=i%> </td>
+                                <td>
+                                    Property ID: <%=property.getpropertyID()%> <br>
+                                    Host ID: <%=property.getHostID()%> <br>
+                                    Host Name: <%=host.getFirstName()%> <br>
+                                    Address: <%=property.getAddress()%> <br>
+                                    City: <%=property.getCity()%> <br>
+                                    Start Date: <%=property.getStartDate()%> <br>
+                                    End Date: <%=property.getEndDate()%> <br>
+                                    Price: <%=property.getPrice()%> <br>
+                                </td>
                             </tr>
-                            <% } %>                           
+                            <%}%>                         
                         </table>
                     </div>
             </div>

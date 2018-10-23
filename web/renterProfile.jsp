@@ -44,9 +44,13 @@ Copyright @ 2018
         <section id="one" class="wrapper">
             <div class="inner">
                     <div class="flex flex-3">
-                        <header>    
-                            <a href="renterProfileSearch.jsp">Search Host Listings (this is a placeholder to get to Search page)</a>
-                        </header>
+                        
+                        <!--form action="renterProfileSearch.jsp">
+                            <input type="submit" value="Search Host Listings" />
+                        </form-->
+                        
+                        <button onclick="window.location.href='ProfileRenterView'">Search Host Listings</button>
+                        
                     </div>
             </div>
         </section>

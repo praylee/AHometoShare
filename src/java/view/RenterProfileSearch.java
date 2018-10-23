@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import business.RenterBusinessLayer;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
 import javax.servlet.RequestDispatcher;
 import transferobjects.Host;
 import transferobjects.Property;
@@ -32,7 +29,7 @@ import transferobjects.Renter;
  *
  * @author 29751
  */
-public class ProfileRenterView extends HttpServlet {
+public class RenterProfileSearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,38 +43,8 @@ public class ProfileRenterView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+           
             
-            System.out.println("Made it to Renter Profile Search!");
-        
-            PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
-            List<Property> propertiesList = propertyBusiness.getAllProperty();
-              
-              
-            HostBusinessLayer hostBusiness = new HostBusinessLayer();
-            List<Host> hostList = hostBusiness.getAllHost();
-            
-            List<Entry<Host,Property>> pairList = new ArrayList<Entry<Host, Property>>();
-            
-            for (Property property: propertiesList) {
-                int hostID = property.getHostID();
-                Host propertyOwner = null;
-                for (Host host: hostList) {
-                    if (host.getHostID() == hostID) {
-                        propertyOwner = host;
-                        break;
-                    }
-                }
-                Entry<Host, Property> entry = new SimpleEntry<Host, Property>(propertyOwner, property);
-                pairList.add(entry);
-                
-            }
-              
-//            request.setAttribute("properties", propertiesList); //send list of properties
-//            request.setAttribute("hosts", hostList); //send list of hosts
-              request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
-              
-            RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearch.jsp"); //for now go right here
-            rd.forward(request,response); 
               
 
     }

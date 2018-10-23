@@ -17,7 +17,7 @@ import transferobjects.Property;
 public interface PropertyDAO {
     List<Property> getAllProperty();
     void addProperty(Property property);
-    Property getPropertyByPropertyId(int propertyId);  
+    Property getPropertyByPropertyId(int propertyId);
     void deleteProperty(int propertyId);
     void updateProperty(int hostId, String address, String city, String postalCode, String province,String country,int famMembers,Boolean isSmokerFriendly, Boolean isPetFriendly,double price,Date startDate,Date endDate,String chores,int availability,int propertyId);
 }

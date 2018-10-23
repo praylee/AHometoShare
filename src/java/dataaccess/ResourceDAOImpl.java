@@ -86,7 +86,7 @@ public class ResourceDAOImpl implements ResourceDAO {
     }
 
     @Override
-    public void deleteReource(int resourceId) {
+    public void deleteResource(int resourceId) {              //Bin Yang, Oct 23, 2018
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(DELETE_RESOURCE);) {
             pstmt.setInt(1, resourceId);

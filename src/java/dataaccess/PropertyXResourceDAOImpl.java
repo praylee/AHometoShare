@@ -26,7 +26,8 @@ public class PropertyXResourceDAOImpl implements PropertyXResourceDAO {
 
     private static final String GET_ALL_PR = "SELECT id,property_id,resource_id FROM propertyxresource ORDER BY id";
     private static final String INSERT_PR = "INSERT INTO propertyxresource (id, property_id,resource_id) VALUES(?,?,?)";
-    private static final String GET_BY_PR_ID = "SELECT id,property_id,resource_id FROM propertyxresource WHERE id = ?";
+    //private static final String GET_BY_PR_ID = "SELECT id,property_id,resource_id FROM propertyxresource WHERE id = ?";
+    private static final String GET_BY_PR_ID = "SELECT id,property_id,resource_id FROM propertyxresource WHERE property_id = ?";  //Bin Yang, Oct 23, 2018
     private static final String DELETE_PR = "DELETE FROM propertyxresource WHERE id = ?";
 
     @Override
@@ -63,7 +64,7 @@ public class PropertyXResourceDAOImpl implements PropertyXResourceDAO {
     }
 
     @Override
-    public PropertyXResource getResourceByResourceId(int id) {
+    public PropertyXResource getResourceByPropertyId(int id) {                     //Bin Yang, Oct 23, 2018
 
         PropertyXResource PR = new PropertyXResource();
         try (Connection con = new DataSource().createConnection();

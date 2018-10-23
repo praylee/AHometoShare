@@ -17,6 +17,7 @@ public interface ResourceDAO {
      List<Resource> getAllResource();
     void addResource(Resource resource);
     Resource getResourceByResourceId(int resourceId);  
-    void deleteReource(int resourceId);
+    //void deleteReource(int resourceId);
+    void deleteResource(int resourceId);           //Bin Yang, Oct 23, 2018
     void updateResource( String type, int resourceId);
 }

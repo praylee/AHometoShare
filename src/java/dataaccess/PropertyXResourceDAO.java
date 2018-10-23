@@ -16,6 +16,7 @@ import transferobjects.PropertyXResource;
 public interface PropertyXResourceDAO {
     List<PropertyXResource> getAllPropertyXResource();
     void addPropertyXResource(PropertyXResource PR);
-    PropertyXResource getResourceByResourceId(int id);  
+    //PropertyXResource getResourceByResourceId(int id);  //Bin Yang, Oct 23, 2018  
+    PropertyXResource getResourceByPropertyId(int id);
     void deletePropertyXResource(int id);
 }

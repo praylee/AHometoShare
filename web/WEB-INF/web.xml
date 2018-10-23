@@ -32,6 +32,10 @@
         <servlet-name>ProfileRenterView</servlet-name>
         <servlet-class>view.ProfileRenterView</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RenterProfileSearch</servlet-name>
+        <servlet-class>view.RenterProfileSearch</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeView</servlet-name>
         <url-pattern>/HomeView</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ProfileRenterView</servlet-name>
         <url-pattern>/ProfileRenterView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RenterProfileSearch</servlet-name>
+        <url-pattern>/RenterProfileSearch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,8 +1,8 @@
 <%-- 
-File: index.html
-Description: Home page for A Home to Share website
-Create: Sept.30,2018
-Author: Chris Labelle
+File: renterProfileSearch.jsp
+Description: Page for searching host listings within the renter profile.
+Create: Oct 21,2018
+Author: Melissa Rajala
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -10,6 +10,11 @@ Project: A Home to Share
 Copyright @ 2018
 --%>
 
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="transferobjects.Host"%>
+<%@page import="transferobjects.Property"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +22,24 @@ Copyright @ 2018
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Renter Profile</title>
         <link rel="stylesheet" href="assets/css/style.css" />
+        <style>
+            td { padding:0 15px 0 15px; }
+            table.hosttable { 
+                align-self:center;
+                border-collapse: collapse;
+                border: 1px solid black;
+                border-spacing: 10px;
+                width: 95%; 
+                margin-left: auto;
+                margin-right: auto;
+            }
+            td.hosttable { 
+                border: 1px solid black;
+                text-align: center;
+            }
+            
+            
+        </style>
     </head>
     <body>
         
@@ -40,17 +63,68 @@ Copyright @ 2018
                 <h1>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h1>
         </section>
 
-        <!-- Block 1: Renter information info -->
+        <!-- Block 1: Filter Options -->
         <section id="one" class="wrapper">
             <div class="inner">
                     <div class="flex flex-3">
                         
-                        <!--form action="renterProfileSearch.jsp">
-                            <input type="submit" value="Search Host Listings" />
-                        </form-->
-                        
-                        <button onclick="window.location.href='ProfileRenterView'">Search Host Listings</button>
-                        
+                            <table class="filtertable">
+                                <tr>
+                                    <th>Filter by location</th>
+                                    <th>Sort by price</th> 
+                                    <th>Filter by requirements</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select>
+                                            <option value="mississauga">Mississauga</option>
+                                            <option value="hamilton">Hamilton</option>
+                                            <option value="peel">Peel Region</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option value="low">Low to High</option>
+                                            <option value="high">High to Low</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
+                                        <input type="checkbox" name="req" value="parking"> Parking <br>
+                                        <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
+                                    </td>
+                                </tr>
+                            </table>
+                                
+                       
+                    </div>
+            </div>
+        </section>
+        
+        <section id="two" class="wrapper">
+            <div class="inner">
+                    <div class="flex flex-3">
+                        <table class="hosttable">
+                            <%
+                                List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
+                                for (Entry entry: pairList){
+                                    Host host = (Host) entry.getKey();
+                                    Property property = (Property) entry.getValue();
+                            %>
+                            <tr>
+                                <td>
+                                    Property ID: <%=property.getpropertyID()%> <br>
+                                    Host ID: <%=property.getHostID()%> <br>
+                                    Host Name: <%=host.getFirstName()%> <br>
+                                    Address: <%=property.getAddress()%> <br>
+                                    City: <%=property.getCity()%> <br>
+                                    Start Date: <%=property.getStartDate()%> <br>
+                                    End Date: <%=property.getEndDate()%> <br>
+                                    Price: <%=property.getPrice()%> <br>
+                                </td>
+                            </tr>
+                            <%}%>                         
+                        </table>
                     </div>
             </div>
         </section>

@@ -546,3 +546,40 @@
 		color: #26b72b;
 		padding-left: 5px;
 	}
+
+/*
+Something I'm trying from W3 Schools - Chris
+*/ 
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: relative;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenavButton {
+    color: #f1f1f1;
+}
+
+
+.sectionContent {
+    display: none;
+}
+

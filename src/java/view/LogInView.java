@@ -15,6 +15,7 @@ import business.HostBusinessLayer;
 import business.RenterBusinessLayer;
 import dataaccess.RenterDAOImpl;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -65,8 +66,9 @@ public class LogInView extends HttpServlet {
                     
                     this.setRenterSessionAttributes(request.getSession(), renter); // store renterinfo in Session
                     
-                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
-                    rd.forward(request,response);
+//                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
+//                    rd.forward(request,response);
+                    response.sendRedirect("renterProfile.jsp");
                 }
                 else {
                     //here you can pass error messages back to login screen
@@ -111,8 +113,9 @@ public class LogInView extends HttpServlet {
     }
     
     private void setRenterSessionAttributes(HttpSession session, Renter renter) {
-        session.setAttribute("isLoggedIn", true);
+        session.setAttribute("isLoggedIn", "true");
         session.setAttribute("userType", "renter");
+        session.setAttribute("renterId", renter.getRenterID());
         session.setAttribute("email", renter.getEmail());
         session.setAttribute("firstName", renter.getFirstName());
         session.setAttribute("lastName", renter.getLastName());
@@ -122,8 +125,10 @@ public class LogInView extends HttpServlet {
         session.setAttribute("isStudent", renter.getIsStudent());
         session.setAttribute("isEmployed", renter.getIsEmployed());
         session.setAttribute("isSmoker", renter.getIsSmoker());
-        session.setAttribute("startDate", renter.getStartDate());
-        session.setAttribute("endDate", renter.getEndDate());
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        session.setAttribute("startDate", formatter.format(renter.getStartDate()));
+        session.setAttribute("endDate", formatter.format(renter.getEndDate()));
         session.setAttribute("lowPrice", renter.getLowPrice());
         session.setAttribute("highPrice", renter.getHighPrice());
         session.setAttribute("referralSource", renter.getReferralSource());

@@ -84,7 +84,17 @@ public class RenterBusinessLayer {
                 isStudent, isEmployed, isSmoker, startDate, endDate, availability, lowPrice, highPrice, 
                 referralSource, hasCRCheck, renterId);
     }
-
+    
+    public void updateRenter(String firstName, String lastName,
+            String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,
+            Date startDate, Date endDate, double lowPrice, double highPrice, int renterId){
+        renterDAO.updateRenter(firstName, lastName, phone, gender, dateBirth, 
+                isStudent, isEmployed, isSmoker, startDate, endDate, lowPrice, highPrice, renterId);
+    }
+    
+    public void updateRenter(String passWord, int renterId){
+        renterDAO.updateRenter(passWord, renterId);
+    }
     
     private void validateFields(Renter renter) throws ValidationException {
         // if email doesn't match [\w\d\._\-!#$%&'*+/=?^_`{|}~]+@[\w\d\.\[\]]+  then throw exception

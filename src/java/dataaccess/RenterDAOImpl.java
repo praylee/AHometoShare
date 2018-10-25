@@ -54,11 +54,21 @@ public class RenterDAOImpl implements RenterDAO {
             + "FROM renter WHERE email = ?";
     
     private static final String DELETE_RENTER = "DELETE FROM renter WHERE id = ?";
-    private static final String UPDATE_RENTER = "UPDATE renter SET "
+    private static final String UPDATE_RENTER_DEFAULT = "UPDATE renter SET "
             + "email = ?, password= ?, "
             + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
             + "employed= ?, smoker= ?, rent_start_date= ?, rent_end_date= ?,availability= ?, "
             + "low_price= ?, high_price= ?, referral_source= ?,criminality_check = ?"
+            + "WHERE id= ?";
+    
+    private static final String UPDATE_RENTER_EDIT_PROFILE = "UPDATE renter SET "
+            + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
+            + "employed= ?, smoker= ?, rent_start_date= ?, rent_end_date= ?, "
+            + "low_price= ?, high_price= ? "
+            + "WHERE id= ?";
+    
+    private static final String UPDATE_RENTER_PASSWORD = "UPDATE renter SET "
+            + "password= ? "
             + "WHERE id= ?";
     
     private static final String GET_RENTER_BY_EMAIL = "SELECT "
@@ -94,7 +104,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setEndDate(rs.getDate("rent_end_date"));
                 renter.setAvailability(rs.getInt("availability"));
                 renter.setLowPrice(rs.getInt("low_price"));
-                renter.setLowPrice(rs.getInt("high_price"));
+                renter.setHighPrice(rs.getInt("high_price"));
                 renter.setReferralSource(rs.getString("referral_source"));
                 renter.setHasCRCheck(rs.getBoolean("criminality_check"));
                 renters.add(renter);
@@ -158,7 +168,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setEndDate(rs.getDate("rent_end_date"));
                 renter.setAvailability(rs.getInt("availability"));
                 renter.setLowPrice(rs.getInt("low_price"));
-                renter.setLowPrice(rs.getInt("high_price"));
+                renter.setHighPrice(rs.getInt("high_price"));
                 renter.setReferralSource(rs.getString("referral_source"));
                 renter.setHasCRCheck(rs.getBoolean("criminality_check"));
 
@@ -192,7 +202,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setEndDate(rs.getDate("rent_end_date"));
                 renter.setAvailability(rs.getInt("availability"));
                 renter.setLowPrice(rs.getInt("low_price"));
-                renter.setLowPrice(rs.getInt("high_price"));
+                renter.setHighPrice(rs.getInt("high_price"));
                 renter.setReferralSource(rs.getString("referral_source"));
                 renter.setHasCRCheck(rs.getBoolean("criminality_check"));
 
@@ -220,7 +230,7 @@ public class RenterDAOImpl implements RenterDAO {
     @Override
     public void updateRenter(String email, String passWord, String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, Date startDate, Date endDate, int availability, double lowPrice, double highPrice, String referralSource, Boolean hasCRCheck, int renterId) {
         try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER);) {
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER_DEFAULT);) {
 
             pstmt.setString(1, email);
             pstmt.setString(2, passWord);
@@ -240,6 +250,45 @@ public class RenterDAOImpl implements RenterDAO {
             pstmt.setString(16, referralSource);
             pstmt.setBoolean(17, hasCRCheck);
             pstmt.setInt(18, renterId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public void updateRenter(String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, Date startDate, Date endDate, double lowPrice, double highPrice, int renterId) {
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER_EDIT_PROFILE);) {
+
+            pstmt.setString(1, firstName);
+            pstmt.setString(2, lastName);
+            pstmt.setString(3, phone);
+            pstmt.setInt(4, gender);
+            pstmt.setString(5, dateBirth);
+            pstmt.setBoolean(6, isStudent);
+            pstmt.setBoolean(7, isEmployed);
+            pstmt.setBoolean(8, isSmoker);
+            pstmt.setDate(9, startDate);
+            pstmt.setDate(10, endDate);
+            pstmt.setDouble(11, lowPrice);
+            pstmt.setDouble(12, highPrice);
+            pstmt.setInt(13, renterId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public void updateRenter(String passWord, int renterId) {
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER_PASSWORD);) {
+
+            pstmt.setString(1, passWord);
+            pstmt.setInt(2, renterId);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -272,7 +321,7 @@ public class RenterDAOImpl implements RenterDAO {
                 renter.setEndDate(rs.getDate("rent_end_date"));
                 renter.setAvailability(rs.getInt("availability"));
                 renter.setLowPrice(rs.getInt("low_price"));
-                renter.setLowPrice(rs.getInt("high_price"));
+                renter.setHighPrice(rs.getInt("high_price"));
                 renter.setReferralSource(rs.getString("referral_source"));
                 renter.setHasCRCheck(rs.getBoolean("criminality_check"));
             }

@@ -19,18 +19,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import business.RenterBusinessLayer;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-import javax.servlet.RequestDispatcher;
 import transferobjects.Host;
 import transferobjects.Property;
 import transferobjects.Renter;
-import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.text.ParseException;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -51,50 +47,6 @@ public class ProfileRenterView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            
-
-            HttpSession session = request.getSession();
-            
-            boolean updateOk = true;
-            String invalidReason = null;
-            
-            String firstName = request.getParameter("firstname");
-            String lastName = request.getParameter("lastname");
-            String phone = request.getParameter("phoneNum");
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            String birthYear = request.getParameter("yearBorn");
-            
-            boolean isStudent;
-            try {isStudent = request.getParameterValues("isStudent")[0].equals("on");}
-            catch(NullPointerException e) {isStudent = false;}
-            
-            boolean isEmployed;
-            try {isEmployed = request.getParameterValues("isEmployed")[0].equals("on");}
-            catch(NullPointerException e) {isEmployed = false;}
-            
-            boolean isSmoker;
-            try {isSmoker = request.getParameterValues("isSmoker")[0].equals("on");}
-            catch(NullPointerException e) {isSmoker = false;}
-            
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		
-            Date startDate = null;
-            Date endDate = null;
-            try {
-                    startDate = formatter.parse(request.getParameter("startDate"));
-                    endDate = formatter.parse(request.getParameter("endDate"));
-            } catch (ParseException e) {
-                
-                try {
-                    startDate = formatter.parse(session.getAttribute("startDate").toString());
-                    endDate = formatter.parse(session.getAttribute("endDate").toString());
-                }
-                catch(ParseException pe) {}
-                    updateOk = false;
-                    invalidReason = "Improper date format";
-            }
-            java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
-            java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
 
             System.out.println("Made it to Renter Profile Search!");
         
@@ -107,37 +59,7 @@ public class ProfileRenterView extends HttpServlet {
 
             
             List<Entry<Host,Property>> pairList = new ArrayList<Entry<Host, Property>>();
-            
 
-            
-            double lowPrice = Double.parseDouble(session.getAttribute("lowPrice").toString());
-            double highPrice = Double.parseDouble(session.getAttribute("highPrice").toString());
-            try {
-                lowPrice = Double.parseDouble(request.getParameter("lowPrice"));
-                highPrice = Double.parseDouble(request.getParameter("highPrice"));
-            }
-            catch(NumberFormatException e) {
-                updateOk = false;
-                invalidReason = "Invalid price parameter.";
-            }
-            
-            if(updateOk) {
-                RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-                renterBusiness.updateRenter(firstName, lastName, phone, gender, birthYear, 
-                        isStudent, isEmployed, isSmoker, sqlStartDate, sqlEndDate, lowPrice, highPrice, Integer.parseInt(session.getAttribute("renterId").toString()));
-                
-                Renter renter = renterBusiness.getRenterByEmail(session.getAttribute("email").toString());
-                this.setRenterSessionAttributes(session, renter);
-                response.sendRedirect("renterProfile.jsp");
-                
-            }
-            else {
-                request.setAttribute("invalidReason", invalidReason);
-                RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  // send error message
-                rd.forward(request,response);
-            }
-            
-            
             for (Property property: propertiesList) {
                 int hostID = property.getHostID();
                 Host propertyOwner = null;
@@ -157,10 +79,7 @@ public class ProfileRenterView extends HttpServlet {
             request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
 
             RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearch.jsp"); //for now go right here
-            rd.forward(request,response); 
-
-            
-            
+            rd.forward(request,response);     
     }
     
     private void setRenterSessionAttributes(HttpSession session, Renter renter) {

@@ -22,7 +22,7 @@ import transferobjects.Property;
  * @author 29751
  */
 public class PropertyBusinessLayer {
-    
+
     private PropertyDAO propertyDAO = null;
     
     public PropertyBusinessLayer() {
@@ -48,5 +48,5 @@ public class PropertyBusinessLayer {
         propertyDAO.updateProperty(hostId, address, city, postalCode, province, country, famMembers, isSmokerFriendly, isPetFriendly, price, startDate, endDate, chores, availability, propertyId);
     }
 
-    
+
 }

@@ -53,7 +53,7 @@ Copyright @ 2018
         <section id="one" class="wrapper">
             <div id="myProfile" class="sectionContent">
                 <h2>Profile Parameters</h2>
-                <form method="get" action="ProfileRenterView" onsubmit="return checkForm(this)" >
+                <form method="get" action="ProfileRenterEditView" onsubmit="return checkForm(this)" >
                 <!--<div class="row uniform">-->
                     <!-- Break: First Name(db:first_name), Last Name(db:last_name) -->
                     <div class="formRow">

@@ -11,6 +11,8 @@
  */
 package view;
 
+import business.HostBusinessLayer;
+import business.PropertyBusinessLayer;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import business.RenterBusinessLayer;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+import javax.servlet.RequestDispatcher;
+import transferobjects.Host;
+import transferobjects.Property;
 import transferobjects.Renter;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -43,6 +52,7 @@ public class ProfileRenterView extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
             
+
             HttpSession session = request.getSession();
             
             boolean updateOk = true;
@@ -85,8 +95,20 @@ public class ProfileRenterView extends HttpServlet {
             }
             java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
             java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
+
+            System.out.println("Made it to Renter Profile Search!");
+        
+            PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
+            List<Property> propertiesList = propertyBusiness.getAllProperty();
+              
+              
+            HostBusinessLayer hostBusiness = new HostBusinessLayer();
+            List<Host> hostList = hostBusiness.getAllHost();
+
             
+            List<Entry<Host,Property>> pairList = new ArrayList<Entry<Host, Property>>();
             
+
             
             double lowPrice = Double.parseDouble(session.getAttribute("lowPrice").toString());
             double highPrice = Double.parseDouble(session.getAttribute("highPrice").toString());
@@ -116,7 +138,26 @@ public class ProfileRenterView extends HttpServlet {
             }
             
             
-             
+            for (Property property: propertiesList) {
+                int hostID = property.getHostID();
+                Host propertyOwner = null;
+                for (Host host: hostList) {
+                    if (host.getHostID() == hostID) {
+                        propertyOwner = host;
+                        break;
+                    }
+                }
+                Entry<Host, Property> entry = new SimpleEntry<Host, Property>(propertyOwner, property);
+                pairList.add(entry);
+                
+            }
+              
+//            request.setAttribute("properties", propertiesList); //send list of properties
+//            request.setAttribute("hosts", hostList); //send list of hosts
+            request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
+
+            RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearch.jsp"); //for now go right here
+            rd.forward(request,response); 
 
             
             
@@ -143,6 +184,7 @@ public class ProfileRenterView extends HttpServlet {
         session.setAttribute("highPrice", renter.getHighPrice());
         session.setAttribute("referralSource", renter.getReferralSource());
         session.setAttribute("hasCRCheck", renter.getHasCRCheck());
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

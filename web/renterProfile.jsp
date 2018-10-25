@@ -36,7 +36,8 @@ Copyright @ 2018
                 </nav>
             </div>
         </header>
-		
+
+			
         <!-- Banner: the text shows within the main image -->
         <section id="banner">
                 <h1>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h1>
@@ -45,7 +46,7 @@ Copyright @ 2018
         <div class="sidenav">
             <button class="sidenavButton" onclick="openSection('myProfile')">My Profile</button>
             <button class="sidenavButton" onclick="openSection('accountSettings')">Account Settings</button>
-            <button class="sidenavButton" onclick="">Search for Home</button>
+            <button onclick="window.location.href='ProfileRenterView'">Search Host Listings</button>
         </div>
         
         <!-- Block 1: Renter information info -->
@@ -167,44 +168,58 @@ Copyright @ 2018
         
         <!-- Footer -->
         <footer id="footer">
-            <div class="flex">
+                <div class="inner">
+                        <div class="flex">
+                                <div class="single-footer-widget">
+                                        <h6>Get in Touch</h6>
 
-                <div>
-                    <h6>Get in Touch</h6>
-                    <div>
-                        <img alt="logo" src="images/team_logo.png" />
-                        <ul>
-                            <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
-                            <li><a href="#">(123) 456-7890</a></li>
-                        </ul>
-                    </div>
-                </div>
+                                        <div class='get-in-touch-section'>
+                                                <img alt="logo" class="" src="images/team_logo.png" />
+                                                <ul class="footer-nav-section-nav pL0">
+                                                        <li><a href="mailto:hello@nesterly.io">info@ahometoshare.ca</a></li>
+                                                        <li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
+                                                </ul>
+                                        </div>
 
-                <div>
-                    <h6>Join Our Community</h6>
-                    <ul>
-                        <li><a href=index.html>How it Works</a></li>
-                        <li><a href=index.html>Frequently Asked Questions</a></li>
-                        <li><a href=index.html>Homesharing Resources</a></li>
-                        <li><a href=index.html>Community Compact</a></li>
-                    </ul>
-                </div>
+                                </div>
 
-                <div>
-                    <h6>Get Engaged</h6>
-                        <ul>
-                            <li>Live in Toronto and want to help us tackle the affordable housing crisis.</li>
-                            <li><a href="" target="_blank"> <u>Apply</u></a> to be an Ambassador today.</li>
-                        </ul>
-                </div>
+                                <div class="col-lg-3  col-md-3">
+                                        <div class="single-footer-widget">
+                                                <h6>Join Our Community</h6>
+                                                <ul class="footer-nav-section-nav pL0">
+                                                        <li><a href="/how-it-works">How it Works</a></li>
+                                                        <li><a href="/faq">Frequently Asked Questions</a></li>
+                                                        <li><a href="/homesharing_resources">Homesharing Resources</a></li>
+                                                        <li><a href="/community_compact">Community Compact</a></li>
+                                                </ul>
+                                        </div>
+                                </div>
 
-                <div>
-                    <h6>Follow us on Social</h6>
-                        <a href="https://www.facebook.com/ahometoshare" class=""></a>
-                        &nbsp;&nbsp;
-                        <a href="https://twitter.com/ahometoshare" class=""></a>
+                                <div class="col-lg-3 col-md-3">
+                                        <div class="single-footer-widget">
+                                                <h6>Get Engaged</h6>
+                                                        <ul class="footer-nav-section-nav pL0">
+                                                                <li>Live in Toronto and want to help us tackle the affordable housing crisis. <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7Rtng9Dwi1uEH9A86Z9Jd1IFDRJoHeW-LMHBtUsYPOh571Q/viewform" target="_blank"> <u>Apply</u></a> to be an Ambassador today.
+                                                                </li>
+                                                        </ul>
+                                        </div>
+                                </div>
+
+                                <div class="col-lg-3  col-md-3">
+                                        <div class="single-footer-widget">
+                                                <h6>Follow us on Social</h6>
+                                                        <a href="https://www.facebook.com/nesterlyhome" class="btn btn-facebook waves-effect waves-light">
+                                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                        </a>
+                                                        &nbsp;&nbsp;
+                                                        <a href="https://twitter.com/nesterlyhome" class="btn btn-twitter waves-effect waves-light">
+                                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                        </a>
+
+                                        </div>
+                                </div>
+                        </div>
                 </div>
-            </div>
         </footer>
         
     </body>

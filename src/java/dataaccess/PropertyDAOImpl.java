@@ -25,16 +25,15 @@ import transferobjects.Property;
 
 public class PropertyDAOImpl implements PropertyDAO {
 
-    private static final String GET_ALL_PROPERTY = "SELECT"
-            + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
-            + "pets,price, host_start_date,host_end_date,shared_chore,availability"
+    private static final String GET_ALL_PROPERTY = "SELECT property_id, host_id,address, city, postal_code, province, "
+            + "country, family_members, smoker, pets, price, host_start_date, host_end_date, shared_chore, availability "
             + "FROM property ORDER BY property_id";
 
     private static final String INSERT_PROPERTY = "INSERT INTO property ("
             + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
             + "pets,price, host_start_date,host_end_date,shared_chore,availability"
             + ") VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    private static final String GET_BY_PROPERTY_ID = "SELECT"
+    private static final String GET_BY_PROPERTY_ID = "SELECT "
             + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
             + "pets,price, host_start_date,host_end_date,shared_chore,availability"
             + "FROM property WHERE property_id = ?";

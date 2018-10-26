@@ -19,7 +19,7 @@ import transferobjects.Host;
 
 /**
  *
- * @author 29751
+ * @author Xia Sheng
  */
 public class HostBusinessLayer {
     
@@ -55,7 +55,9 @@ public class HostBusinessLayer {
     public void updateHost( String email, String passWord, String firstName, String lastName,String phone,int gender,String dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId){
         hostDAO.updateHost(email, passWord, firstName, lastName, phone, gender, dateBirth, retired, pets, smoker, referralSource, hostId);
     }
-    
+    public void updateHost(String firstName, String lastName,String phone,int gender,String dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId){
+        hostDAO.updateHost(firstName, lastName, phone, gender, dateBirth, retired, pets, smoker,referralSource, hostId);
+    }
     public boolean passwordCorrect(String email, String password){
         return hostDAO.passwordCorrect(email, password);
     }

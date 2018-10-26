@@ -36,6 +36,7 @@ import transferobjects.Host;
  *
  * @author Chris
  * Modified by Liangliang Du: checking user is a renter or host by email 
+ * Modified by Xia Sheng: add host login session
  */
 public class LogInView extends HttpServlet {
 
@@ -83,12 +84,14 @@ public class LogInView extends HttpServlet {
         else if(emailIsRenter == null && emailIsHost != null){ //user is a Host
                 if(hostBusiness.passwordCorrect(email, password)) {
                     Host host = hostBusiness.getHostByEmail(email);
-                    request.setAttribute("fName", "Welcome your Host Profile, "+host.getFirstName());
-                    request.setAttribute("lName", host.getLastName());
-                    request.setAttribute("info","This is your Host Profile.");
-                    request.setAttribute("subInfo","This will be information about you.");
-                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to hostProfile if login successful
-                    rd.forward(request,response);
+//                    request.setAttribute("firstname", "Welcome your Host Profile, "+host.getFirstName());
+//                    request.setAttribute("lName", host.getLastName());
+//                    request.setAttribute("info","This is your Host Profile.");
+//                    request.setAttribute("subInfo","This will be information about you.");
+//                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to hostProfile if login successful
+//                    rd.forward(request,response);
+                this.setHostSessionAttributes(request.getSession(), host); // store host info in Session
+                response.sendRedirect("hostProfile.jsp");
                 }
                 else {
                     //here you can pass error messages back to login screen
@@ -133,6 +136,20 @@ public class LogInView extends HttpServlet {
         session.setAttribute("highPrice", renter.getHighPrice());
         session.setAttribute("referralSource", renter.getReferralSource());
         session.setAttribute("hasCRCheck", renter.getHasCRCheck());
+    }
+    private void setHostSessionAttributes(HttpSession session, Host host) {
+
+        session.setAttribute("hostId", host.getHostID());
+        session.setAttribute("email", host.getEmail());
+        session.setAttribute("firstname", host.getFirstName());
+        session.setAttribute("lastname", host.getLastName());
+        session.setAttribute("phone", host.getPhone());
+        session.setAttribute("gender", host.getGender());
+        session.setAttribute("dateBirth", host.getDateBirth());
+        session.setAttribute("isRetired", host.getRetired());
+        session.setAttribute("isPets", host.getPets());
+        session.setAttribute("isSmoker", host.getSmoker());
+        session.setAttribute("referralSource", host.getReferralSource());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

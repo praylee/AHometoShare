@@ -65,12 +65,36 @@ Copyright @ 2018
         <section id="banner">
                 <h1>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h1>
         </section>
+        
+        <script>
+            function myFilterFunction() {
+            // Declare variables
+
+            var select = document.getElementById("select");
+            var selectedCity = select.options[select.selectedIndex].text;
+            
+
+            // Loop through all list items, and hide those who don't match the search query
+            var li;
+            table = document.getElementById("property");
+            li = table.getElementsByTagName("li");
+            
+            var i;
+            for (i = 1; i<li.length; i++){
+                var text = "";
+                text = li[i].value;
+                window.alert(text); //for debugging
+            }
+
+            }
+        </script>
+        
 
         <!-- Block 1: Filter Options -->
         <section id="one" class="wrapper">
             <div class="inner">
                     <div class="flex flex-3">
-                        
+                        <form method="get" action="RenterProfileSearch" >
                             <table class="filtertable">
                                 <tr>
                                     <th>Filter by location</th>
@@ -79,10 +103,10 @@ Copyright @ 2018
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select>
-                                            <option value="mississauga">Mississauga</option>
-                                            <option value="hamilton">Hamilton</option>
-                                            <option value="peel">Peel Region</option>
+                                        <select id="select">
+                                            <option name="mississauga" value="mississauga">Mississauga</option>
+                                            <option name="hamilton" value="hamilton">Hamilton</option>
+                                            <option name="peel" value="peel">Peel Region</option>
                                         </select>
                                     </td>
                                     <td>
@@ -96,9 +120,12 @@ Copyright @ 2018
                                         <input type="checkbox" name="req" value="parking"> Parking <br>
                                         <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
                                     </td>
+                                    <td>
+                                        <input id="filter" type="button" value="Filter" onclick="myFilterFunction();" />
+                                    </td>
                                 </tr>
                             </table>
-                                
+                        </form>         
                        
                     </div>
             </div>
@@ -107,12 +134,17 @@ Copyright @ 2018
         <section id="two" class="wrapper">
             <div class="inner">
                     <div class="flex flex-3">
-                        <table class="hosttable">
+                        <table class="hosttable" id="property">
                             <%
                                 List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
-                                for (Entry entry: pairList){
+                                if (pairList.isEmpty()) { %>
+                                <h6>There are no available listings at this time.</h6>
+                                <%
+                                    } else {
+                                    for (Entry entry: pairList){
                                     Host host = (Host) entry.getKey();
                                     Property property = (Property) entry.getValue();
+                                    String city = property.getCity();
                             %>
                             <tr>
                                 <td>
@@ -120,13 +152,17 @@ Copyright @ 2018
                                     Host ID: <%=property.getHostID()%> <br>
                                     Host Name: <%=host.getFirstName()%> <br>
                                     Address: <%=property.getAddress()%> <br>
-                                    City: <%=property.getCity()%> <br>
+                                    City: <li value="hi"><%=city%></li> <br>
                                     Start Date: <%=property.getStartDate()%> <br>
                                     End Date: <%=property.getEndDate()%> <br>
                                     Price: <%=property.getPrice()%> <br>
+                                    <button onclick="window.location.href='RenterProfileSearch'">View Details</button>
                                 </td>
                             </tr>
-                            <%}%>                         
+                            <%}
+
+                             }
+                            %>                         
                         </table>
                     </div>
             </div>

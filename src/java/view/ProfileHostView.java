@@ -2,7 +2,7 @@
  * File: ProfileHostView.java
  * Description:
  * Create: Sep,30,2018
- * Author: Bits & Bytes Team-Christopher Labelle,Liangliang Du,Melissa Rajala,Zhan Shen,Xia Sheng,Bin Yang
+ * Author: Xia Sheng
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -11,16 +11,19 @@
  */
 package view;
 
+import business.HostBusinessLayer;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import transferobjects.Host;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
- * @author 29751
+ * @author Xia Sheng
  */
 public class ProfileHostView extends HttpServlet {
 
@@ -33,21 +36,67 @@ public class ProfileHostView extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProfileHostView</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ProfileHostView at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+            
+
+            HttpSession session = request.getSession();
+            
+            boolean updateOk = true;
+            String invalidReason = null;
+            
+            String firstName = request.getParameter("firstname");
+            String lastName = request.getParameter("lastname");
+            String phone = request.getParameter("phoneNum");
+            int gender = Integer.parseInt(request.getParameter("gender"));
+            String birthYear = request.getParameter("dateBirth");
+            String referralSource=request.getParameter("referralSource");
+            
+            boolean retired;
+            try {retired = request.getParameterValues("isRetired")[0].equals("on");}
+            catch(NullPointerException e) {retired = false;}
+            
+            boolean pets;
+            try {pets = request.getParameterValues("isPets")[0].equals("on");}
+            catch(NullPointerException e) {pets = false;}
+            
+            boolean smoker;
+            try {smoker = request.getParameterValues("isSmoker")[0].equals("on");}
+            catch(NullPointerException e) {smoker = false;}
+            
+            if(updateOk) {
+                HostBusinessLayer hostBusiness = new HostBusinessLayer();
+                hostBusiness.updateHost(firstName, lastName, phone, gender, birthYear, 
+                        retired, pets, smoker, referralSource,Integer.parseInt(session.getAttribute("hostId").toString()));
+                
+                Host host = hostBusiness.getHostByEmail(session.getAttribute("email").toString());
+                this.setHostSessionAttributes(session, host);
+                response.sendRedirect("hostProfile.jsp");
+                
+            }
+            else {
+                request.setAttribute("invalidReason", invalidReason);
+                RequestDispatcher hp = request.getRequestDispatcher("hostProfile.jsp");  // send error message
+                hp.forward(request,response);
+            }
+    
+    }
+    
+    private void setHostSessionAttributes(HttpSession session, Host host) {
+        session.setAttribute("isLoggedIn", "true");
+        session.setAttribute("userType", "host");
+        session.setAttribute("hostId", host.getHostID());
+        session.setAttribute("email", host.getEmail());
+        session.setAttribute("firstname", host.getFirstName());
+        session.setAttribute("lastname", host.getLastName());
+        session.setAttribute("phone", host.getPhone());
+        session.setAttribute("gender", host.getGender());
+        session.setAttribute("dateBirth", host.getDateBirth());
+        session.setAttribute("isRetired", host.getRetired());
+        session.setAttribute("isPets", host.getPets());
+        session.setAttribute("isSmoker", host.getSmoker());
+        session.setAttribute("referralSource", host.getReferralSource());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -10,7 +10,7 @@
  * Copyright @ 2018
  */
 package transferobjects;
-import java.sql.Date;
+
 
 public class Host {
     private int hostId;

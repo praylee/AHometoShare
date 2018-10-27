@@ -17,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +47,15 @@ public class HostDAOImpl implements HostDAO {
             + "phone = ?, gender= ?, date_of_birth= ?, retired= ?, "
             + "pets= ?,smoker= ?, referral_source= ?"
             + "WHERE host_id= ?";
-
+    private static final String UPDATE_HOST_EDIT_FILE = "UPDATE host SET "
+            + "first_name= ?, last_name= ?,"
+            + "phone = ?, gender= ?, date_of_birth= ?, retired= ?, "
+            + "pets= ?,smoker= ?,referral_source= ?"
+            + "WHERE host_id= ?";
+    private static final String UPDATE_HOST_PASSWORD = "UPDATE host SET "
+            + "password= ? "
+            + "WHERE id= ?";
+    
     private static final String PASSWORD_CORRECT = "SELECT host_id FROM host WHERE email = ? AND password = AES_ENCRYPT(?,'secret')";      //Validate encrypted password - Bin
 
     @Override
@@ -162,7 +169,7 @@ public class HostDAOImpl implements HostDAO {
             return host;
         }
         catch(SQLException e) {
-             Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+             Logger.getLogger(HostDAOImpl.class.getName()).log(Level.SEVERE, null, e);
              return null;
         }
     }
@@ -203,6 +210,40 @@ public class HostDAOImpl implements HostDAO {
     }
     
     @Override
+    public void updateHost(String firstName, String lastName,String phone,int gender,String dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId){
+    try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_HOST_EDIT_FILE);) {
+            pstmt.setString(1, firstName);
+            pstmt.setString(2, lastName);
+            pstmt.setString(3, phone);
+            pstmt.setInt(4, gender);
+            pstmt.setString(5, dateBirth);
+            pstmt.setBoolean(6, retired);
+            pstmt.setBoolean(7, pets);
+            pstmt.setBoolean(8, smoker);
+            pstmt.setString(9, referralSource);
+            pstmt.setInt(10, hostId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    @Override
+    public void updateHost(String passWord, int hostId){
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_HOST_PASSWORD);) {
+
+            pstmt.setString(1, passWord);
+            pstmt.setInt(2, hostId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HostDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
     public boolean passwordCorrect(String email, String password) { // added by Bin
         try (Connection con = new DataSource().createConnection();
          PreparedStatement pstmt = con.prepareStatement(PASSWORD_CORRECT);) {
@@ -216,7 +257,7 @@ public class HostDAOImpl implements HostDAO {
             return isCorrect;
         }
         catch(SQLException e) {
-             Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, e);
+             Logger.getLogger(HostDAOImpl.class.getName()).log(Level.SEVERE, null, e);
              return false;
         }
     }

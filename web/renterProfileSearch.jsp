@@ -153,6 +153,7 @@ Copyright @ 2018
                                     Start Date: <%=property.getStartDate()%> <br>
                                     End Date: <%=property.getEndDate()%> <br>
                                     Price: <%=property.getPrice()%> <br>
+                                    <button onclick="window.location.href='RenterProfileSearch'">View Details</button>
                                 </td>
                             </tr>
                             <%}

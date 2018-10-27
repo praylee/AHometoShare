@@ -24,11 +24,11 @@ import transferobjects.PropertyXResource;
 
 public class PropertyXResourceDAOImpl implements PropertyXResourceDAO {
 
-    private static final String GET_ALL_PR = "SELECT id,property_id,resource_id FROM propertyxresource ORDER BY id";
-    private static final String INSERT_PR = "INSERT INTO propertyxresource (id, property_id,resource_id) VALUES(?,?,?)";
-    //private static final String GET_BY_PR_ID = "SELECT id,property_id,resource_id FROM propertyxresource WHERE id = ?";
-    private static final String GET_BY_PR_ID = "SELECT id,property_id,resource_id FROM propertyxresource WHERE property_id = ?";  //Bin Yang, Oct 23, 2018
-    private static final String DELETE_PR = "DELETE FROM propertyxresource WHERE id = ?";
+    // modify SQL to comply with the database fields.
+    private static final String GET_ALL_PR = "SELECT property_id,resource_id FROM propertyxresource ORDER BY property_id";
+    private static final String INSERT_PR = "INSERT INTO propertyxresource (property_id,resource_id) VALUES(?,?)";          
+    private static final String GET_BY_PR_ID = "SELECT property_id,resource_id FROM propertyxresource WHERE property_id = ?";  
+    private static final String DELETE_PR = "DELETE FROM propertyxresource WHERE property_id = ?"; 
 
     @Override
     public List<PropertyXResource> getAllPropertyXResource() {
@@ -39,9 +39,8 @@ public class PropertyXResourceDAOImpl implements PropertyXResourceDAO {
             PRs = new ArrayList<>(400);
             while (rs.next()) {
                 PropertyXResource PR = new PropertyXResource();
-                PR.setId(rs.getInt("id"));
-                PR.setId(rs.getInt("property_id"));
-                PR.setId(rs.getInt("resource_id"));
+                PR.setPropertyId(rs.getInt("property_id"));
+                PR.setResourceId(rs.getInt("resource_id"));
                 PRs.add(PR);
             }
         } catch (SQLException ex) {
@@ -54,9 +53,9 @@ public class PropertyXResourceDAOImpl implements PropertyXResourceDAO {
     public void addPropertyXResource(PropertyXResource PR) {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(INSERT_PR);) {
-            pstmt.setInt(1, PR.getID());
-            pstmt.setInt(2, PR.getPropertyID());
-            pstmt.setInt(3, PR.getResourceID());
+            //pstmt.setInt(1, PR.getID());                 //Bin Yang, Oct 26, 2018
+            pstmt.setInt(1, PR.getPropertyID());
+            pstmt.setInt(2, PR.getResourceID());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PropertyXResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,9 +71,8 @@ public class PropertyXResourceDAOImpl implements PropertyXResourceDAO {
                 ResultSet rs = pstmt.executeQuery();) {
             pstmt.setInt(1, id);
             if (rs.next()) {
-                PR.setId(rs.getInt("id"));
-                PR.setId(rs.getInt("property_id"));
-                PR.setId(rs.getInt("resource_id"));
+                PR.setPropertyId(rs.getInt("property_id"));
+                PR.setResourceId(rs.getInt("resource_id"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PropertyXResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

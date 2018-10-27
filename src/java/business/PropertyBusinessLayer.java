@@ -1,8 +1,8 @@
 /*
  * File: PropertyBusinessLayer.java
- * Description: transfer function between Java and database
- * Create: Oct 23,2018
- * Author: Bin Yang
+ * Description:
+ * Create: Sep,30,2018
+ * Author: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -33,31 +33,20 @@ public class PropertyBusinessLayer {
         return propertyDAO.getAllProperty();
     }
     
-    public void addProperty(Property property) throws ValidationException {
-        try {
-            validateFields(property);
-            propertyDAO.addProperty(property);
-        }
-        catch(ValidationException e) {
-            throw e;
-        }
+    public void addProperty(Property property) {
+        propertyDAO.addProperty(property);
     }
     
-    public Property getPropertyByPropertyId(int hostId){
-        return propertyDAO.getPropertyByPropertyId(hostId);
+    public Property getPropertyById(int propertyId){
+        return propertyDAO.getPropertyByPropertyId(propertyId);
     } 
     
     public void deleteProperty(int propertyId){
         propertyDAO.deleteProperty(propertyId);
     }
-    
-    public void updateProperty(int hostId, String address, String city, String postalCode, String province,String country,int famMembers,Boolean isSmokerFriendly, Boolean isPetFriendly,double price,Date startDate,Date endDate,String chores,int availability,int propertyId){
-        propertyDAO.updateProperty(hostId, address, city, postalCode, province,country,famMembers,isSmokerFriendly, isPetFriendly,price,startDate,endDate,chores,availability,propertyId);
+    public void updatePropertyupdateProperty(int hostId, String address, String city, String postalCode, String province,String country,int famMembers,Boolean isSmokerFriendly, Boolean isPetFriendly,double price,Date startDate,Date endDate,String chores,int availability,int propertyId) {
+        propertyDAO.updateProperty(hostId, address, city, postalCode, province, country, famMembers, isSmokerFriendly, isPetFriendly, price, startDate, endDate, chores, availability, propertyId);
     }
-    
-    private void validateFields(Property property) throws ValidationException {
-        // if email doesn't match [\w\d\._\-!#$%&'*+/=?^_`{|}~]+@[\w\d\.\[\]]+  then throw exception
-        // if password doesn't match whatever we need it to     then throw exception
-        // if price range isn't a number, or is a negative number   then throw exception
-    }    
+
+
 }

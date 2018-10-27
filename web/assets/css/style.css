@@ -431,6 +431,9 @@
 	
 	
 /* Footer */
+        #footer {
+            clear: both;
+        }
 
 	#footer .inner {
 		border-top: 1px solid #dbdbdb;
@@ -546,3 +549,62 @@
 		color: #26b72b;
 		padding-left: 5px;
 	}
+
+/*
+Profile style
+*/ 
+.sidenav {
+    
+    width: 300px;
+    background-color: #111;
+    float: left;
+    height: 700px;
+}
+
+.sidenavButton:hover {
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.sidenavButton {
+    width: 300px;
+    border-bottom: 2px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-left: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: none;
+    color: #f1f1f1;
+    font-size: 25px;
+    text-align: left;
+}
+
+
+.sectionContent {
+    clear: right;
+    margin-left: 17%;
+    padding: 20px;
+    display: none;
+    border: 5px solid red;
+    font-size: 25px;
+    /*
+    
+    */
+}
+
+.sectionContent table tr{
+    border: solid black;
+    height: 100px;
+    margin: 20px;
+}
+
+.sectionContent td {
+    width: 350px;
+}
+
+.sectionContent h1 {
+    font-size: 50px;
+    margin: 20px;
+}

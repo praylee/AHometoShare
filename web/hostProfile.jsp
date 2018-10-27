@@ -4,55 +4,60 @@
     Author     : Xia Sheng
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!--<!DOCTYPE html>-->
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Host Profile</title>
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/subpage_style.css" />
     </head>
-    <body>
         
+    <body class="subpage">
         <!-- Header -->
         <header id="header">
             <div class="inner">
                 <a href="index.html" class="logo">A Home To Share</a>
                 <nav id="nav">
-                        <a href="index.html">Home</a>
-                        <a href="index.html">How We Work</a>
-                        <a href="index.html">FAQ</a>
-                <a href="
-                       <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("host") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
+                    <a href="index.jsp">Home</a>
+                    <a href="index.jsp">How We Work</a>
+                    <a href="index.jsp">FAQ</a>
+                    <a href="
+                       <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
-                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
+                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
                     <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
                 </nav>
             </div>
         </header>
 
-			
-        <!-- Banner: the text shows within the main image -->
-        <section id="banner">
-                <h1><%out.print(request.getAttribute("firstName"));%></h1>
-        </section>
-       
-        <div class="sidenav">
-            <button class="sidenavButton" onclick="openSection('myHostProfile')">My Profile</button>
-            <button class="sidenavButton" onclick="openSection('accountSettings')">Account Settings</button>
-            <button class="sidenavButton" id="manageProperty">Manage Properties</button>
-        </div>
+	<!--Main Frame-->
+            <div class="wrapper">
+            <li class="aside aside-1"></li>
+                <!--Pane 1: a placeholder-->    
+            		
+                <li class="aside aside-2">
+                    <div class="btn-group-vertical">
+                        <ul id="horizontal-list">
+                            <li><hr class="welcome_block" align="left"></li>
+                            <li><h3>Hello <%out.print(session.getAttribute("firstname"));%>!</h3><li>
+                        </ul >
+                        <ul style="list-style:none;">
+                            <li id="menu1"><input type="button" value="My Profile" class="" onclick="openSection('myHostProfile')"/></li>
+                            <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='hostAccountSettings.jsp'" /></li>
+                            <li id="menu3"><input type="button" value="Manage Properties" class="" onclick="window.location.href='roomPosting.jsp'" /></li>
+                            </ul>
+                    </div>
+                </li>    
+
         
-        <script type="text/javascript">
-            document.getElementById("manageProperty").onclick = function () {
-                window.location.href="roomPosting.jsp";
-            };
-        </script>
-        
+               
+        <li class="aside aside-3">
         <!-- Block 1: Host information info -->
        <section id="one" class="wrapper">
             <div id="myHostProfile" class="sectionContent">
-                <h2>Profile Parameters</h2>
+               <h1>My Profile</h1>
+
+                            <hr width=600px;>    
                 <form method="get" action="ProfileHostView" onsubmit="return checkForm(this)" >
                 <!--<div class="row uniform">-->
                     <!-- Break: First Name(db:first_name), Last Name(db:last_name) -->
@@ -133,9 +138,7 @@
                 </form> 
             </div>
                     
-            <div id="accountSettings" class="sectionContent">
-                <span>These are your account settings</span>
-            </div>
+
         </section>
                     
         <script>
@@ -151,7 +154,10 @@
                 }
             }
         </script>
-        
+        </li>
+                    <!--Pane 4: a placeholder-->  
+                    <li class="aside aside-4"></li>
+                </div> 
         <!-- Footer -->
         <footer id="footer">
                 <div class="inner">

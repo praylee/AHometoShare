@@ -38,33 +38,33 @@
     }
 
     article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-            display: block;
+        display: block;
     }
 
     body {
-            line-height: 1;
+        line-height: 1;
     }
 
     ol, ul {
-            list-style: none;
+        list-style: none;
     }
 
     blockquote, q {
-            quotes: none;
+        quotes: none;
     }
 
     blockquote:before, blockquote:after, q:before, q:after {
-            content: '';
-            content: none;
+        content: '';
+        content: none;
     }
 
     table {
-            border-collapse: collapse;
-            border-spacing: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
     }
 
     body {
-            -webkit-text-size-adjust: none;
+        -webkit-text-size-adjust: none;
     }
 /*  END CSS Reset */
 
@@ -75,15 +75,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		
 /* Subpage header */
     .subpage {
-            padding-top: 120px;
+        padding-top: 120px;
     }
 
         .subpage #header {
-                background: #5385c1;
-                top: 0;
-                height: 50px;
-                line-height: 50px;
-                position: fixed;
+            background: #5385c1;
+            top: 0;
+            height: 50px;
+            line-height: 50px;
+            position: fixed;
         }
 		
     #header {
@@ -135,7 +135,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             }
 			
             #header button:hover {
-                    color: #ffcc00;
+                color: #ffcc00;
             }
             
             .unstyled-button {
@@ -232,28 +232,28 @@ body {font-family: Arial, Helvetica, sans-serif;}
         
         input[type="submit"],
 	input[type="reset"] {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #5385c1;
-		border-radius: 0;
-		border: 0;
-		color: #ffffff !important;
-		cursor: pointer;
-		display: inline-block;
-		font-weight: 600;
-		height: 2.85em;
-		line-height: 1.95em;
-		padding: 0 1.5em;
-		text-align: center;
-		text-decoration: none;
-		white-space: nowrap;
-                width: 80%;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            background-color: #5385c1;
+            border-radius: 0;
+            border: 0;
+            color: #ffffff !important;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            height: 2.85em;
+            line-height: 1.95em;
+            padding: 0 1.5em;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            width: 80%;
 	}
 
             input[type="submit"]:hover,
@@ -272,7 +272,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 }
 
                 input[type="reset"].alt:active {
-                        background-color: rgba(144, 144, 144, 0.2);
+                    background-color: rgba(144, 144, 144, 0.2);
                 }
 	
 /* Footer */
@@ -355,11 +355,11 @@ footer {
 
     /* Signup popup Content */
     .signupPopup-content {
-            background-color: #ffffff;
-            margin: auto;
-            padding: 30px;
-            width: 35%;
-            text-align: center;
+        background-color: #ffffff;
+        margin: auto;
+        padding: 30px;
+        width: 35%;
+        text-align: center;
     }
 
         /* Signup pattern styles */
@@ -387,10 +387,10 @@ footer {
     
         /* Signup Close Button */
         .close1 {
-                color: #aaaaaa;
-                float: right;
-                font-size: 24px;
-                font-weight: bold;
+            color: #aaaaaa;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .close1:hover,
@@ -441,24 +441,23 @@ footer {
         }
 
         .switch-input:checked + .switch-label {
-          font-weight: bold;
-          color: rgba(0, 0, 0, 0.65);
-          text-shadow: 0 1px rgba(255, 255, 255, 0.25);
-          -webkit-transition: 0.15s ease-out;
-          -moz-transition: 0.15s ease-out;
-          -ms-transition: 0.15s ease-out;
-          -o-transition: 0.15s ease-out;
-          transition: 0.15s ease-out;
-          -webkit-transition-property: color, text-shadow;
-          -moz-transition-property: color, text-shadow;
-          -ms-transition-property: color, text-shadow;
-          -o-transition-property: color, text-shadow;
-          transition-property: color, text-shadow;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.65);
+            text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+            -webkit-transition: 0.15s ease-out;
+            -moz-transition: 0.15s ease-out;
+            -ms-transition: 0.15s ease-out;
+            -o-transition: 0.15s ease-out;
+            transition: 0.15s ease-out;
+            -webkit-transition-property: color, text-shadow;
+            -moz-transition-property: color, text-shadow;
+            -ms-transition-property: color, text-shadow;
+            -o-transition-property: color, text-shadow;
+            transition-property: color, text-shadow;
         }
             
             .switch-input:checked + .switch-label-on ~ .switch-selection {
                 left: 82px;
-              /* Note: left: 50%; doesn't transition in WebKit */
             }
 
         .switch-selection {
@@ -485,15 +484,9 @@ footer {
             -o-transition: left 0.15s ease-out;
             transition: left 0.15s ease-out;
         }
-    
-    
-    
-    
-    
-    
 
     
-    /*Signup right side 4 buttons*/
+    /*Signup: 4 buttons on the right*/
         .btn-group2 {
         margin-left: 0px;
         margin-right: 30px;
@@ -539,11 +532,172 @@ footer {
             background-color: #3d6699;
         }
     
-/*        .signupBtn {
-            height: 100px;
-        }   
-        
-        .btn-group2 a.signupBtn {
-            height: 30px;
-        }*/
     
+
+    
+    /*Account Settings layout*/
+     .wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            list-style: none;
+            /*overflow:hidden;*/
+        }
+        
+        .wrapper > * {
+            padding: 10px;
+            flex: 1;
+            
+        }
+        
+        .aside-1 {
+            /*background: gold;*/
+        }
+        
+        .aside-2 {
+/*            background: green;*/
+        }
+        
+        .aside-3 {
+            /*background: greenyellow;*/
+        }
+        
+        .aside-4 {
+            /*background: #bbb;*/
+        }
+    
+    .btn-group-vertical {
+        width: 230px;
+        margin-left: 80px;   
+    }
+    
+    .btn-group-vertical hr {
+       /*border-top: 12px solid #ffcc00;*/
+       display: inline-block;
+       width: 3px;
+       height: 4px;
+       margin-right: 0;
+       margin-bottom: 0;
+       margin-left: 2px;
+       margin-top: 15px;
+       border: 4px solid #ffcc00;
+    }
+    
+    .login-settings-content {
+        position: relative;
+    }
+    
+    .login-settings-content h2{
+        font-size:1.3em;
+    }
+    
+    ul#horizontal-list li{
+        display: inline-block;
+    }
+    
+    hr {
+        border-top: .3px solid #ccc;
+        display: block;
+    }
+
+        input[type="button"] {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            background-color: #ffffff;
+            border-radius: 0;
+            border: 0;
+            color: #5385c1 !important;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            height: 2.85em;
+            line-height: 1.95em;
+            padding: 0 1.8em;
+            text-align: left;
+            text-decoration: none;
+            white-space: nowrap;
+            width: 100%;
+            border: 1px solid rgba(144, 144, 144, 0.2);
+	}
+        
+        input[type="button"]:hover{
+            background-color: rgba(144, 144, 144, 0.1);
+        }
+        
+        #menu1 {
+            border-bottom: none;
+        }
+        #menu2 {
+            border: 2px solid #ffcc00;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        #menu3 {
+            border-top: none;
+        }
+        
+    .password {
+        margin-top: 25px;
+    }
+        
+    .password h4{
+        font-size:.95em;
+        font-weight: bold;
+
+    }
+    
+    #update_pwd_btn {
+        width: 160px;
+    }
+    
+    input[type="password"] {
+        height: 30px;
+        margin-top: 10px;
+    }
+          
+    #forgot_pwd_link {
+        font-size: 15px;
+    }
+        
+    .delete_account {
+        margin-top: 50px;
+        color: red;
+    }
+        
+    .delete_account_btn {
+        width: 165px;
+        margin-top: 20px;
+        margin-bottom: 60px;
+    }
+        
+        li.delete_my_account input{
+            color: red !important;
+        }
+        
+    h2 {
+        margin-top: 9px;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+        margin-left: 3px;
+    }
+
+    h5 {
+        font-size: 14px;
+    }
+        
+        
+       
+
+            
+        
+        

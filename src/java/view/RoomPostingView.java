@@ -106,18 +106,11 @@ public class RoomPostingView extends HttpServlet {
         
         Property property = new Property(index+1,hostid,address,city,postalcode,province,country,Integer.parseInt(fammembers),Boolean.parseBoolean(SmokerFriendly),Boolean.parseBoolean(PetFriendly),Double.parseDouble(price),sDate,eDate,chores,Integer.parseInt(availability));
         //Property property = new Property(index+1,1,address,"Ottawa","K1l 3K4","ontario","Canada",3,true,false,1000.0,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),"clean",6);
-        
-        try{
-            propertyLayer.addProperty(property);
-            // Only do this if user was successfully added to database!!!!
-            request.setAttribute("Info", "Room posting Successful.");
-            
-            RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
-            
-            rd.forward(request,response);
-        }
-        catch(ValidationException e) {
-        }
+        propertyLayer.addProperty(property);
+        // Only do this if user was successfully added to database!!!!
+        request.setAttribute("Info", "Room posting Successful.");
+        RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
+        rd.forward(request,response);
         
         if (hydro != null && hydro.equals("true")){
             resourceid = 1;

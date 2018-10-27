@@ -40,7 +40,15 @@
         <div class="sidenav">
             <button class="sidenavButton" onclick="openSection('myHostProfile')">My Profile</button>
             <button class="sidenavButton" onclick="openSection('accountSettings')">Account Settings</button>
+            <button class="sidenavButton" id="manageProperty">Manage Properties</button>
         </div>
+        
+        <script type="text/javascript">
+            document.getElementById("manageProperty").onclick = function () {
+                window.location.href="roomPosting.jsp";
+            };
+        </script>
+        
         <!-- Block 1: Host information info -->
        <section id="one" class="wrapper">
             <div id="myHostProfile" class="sectionContent">

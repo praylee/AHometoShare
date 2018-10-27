@@ -40,7 +40,8 @@ Copyright @ 2018
             <!-- Left side text & image -->
                 <div>
                     <header>
-                            <h2>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h2>
+                            <!-- <h2>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h2> -->
+                            <h2>Welcome to A Home to Share!</h2>
                             <p>Create your posting just in minutes!</p>
                             <img src="images/renter_registration.jpg" alt="Renter registration image" />
                     </header>

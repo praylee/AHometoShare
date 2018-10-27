@@ -431,6 +431,9 @@
 	
 	
 /* Footer */
+        #footer {
+            clear: both;
+        }
 
 	#footer .inner {
 		border-top: 1px solid #dbdbdb;
@@ -548,38 +551,60 @@
 	}
 
 /*
-Something I'm trying from W3 Schools - Chris
+Profile style
 */ 
 .sidenav {
-    height: 100%;
-    width: 160px;
-    position: relative;
-    z-index: 1;
-    top: 0px;
-    left: 0px;
+    
+    width: 300px;
     background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
+    float: left;
+    height: 700px;
 }
 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
+.sidenavButton:hover {
+    color: #ffcc00;
+    cursor: pointer;
 }
 
 .sidenavButton {
+    width: 300px;
+    border-bottom: 2px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-left: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: none;
     color: #f1f1f1;
+    font-size: 25px;
+    text-align: left;
 }
 
 
 .sectionContent {
+    clear: right;
+    margin-left: 17%;
+    padding: 20px;
     display: none;
+    border: 5px solid red;
+    font-size: 25px;
+    /*
+    
+    */
 }
 
+.sectionContent table tr{
+    border: solid black;
+    height: 100px;
+    margin: 20px;
+}
+
+.sectionContent td {
+    width: 350px;
+}
+
+.sectionContent h1 {
+    font-size: 50px;
+    margin: 20px;
+}

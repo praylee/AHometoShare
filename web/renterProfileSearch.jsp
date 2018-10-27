@@ -21,7 +21,7 @@ Copyright @ 2018
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Renter Profile</title>
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/profile_style.css" />
         <style>
             td { padding:0 15px 0 15px; }
             table.hosttable { 
@@ -48,12 +48,15 @@ Copyright @ 2018
             <div class="inner">
                 <a href="index.html" class="logo">A Home To Share</a>
                 <nav id="nav">
-                        <a href="index.html">Home</a>
-                        <a href="index.html">How We Work</a>
-                        <a href="index.html">FAQ</a>
-                        <a href="">Log out</a>
+                    <a href="index.jsp">Home</a>
+                    <a href="index.jsp">How We Work</a>
+                    <a href="index.jsp">FAQ</a>
+                    <a href="
+                       <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
+                       style="
+                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
+                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
                 </nav>
-                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
             </div>
         </header>
 

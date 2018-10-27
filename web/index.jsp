@@ -129,7 +129,7 @@ Copyright @ 2018
                         </div>
                     <hr>
                         <div class="loginPopup-right_half">
-                            <form method="get" action="LogInView" onsubmit="" >
+                            <form method="post" action="LogInView" onsubmit="" >
                                 <div class="formRow">
                                     <h4 align="left">Login with email</h4>
                                     <!-- Modified by Chris -->

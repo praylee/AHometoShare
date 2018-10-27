@@ -29,18 +29,19 @@ public class PropertyDAOImpl implements PropertyDAO {
             + "country, family_members, smoker, pets, price, host_start_date, host_end_date, shared_chore, availability "
             + "FROM property ORDER BY property_id";
 
-    private static final String INSERT_PROPERTY = "INSERT INTO property ("
+    private static final String INSERT_PROPERTY = "INSERT INTO property ( "
             + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
-            + "pets,price, host_start_date,host_end_date,shared_chore,availability"
-            + ") VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            + "pets,price, host_start_date,host_end_date,shared_chore,availability "
+            + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  
     private static final String GET_BY_PROPERTY_ID = "SELECT "
             + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
-            + "pets,price, host_start_date,host_end_date,shared_chore,availability"
+            + "pets,price, host_start_date,host_end_date,shared_chore,availability "
             + "FROM property WHERE property_id = ?";
     private static final String DELETE_PROPERTY = "DELETE FROM property WHERE property_id = ?";
     private static final String UPDATE_PROPERTY = "UPDATE property SET "
             + "host_id = ? ,address = ?, city = ?, postal_code= ?,province= ?,country= ?,family_members= ?,smoker= ?, "
-            + "pets= ?,price= ?, host_start_date= ?,host_end_date= ?,shared_chore= ?,availability= ?"
+            + "pets= ?,price= ?, host_start_date= ?,host_end_date= ?,shared_chore= ?,availability= ? "
             + "WHERE property_id= ?";
 
     @Override
@@ -122,7 +123,7 @@ public class PropertyDAOImpl implements PropertyDAO {
                 property.setIsPetFriendly(rs.getBoolean("pets"));
                 property.setPrice(rs.getDouble("price"));
                 property.setStartDate(rs.getDate("host_start_date"));
-                property.setStartDate(rs.getDate("host_end_date"));
+                property.setEndDate(rs.getDate("host_end_date"));
                 property.setChores(rs.getString("shared_chore"));
                 property.setAvailability(rs.getInt("availability"));
             }

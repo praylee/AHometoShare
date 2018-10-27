@@ -19,7 +19,7 @@ public class Property {
     private String city;
     private String postalCode;
     private String province;
-    private String country;
+    private String cty;
     private int famMembers;
     private Boolean isSmokerFriendly;
     private Boolean isPetFriendly;
@@ -31,14 +31,14 @@ public class Property {
     
     public Property(){       
     }
-    public Property(int propertyId, int hostId, String address, String city, String postalCode, String province,String country,int famMembers,Boolean isSmokerFriendly, Boolean isPetFriendly,double price,Date startDate,Date endDate,String chores,int availability) {
+    public Property(int propertyId, int hostId, String address, String city, String postalCode, String province,String cty,int famMembers,Boolean isSmokerFriendly, Boolean isPetFriendly,double price,Date startDate,Date endDate,String chores,int availability) {
     setPropertyId(propertyId);
     setHostId(hostId);
     setAddress(address);
     setCity(city);
     setPostalCode(postalCode);
     setProvince(province);
-    setCountry(country);
+    setCountry(cty);
     setFamMembers(famMembers);
     setIsSmokerFriendly(isSmokerFriendly);
     setIsPetFriendly(isPetFriendly);
@@ -71,7 +71,7 @@ public class Property {
     }
 
     public String getCountry(){
-        return country;
+        return cty;
     }
     public int getFamMembers(){
         return famMembers;
@@ -119,8 +119,8 @@ public class Property {
     public void setProvince(String province){
         this.province=province;
     }
-    public void setCountry(String contry){
-        this.country=country;
+    public void setCountry(String cty){
+        this.cty=cty;
     }
     public void setFamMembers(int famMembers){
         this.famMembers= famMembers;

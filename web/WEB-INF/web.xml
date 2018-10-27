@@ -33,6 +33,10 @@
         <servlet-class>view.ProfileRenterView</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RoomPostingView</servlet-name>
+        <servlet-class>view.RoomPostingView</servlet-class>
+    </servlet>  
+    <servlet>
         <servlet-name>RenterProfileSearch</servlet-name>
         <servlet-class>view.RenterProfileSearch</servlet-class>
     </servlet>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>ProfileRenterView</servlet-name>
         <url-pattern>/ProfileRenterView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoomPostingView</servlet-name>
+        <url-pattern>/RoomPostingView</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RenterProfileSearch</servlet-name>

@@ -70,6 +70,11 @@ Copyright @ 2018
                                 <!-- Break: Old password, New password, Confirm new password -->
                                 <ul style="list-style:none;">
                                     <div class="password">
+                                        <li class="account_email"><h4>Email address</h4></li>
+                                        <li id="account_email"><input type="text" name="email" value="<%=session.getAttribute("email") %>" size="40" maxlength="45" readonly>
+                                    </div>
+                                    
+                                    <div class="password">
                                         <li class="old_pwd"><h4>Old password</h4></li>
                                         <li><input type="password" name="old_pwd" size="45" maxlength="45" required></li>
                                     </div>
@@ -87,13 +92,13 @@ Copyright @ 2018
                                     <!-- Break: Update password, Forgot password link -->
                                     <div class="password" id="password">
                                         <ul id="update_pwd_btn">                                                                             
-                                            <li><input type="submit" value="Update password" /></li>
+                                            <li class="update_pwd"><input type="submit" value="Update password" /></li>
                                         </ul>
                                     </div>
-                                        <br>
+<!--                                        <br>
                                     <div id="forgot_pwd_link">
                                         <a href="index.jsp">I forgot my password</a></li>
-                                    </div>
+                                    </div>-->
                                 </ul>
                             </form>
                             <!-- Break: Delete account, Delete my account button -->

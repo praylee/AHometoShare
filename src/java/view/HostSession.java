@@ -47,8 +47,8 @@ public class HostSession {
             this.session.setAttribute("userType", "host");
             this.session.setAttribute("hostId", host.getHostID());
             this.session.setAttribute("email", host.getEmail());
-            this.session.setAttribute("firstName", host.getFirstName());
-            this.session.setAttribute("lastName", host.getLastName());
+            this.session.setAttribute("firstname", host.getFirstName());
+            this.session.setAttribute("lastname", host.getLastName());
             this.session.setAttribute("phone", host.getPhone());
             this.session.setAttribute("gender", host.getGender());
             this.session.setAttribute("dateBirth", host.getDateBirth());

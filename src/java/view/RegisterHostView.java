@@ -71,7 +71,7 @@ public class RegisterHostView extends HttpServlet {
             rd.forward(request,response);
         }
         catch(ValidationException e) {
-
+            
         }
     }
 

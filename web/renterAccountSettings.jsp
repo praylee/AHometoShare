@@ -83,7 +83,7 @@ Copyright @ 2018
                                         <li class="confirm_new_pwd"><h4>Confirm new password</h4></li>
                                         <li><input type="password" name="confirm_new_pwd" size="45" maxlength="45" required></li>
                                     </div>
-
+                                    
                                     <!-- Break: Update password, Forgot password link -->
                                     <div class="password" id="password">
                                         <ul id="update_pwd_btn">                                                                             

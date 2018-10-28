@@ -114,8 +114,9 @@ public class HostDAOImpl implements HostDAO {
     public Host getHostByHostId(int hostId) {
         Host host = new Host();
         try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_ID);
-                ResultSet rs = pstmt.executeQuery();) {
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_ID);) {
+            pstmt.setInt(1, hostId); //modified by Melissa Rajala
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 host.setHostId(rs.getInt("host_id"));
                 host.setEmail(rs.getString("email"));

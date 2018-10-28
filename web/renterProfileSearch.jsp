@@ -45,25 +45,31 @@ Copyright @ 2018
                 
         <script>
             function myFilterFunction() {
-            // Declare variables
+                // Declare variables
 
-            var select = document.getElementById("select");
-            var selectedCity = select.options[select.selectedIndex].text;
+                var select = document.getElementById("select");
+                var selectedCity = select.options[select.selectedIndex].text;
             
 
-            // Loop through all list items, and hide those who don't match the search query
-            var li;
-            table = document.getElementById("property");
-            li = table.getElementsByTagName("li");
+                // Loop through all list items, and hide those who don't match the search query
+                var li;
+                table = document.getElementById("property");
+                li = table.getElementsByTagName("li");
             
-            var i;
-            for (i = 1; i<li.length; i++){
-                var text = "";
-                text = li[i].value;
-                window.alert(text); //for debugging
+                var i;
+                for (i = 1; i<li.length; i++){
+                    var text = "";
+                    text = li[i].value;
+                    window.alert(text); //for debugging
+                }
             }
-
+            
+            
+            function propertyDetails() {
+                var propertyID = document.getElementById("propID").value;
+                window.alert(propertyID);
             }
+            
         </script>        
                 
         
@@ -145,24 +151,33 @@ Copyright @ 2018
                                 <h6>There are no available listings at this time.</h6>
                                 <%
                                     } else {
+                                    int i = 0;
                                     for (Entry entry: pairList){
                                     Host host = (Host) entry.getKey();
                                     Property property = (Property) entry.getValue();
-                                    String city = property.getCity();
+                                    i++;
                             %>
-                            <tr>
-                                <td>
-                                    Property ID: <%=property.getpropertyID()%> <br>
-                                    Host ID: <%=property.getHostID()%> <br>
-                                    Host Name: <%=host.getFirstName()%> <br>
-                                    Address: <%=property.getAddress()%> <br>
-                                    City: <li value="hi"><%=city%></li> <br>
-                                    Start Date: <%=property.getStartDate()%> <br>
-                                    End Date: <%=property.getEndDate()%> <br>
-                                    Price: <%=property.getPrice()%> <br>
-                                    <input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" />
+                            <form method="post" action="RenterProfileSearchDetails">
+                            <tr> 
+                                
+                                <td id="propertyData">
+                                    <h4> Property <%=i%> </h4>
+                                    <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
+                                    Property ID: <input type="hidden" id="propID<%=i%>" name="propID" value="<%=property.getpropertyID()%>"><%=property.getpropertyID()%> <br>
+                                    Host ID: <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>"><%=property.getHostID()%> <br>
+                                    Host Name: <input type="hidden" id="hostName<%=i%>" name="hostName" value="<%=host.getFirstName()%>"><%=host.getFirstName()%> <br>
+                                    Host Email <input type="hidden" id="hostEmail<%=i%>" name="hostEmail" value="<%=host.getEmail()%>"><%=host.getEmail()%> <br>
+                                    Address: <input type="hidden" id="address<%=i%>" name="address" value="<%=property.getAddress()%>"><%=property.getAddress()%> <br>
+                                    City: <input type="hidden" id="city<%=i%>" name="city" value="<%=property.getCity()%>"><%=property.getCity()%> <br>
+                                    Start Date: <input type="hidden" id="start<%=i%>" name="start" value="<%=property.getStartDate()%>"><%=property.getStartDate()%> <br>
+                                    End Date: <input type="hidden" id="end<%=i%>" name="end" value="<%=property.getEndDate()%>"><%=property.getEndDate()%> <br>
+                                    Price: <input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
+                                    <!--input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" /-->
+                                    <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
+                                    <input id="submit" name="submit" type="submit" value="View Details" onclick="RenterProfileSearchDetails">
                                 </td>
                             </tr>
+                            </form>
                             <%}
 
                              }

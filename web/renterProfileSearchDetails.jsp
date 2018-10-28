@@ -71,7 +71,17 @@ Copyright @ 2018
 
                             <h2>Property Details</h2>
 
-                            <hr width=600px;>    
+                            <hr width=600px;>   
+                            
+                            
+                            <%
+                                Property property = (Property) request.getAttribute("property");
+                                Host host = (Host) request.getAttribute("host");
+                            %>
+                            
+                            <h6>City is: </h6><%=property.getCity()%> <br>
+                            <h6>Host is: </h6><%=host.getFirstName()%> <br>
+                            
  
                             <input type="button" value="Back to Search" onclick="window.location.href='RenterProfileSearch'" />
 

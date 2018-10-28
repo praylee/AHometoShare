@@ -12,6 +12,7 @@
 package view;
 
 import business.HostBusinessLayer;
+import business.PropertyBusinessLayer;
 import business.RenterBusinessLayer;
 import dataaccess.RenterDAOImpl;
 import java.io.IOException;
@@ -29,7 +30,12 @@ import javax.servlet.http.HttpSession;
 import transferobjects.Renter;
 
 import business.RenterBusinessLayer;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import transferobjects.Host;
+import transferobjects.Property;
 
 
 /**
@@ -37,6 +43,7 @@ import transferobjects.Host;
  * @author Chris
  * Modified by Liangliang Du: checking user is a renter or host by email 
  * Modified by Xia Sheng: add host login session
+ * Modified by Melissa Rajala: add property and host information for search capability
  */
 public class LogInView extends HttpServlet {
 
@@ -67,8 +74,6 @@ public class LogInView extends HttpServlet {
                     RenterSession session = new RenterSession(request.getSession());
                     session.setSessionAttributes(renter, true); // store renterinfo in Session
                     
-//                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
-//                    rd.forward(request,response);
                     response.sendRedirect("renterProfile.jsp");
                 }
                 else {

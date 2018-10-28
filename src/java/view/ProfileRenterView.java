@@ -11,8 +11,6 @@
  */
 package view;
 
-import business.HostBusinessLayer;
-import business.PropertyBusinessLayer;
 import business.RenterBusinessLayer;
 import java.io.IOException;
 import java.text.ParseException;
@@ -21,12 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map.Entry;
-import transferobjects.Host;
-import transferobjects.Property;
 import transferobjects.Renter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,6 +42,7 @@ public class ProfileRenterView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         
         RenterSession session = new RenterSession(request.getSession());
         boolean updateOk = true;
@@ -103,6 +96,7 @@ public class ProfileRenterView extends HttpServlet {
             updateOk = false;
             invalidReason = "Invalid price parameter.";
         }
+
 
         if(updateOk) {
             RenterBusinessLayer renterBusiness = new RenterBusinessLayer();

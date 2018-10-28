@@ -48,6 +48,10 @@
         <servlet-name>LogoutRedirect</servlet-name>
         <servlet-class>view.LogoutRedirect</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>hostAccountView</servlet-name>
+        <servlet-class>view.hostAccountView</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeView</servlet-name>
         <url-pattern>/HomeView</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>LogoutRedirect</servlet-name>
         <url-pattern>/LogoutRedirect</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>hostAccountView</servlet-name>
+        <url-pattern>/hostAccountView</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

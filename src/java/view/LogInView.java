@@ -12,6 +12,7 @@
 package view;
 
 import business.HostBusinessLayer;
+import business.PropertyBusinessLayer;
 import business.RenterBusinessLayer;
 import dataaccess.RenterDAOImpl;
 import java.io.IOException;
@@ -29,7 +30,12 @@ import javax.servlet.http.HttpSession;
 import transferobjects.Renter;
 
 import business.RenterBusinessLayer;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import transferobjects.Host;
+import transferobjects.Property;
 
 
 /**
@@ -37,6 +43,7 @@ import transferobjects.Host;
  * @author Chris
  * Modified by Liangliang Du: checking user is a renter or host by email 
  * Modified by Xia Sheng: add host login session
+ * Modified by Melissa Rajala: add property and host information for search capability
  */
 public class LogInView extends HttpServlet {
 
@@ -66,10 +73,34 @@ public class LogInView extends HttpServlet {
                     Renter renter = renterBusiness.getRenterByEmail(email);
                     
                     this.setRenterSessionAttributes(request.getSession(), renter); // store renterinfo in Session
-                    
-//                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
-//                    rd.forward(request,response);
-                    response.sendRedirect("renterProfile.jsp");
+                    PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
+            List<Property> propertiesList = propertyBusiness.getAllProperty();
+              
+              
+//            HostBusinessLayer hostBusiness = new HostBusinessLayer();
+            List<Host> hostList = hostBusiness.getAllHost();
+
+            
+            List<Map.Entry<Host,Property>> pairList = new ArrayList<Map.Entry<Host, Property>>();
+
+            for (Property property: propertiesList) {
+                int hostID = property.getHostID();
+                Host propertyOwner = null;
+                for (Host host: hostList) {
+                    if (host.getHostID() == hostID) {
+                        propertyOwner = host;
+                        break;
+                    }
+                }
+                Map.Entry<Host, Property> entry = new AbstractMap.SimpleEntry<Host, Property>(propertyOwner, property);
+                pairList.add(entry);
+                
+            }
+
+            request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
+                    RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  //go to renterProfile if login successful
+                    rd.forward(request,response);
+//                    response.sendRedirect("renterProfile.jsp"); //I broke the log out if this is not in
                 }
                 else {
                     //here you can pass error messages back to login screen

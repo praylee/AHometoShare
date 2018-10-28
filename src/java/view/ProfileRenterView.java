@@ -50,6 +50,7 @@ public class ProfileRenterView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         
         HttpSession session = request.getSession();
         boolean updateOk = true;
@@ -118,6 +119,7 @@ public class ProfileRenterView extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  // send error message
             rd.forward(request,response);
         }    
+
     }
     
     private void setRenterSessionAttributes(HttpSession session, Renter renter) {

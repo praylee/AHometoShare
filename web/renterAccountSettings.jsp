@@ -11,7 +11,7 @@ Copyright @ 2018
 --%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!--<!DOCTYPE html>-->
+<!DOCTYPE html>
 <html>
     <head>
         <title>Account Settings</title>
@@ -43,7 +43,6 @@ Copyright @ 2018
                 <li class="aside aside-1"></li>
 
                 <!--Pane 2: "My Account" - menu buttons-->
-                
                 <li class="aside aside-2">
                     <div class="btn-group-vertical">
                         <ul id="horizontal-list">
@@ -51,7 +50,7 @@ Copyright @ 2018
                             <li><h3>Hello <%out.print(session.getAttribute("firstName"));%>!</h3><li>
                         </ul >
                         <ul style="list-style:none;">
-                            <li id="menu1"><input type="button" value="My Profile" class="" /></li>
+                            <li id="menu1"><input type="button" value="My Profile" class="" onclick="window.location.href='renterProfile.jsp'" /></li>
                             <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='renterAccountSettings.jsp'" /></li>
                             <li id="menu3"><input type="button" value="Search Host Listings" onclick="window.location.href='ProfileRenterView'" /></li>
                         </ul>

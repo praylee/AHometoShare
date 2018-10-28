@@ -53,7 +53,7 @@ public class HostSession {
             this.session.setAttribute("gender", host.getGender());
             this.session.setAttribute("dateBirth", host.getDateBirth());
             this.session.setAttribute("isRetired", host.getRetired());
-            this.session.setAttribute("hasPets", host.getPets());
+            this.session.setAttribute("isPets", host.getPets());
             this.session.setAttribute("isSmoker", host.getSmoker());
             this.session.setAttribute("referralSource", host.getReferralSource());                                  
         }

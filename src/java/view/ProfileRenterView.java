@@ -44,7 +44,7 @@ public class ProfileRenterView extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         
-        HttpSession session = request.getSession();
+        RenterSession session = new RenterSession(request.getSession());
         boolean updateOk = true;
         String invalidReason = null;
 
@@ -104,41 +104,14 @@ public class ProfileRenterView extends HttpServlet {
                     isStudent, isEmployed, isSmoker, sqlStartDate, sqlEndDate, lowPrice, highPrice, Integer.parseInt(session.getAttribute("renterId").toString()));
 
             Renter renter = renterBusiness.getRenterByEmail(session.getAttribute("email").toString());
-            this.setRenterSessionAttributes(session, renter);
+            session.setSessionAttributes(renter, true);
+            session.removeAttribute("invalidReason");
             response.sendRedirect("renterProfile.jsp");
         }
         else {
-            request.setAttribute("invalidReason", invalidReason);
-            RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  // send error message
-            rd.forward(request,response);
-        }  
-        
-        
-
-    }
-    
-    private void setRenterSessionAttributes(HttpSession session, Renter renter) {
-        session.setAttribute("isLoggedIn", "true");
-        session.setAttribute("userType", "renter");
-        session.setAttribute("renterId", renter.getRenterID());
-        session.setAttribute("email", renter.getEmail());
-        session.setAttribute("firstName", renter.getFirstName());
-        session.setAttribute("lastName", renter.getLastName());
-        session.setAttribute("phone", renter.getPhone());
-        session.setAttribute("gender", renter.getGender());
-        session.setAttribute("dateBirth", renter.getDateBirth());
-        session.setAttribute("isStudent", renter.getIsStudent());
-        session.setAttribute("isEmployed", renter.getIsEmployed());
-        session.setAttribute("isSmoker", renter.getIsSmoker());
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        session.setAttribute("startDate", formatter.format(renter.getStartDate()));
-        session.setAttribute("endDate", formatter.format(renter.getEndDate()));
-        session.setAttribute("lowPrice", renter.getLowPrice());
-        session.setAttribute("highPrice", renter.getHighPrice());
-        session.setAttribute("referralSource", renter.getReferralSource());
-        session.setAttribute("hasCRCheck", renter.getHasCRCheck());
-
+            session.setAttribute("invalidReason", invalidReason);
+            response.sendRedirect("renterProfile.jsp");
+        }    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -71,8 +71,8 @@ public class LogInView extends HttpServlet {
         if(emailIsRenter!= null && emailIsHost == null){ //user is a Renter
                 if(renterBusiness.passwordCorrect(email, password)) {
                     Renter renter = renterBusiness.getRenterByEmail(email);
-                    
-                    this.setRenterSessionAttributes(request.getSession(), renter); // store renterinfo in Session
+                    RenterSession session = new RenterSession(request.getSession());
+                    session.setSessionAttributes(renter, true); // store renterinfo in Session
                     
                     response.sendRedirect("renterProfile.jsp");
                 }
@@ -95,7 +95,8 @@ public class LogInView extends HttpServlet {
 //                    request.setAttribute("subInfo","This will be information about you.");
 //                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to hostProfile if login successful
 //                    rd.forward(request,response);
-                this.setHostSessionAttributes(request.getSession(), host); // store host info in Session
+                HostSession session = new HostSession(request.getSession());
+                session.setSessionAttributes(host, true); // store host info in Session
                 response.sendRedirect("hostProfile.jsp");
                 }
                 else {
@@ -118,43 +119,6 @@ public class LogInView extends HttpServlet {
         }
         
            
-    }
-    
-    private void setRenterSessionAttributes(HttpSession session, Renter renter) {
-        session.setAttribute("isLoggedIn", "true");
-        session.setAttribute("userType", "renter");
-        session.setAttribute("renterId", renter.getRenterID());
-        session.setAttribute("email", renter.getEmail());
-        session.setAttribute("firstName", renter.getFirstName());
-        session.setAttribute("lastName", renter.getLastName());
-        session.setAttribute("phone", renter.getPhone());
-        session.setAttribute("gender", renter.getGender());
-        session.setAttribute("dateBirth", renter.getDateBirth());
-        session.setAttribute("isStudent", renter.getIsStudent());
-        session.setAttribute("isEmployed", renter.getIsEmployed());
-        session.setAttribute("isSmoker", renter.getIsSmoker());
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        session.setAttribute("startDate", formatter.format(renter.getStartDate()));
-        session.setAttribute("endDate", formatter.format(renter.getEndDate()));
-        session.setAttribute("lowPrice", renter.getLowPrice());
-        session.setAttribute("highPrice", renter.getHighPrice());
-        session.setAttribute("referralSource", renter.getReferralSource());
-        session.setAttribute("hasCRCheck", renter.getHasCRCheck());
-    }
-    private void setHostSessionAttributes(HttpSession session, Host host) {
-
-        session.setAttribute("hostId", host.getHostID());
-        session.setAttribute("email", host.getEmail());
-        session.setAttribute("firstname", host.getFirstName());
-        session.setAttribute("lastname", host.getLastName());
-        session.setAttribute("phone", host.getPhone());
-        session.setAttribute("gender", host.getGender());
-        session.setAttribute("dateBirth", host.getDateBirth());
-        session.setAttribute("isRetired", host.getRetired());
-        session.setAttribute("isPets", host.getPets());
-        session.setAttribute("isSmoker", host.getSmoker());
-        session.setAttribute("referralSource", host.getReferralSource());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

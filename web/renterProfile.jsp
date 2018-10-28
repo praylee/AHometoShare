@@ -31,7 +31,7 @@ Copyright @ 2018
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
                        <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
-                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
+                    <button id="logoutBtn" class="unstyled-button" onclick="window.location.href='LogoutRedirect'" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
                 </nav>
             </div>
         </header>
@@ -52,7 +52,7 @@ Copyright @ 2018
                     <ul style="list-style:none;">
                         <li id="menu1"><input type="button" value="My Profile" class="" onclick="window.location.href='renterProfile.jsp'"/></li>
                         <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='renterAccountSettings.jsp'" /></li>
-                        <li id="menu3"><input type="button" value="Search Host Listings" onclick="window.location.href='RenterProfileSearch'" /></li>
+                        <li id="menu3"><input type="button" value="Search Host Listings" onclick="window.location.href='renterProfileSearch.jsp'" /></li>
                     </ul>
                 </div>
             </li>
@@ -166,7 +166,9 @@ Copyright @ 2018
                                 <li><input type="text" name="highPrice" id="highPrice" 
                                            value="<%=session.getAttribute("highPrice")%>" maxlength="10" pattern="[0-9\.]+" required /></li>
                             </div>
-
+                            <!--
+                            <span id="entryError"><%out.print(session.getAttribute("invalidReason") == null ? "" : session.getAttribute("invalidReason"));%></span>
+                            -->
                         <!-- Break: Save button, Cancel button -->
                             <div id="save_cancel_btn">
                                 <button id="save_btn" type="submit">Save changes</button>

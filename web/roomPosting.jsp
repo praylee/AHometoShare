@@ -22,30 +22,62 @@ Copyright @ 2018
         
         <body class="subpage">
         <!-- Header -->
-            <header id="header">
-                <div class="inner">
-                    <a href="index.html" class="logo">A Home To Share</a>
-                    <nav id="nav">
-                        <a href="index.html">Home</a>
-                        <a href="index.html">How We Work</a>
-                        <a href="index.html">FAQ</a>
-                        <a href="index.html">Log out</a>
-                    </nav>
-                </div>
+        <header id="header">
+            <div class="inner">
+                <a href="index.html" class="logo">A Home To Share</a>
+                <nav id="nav">
+                    <a href="index.jsp">Home</a>
+                    <a href="index.jsp">How We Work</a>
+                    <a href="index.jsp">FAQ</a>
+                    <a href="
+                       <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
+                       style="
+                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
+                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
+                </nav>
+            </div>
+        </header>
             </header>
 
 			
         <!-- Main -->
+       
+          	
+                <!--Main Frame-->
+            <div class="wrapper">
+            
+                <!--Pane 1: a placeholder-->    
+
         <section id="main_section" class="wrapper">
             <!-- Left side text & image -->
-                <div>
+                <li class="aside aside-2">
+                    <div class="btn-group-vertical">
+                        <ul id="horizontal-list">
+                            <li><hr class="welcome_block" align="left"></li>
+                            <li><h3>Hello <%out.print(session.getAttribute("firstname"));%>!</h3><li>
+                        </ul >
+                        <ul style="list-style:none;">
+                            <li id="menu1"><input type="button" value="My Profile" class="" onclick="window.location.href='hostProfile.jsp'" /></li>
+                            <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='hostAccountSettings.jsp'" /></li>
+                            <li id="menu3"><input type="button" value="Manage Properties" onclick="window.location.href='roomPosting.jsp'" /></li>
+                        </ul>
+                    </div>
+                </li>
+            <li class="aside aside-1">
+                    <div>
                     <header>
-                            <h2>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h2>
+                            <!-- <h2>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h2> -->
+                            <h3>Welcome to A Home to Share!</h3>
                             <p>Create your posting just in minutes!</p>
                             <img src="images/renter_registration.jpg" alt="Renter registration image" />
                     </header>
                 </div>
-            
+                           
+                </li>
+                <!--Pane 2: "My Account" - menu buttons-->
+                
+                
+        <li class="aside aside-3">
             <!-- Form -->
                 <div>
                     <form method="get" action="RoomPostingView" onsubmit="return checkForm(this)" >
@@ -179,6 +211,7 @@ Copyright @ 2018
 
                     </form>
                 </div>
+        </li>
         </section>
         
         <!-- Footer -->

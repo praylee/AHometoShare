@@ -52,9 +52,9 @@ public class HostDAOImpl implements HostDAO {
             + "phone = ?, gender= ?, date_of_birth= ?, retired= ?, "
             + "pets= ?,smoker= ?,referral_source= ?"
             + "WHERE host_id= ?";
-    private static final String UPDATE_HOST_PASSWORD = "UPDATE host SET "
-            + "password= ? "
-            + "WHERE id= ?";
+    private static final String UPDATE_HOST_PASSWORD = "UPDATE host SET " //Modified by Liangliang
+            + "password= AES_ENCRYPT(?,'secret') "
+            + "WHERE host_id = ?";
     
     private static final String PASSWORD_CORRECT = "SELECT host_id FROM host WHERE email = ? AND password = AES_ENCRYPT(?,'secret')";      //Validate encrypted password - Bin
 
@@ -242,7 +242,7 @@ public class HostDAOImpl implements HostDAO {
             Logger.getLogger(HostDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+   
     @Override
     public boolean passwordCorrect(String email, String password) { // added by Bin
         try (Connection con = new DataSource().createConnection();

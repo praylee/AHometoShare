@@ -31,7 +31,7 @@ Copyright @ 2018
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
                        <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
-                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
+                    <button id="logoutBtn" class="unstyled-button" onclick="window.location.href='LogoutRedirect'" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
                 </nav>
             </div>
         </header>
@@ -66,35 +66,36 @@ Copyright @ 2018
                             <h2>Change password</h2>
 
                             <hr width=600px;>    
+                            <form method="get" action="ProfileRenterEditView" onsubmit="return checkForm(this)" >
+                                <!-- Break: Old password, New password, Confirm new password -->
+                                <ul style="list-style:none;">
+                                    <div class="password">
+                                        <li class="old_pwd"><h4>Old password</h4></li>
+                                        <li><input type="password" name="old_pwd" size="45" maxlength="45" required></li>
+                                    </div>
 
-                            <!-- Break: Old password, New password, Confirm new password -->
-                            <ul style="list-style:none;">
-                            <div class="password">
-                                <li class="old_pwd"><h4>Old password</h4></li>
-                                <li><input type="password" name="old_pwd" size="45" maxlength="45" required></li>
-                            </div>
+                                    <div class="password">
+                                        <li class="new_pwd"><h4>New password</h4></li>
+                                        <li><input type="password" name="new_pwd" size="45" maxlength="45" required></li>
+                                    </div>
 
-                            <div class="password">
-                                <li class="new_pwd"><h4>New password</h4></li>
-                                <li><input type="password" name="new_pwd" size="45" maxlength="45" required></li>
-                            </div>
+                                    <div class="password">
+                                        <li class="confirm_new_pwd"><h4>Confirm new password</h4></li>
+                                        <li><input type="password" name="confirm_new_pwd" size="45" maxlength="45" required></li>
+                                    </div>
 
-                            <div class="password">
-                                <li class="confirm_new_pwd"><h4>Confirm new password</h4></li>
-                                <li><input type="password" name="confirm_new_pwd" size="45" maxlength="45" required></li>
-                            </div>
-
-                            <!-- Break: Update password, Forgot password link -->
-                                <div class="password" id="password">
-                                    <ul id="update_pwd_btn">                                                                             
-                                        <li><input type="button" value="Update password" /></li>
-                                    </ul>
-                                </div>
-                                    <br>
-                                <div id="forgot_pwd_link">
-                                    <a href="index.jsp">I forgot my password</a></li>
-                                </div>
-
+                                    <!-- Break: Update password, Forgot password link -->
+                                    <div class="password" id="password">
+                                        <ul id="update_pwd_btn">                                                                             
+                                            <li><input type="submit" value="Update password" /></li>
+                                        </ul>
+                                    </div>
+                                        <br>
+                                    <div id="forgot_pwd_link">
+                                        <a href="index.jsp">I forgot my password</a></li>
+                                    </div>
+                                </ul>
+                            </form>
                             <!-- Break: Delete account, Delete my account button -->
                             <h2 class="delete_account">Delete account</h2>
 

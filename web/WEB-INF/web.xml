@@ -35,7 +35,7 @@
     <servlet>
         <servlet-name>RoomPostingView</servlet-name>
         <servlet-class>view.RoomPostingView</servlet-class>
-    </servlet>  
+    </servlet>
     <servlet>
         <servlet-name>RenterProfileSearch</servlet-name>
         <servlet-class>view.RenterProfileSearch</servlet-class>
@@ -43,6 +43,10 @@
     <servlet>
         <servlet-name>ProfileRenterEditView</servlet-name>
         <servlet-class>view.ProfileRenterEditView</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutRedirect</servlet-name>
+        <servlet-class>view.LogoutRedirect</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeView</servlet-name>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ProfileRenterEditView</servlet-name>
         <url-pattern>/ProfileRenterEditView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutRedirect</servlet-name>
+        <url-pattern>/LogoutRedirect</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

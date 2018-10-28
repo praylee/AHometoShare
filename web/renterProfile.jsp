@@ -31,7 +31,7 @@ Copyright @ 2018
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
                        <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
-                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
+                    <button id="logoutBtn" class="unstyled-button" onclick="window.location.href='LogoutRedirect'" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
                 </nav>
             </div>
         </header>
@@ -166,7 +166,9 @@ Copyright @ 2018
                                 <li><input type="text" name="highPrice" id="highPrice" 
                                            value="<%=session.getAttribute("highPrice")%>" maxlength="10" pattern="[0-9\.]+" required /></li>
                             </div>
-
+                            <!--
+                            <span id="entryError"><%out.print(session.getAttribute("invalidReason") == null ? "" : session.getAttribute("invalidReason"));%></span>
+                            -->
                         <!-- Break: Save button, Cancel button -->
                             <div id="save_cancel_btn">
                                 <button id="save_btn" type="submit">Save changes</button>

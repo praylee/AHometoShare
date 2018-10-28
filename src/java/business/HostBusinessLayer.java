@@ -58,10 +58,14 @@ public class HostBusinessLayer {
     public void updateHost(String firstName, String lastName,String phone,int gender,String dateBirth, Boolean retired,Boolean pets,Boolean smoker,String referralSource,int hostId){
         hostDAO.updateHost(firstName, lastName, phone, gender, dateBirth, retired, pets, smoker,referralSource, hostId);
     }
+    
+    public void updateHost(String passWord, int hostId){
+        hostDAO.updateHost(passWord, hostId);
+    }
     public boolean passwordCorrect(String email, String password){
         return hostDAO.passwordCorrect(email, password);
     }
-
+    
     private void validateFields(Host host) throws ValidationException {
         // if email doesn't match [\w\d\._\-!#$%&'*+/=?^_`{|}~]+@[\w\d\.\[\]]+  then throw exception
         // if password doesn't match whatever we need it to     then throw exception

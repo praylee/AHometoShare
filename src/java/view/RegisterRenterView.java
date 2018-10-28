@@ -81,7 +81,7 @@ public class RegisterRenterView extends HttpServlet {
 //            else{//if email is already existed, need to change a new one
 //                reminder = "Email is alrady registered.\nPlease use another Email to register or login with this Email.";
 
-        
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

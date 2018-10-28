@@ -3,6 +3,7 @@ File: index.html
 Description: Home page for A Home to Share website
 Create: Sept.30,2018
 Author: Chris Labelle
+Modified By: Melissa Rajala - Search Host Property listings
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -10,6 +11,12 @@ Project: A Home to Share
 Copyright @ 2018
 --%>
 
+
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="transferobjects.Host"%>
+<%@page import="transferobjects.Property"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -46,7 +53,8 @@ Copyright @ 2018
         <section class="sidenav">
             <button class="sidenavButton" onclick="openSection('myProfile')">My Profile</button>
             <button class="sidenavButton" onclick="openSection('accountSettings')">Account Settings</button>
-            <button class="sidenavButton" onclick="window.location.href='ProfileRenterView'">Search Host Listings</button>
+            <button class="sidenavButton" onclick="openSection('searchProperties')">Search Host Listings</button>
+            <!--<button class="sidenavButton" onclick="window.location.href='ProfileRenterView'">Search Host Listings</button>-->
         </section>   
         <section id="myProfile" class="sectionContent">
                 <h1>My Profile Details</h1>
@@ -145,6 +153,113 @@ Copyright @ 2018
         <section id="accountSettings" class="sectionContent">
             <span>These are your account settings</span>
         </section>
+                            
+        <!--MELISSA TEST -->
+        
+        <script>
+            function myFilterFunction() {
+            // Declare variables
+
+            var select = document.getElementById("select");
+            var selectedCity = select.options[select.selectedIndex].text;
+            
+
+            // Loop through all list items, and hide those who don't match the search query
+            var li;
+            table = document.getElementById("property");
+            li = table.getElementsByTagName("li");
+            
+            var i;
+            for (i = 1; i<li.length; i++){
+                var text = "";
+                text = li[i].value;
+                window.alert(text); //for debugging
+            }
+
+            }
+        </script>
+        
+        <section id="searchProperties" class="sectionContent">
+            <span>SEARCH HERE PLACEHOLDER</span>
+            <div class="inner">
+                    <div class="flex flex-3">
+                        <form method="get" action="RenterProfileSearch" >
+                            <table class="filtertable">
+                                <tr>
+                                    <th>Filter by location</th>
+                                    <th>Sort by price</th> 
+                                    <th>Filter by requirements</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select id="select">
+                                            <option name="mississauga" value="mississauga">Mississauga</option>
+                                            <option name="hamilton" value="hamilton">Hamilton</option>
+                                            <option name="peel" value="peel">Peel Region</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option value="low">Low to High</option>
+                                            <option value="high">High to Low</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
+                                        <input type="checkbox" name="req" value="parking"> Parking <br>
+                                        <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
+                                    </td>
+                                    <td>
+                                        <input id="filter" type="button" value="Filter" onclick="myFilterFunction();" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>         
+                       
+                    </div>
+            </div>
+            
+            <div class="inner">
+                    <div class="flex flex-3">
+                        <table class="hosttable" id="property">
+                            <%
+                                List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
+                                if (pairList.isEmpty()) { %>
+                                <h6>There are no available listings at this time.</h6>
+                                <%
+                                    } else {
+                                    for (Entry entry: pairList){
+                                    Host host = (Host) entry.getKey();
+                                    Property property = (Property) entry.getValue();
+                                    String city = property.getCity();
+                            %>
+                            <tr>
+                                <td>
+                                    Property ID: <%=property.getpropertyID()%> <br>
+                                    Host ID: <%=property.getHostID()%> <br>
+                                    Host Name: <%=host.getFirstName()%> <br>
+                                    Address: <%=property.getAddress()%> <br>
+                                    City: <li value="hi"><%=city%></li> <br>
+                                    Start Date: <%=property.getStartDate()%> <br>
+                                    End Date: <%=property.getEndDate()%> <br>
+                                    Price: <%=property.getPrice()%> <br>
+                                    <!--button onclick="window.location.href='RenterProfileSearch'">View Details</button-->
+                                </td>
+                            </tr>
+                            <%}
+
+                             }
+                            %>                         
+                        </table>
+                    </div>
+            </div>
+            
+            
+        </section>
+        
+        <!--MELISSA TEST -->
+                            
+                            
                     
         <script>
             function openSection(sectionName) {
@@ -152,10 +267,17 @@ Copyright @ 2018
                 if(sectionName.localeCompare("myProfile") === 0) {
                     sectionContent[0].style.display = "block";
                     sectionContent[1].style.display = "none";
+                    sectionContent[2].style.display = "none";
+                } 
+                else if (sectionName.localeCompare("accountSettings") === 0) {
+                    sectionContent[0].style.display = "none";
+                    sectionContent[1].style.display = "block";
+                    sectionContent[2].style.display = "none";
                 }
                 else {
                     sectionContent[0].style.display = "none";
-                    sectionContent[1].style.display = "block";  
+                    sectionContent[1].style.display = "none";
+                    sectionContent[2].style.display = "block";  
                 }
             }
         </script>

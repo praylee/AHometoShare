@@ -48,7 +48,7 @@ public class ProfileRenterView extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-            System.out.println("Made it to Renter Profile Search!");
+            /*System.out.println("Made it to Renter Profile!");
         
             PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
             List<Property> propertiesList = propertyBusiness.getAllProperty();
@@ -79,7 +79,9 @@ public class ProfileRenterView extends HttpServlet {
             request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
 
             RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearch.jsp"); //for now go right here
-            rd.forward(request,response);     
+            rd.forward(request,response); */ 
+            
+            //COMMENTED OUT ABOVE AS SEARCH LISTINGS IS ON PROFILE PAGE AND NOT ITS OWN PAGE
     }
     
     private void setRenterSessionAttributes(HttpSession session, Renter renter) {

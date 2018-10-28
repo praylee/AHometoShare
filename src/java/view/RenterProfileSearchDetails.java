@@ -11,12 +11,16 @@
  */
 package view;
 
+import business.HostBusinessLayer;
+import business.PropertyBusinessLayer;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import transferobjects.Host;
+import transferobjects.Property;
 
 /**
  *
@@ -37,10 +41,9 @@ public class RenterProfileSearchDetails extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("Made it to Host Property Details (Renter Searching)!");
-            
-        
-        RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearchDetails.jsp"); 
-        rd.forward(request,response);
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,6 +60,8 @@ public class RenterProfileSearchDetails extends HttpServlet {
             throws ServletException, IOException {
        
         processRequest(request, response);
+
+
        
         
     }
@@ -72,7 +77,36 @@ public class RenterProfileSearchDetails extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+
+//                String valOfI = request.getParameter("valOfI");
+        int propertyID = Integer.parseInt(request.getParameter("propID"));
+        int hostID = Integer.parseInt(request.getParameter("hostID"));
+
+        System.out.println("Host id is: " + hostID);
+        System.out.println("Property id is: " + propertyID);
+//        int inthostID = 0;
+//        try {
+//            inthostID = Integer.parseInt(hostID);
+//        } catch (NumberFormatException e) {
+//            e.printStackTrace();
+//        }
+        PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
+        Property property = propertyBusiness.getPropertyById(propertyID);
+
+        
+        HostBusinessLayer hostBusiness = new HostBusinessLayer();
+        Host host = hostBusiness.getHostByHostId(hostID); 
+//        Host host = hostBusiness.getHostByEmail(hostEmail);
+        
+//        System.out.println(host.getFirstName());
+        
+        request.setAttribute("property", property); //send selected property
+        request.setAttribute("host", host); //send host of property
+            
+        
+        RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearchDetails.jsp"); 
+        rd.forward(request,response); 
     }
 
     /**

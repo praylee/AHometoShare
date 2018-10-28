@@ -103,13 +103,13 @@ public class PropertyDAOImpl implements PropertyDAO {
     }
 
     @Override
-    public Property getPropertyByPropertyId(int propertyId) {
+    public Property getPropertyByPropertyId(int propertyId) { 
 
         Property property = new Property();
         try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(GET_BY_PROPERTY_ID);
-                ResultSet rs = pstmt.executeQuery();) {
-            pstmt.setInt(1, propertyId);
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_PROPERTY_ID);) {
+            pstmt.setInt(1, propertyId); //modified by Melissa Rajala
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 property.setPropertyId(rs.getInt("property_id"));
                 property.setHostId(rs.getInt("host_id"));

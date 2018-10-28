@@ -37,34 +37,42 @@ public class ProfileRenterEditView extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        boolean updateOk = true;
+        String invalidReason = null;
+        HttpSession session = request.getSession();
+        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
+        Renter renter = renterBusiness.getRenterByEmail(session.getAttribute("email").toString());
+        String ogPassword = request.getParameter("old_pwd");
+        String newPassword = request.getParameter("new_pwd");
+        String confNewPassword = request.getParameter("confirm_new_pwd");
         
-            
+        System.out.print(renterBusiness.passwordCorrect(renter.getEmail(), ogPassword));
+        
+        if(!renterBusiness.passwordCorrect(renter.getEmail(), ogPassword)) {
+            System.out.print(renterBusiness.passwordCorrect(renter.getEmail(), ogPassword));
+            updateOk = false;
+            invalidReason = "Original password not correct. Changes rolled back.";
+        }
+        
+        if(!newPassword.equals(confNewPassword)) {
+            updateOk = false;
+            invalidReason = "New password does not match confirmed entry.";
+        }
+        
+        if(updateOk) {
+            renterBusiness.updateRenter(newPassword, Integer.parseInt(session.getAttribute("renterId").toString()));
+
+            try{session.removeAttribute("invalidReason");}
+            catch(NullPointerException e){}
+            response.sendRedirect("renterProfile.jsp");
+        }
+        else {
+            session.setAttribute("invalidReason", invalidReason);
+            response.sendRedirect("renterAccountSettings.jsp");
+        }     
         
     }
     
-    private void setRenterSessionAttributes(HttpSession session, Renter renter) {
-        session.setAttribute("isLoggedIn", "true");
-        session.setAttribute("userType", "renter");
-        session.setAttribute("renterId", renter.getRenterID());
-        session.setAttribute("email", renter.getEmail());
-        session.setAttribute("firstName", renter.getFirstName());
-        session.setAttribute("lastName", renter.getLastName());
-        session.setAttribute("phone", renter.getPhone());
-        session.setAttribute("gender", renter.getGender());
-        session.setAttribute("dateBirth", renter.getDateBirth());
-        session.setAttribute("isStudent", renter.getIsStudent());
-        session.setAttribute("isEmployed", renter.getIsEmployed());
-        session.setAttribute("isSmoker", renter.getIsSmoker());
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        session.setAttribute("startDate", formatter.format(renter.getStartDate()));
-        session.setAttribute("endDate", formatter.format(renter.getEndDate()));
-        session.setAttribute("lowPrice", renter.getLowPrice());
-        session.setAttribute("highPrice", renter.getHighPrice());
-        session.setAttribute("referralSource", renter.getReferralSource());
-        session.setAttribute("hasCRCheck", renter.getHasCRCheck());
-
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

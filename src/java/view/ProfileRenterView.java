@@ -105,7 +105,8 @@ public class ProfileRenterView extends HttpServlet {
 
             Renter renter = renterBusiness.getRenterByEmail(session.getAttribute("email").toString());
             session.setSessionAttributes(renter, true);
-            session.removeAttribute("invalidReason");
+            try{session.removeAttribute("invalidReason");}
+            catch(NullPointerException e){}
             response.sendRedirect("renterProfile.jsp");
         }
         else {

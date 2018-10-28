@@ -68,7 +68,7 @@ public class RenterDAOImpl implements RenterDAO {
             + "WHERE id= ?";
     
     private static final String UPDATE_RENTER_PASSWORD = "UPDATE renter SET "
-            + "password= ? "
+            + "password= AES_ENCRYPT(?,'secret') "
             + "WHERE id= ?";
     
     private static final String GET_RENTER_BY_EMAIL = "SELECT "

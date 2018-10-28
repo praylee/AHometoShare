@@ -163,8 +163,8 @@ Copyright @ 2018
                                 <td id="propertyData">
                                     <h4> Property <%=i%> </h4>
                                     <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
-                                    Property ID: <input type="hidden" id="propID<%=i%>" name="propID" value="<%=property.getpropertyID()%>"><%=property.getpropertyID()%> <br>
-                                    Host ID: <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>"><%=property.getHostID()%> <br>
+                                    <input type="hidden" id="propID<%=i%>" name="propID" value="<%=property.getpropertyID()%>">
+                                    <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">
                                     Host Name: <input type="hidden" id="hostName<%=i%>" name="hostName" value="<%=host.getFirstName()%>"><%=host.getFirstName()%> <br>
                                     Host Email <input type="hidden" id="hostEmail<%=i%>" name="hostEmail" value="<%=host.getEmail()%>"><%=host.getEmail()%> <br>
                                     Address: <input type="hidden" id="address<%=i%>" name="address" value="<%=property.getAddress()%>"><%=property.getAddress()%> <br>

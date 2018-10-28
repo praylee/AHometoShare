@@ -1,5 +1,5 @@
 <%-- 
-File: renterLoginSettings.jsp
+File: hostLoginSettings.jsp
 Description: A page for logged-in renters to change password
 Create: Oct.26,2018
 Author: Zhan Shen
@@ -11,7 +11,7 @@ Copyright @ 2018
 --%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!--<!DOCTYPE html>-->
+<!DOCTYPE html>
 <html>
     <head>
         <title>Account Settings</title>
@@ -59,95 +59,97 @@ Copyright @ 2018
                 </li>    
 
 
-                <!--Pane 3: "My Account" content container-->
-                    <!--Pane 3: "My Account" - Account Settings contents-->
-                    <li class="aside aside-3">
-                         
+                <!--Pane 3: "My Account" - Account Settings contents-->
+                    <li class="aside aside-3">  
                         <div class="login-settings-content">
-                          
 
                             <h2>Change password</h2>
-                            <hr width=600px;>                                                    
-                            <!-- Break: Old password, New password, Confirm new password  <ul style="list-style:none;">-->
                             
-                            <div>
-                                <form method="post" action="hostAccountView" onsubmit="" >
-                                    <div class="formRow">            
-                                        <h4 align="left">Your Email: </h4>
-                                        <input type="hidden" name="email" value="<%=session.getAttribute("email") %>"><label for="email2" name="email2"><%=session.getAttribute("email") %></label>
+                            <hr width=600px;>                                                    
+
+                            <form method="post" action="hostAccountView" onsubmit="" >
+                                <!-- Break: Old password, New password, Confirm new password  <ul style="list-style:none;">-->
+                                <ul style="list-style:none;">
+                                    <div class="password">
+                                        <li class="account_email"><h4>Email address</h4></li>
+                                        <li id="account_email"><input type="text" name="email" value="<%=session.getAttribute("email") %>" size="40" maxlength="45" readonly>
+<!--                                            <label for="email2" name="email2"><%=session.getAttribute("email") %></label>-->
                                     </div>
+
                                     <div class="password">
                                         <li class="old_pwd"><h4>Old password</h4></li>
                                         <li><input type="password" name="old_pwd" size="45" maxlength="45" ></li>                            
-                                        <li><h5 color="red"><%                                   
-                                        if(request.getAttribute("old_pwd_info") != null) {
-                                            out.print(request.getAttribute("old_pwd_info"));
-                                        }
-                                    %> </h5><li>
-
+                                        <li>
+                                            <h5 color="red">
+                                                <%                                   
+                                                    if(request.getAttribute("old_pwd_info") != null) {
+                                                        out.print(request.getAttribute("old_pwd_info"));
+                                                    }
+                                                %> 
+                                            </h5>
+                                        </li>
                                     </div>
 
                                     <div class="password">
                                         <li class="new_pwd"><h4>New password</h4></li>
                                         <li><input type="password" name="new_pwd" size="45" maxlength="45" ></li>
-                                        <li><h5 color="red"><%                                   
-                                        if(request.getAttribute("new_pwd_info") != null) {
-                                            out.print(request.getAttribute("new_pwd_info"));
-                                        }
-                                    %> </h5><li>
-
+                                        <li>
+                                            <h5 color="red">
+                                                <%                                   
+                                                    if(request.getAttribute("new_pwd_info") != null) {
+                                                        out.print(request.getAttribute("new_pwd_info"));
+                                                    }
+                                                %> 
+                                            </h5>
+                                        </li>
                                     </div>
 
                                     <div class="password">
                                         <li class="confirm_new_pwd"><h4>Confirm new password</h4></li>
                                         <li><input type="password" name="confirm_new_pwd" size="45" maxlength="45"></li>
-                                        <li><h5 color="red"><%                                   
-                                        if(request.getAttribute("confirm_pwd_info") != null) {
-                                            out.print(request.getAttribute("confirm_pwd_info"));
-                                        }
-                                    %> </h5><li>
+                                        <li>
+                                            <h5 color="red">
+                                                <%                                   
+                                                    if(request.getAttribute("confirm_pwd_info") != null) {
+                                                        out.print(request.getAttribute("confirm_pwd_info"));
+                                                    }
+                                                %> 
+                                            </h5>
+                                        </li>
                                     </div>
+
                                     <div class="password" id="password">
-                                            <ul id="update_pwd_btn">                                                                             
-                                                <li><input type="submit" name="update" value="Update password" /></li>
-                                                <li><h5 color="red"><%                                   
-                                        if(request.getAttribute("update_info") != null) {
-                                            out.print(request.getAttribute("update_info"));
-                                        }
-                                    %> </h5></li>
-                                            </ul>
-                                    </div>  
-                                    <!-- Break: Delete account, Delete my account button -->
-                                       <h2 class="delete_account">Delete account</h2>
+                                        <ul id="update_pwd_btn">
+                                            <li class="update_pwd"><input type="submit" name="update" value="Update password" /></li>
+                                            <li>
+                                                <h5 color="red">
+                                                    <%                                   
+                                                        if(request.getAttribute("update_info") != null) {
+                                                            out.print(request.getAttribute("update_info"));
+                                                        }
+                                                    %> 
+                                                </h5>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </ul>
+                            </form> 
+                                                
+                            <!-- Break: Delete account, Delete my account button -->
+                            <h2 class="delete_account">Delete account</h2>
 
-                                       <hr width=600px;>
+                            <hr width=600px;>
 
-                                       <h5>Once you delete your account, there is no going back. Please be certain.</h5>
+                            <h5>Once you delete your account, there is no going back. Please be certain.</h5>
 
-                                       <ul class="delete_account_btn">                                                                             
-                                           <li class="delete_my_account"><input type="submit" name="delete" value="Delete my account" /></li>
-                                       </ul>
-                                         
-                                </form>
-                                                                            
-                            </div>                            
-                                               
-                            
-                            
-  
-               
-                            <!-- Break: Update password, Forgot password link 
-                                
-                                    <br>
-                                <div id="forgot_pwd_link">
-                                    <a href="index.jsp">I forgot my password</a></li>
-                                </div>
--->   
-                               </li>
-                               <!--Pane 4: a placeholder -->
-                               <li class="aside aside-4"></li> 
-                                                                                     
-
+                            <ul class="delete_account_btn">                                                                             
+                                <li class="delete_my_account"><input type="submit" name="delete" value="Delete my account" /></li>
+                            </ul>                                            
+                        </div>  
+                    </li>
+                          
+                    <!--Pane 4: a placeholder -->
+                    <li class="aside aside-4"></li> 
                 </div>            
        
         <!-- Footer -->

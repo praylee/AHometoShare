@@ -1,8 +1,9 @@
 <%-- 
-File: index.html
+File: renterPofile.jsp
 Description: A page for logged-in renters to view and edit profile details
 Create: Sept.30,2018
 Author: Chris Labelle
+Modified by Zhan Shen: updated and reorganized the layout
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -57,127 +58,126 @@ Copyright @ 2018
                 </div>
             </li>
 
-            <!--Pane 3: "My Account" content container-->
-                <!--Pane 3: "My Account" - My Profile contents-->
-                <li class="aside aside-3">
-                    <div class="my_profile_content">
-                        <form method="get" action="ProfileRenterView" onsubmit="return checkForm(this)" >
+            <!--Pane 3: "My Account" - My Profile contents-->
+            <li class="aside aside-3">
+                <div class="my_profile_content">
+                    <form method="get" action="ProfileRenterView" onsubmit="return checkForm(this)" >
 
-                        <h2>Personal details</h2>
+                    <h2>Personal details</h2>
+
+                    <hr width=600px;>
+
+                    <!-- Break: First/Last name, Gender, Birth year, Phone number, Student, Employed, Smoker -->
+                        <!--<ul style="list-style:none;">-->
+                        <div class="profile_sections">
+                            <li class=""><h4>First name<span style="color:red; font-weight:bold">*</span></h4></li>
+                            <li><input type="text" name="firstname" id="firstname" value="<%=session.getAttribute("firstName")%>" size="45" maxlength="45" pattern="[A-Za-z]{1,45}" required></li>
+                        </div>
+
+                        <div class="profile_sections">
+                            <li class=""><h4>Last name<span style="color:red; font-weight:bold">*</span></h4></li>
+                            <li><input type="text" name="lastname" id="lastname" value="<%=session.getAttribute("lastName")%>" size="45" maxlength="45" pattern="[A-Za-z]{1,45}" required></li>
+                        </div>
+
+                        <div class="profile_sections">
+                            <li><h4>Gender<span style="color:red; font-weight:bold">*</span></h4></li>
+                            <li>
+                                <select name="gender" id="gender" required >
+                                    <%
+                                        out.println("<option value=\"\">- Select your gender -</option>");
+                                        switch(Integer.parseInt(session.getAttribute("gender").toString())) {
+                                            case 0: 
+                                                out.println("<option selected=\"selected\" value=\"0\">Male</option>");
+                                                out.println("<option value=\"1\">Female</option>");
+                                                break;
+                                            case 1: 
+                                                out.println("<option value=\"0\">Male</option>");
+                                                out.println("<option selected=\"selected\" value=\"1\">Female</option>");
+                                                break;
+                                        }
+                                    %>     
+                                </select>
+                            </li>
+                        </div>
+
+                        <div class="profile_sections">
+                            <li><h4>Birth year<span style="color:red; font-weight:bold">*</span></h4></li>
+                            <li>
+                                <select name="yearBorn" id="yearBorn" required >
+                                    <%
+                                        out.println("<option value=\"\">- Select the year you were born  -</option>");
+                                        for(int i = 2000; i > 1982; i--) {
+                                            if(i == Integer.parseInt((session.getAttribute("dateBirth").toString()))) {
+                                                out.println("<option selected=\"selected\" value=\"" + i + "\">" + i + "</option>");
+                                            }
+                                            else {
+                                                out.println("<option value=\"" + i + "\">" + i + "</option>");
+                                            }
+                                        }
+                                    %>     
+                                </select>
+                            </li>
+                        </div>
+
+                        <div class="profile_sections">
+                            <li><h4>Phone number</h4></li>
+                            <li><input type="tel" name="phoneNum" id="phoneNum" value="<%=session.getAttribute("phone")%>" size="45" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /></li>
+                        </div>
+
+                        <div id="checkbox_items">
+                            <li id="checkbox1"><input type="checkbox" name="isStudent" id="isStudent" 
+                                <%=Boolean.parseBoolean(session.getAttribute("isStudent").toString()) ? "checked" : ""%>>Student?</input>
+                            </li>
+
+                            <li id="checkbox2"><input type="checkbox" name="isEmployed" id="isEmployed" 
+                                <%=Boolean.parseBoolean(session.getAttribute("isEmployed").toString()) ? "checked" : ""%>>Employed?</input>
+                            </li>
+
+                            <li id="checkbox3"><input type="checkbox" name="isSmoker" id="isSmoker" 
+                                <%=Boolean.parseBoolean(session.getAttribute("isSmoker").toString()) ? "checked" : ""%>>Smoker?</input>
+                            </li>
+                        </div>
+
+                    <!-- Break: Renting Details -->
+                        <h2 class="renting_details">Renting details</h2>
 
                         <hr width=600px;>
 
-                        <!-- Break: First/Last name, Gender, Birth year, Phone number, Student, Employed, Smoker -->
-                            <!--<ul style="list-style:none;">-->
-                            <div class="profile_sections">
-                                <li class=""><h4>First name<span style="color:red; font-weight:bold">*</span></h4></li>
-                                <li><input type="text" name="firstname" id="firstname" value="<%=session.getAttribute("firstName")%>" size="45" maxlength="45" pattern="[A-Za-z]{1,45}" required></li>
-                            </div>
+                        <div class="profile_sections">
+                            <li><h4>Start date</h4></li>
+                            <li><input type="date" name="startDate" id="startDate" 
+                                       value="<%=session.getAttribute("startDate")%>" maxlength="10" pattern="[0-9-]{8,10}" required /></li>
+                        </div>
 
-                            <div class="profile_sections">
-                                <li class=""><h4>Last name<span style="color:red; font-weight:bold">*</span></h4></li>
-                                <li><input type="text" name="lastname" id="lastname" value="<%=session.getAttribute("lastName")%>" size="45" maxlength="45" pattern="[A-Za-z]{1,45}" required></li>
-                            </div>
+                        <div class="profile_sections">
+                            <li><h4>End date</h4></li>
+                            <li><input type="date" name="endDate" id="endDate" 
+                                       value="<%=session.getAttribute("endDate")%>" maxlength="10" pattern="[0-9-]{8,10}" required /></li>
+                        </div>
 
-                            <div class="profile_sections">
-                                <li><h4>Gender<span style="color:red; font-weight:bold">*</span></h4></li>
-                                <li>
-                                    <select name="gender" id="gender" required >
-                                        <%
-                                            out.println("<option value=\"\">- Select your gender -</option>");
-                                            switch(Integer.parseInt(session.getAttribute("gender").toString())) {
-                                                case 0: 
-                                                    out.println("<option selected=\"selected\" value=\"0\">Male</option>");
-                                                    out.println("<option value=\"1\">Female</option>");
-                                                    break;
-                                                case 1: 
-                                                    out.println("<option value=\"0\">Male</option>");
-                                                    out.println("<option selected=\"selected\" value=\"1\">Female</option>");
-                                                    break;
-                                            }
-                                        %>     
-                                    </select>
-                                </li>
-                            </div>
+                        <div class="profile_sections">
+                            <li><h4>Low price</h4></li>
+                            <li><input type="text" name="lowPrice" id="lowPrice" 
+                                       value="<%=session.getAttribute("lowPrice")%>" maxlength="10" pattern="[0-9\.]+" required /></li>
+                        </div>
 
-                            <div class="profile_sections">
-                                <li><h4>Birth year<span style="color:red; font-weight:bold">*</span></h4></li>
-                                <li>
-                                    <select name="yearBorn" id="yearBorn" required >
-                                        <%
-                                            out.println("<option value=\"\">- Select the year you were born  -</option>");
-                                            for(int i = 2000; i > 1982; i--) {
-                                                if(i == Integer.parseInt((session.getAttribute("dateBirth").toString()))) {
-                                                    out.println("<option selected=\"selected\" value=\"" + i + "\">" + i + "</option>");
-                                                }
-                                                else {
-                                                    out.println("<option value=\"" + i + "\">" + i + "</option>");
-                                                }
-                                            }
-                                        %>     
-                                    </select>
-                                </li>
-                            </div>
+                        <div class="profile_sections">
+                            <li><h4>High price</h4></li>
+                            <li><input type="text" name="highPrice" id="highPrice" 
+                                       value="<%=session.getAttribute("highPrice")%>" maxlength="10" pattern="[0-9\.]+" required /></li>
+                        </div>
+                        <!--
+                        <span id="entryError"><%out.print(session.getAttribute("invalidReason") == null ? "" : session.getAttribute("invalidReason"));%></span>
+                        -->
+                    <!-- Break: Save button, Cancel button -->
+                        <div id="save_cancel_btn">
+                            <button id="save_btn" type="submit">Save changes</button>
+                            <button id="cancel_btn" type="reset" onclick="renterProfile.jsp">Cancel</button>
+                        </div>
+                    </form>
+                </div>
 
-                            <div class="profile_sections">
-                                <li><h4>Phone number</h4></li>
-                                <li><input type="tel" name="phoneNum" id="phoneNum" value="<%=session.getAttribute("phone")%>" size="45" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /></li>
-                            </div>
-
-                            <div id="checkbox_items">
-                                <li id="checkbox1"><input type="checkbox" name="isStudent" id="isStudent" 
-                                    <%=Boolean.parseBoolean(session.getAttribute("isStudent").toString()) ? "checked" : ""%>>Student?</input>
-                                </li>
-
-                                <li id="checkbox2"><input type="checkbox" name="isEmployed" id="isEmployed" 
-                                    <%=Boolean.parseBoolean(session.getAttribute("isEmployed").toString()) ? "checked" : ""%>>Employed?</input>
-                                </li>
-
-                                <li id="checkbox3"><input type="checkbox" name="isSmoker" id="isSmoker" 
-                                    <%=Boolean.parseBoolean(session.getAttribute("isSmoker").toString()) ? "checked" : ""%>>Smoker?</input>
-                                </li>
-                            </div>
-
-                        <!-- Break: Renting Details -->
-                            <h2 class="renting_details">Renting details</h2>
-
-                            <hr width=600px;>
-
-                            <div class="profile_sections">
-                                <li><h4>Start date</h4></li>
-                                <li><input type="date" name="startDate" id="startDate" 
-                                           value="<%=session.getAttribute("startDate")%>" maxlength="10" pattern="[0-9-]{8,10}" required /></li>
-                            </div>
-
-                            <div class="profile_sections">
-                                <li><h4>End date</h4></li>
-                                <li><input type="date" name="endDate" id="endDate" 
-                                           value="<%=session.getAttribute("endDate")%>" maxlength="10" pattern="[0-9-]{8,10}" required /></li>
-                            </div>
-
-                            <div class="profile_sections">
-                                <li><h4>Low price</h4></li>
-                                <li><input type="text" name="lowPrice" id="lowPrice" 
-                                           value="<%=session.getAttribute("lowPrice")%>" maxlength="10" pattern="[0-9\.]+" required /></li>
-                            </div>
-
-                            <div class="profile_sections">
-                                <li><h4>High price</h4></li>
-                                <li><input type="text" name="highPrice" id="highPrice" 
-                                           value="<%=session.getAttribute("highPrice")%>" maxlength="10" pattern="[0-9\.]+" required /></li>
-                            </div>
-                            <!--
-                            <span id="entryError"><%out.print(session.getAttribute("invalidReason") == null ? "" : session.getAttribute("invalidReason"));%></span>
-                            -->
-                        <!-- Break: Save button, Cancel button -->
-                            <div id="save_cancel_btn">
-                                <button id="save_btn" type="submit">Save changes</button>
-                                <button id="cancel_btn" type="reset" onclick="renterProfile.jsp">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-
-                </li>
+            </li>
 
             <!--Pane 4: a placeholder-->  
                 <li class="aside aside-4"></li>

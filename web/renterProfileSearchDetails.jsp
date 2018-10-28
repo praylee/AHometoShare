@@ -1,6 +1,6 @@
 <%-- 
-File: renterProfileSearch.jsp
-Description: Page for searching host listings within the renter profile.
+File: renterProfileSearchDetails.jsp
+Description: Page for host property details within the renter profile.
 Create: Oct 21,2018
 Author: Melissa Rajala
 Clients: Michelle Bilek,Farheen Khan
@@ -19,7 +19,7 @@ Copyright @ 2018
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Renter Host Property Search</title>
+        <title>Property Details</title>
         <link rel="stylesheet" href="assets/css/subpage_style.css" />
     </head>
         
@@ -40,33 +40,7 @@ Copyright @ 2018
                 </nav>
             </div>
         </header>
-                
-                
-                
-        <script>
-            function myFilterFunction() {
-            // Declare variables
-
-            var select = document.getElementById("select");
-            var selectedCity = select.options[select.selectedIndex].text;
-            
-
-            // Loop through all list items, and hide those who don't match the search query
-            var li;
-            table = document.getElementById("property");
-            li = table.getElementsByTagName("li");
-            
-            var i;
-            for (i = 1; i<li.length; i++){
-                var text = "";
-                text = li[i].value;
-                window.alert(text); //for debugging
-            }
-
-            }
-        </script>        
-                
-        
+              
 
 	<!--Main Frame-->
             <div class="wrapper">
@@ -91,84 +65,15 @@ Copyright @ 2018
 
 
                 <!--Pane 3: "My Account" content container-->
-                    <!--Pane 3: "My Account" - Renter host property search contents-->
+                    <!--Pane 3: "My Account" - Host Property Details contents-->
                     <li class="aside aside-3">
-                        <div class="property-search-content">
+                        <div class="property-search-details-content">
 
-                            <h2>Search Host Properties</h2>
+                            <h2>Property Details</h2>
 
                             <hr width=600px;>    
-                            
-                            
-                            <div class="flex flex-3">
-                        <form method="get" action="RenterProfileSearch" >
-                            <table class="filtertable">
-                                <tr>
-                                    <th>Filter by location</th>
-                                    <th>Sort by price</th> 
-                                    <th>Filter by requirements</th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select id="select">
-                                            <option name="mississauga" value="mississauga">Mississauga</option>
-                                            <option name="hamilton" value="hamilton">Hamilton</option>
-                                            <option name="peel" value="peel">Peel Region</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option value="low">Low to High</option>
-                                            <option value="high">High to Low</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
-                                        <input type="checkbox" name="req" value="parking"> Parking <br>
-                                        <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
-                                    </td>
-                                    <td>
-                                        <input id="filter" type="button" value="Filter" onclick="myFilterFunction();" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>         
-                       
-                    </div>
-            
-                            
-                    <div class="flex flex-3">
-                        <table class="hosttable" id="property">
-                            <%
-                                List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
-                                if (pairList.isEmpty()) { %>
-                                <h6>There are no available listings at this time.</h6>
-                                <%
-                                    } else {
-                                    for (Entry entry: pairList){
-                                    Host host = (Host) entry.getKey();
-                                    Property property = (Property) entry.getValue();
-                                    String city = property.getCity();
-                            %>
-                            <tr>
-                                <td>
-                                    Property ID: <%=property.getpropertyID()%> <br>
-                                    Host ID: <%=property.getHostID()%> <br>
-                                    Host Name: <%=host.getFirstName()%> <br>
-                                    Address: <%=property.getAddress()%> <br>
-                                    City: <li value="hi"><%=city%></li> <br>
-                                    Start Date: <%=property.getStartDate()%> <br>
-                                    End Date: <%=property.getEndDate()%> <br>
-                                    Price: <%=property.getPrice()%> <br>
-                                    <input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" />
-                                </td>
-                            </tr>
-                            <%}
-
-                             }
-                            %>                         
-                        </table>
-                    </div>        
+ 
+                            <input type="button" value="Back to Search" onclick="window.location.href='RenterProfileSearch'" />
 
                         </div>
                     </li>

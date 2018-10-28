@@ -52,7 +52,7 @@ Copyright @ 2018
                         <ul style="list-style:none;">
                             <li id="menu1"><input type="button" value="My Profile" class="" onclick="window.location.href='renterProfile.jsp'" /></li>
                             <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='renterAccountSettings.jsp'" /></li>
-                            <li id="menu3"><input type="button" value="Search Host Listings" onclick="window.location.href='ProfileRenterView'" /></li>
+                            <li id="menu3"><input type="button" value="Search Host Listings" onclick="window.location.href='RenterProfileSearch'" /></li>
                         </ul>
                     </div>
                 </li>    

@@ -11,8 +11,6 @@
  */
 package view;
 
-import business.HostBusinessLayer;
-import business.PropertyBusinessLayer;
 import business.RenterBusinessLayer;
 import java.io.IOException;
 import java.text.ParseException;
@@ -21,12 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map.Entry;
-import transferobjects.Host;
-import transferobjects.Property;
 import transferobjects.Renter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -105,6 +97,7 @@ public class ProfileRenterView extends HttpServlet {
             invalidReason = "Invalid price parameter.";
         }
 
+
         if(updateOk) {
             RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
             renterBusiness.updateRenter(firstName, lastName, phone, gender, birthYear, 
@@ -118,7 +111,9 @@ public class ProfileRenterView extends HttpServlet {
             request.setAttribute("invalidReason", invalidReason);
             RequestDispatcher rd = request.getRequestDispatcher("renterProfile.jsp");  // send error message
             rd.forward(request,response);
-        }    
+        }  
+        
+        
 
     }
     

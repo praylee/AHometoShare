@@ -41,6 +41,10 @@
         <servlet-class>view.RenterProfileSearch</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RenterProfileSearchDetails</servlet-name>
+        <servlet-class>view.RenterProfileSearchDetails</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ProfileRenterEditView</servlet-name>
         <servlet-class>view.ProfileRenterEditView</servlet-class>
     </servlet>
@@ -91,6 +95,10 @@
     <servlet-mapping>
         <servlet-name>RenterProfileSearch</servlet-name>
         <url-pattern>/RenterProfileSearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RenterProfileSearchDetails</servlet-name>
+        <url-pattern>/RenterProfileSearchDetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProfileRenterEditView</servlet-name>

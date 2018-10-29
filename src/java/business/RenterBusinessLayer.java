@@ -65,11 +65,12 @@ public class RenterBusinessLayer {
     }
     
     public boolean passwordCorrect(String email, String password) {
-        boolean correct = false;
-        if(renterDAO.passwordCorrect(email, password)) {
-            correct = true;
-        }
-        return correct;
+        return renterDAO.passwordCorrect(email, password); //updated by Zhan
+//        boolean correct = false;
+//        if(renterDAO.passwordCorrect(email, password)) {
+//            correct = true;
+//        }
+//        return correct;
     }
     
     public void deleteRenter(int renterId){

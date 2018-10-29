@@ -1,7 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * File: hostAccountView.java
+ * Description:This class describes attributes of Table PropertyXResource. This table is an associate table for resource and property
+ * Create: Oct,28,2018
+ * Author: LiangliangDu
+ * Clients: Michelle Bilek,Farheen Khan
+ * Course: Software Development Project
+ * Professor: Dr. Anu Thomas
+ * Project: A Home to Share
+ * Copyright @ 2018
  */
 package view;
 
@@ -14,10 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author 29751
- */
+
 public class hostAccountView extends HttpServlet {
 
     /**
@@ -47,22 +50,31 @@ public class hostAccountView extends HttpServlet {
 
            
             if(hostBusiness.passwordCorrect(email, old_password)){ //match old password
-                if(new_password.equals(old_password))
-                    request.setAttribute("new_pwd_info", "Please enter a different password with old one");
-                    if(!confirm_new_pwd.equals(new_password))
-                        request.setAttribute("confirm_pwd_info", "Please enter the matched new password.");
-                else{//update password into database
-                    try{
-                        hostBusiness.updateHost(new_password,hostBusiness.getHostByEmail(email).getHostID()); 
-                        
-                        if(hostBusiness.passwordCorrect(email, new_password))
-                           request.setAttribute("update_info", "Update password successfully.");
-                        else 
-                           request.setAttribute("update_info", "Update password was not success."); 
-                    }catch(Exception e){
-                        request.setAttribute("update_info", "Update password failed.Please check database connection");
+           
+                String upperCaseChars = "(.*[A-Z].*)";           
+                String lowerCaseChars = "(.*[a-z].*)";        
+                String numbers = "(.*[0-9].*)";
+                
+                if(new_password.length() < 6 || !new_password.matches(upperCaseChars) || !new_password.matches(lowerCaseChars) || !new_password.matches(numbers)){
+                    request.setAttribute("new_pwd_info", "Please a valid password at least 6 characters like 'Canada123'");                 
+                }
+                else{
+                    if(new_password.equals(old_password))
+                        request.setAttribute("new_pwd_info", "Please enter a different password with old one");
+                        if(!confirm_new_pwd.equals(new_password))
+                            request.setAttribute("confirm_pwd_info", "Please enter the matched new password.");
+                    else{//update password into database
+                        try{
+                            hostBusiness.updateHost(new_password,hostBusiness.getHostByEmail(email).getHostID()); 
+
+                            if(hostBusiness.passwordCorrect(email, new_password))
+                               request.setAttribute("update_info", "Update password successfully.");
+                            else 
+                               request.setAttribute("update_info", "Update password was not success."); 
+                        }catch(Exception e){
+                            request.setAttribute("update_info", "Update password failed.Please check database connection");
+                        }
                     }
-                    
                 }
                 RequestDispatcher rd = request.getRequestDispatcher("hostAccountSettings.jsp");  
                 rd.forward(request,response);

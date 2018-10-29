@@ -79,8 +79,27 @@ Copyright @ 2018
                                 Host host = (Host) request.getAttribute("host");
                             %>
                             
-                            <h6>City is: </h6><%=property.getCity()%> <br>
-                            <h6>Host is: </h6><%=host.getFirstName()%> <br>
+                            <h4><strong>About the Host</strong></h4> <br>
+                            Host is: <%=host.getFirstName()%> <%=host.getLastName()%> <br>
+                            
+                            <br><br>
+                            
+                            <h4>About the Property</h4> <br>
+                            
+                            City is: <%=property.getCity()%> <br>
+                            Address is: <%=property.getAddress()%> <br>
+                            Postal Code is: <%=property.getPostalCode()%> <br>
+                            Province is: <%=property.getProvince()%> <br>
+                            Country is: <%=property.getCountry()%> <br>
+                            Start Date is: <%=property.getStartDate()%> <br>
+                            End Date is: <%=property.getEndDate()%> <br>
+                            Price is: <%=property.getPrice()%> <br>
+                            Family Members: <%=property.getFamMembers()%> <br>
+                            Chores: <%=property.getChores()%> <br>
+                            Smoker Friendly: <%=property.getIsSmokerFriendly()%> <br>
+                            Pet Friendly: <%=property.getIsPetFriendly()%> <br>
+                            
+                            
                             
  
                             <input type="button" value="Back to Search" onclick="window.location.href='RenterProfileSearch'" />

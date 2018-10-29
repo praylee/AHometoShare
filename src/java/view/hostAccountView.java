@@ -55,21 +55,21 @@ public class hostAccountView extends HttpServlet {
                 String numbers = "(.*[0-9].*)";
                 
                 if(new_password.length() < 6 || !new_password.matches(upperCaseChars) || !new_password.matches(lowerCaseChars) || !new_password.matches(numbers)){
-                    request.setAttribute("new_pwd_info", "Please a valid password at least 6 characters like 'Canada123'");                 
+                    request.setAttribute("new_pwd_info", "Password must be at least 6 characters and it must contain at least one captial letter and  one number. E.g.: Canada123");                 
                 }
                 else{
                     if(new_password.equals(old_password))
-                        request.setAttribute("new_pwd_info", "Please enter a different password with old one");
+                        request.setAttribute("new_pwd_info", "Please enter a different password with the old password.");
                     else if(!confirm_new_pwd.equals(new_password))
-                        request.setAttribute("confirm_pwd_info", "Please enter the matched new password.");
+                        request.setAttribute("confirm_pwd_info", "Your password and confirmation password do not match.");
                     else{//update password into database
                         try{
                             hostBusiness.updateHost(new_password,hostBusiness.getHostByEmail(email).getHostID()); 
 
                             if(hostBusiness.passwordCorrect(email, new_password))
-                               request.setAttribute("update_info", "Update password successfully.");
+                               request.setAttribute("update_info", "Password was updated successfully.");
                             else 
-                               request.setAttribute("update_info", "Update password was not success."); 
+                               request.setAttribute("update_info", "Password was not updated successfully."); 
                         }catch(Exception e){
                             request.setAttribute("update_info", "Update password failed.Please check database connection");
                         }
@@ -79,7 +79,7 @@ public class hostAccountView extends HttpServlet {
                 rd.forward(request,response);
             }
             else{
-                request.setAttribute("old_pwd_info", "Please enter a correct current password");
+                request.setAttribute("old_pwd_info", "The password you have entered does not match your current password.");
                 RequestDispatcher rd = request.getRequestDispatcher("hostAccountSettings.jsp");  
                 rd.forward(request,response);  
             }

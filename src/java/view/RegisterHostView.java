@@ -57,7 +57,7 @@ public class RegisterHostView extends HttpServlet {
         HostBusinessLayer hostLayer = new HostBusinessLayer();
 
         List<Host> hostList = hostLayer.getAllHost();
-        int index = hostList.size();
+        int index = hostList.get(hostList.size()-1).getHostID();
         
         Host host = new Host(index+1,email, passWord,fName,lName,phoneNum,Integer.parseInt(gender),yearBorn,false,false,false,referralSource);
           

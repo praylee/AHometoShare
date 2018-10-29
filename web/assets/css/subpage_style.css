@@ -653,7 +653,7 @@ footer {
         font-weight: bold;
 
     }
-    
+       
     .update_pwd input {
         -moz-appearance: none;
         -webkit-appearance: none;
@@ -685,13 +685,13 @@ footer {
         border: 1px solid rgba(144, 144, 144, 0.2);
     }
     
-    input[type="password"],
-    input[type="text"]{
+    .password input[type="password"],
+    .password input[type="text"]{
         height: 25px;
         margin-top: 8px;
     }
     
-    input[type="text"]{
+    .password input[type="text"]{
         color: #666; 
         font-weight: bold;
     }
@@ -755,10 +755,4 @@ footer {
     h5 {
         font-size: 14px;
     }
-        
-        
-       
-
-            
-        
-        
+   

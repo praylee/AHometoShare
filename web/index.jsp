@@ -140,22 +140,22 @@ Copyright @ 2018
                                     <h4 align="left">Password</h4>
                                     <input type="password" name="loginPassword" size="30" required>
                                 </div>
-                                
-                                <span class="loginError">
+                                <br>
+                                <div class="loginError">
                                     <%
                                         // added by Chris
                                         if(request.getAttribute("info") != null) {
                                             out.print(request.getAttribute("info"));
                                         }
                                     %>
-                                </span>
+                                </div>
 
-                                <h5 align="left"><br><input type="checkbox" name="rememberPwd" value="rememberPwd">Remember me</h5>
+                                <h5 align="left"><input type="checkbox" name="rememberPwd" value="rememberPwd">Remember me</h5>
 
                                 <div class="btn-group4">
                                 <!--    <a href="renterProfile.jsp" class="loginBtn" ></a> -->
-                                <a href="LogInView" class="loginBtn"><button id="loginemailBtn" type="submit" class="unstyled-button2" >Login with email</button></a>
-
+                                
+                                <button id="loginemailBtn" type="submit" class="unstyled-button2" >Login with email</button>
                                 </div>
                             </form>
                         </div>

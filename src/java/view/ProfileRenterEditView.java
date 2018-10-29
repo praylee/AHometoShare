@@ -49,20 +49,20 @@ public class ProfileRenterEditView extends HttpServlet {
             String new_password = request.getParameter("new_pwd");
             String confirm_new_pwd = request.getParameter("confirm_new_pwd");
 
-           
-            if(renterBusiness.passwordCorrect(email, old_password)){ //match old password
+            
+            if(renterBusiness.passwordCorrect(email, old_password)){ //check old password entered matches or not
                 
                 String upperCaseChars = "(.*[A-Z].*)";           
                 String lowerCaseChars = "(.*[a-z].*)";        
                 String numbers = "(.*[0-9].*)";
                 
                 if(new_password.length()<6 || !new_password.matches(upperCaseChars) || !new_password.matches(lowerCaseChars) || !new_password.matches(numbers)){
-                    request.setAttribute("new_pwd_info", "Please a valid password at least 6 characters like 'Canada123'");
+                    request.setAttribute("new_pwd_info", "Password must be at least 6 characters and it must contain at least one captial letter and  one number. E.g.: Canada123");
                     
                 }
                 else {
                     if(new_password.equals(old_password))
-                        request.setAttribute("new_pwd_info", "Please enter a different password with the old password");
+                        request.setAttribute("new_pwd_info", "Please enter a different password with the old password.");
                     else if(!confirm_new_pwd.equals(new_password))
                         request.setAttribute("confirm_pwd_info", "Your password and confirmation password do not match.");
                     else{ //update password into database
@@ -82,7 +82,7 @@ public class ProfileRenterEditView extends HttpServlet {
                 rd.forward(request,response);
             }
             else{
-                request.setAttribute("old_pwd_info", "The password you have entered does not match your current one.");
+                request.setAttribute("old_pwd_info", "The password you have entered does not match your current password.");
                 RequestDispatcher rd = request.getRequestDispatcher("renterAccountSettings.jsp");  
                 rd.forward(request,response);  
             }

@@ -120,22 +120,6 @@
                     color: #ffcc00;
                 }
 
-/*                #header a:last-child {
-                    padding-right: 100;
-                }*/
-
-/*                #header a.navPanelToggle {
-                    display: none;
-                    text-decoration: none;
-                    height: 4em;
-                    width: 4em;
-                    z-index: 10003;
-                }*/
-
-/*                #header a.navPanelToggle .fa {
-                    font-size: 1.25em;
-                }*/
-
                 #header button:hover {
                     color: #ffcc00;
                 }
@@ -654,6 +638,35 @@ footer {
                 white-space: nowrap;
                 width: 90%;
             }
+            
+            .btn-group4 button {
+                /*cursor: pointer;*/
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                -ms-appearance: none;
+                appearance: none;
+                -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                background-color: #5385c1;
+                border-radius: 0;
+                border: 0;
+                color: #ffffff !important;
+                cursor: pointer;
+                display: inline-block;
+                font-weight: 600;
+                height: 3em;
+                line-height: 3em;
+                padding: 0 1.5em;
+                text-align: center;
+                text-decoration: none;
+                white-space: nowrap;
+                width: 91%;
+                margin-right: 15px;
+            }
+            
+            
     
     .formRow input {
         float: left;
@@ -663,9 +676,9 @@ footer {
     }
     
     .loginError {
-        font-size: 10px;
+        font-size: 12px;
         color: #FE2020;
-        padding-bottom: 0px;
+        text-align: left;
     }
     
     h4 {
@@ -677,7 +690,7 @@ footer {
     hr {
         margin-right: 30px;
     }
-
+    
     
 /*        .buttonRole:hover {
                 background-color: transparent;

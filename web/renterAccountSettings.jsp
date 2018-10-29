@@ -77,36 +77,42 @@ Copyright @ 2018
                                     <div class="password">
                                         <li class="old_pwd"><h4>Old password</h4></li>
                                         <li><input type="password" name="old_pwd" size="45" maxlength="45" ></li>
-                                        <li><h5 color="red">
+                                        <li>
+                                            <h5>
                                                 <%
                                                     if(request.getAttribute("old_pwd_info") !=null) {
                                                         out.print(request.getAttribute("old_pwd_info"));
                                                     }
-                                                %></h5>
+                                                %>
+                                            </h5>
                                         </li>
                                     </div>
 
                                     <div class="password">
                                         <li class="new_pwd"><h4>New password</h4></li>
                                         <li><input type="password" name="new_pwd" size="45" maxlength="45" ></li>
-                                        <li><h5 color="red">
+                                        <li>
+                                            <h5>
                                                 <%
                                                     if(request.getAttribute("new_pwd_info") !=null) {
                                                         out.print(request.getAttribute("new_pwd_info"));
                                                     }
-                                                %></h5>
+                                                %>
+                                            </h5>
                                         </li>
                                     </div>
 
                                     <div class="password">
                                         <li class="confirm_new_pwd"><h4>Confirm new password</h4></li>
                                         <li><input type="password" name="confirm_new_pwd" size="45" maxlength="45" ></li>
-                                        <li><h5 color="red">
+                                        <li>
+                                            <h5>
                                                 <%
                                                     if(request.getAttribute("confirm_pwd_info") !=null) {
                                                         out.print(request.getAttribute("confirm_pwd_info"));
                                                     }
-                                                %></h5>
+                                                %>
+                                            </h5>
                                         </li>
                                     </div>
                                     
@@ -115,7 +121,7 @@ Copyright @ 2018
                                         <ul id="update_pwd_btn">                                                                             
                                             <li class="update_pwd"><input type="submit" name="update" value="Update password" /></li>
                                              <li>
-                                                <h5 color="red">
+                                                <h5>
                                                     <%                                   
                                                         if(request.getAttribute("update_info") != null) {
                                                             out.print(request.getAttribute("update_info"));

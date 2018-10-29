@@ -51,7 +51,7 @@ Copyright @ 2018
                             <li><h3>Hello <%out.print(session.getAttribute("firstname"));%>!</h3><li>
                         </ul >
                         <ul style="list-style:none;">
-                            <li id="menu1"><input type="button" value="My Profile" class="" onclick="openSection('myHostProfile')"/></li>
+                            <li id="menu1"><input type="button" value="My Profile" class="" onclick="window.location.href='hostProfile.jsp'" /></li>
                             <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='hostAccountSettings.jsp'" /></li>
                             <li id="menu3"><input type="button" value="Manage Properties" class="" onclick="window.location.href='roomPosting.jsp'" /></li>
                         </ul>
@@ -61,7 +61,7 @@ Copyright @ 2018
         
                 <!--Pane 3: "My Account" content container-->       
                 <li class="aside aside-3">
-                    <div id="myHostProfile" class="my_profile_content">
+                    <div class="my_profile_content">
                         <form method="get" action="ProfileHostView" onsubmit="return checkForm(this)" >
 
                         <!--<section id="one" class="wrapper">-->
@@ -105,7 +105,7 @@ Copyright @ 2018
                             <div class="profile_sections">
                                 <li><h4>Birth year<span style="color:red; font-weight:bold">*</span></h4></li>
                                 <li>
-                                    <select name="yearBorn" id="yearBorn" required >
+                                    <select name="dateBirth" id="dateBirth" required >
                                         <%
                                             out.println("<option value=\"\">- Select the year you were born  -</option>");
                                             for(int i = 2000; i >= 1920; i--) {
@@ -123,7 +123,7 @@ Copyright @ 2018
                                  
                             <div class="profile_sections">
                                 <li><h4>Phone number</h4></li>
-                                <li><input type="tel" name="phoneNum" id="phoneNum" value="<%=session.getAttribute("phone")%>" size="30" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /></li>
+                                <li><input type="tel" name="phone" id="phone" value="<%=session.getAttribute("phone")%>" size="30" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /></li>
                             </div>
                             
                             <div id="checkbox_items">
@@ -131,7 +131,7 @@ Copyright @ 2018
                                     <%=Boolean.parseBoolean(session.getAttribute("isRetired").toString()) ? "checked" : ""%>>Retired?</input>
                                 </li>
 
-                                <li id="checkbox2"><input type="checkbox" name="isPet" id="isPet" 
+                                <li id="checkbox2"><input type="checkbox" name="isPets" id="isPets" 
                                     <%=Boolean.parseBoolean(session.getAttribute("isPets").toString()) ? "checked" : ""%>>Pet?</input>
                                 </li>
 
@@ -148,7 +148,7 @@ Copyright @ 2018
                         <!-- Break: Save button, Cancel button -->
                             <div id="save_cancel_btn">
                                 <button id="save_btn" type="submit">Save changes</button>
-                                <button id="cancel_btn" type="reset" onclick="renterProfile.jsp">Cancel</button>
+                                <button id="cancel_btn" type="reset" onclick="hostProfile.jsp">Cancel</button>
                             </div>
                         </form> 
                     </div>
@@ -157,20 +157,7 @@ Copyright @ 2018
                 <!--Pane 4: a placeholder-->  
                     <li class="aside aside-4"></li>
             </div>
-                    
-<!--        <script>
-            function openSection(sectionName) {
-                var sectionContent = document.getElementsByClassName("sectionContent");
-                if(sectionName.localeCompare("myHostProfile") === 0) {
-                    sectionContent[0].style.display = "block";
-                    sectionContent[1].style.display = "none";
-                }
-                else {
-                    sectionContent[0].style.display = "none";
-                    sectionContent[1].style.display = "block";  
-                }
-            }
-        </script>-->
+
 
 
         <!-- Footer -->

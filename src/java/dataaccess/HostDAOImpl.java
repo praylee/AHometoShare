@@ -127,7 +127,7 @@ public class HostDAOImpl implements HostDAO {
                 host.setGender(rs.getInt("gender"));
                 host.setDOB(rs.getString("date_of_birth"));
                 host.setRetired(rs.getBoolean("retired"));
-                host.setPets(rs.getBoolean("ptes"));
+                host.setPets(rs.getBoolean("pets"));
                 host.setSmoker(rs.getBoolean("smoker"));
                 host.setReferralSource(rs.getString("referral_source"));
 

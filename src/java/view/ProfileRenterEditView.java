@@ -58,27 +58,25 @@ public class ProfileRenterEditView extends HttpServlet {
                 
                 if(new_password.length()<6 || !new_password.matches(upperCaseChars) || !new_password.matches(lowerCaseChars) || !new_password.matches(numbers)){
                     request.setAttribute("new_pwd_info", "Please a valid password at least 6 characters like 'Canada123'");
-                    RequestDispatcher rd = request.getRequestDispatcher("renterAccountSettings.jsp");  
-                    rd.forward(request,response);
-                }
-                
-                if(new_password.equals(old_password))
-                    request.setAttribute("new_pwd_info", "Please enter a different password with the old password");
-                
-                if(!confirm_new_pwd.equals(new_password))
-                        request.setAttribute("confirm_pwd_info", "Your password and confirmation password do not match.");
-                else{ //update password into database
-                    try{
-                        renterBusiness.updateRenter(new_password,renterBusiness.getRenterByEmail(email).getRenterID()); 
-                        
-                        if(renterBusiness.passwordCorrect(email, new_password))
-                           request.setAttribute("update_info", "Password was updated successfully.");
-                        else
-                           request.setAttribute("update_info", "Password was not updated successfully."); 
-                    }catch(Exception e){
-                        request.setAttribute("update_info", "Update password failed. Please check database connection.");
-                    }
                     
+                }
+                else {
+                    if(new_password.equals(old_password))
+                        request.setAttribute("new_pwd_info", "Please enter a different password with the old password");
+                    else if(!confirm_new_pwd.equals(new_password))
+                        request.setAttribute("confirm_pwd_info", "Your password and confirmation password do not match.");
+                    else{ //update password into database
+                        try{
+                            renterBusiness.updateRenter(new_password,renterBusiness.getRenterByEmail(email).getRenterID()); 
+
+                            if(renterBusiness.passwordCorrect(email, new_password))
+                               request.setAttribute("update_info", "Password was updated successfully.");
+                            else
+                               request.setAttribute("update_info", "Password was not updated successfully."); 
+                        }catch(Exception e){
+                            request.setAttribute("update_info", "Update password failed. Please check database connection.");
+                        }
+                    }              
                 }
                 RequestDispatcher rd = request.getRequestDispatcher("renterAccountSettings.jsp");  
                 rd.forward(request,response);

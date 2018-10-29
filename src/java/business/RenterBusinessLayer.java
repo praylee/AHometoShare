@@ -56,12 +56,11 @@ public class RenterBusinessLayer {
         return renterDAO.getRenterByEmail(email);
     }
     
-    public boolean renterExists(String email) {
-        boolean exists = true;
-        if(renterDAO.getRenterByEmail(email) == null) {
-            exists = false;
-        }
-        return exists;
+    public boolean renterExists(String email) {   
+        if(renterDAO.getRenterByEmail(email) == null) 
+            return false;
+        
+        return true;
     }
     
     public boolean passwordCorrect(String email, String password) {

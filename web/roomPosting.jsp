@@ -24,7 +24,7 @@ Copyright @ 2018
         <!-- Header -->
         <header id="header">
             <div class="inner">
-                <a href="index.html" class="logo">A Home To Share</a>
+                <a href="index.jsp" class="logo">A Home To Share</a>
                 <nav id="nav">
                     <a href="index.jsp">Home</a>
                     <a href="index.jsp">How We Work</a>

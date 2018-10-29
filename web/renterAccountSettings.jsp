@@ -22,7 +22,7 @@ Copyright @ 2018
         <!-- Header -->
         <header id="header">
             <div class="inner">
-                <a href="index.html" class="logo">A Home To Share</a>
+                <a href="index.jsp" class="logo">A Home To Share</a>
                 <nav id="nav">
                     <a href="index.jsp">Home</a>
                     <a href="index.jsp">How We Work</a>
@@ -113,7 +113,16 @@ Copyright @ 2018
                                     <!-- Break: Update password, Forgot password link -->
                                     <div class="password" id="password">
                                         <ul id="update_pwd_btn">                                                                             
-                                            <li class="update_pwd"><input type="submit" value="Update password" /></li>
+                                            <li class="update_pwd"><input type="submit" name="update" value="Update password" /></li>
+                                             <li>
+                                                <h5 color="red">
+                                                    <%                                   
+                                                        if(request.getAttribute("update_info") != null) {
+                                                            out.print(request.getAttribute("update_info"));
+                                                        }
+                                                    %> 
+                                                </h5>
+                                            </li>
                                         </ul>
                                     </div>
 <!--                                        <br>
@@ -121,17 +130,19 @@ Copyright @ 2018
                                         <a href="index.jsp">I forgot my password</a></li>
                                     </div>-->
                                 </ul>
+                                <!-- Break: Delete account, Delete my account button -->
+                                <h2 class="delete_account">Delete account</h2>
+
+                                <hr width=600px;>
+
+                                <h5>Once you delete your account, there is no going back. Please be certain.</h5>
+
+                                <ul class="delete_account_btn">                                                                             
+                                    <li class="delete_my_account"><input type="submit" name="delete" value="Delete my account" /></li>
+
+                                </ul>
                             </form>
-                            <!-- Break: Delete account, Delete my account button -->
-                            <h2 class="delete_account">Delete account</h2>
-
-                            <hr width=600px;>
-
-                            <h5>Once you delete your account, there is no going back. Please be certain.</h5>
-
-                            <ul class="delete_account_btn">                                                                             
-                                <li class="delete_my_account"><input type="button" value="Delete my account" /></li>
-                            </ul>
+                            
                         </div>
                     </li>
                     <!--Pane 4: a placeholder-->  

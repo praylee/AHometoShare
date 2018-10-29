@@ -47,8 +47,7 @@ public class hostAccountView extends HttpServlet {
             String old_password = request.getParameter("old_pwd");
             String new_password = request.getParameter("new_pwd");
             String confirm_new_pwd = request.getParameter("confirm_new_pwd");
-
-           
+  
             if(hostBusiness.passwordCorrect(email, old_password)){ //match old password
            
                 String upperCaseChars = "(.*[A-Z].*)";           
@@ -61,8 +60,8 @@ public class hostAccountView extends HttpServlet {
                 else{
                     if(new_password.equals(old_password))
                         request.setAttribute("new_pwd_info", "Please enter a different password with old one");
-                        if(!confirm_new_pwd.equals(new_password))
-                            request.setAttribute("confirm_pwd_info", "Please enter the matched new password.");
+                    else if(!confirm_new_pwd.equals(new_password))
+                        request.setAttribute("confirm_pwd_info", "Please enter the matched new password.");
                     else{//update password into database
                         try{
                             hostBusiness.updateHost(new_password,hostBusiness.getHostByEmail(email).getHostID()); 
@@ -74,7 +73,7 @@ public class hostAccountView extends HttpServlet {
                         }catch(Exception e){
                             request.setAttribute("update_info", "Update password failed.Please check database connection");
                         }
-                    }
+                    }                  
                 }
                 RequestDispatcher rd = request.getRequestDispatcher("hostAccountSettings.jsp");  
                 rd.forward(request,response);

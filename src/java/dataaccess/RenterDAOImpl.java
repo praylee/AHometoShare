@@ -346,10 +346,11 @@ public class RenterDAOImpl implements RenterDAO {
             pstmt.setString(1, email);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
-            boolean isCorrect = rs.first();
+            if(!rs.first())
+                return false;      
             try {rs.close();}
             catch(SQLException ex) {}
-            return isCorrect;
+            return true;
         }
         catch(SQLException e) {
              Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, e);

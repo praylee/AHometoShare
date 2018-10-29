@@ -79,7 +79,7 @@ Copyright @ 2018
                                     <div class="password">
                                         <li class="old_pwd"><h4>Old password</h4></li>
                                         <li><input type="password" name="old_pwd" size="45" maxlength="45" ></li>                            
-                                        <li>
+                                        <li class="pwd_error">
                                             <h5 color="red">
                                                 <%                                   
                                                     if(request.getAttribute("old_pwd_info") != null) {
@@ -93,7 +93,7 @@ Copyright @ 2018
                                     <div class="password">
                                         <li class="new_pwd"><h4>New password</h4></li>
                                         <li><input type="password" name="new_pwd" size="45" maxlength="45" ></li>
-                                        <li>
+                                        <li class="pwd_error">
                                             <h5 color="red">
                                                 <%                                   
                                                     if(request.getAttribute("new_pwd_info") != null) {
@@ -107,7 +107,7 @@ Copyright @ 2018
                                     <div class="password">
                                         <li class="confirm_new_pwd"><h4>Confirm new password</h4></li>
                                         <li><input type="password" name="confirm_new_pwd" size="45" maxlength="45"></li>
-                                        <li>
+                                        <li class="pwd_error">
                                             <h5 color="red">
                                                 <%                                   
                                                     if(request.getAttribute("confirm_pwd_info") != null) {
@@ -121,7 +121,7 @@ Copyright @ 2018
                                     <div class="password" id="password">
                                         <ul id="update_pwd_btn">
                                             <li class="update_pwd"><input type="submit" name="update" value="Update password" /></li>
-                                            <li>
+                                            <li class="update_success">
                                                 <h5 color="red">
                                                     <%                                   
                                                         if(request.getAttribute("update_info") != null) {

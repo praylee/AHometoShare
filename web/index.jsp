@@ -1,5 +1,5 @@
 <%-- 
-File: index.html
+File: index.jsp
 Description: Home page for A Home to Share website
 Create: Sept.30,2018
 Author: Zhan Shen
@@ -25,7 +25,7 @@ Copyright @ 2018
     <!-- Header -->
         <header id="header">
             <div class="inner">
-                <a href="index.html" class="logo">A Home To Share</a>
+                <a href="index.jsp" class="logo">A Home To Share</a>
                 <nav id="nav">
                     <a href="index.jsp">Home</a>
                     <a href="index.jsp">How We Work</a>
@@ -36,7 +36,7 @@ Copyright @ 2018
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
                        <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
-                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
+                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>" onclick="window.location.href='LogoutRedirect'">Log out</button>
                 </nav>
             </div>
 
@@ -140,22 +140,22 @@ Copyright @ 2018
                                     <h4 align="left">Password</h4>
                                     <input type="password" name="loginPassword" size="30" required>
                                 </div>
-                                
-                                <span class="loginError">
+                                <br>
+                                <div class="loginError">
                                     <%
                                         // added by Chris
                                         if(request.getAttribute("info") != null) {
                                             out.print(request.getAttribute("info"));
                                         }
                                     %>
-                                </span>
+                                </div>
 
-                                <h5 align="left"><br><input type="checkbox" name="rememberPwd" value="rememberPwd">Remember me</h5>
+                                <h5 align="left"><input type="checkbox" name="rememberPwd" value="rememberPwd">Remember me</h5>
 
                                 <div class="btn-group4">
                                 <!--    <a href="renterProfile.jsp" class="loginBtn" ></a> -->
-                                <a href="LogInView" class="loginBtn"><button id="loginemailBtn" type="submit" class="unstyled-button2" >Login with email</button></a>
-
+                                
+                                <button id="loginemailBtn" type="submit" class="unstyled-button2" >Login with email</button>
                                 </div>
                             </form>
                         </div>
@@ -338,10 +338,10 @@ Copyright @ 2018
                 <div>
                     <h6>Join Our Community</h6>
                     <ul>
-                        <li><a href=index.html>How it Works</a></li>
-                        <li><a href=index.html>Frequently Asked Questions</a></li>
-                        <li><a href=index.html>Homesharing Resources</a></li>
-                        <li><a href=index.html>Community Compact</a></li>
+                        <li><a href=index.jsp>How it Works</a></li>
+                        <li><a href=index.jsp>Frequently Asked Questions</a></li>
+                        <li><a href=index.jsp>Homesharing Resources</a></li>
+                        <li><a href=index.jsp>Community Compact</a></li>
                     </ul>
                 </div>
 

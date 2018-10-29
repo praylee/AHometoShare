@@ -12,30 +12,16 @@
 package view;
 
 import business.HostBusinessLayer;
-import business.PropertyBusinessLayer;
-import business.RenterBusinessLayer;
-import dataaccess.RenterDAOImpl;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import transferobjects.Renter;
-
 import business.RenterBusinessLayer;
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import transferobjects.Host;
-import transferobjects.Property;
 
 
 /**
@@ -89,12 +75,6 @@ public class LogInView extends HttpServlet {
         else if(emailIsRenter == null && emailIsHost != null){ //user is a Host
                 if(hostBusiness.passwordCorrect(email, password)) {
                     Host host = hostBusiness.getHostByEmail(email);
-//                    request.setAttribute("firstname", "Welcome your Host Profile, "+host.getFirstName());
-//                    request.setAttribute("lName", host.getLastName());
-//                    request.setAttribute("info","This is your Host Profile.");
-//                    request.setAttribute("subInfo","This will be information about you.");
-//                    RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to hostProfile if login successful
-//                    rd.forward(request,response);
                 HostSession session = new HostSession(request.getSession());
                 session.setSessionAttributes(host, true); // store host info in Session
                 response.sendRedirect("hostProfile.jsp");
@@ -120,7 +100,6 @@ public class LogInView extends HttpServlet {
         
            
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

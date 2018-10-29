@@ -17,7 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import transferobjects.Host;
 import javax.servlet.RequestDispatcher;
 
@@ -41,14 +40,13 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
         response.setContentType("text/html;charset=UTF-8");
             
 
-            HttpSession session = request.getSession();
-            
+           HostSession session = new HostSession(request.getSession());           
             boolean updateOk = true;
             String invalidReason = null;
             
             String firstName = request.getParameter("firstname");
             String lastName = request.getParameter("lastname");
-            String phone = request.getParameter("phoneNum");
+            String phone = request.getParameter("phone");
             int gender = Integer.parseInt(request.getParameter("gender"));
             String birthYear = request.getParameter("dateBirth");
             String referralSource=request.getParameter("referralSource");
@@ -71,10 +69,11 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                         retired, pets, smoker, referralSource,Integer.parseInt(session.getAttribute("hostId").toString()));
                 
                 Host host = hostBusiness.getHostByEmail(session.getAttribute("email").toString());
-                this.setHostSessionAttributes(session, host);
-                response.sendRedirect("hostProfile.jsp");
-                
-            }
+                session.setSessionAttributes(host, true);
+                try{session.removeAttribute("invalidReason");}
+            catch(NullPointerException e){}
+            response.sendRedirect("hostProfile.jsp");
+        }
             else {
                 request.setAttribute("invalidReason", invalidReason);
                 RequestDispatcher hp = request.getRequestDispatcher("hostProfile.jsp");  // send error message
@@ -83,22 +82,6 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     
     }
     
-    private void setHostSessionAttributes(HttpSession session, Host host) {
-        session.setAttribute("isLoggedIn", "true");
-        session.setAttribute("userType", "host");
-        session.setAttribute("hostId", host.getHostID());
-        session.setAttribute("email", host.getEmail());
-        session.setAttribute("firstname", host.getFirstName());
-        session.setAttribute("lastname", host.getLastName());
-        session.setAttribute("phone", host.getPhone());
-        session.setAttribute("gender", host.getGender());
-        session.setAttribute("dateBirth", host.getDateBirth());
-        session.setAttribute("isRetired", host.getRetired());
-        session.setAttribute("isPets", host.getPets());
-        session.setAttribute("isSmoker", host.getSmoker());
-        session.setAttribute("referralSource", host.getReferralSource());
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

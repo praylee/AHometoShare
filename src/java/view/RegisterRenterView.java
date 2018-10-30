@@ -64,7 +64,9 @@ public class RegisterRenterView extends HttpServlet {
 //            if (emailRenter == null)//if email is not exist, register continue
         {
             List<Renter> renterList = renterLayer.getAllRenter();
-            int index = renterList.get(renterList.size()-1).getRenterID();
+            int index = -1;
+            if(renterList.size()>0)
+                index = renterList.get(renterList.size()-1).getRenterID();
             Renter renter = new Renter(index+1,email, passWord,fName,lName,phoneNum,Integer.parseInt(gender),yearBorn,false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,referralSource,true);
     
             try{

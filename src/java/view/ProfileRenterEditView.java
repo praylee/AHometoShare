@@ -89,7 +89,7 @@ public class ProfileRenterEditView extends HttpServlet {
         }
         if(btnDelete != null){ // click delete account button
             renterBusiness.deleteRenter(renterBusiness.getRenterByEmail(email).getRenterID());  
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("LogoutRedirect");
         }
 //        boolean updateOk = true;
 //        String invalidReason = null;

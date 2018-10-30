@@ -27,7 +27,7 @@ Copyright @ 2018
                 <nav id="nav">
                     <a href="index.jsp">Home</a>
                     <a href="index.jsp">How We Work</a>
-                    <a href="index.jsp">FAQ</a>
+                    <a href="faq.jsp">FAQ</a>
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="

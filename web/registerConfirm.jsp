@@ -20,7 +20,7 @@
                 <nav id="nav">
                         <a href="index.jsp">Home</a>
                         <a href="index.jsp">How We Work</a>
-                        <a href="index.jsp">FAQ</a>
+                        <a href="faq.jsp">FAQ</a>
                 </nav>
                 <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
             </div>

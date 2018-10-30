@@ -29,7 +29,7 @@ Copyright @ 2018
                 <nav id="nav">
                     <a href="index.jsp">Home</a>
                     <a href="index.jsp">How We Work</a>
-                    <a href="index.jsp">FAQ</a>
+                    <a href="faq.jsp">FAQ</a>
                     <button id="loginBtn" onclick="window.location.href='LogInView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Log in</button>
                     <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Sign Up</button>
                     <a href="

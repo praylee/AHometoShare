@@ -3,6 +3,7 @@ File: hostLoginSettings.jsp
 Description: A page for logged-in renters to change password
 Create: Oct.26,2018
 Author: Zhan Shen
+Modified:Liangliang Du
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas

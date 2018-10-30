@@ -86,7 +86,7 @@ public class hostAccountView extends HttpServlet {
         }
         if(btnDelete != null){ // click delete account button
             hostBusiness.deleteHost(hostBusiness.getHostByEmail(email).getHostID());  
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("LogoutRedirect");
         }
     }
 

@@ -26,22 +26,26 @@ import transferobjects.Property;
 public class PropertyDAOImpl implements PropertyDAO {
 
     private static final String GET_ALL_PROPERTY = "SELECT property_id, host_id,address, city, postal_code, province, "
-            + "country, family_members, smoker, pets, price, host_start_date, host_end_date, shared_chore, availability "
+            + "country, family_members, smoker, pets, hydro, water, gas, cable, internet, parking, laundry, family_room, private_bedroom, shared_bedroom, "
+            + "private_kitchen, shared_kitchen, private_washroom, shared_washroom, price, host_start_date, host_end_date, shared_chore, availability "
             + "FROM property ORDER BY property_id";
 
     private static final String INSERT_PROPERTY = "INSERT INTO property ( "
             + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
-            + "pets,price, host_start_date,host_end_date,shared_chore,availability "
-            + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            + "pets,hydro, water, gas, cable, internet, parking, laundry, family_room, private_bedroom, shared_bedroom, "
+            + "private_kitchen, shared_kitchen, private_washroom, shared_washroom,price, host_start_date,host_end_date,shared_chore,availability "
+            + ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   
     private static final String GET_BY_PROPERTY_ID = "SELECT "
             + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
-            + "pets,price, host_start_date,host_end_date,shared_chore,availability "
+            + "pets,hydro, water, gas, cable, internet, parking, laundry, family_room, private_bedroom, shared_bedroom, "
+            + "private_kitchen, shared_kitchen, private_washroom, shared_washroom,price, host_start_date,host_end_date,shared_chore,availability "
             + "FROM property WHERE property_id = ?";
     private static final String DELETE_PROPERTY = "DELETE FROM property WHERE property_id = ?";
     private static final String UPDATE_PROPERTY = "UPDATE property SET "
             + "host_id = ? ,address = ?, city = ?, postal_code= ?,province= ?,country= ?,family_members= ?,smoker= ?, "
-            + "pets= ?,price= ?, host_start_date= ?,host_end_date= ?,shared_chore= ?,availability= ? "
+            + "pets= ?,hydro=?, water=?, gas=?, cable=?, internet=?, parking=?, laundry=?, family_room=?, private_bedroom=?, shared_bedroom=?, "
+            + "private_kitchen=?, shared_kitchen=?, private_washroom=?, shared_washroom=?,price= ?, host_start_date= ?,host_end_date= ?,shared_chore= ?,availability= ? "
             + "WHERE property_id= ?";
 
     @Override
@@ -63,6 +67,20 @@ public class PropertyDAOImpl implements PropertyDAO {
                 property.setFamMembers(rs.getInt("family_members"));
                 property.setIsSmokerFriendly(rs.getBoolean("smoker"));
                 property.setIsPetFriendly(rs.getBoolean("pets"));
+                property.setHydroIncl(rs.getBoolean("hydro"));
+                property.setWaterIncl(rs.getBoolean("water"));
+                property.setGasIncl(rs.getBoolean("gas"));
+                property.setCableIncl(rs.getBoolean("cable"));
+                property.setInternet(rs.getBoolean("internet"));
+                property.setParking(rs.getBoolean("parking"));
+                property.setLaundry(rs.getBoolean("laundry"));
+                property.setFamilyRoom(rs.getBoolean("family_room"));
+                property.setPriBedroom(rs.getBoolean("private_bedroom"));
+                property.setShaBedroom(rs.getBoolean("shared_bedroom"));
+                property.setPriKitchen(rs.getBoolean("private_kitchen"));
+                property.setShaKitchen(rs.getBoolean("shared_kitchen"));
+                property.setPriWashroom(rs.getBoolean("private_washroom"));
+                property.setShaWashroom(rs.getBoolean("shared_washroom"));
                 property.setPrice(rs.getDouble("price"));
                 property.setStartDate(rs.getDate("host_start_date"));
                 property.setStartDate(rs.getDate("host_end_date"));
@@ -90,11 +108,25 @@ public class PropertyDAOImpl implements PropertyDAO {
             pstmt.setInt(8, property.getFamMembers());
             pstmt.setBoolean(9, property.getIsSmokerFriendly());
             pstmt.setBoolean(10, property.getIsPetFriendly());
-            pstmt.setDouble(11, property.getPrice());
-            pstmt.setDate(12, property.getStartDate());
-            pstmt.setDate(13, property.getEndDate());
-            pstmt.setString(14, property.getChores());
-            pstmt.setInt(15, property.getAvailability());
+            pstmt.setBoolean(11, property.getHydroIncl());
+            pstmt.setBoolean(12, property.getWaterIncl());
+            pstmt.setBoolean(13, property.getGasIncl());
+            pstmt.setBoolean(14, property.getCableIncl());
+            pstmt.setBoolean(15, property.getInternet());
+            pstmt.setBoolean(16, property.getParking());
+            pstmt.setBoolean(17, property.getLaundry());
+            pstmt.setBoolean(18, property.getFamilyRoom());
+            pstmt.setBoolean(19, property.getPriBedroom());
+            pstmt.setBoolean(20, property.getShaBedroom());
+            pstmt.setBoolean(21, property.getPriKitchen());
+            pstmt.setBoolean(22, property.getShaKitchen());
+            pstmt.setBoolean(23, property.getPriWashroom());
+            pstmt.setBoolean(24, property.getShaWashroom());
+            pstmt.setDouble(25, property.getPrice());
+            pstmt.setDate(26, property.getStartDate());
+            pstmt.setDate(27, property.getEndDate());
+            pstmt.setString(28, property.getChores());
+            pstmt.setInt(29, property.getAvailability());
 
             pstmt.executeUpdate();
         } catch (SQLException ex) {
@@ -121,6 +153,20 @@ public class PropertyDAOImpl implements PropertyDAO {
                 property.setFamMembers(rs.getInt("family_members"));
                 property.setIsSmokerFriendly(rs.getBoolean("smoker"));
                 property.setIsPetFriendly(rs.getBoolean("pets"));
+                property.setHydroIncl(rs.getBoolean("hydro"));
+                property.setWaterIncl(rs.getBoolean("water"));
+                property.setGasIncl(rs.getBoolean("gas"));
+                property.setCableIncl(rs.getBoolean("cable"));
+                property.setInternet(rs.getBoolean("internet"));
+                property.setParking(rs.getBoolean("parking"));
+                property.setLaundry(rs.getBoolean("laundry"));
+                property.setFamilyRoom(rs.getBoolean("family_room"));
+                property.setPriBedroom(rs.getBoolean("private_bedroom"));
+                property.setShaBedroom(rs.getBoolean("shared_bedroom"));
+                property.setPriKitchen(rs.getBoolean("private_kitchen"));
+                property.setShaKitchen(rs.getBoolean("shared_kitchen"));
+                property.setPriWashroom(rs.getBoolean("private_washroom"));
+                property.setShaWashroom(rs.getBoolean("shared_washroom"));
                 property.setPrice(rs.getDouble("price"));
                 property.setStartDate(rs.getDate("host_start_date"));
                 property.setEndDate(rs.getDate("host_end_date"));
@@ -147,7 +193,7 @@ public class PropertyDAOImpl implements PropertyDAO {
     }
 
     @Override
-    public void updateProperty(int hostId, String address, String city, String postalCode, String province, String country, int famMembers, Boolean isSmokerFriendly, Boolean isPetFriendly, double price, Date startDate, Date endDate, String chores, int availability, int propertyId) {
+    public void updateProperty(int hostId, String address, String city, String postalCode, String province,String country,int famMembers,Boolean isSmokerFriendly, Boolean isPetFriendly,Boolean hydroIncl,Boolean waterIncl,Boolean gasIncl,Boolean cableIncl,Boolean internet,Boolean parking,Boolean laundry,Boolean familyRoom,Boolean priBedroom,Boolean shaBedroom,Boolean priKitchen,Boolean shaKitchen,Boolean priWashroom,Boolean shaWashroom,double price,Date startDate,Date endDate,String chores,int availability,int propertyId) {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(UPDATE_PROPERTY);) {
             pstmt.setInt(1, hostId);
@@ -159,12 +205,26 @@ public class PropertyDAOImpl implements PropertyDAO {
             pstmt.setInt(7, famMembers);
             pstmt.setBoolean(8, isSmokerFriendly);
             pstmt.setBoolean(9, isPetFriendly);
-            pstmt.setDouble(10, price);
-            pstmt.setDate(11, startDate);
-            pstmt.setDate(12, endDate);
-            pstmt.setString(13, chores);
-            pstmt.setInt(14, availability);
-            pstmt.setInt(15, propertyId);
+            pstmt.setBoolean(10, hydroIncl);
+            pstmt.setBoolean(11, waterIncl);
+            pstmt.setBoolean(12, gasIncl);
+            pstmt.setBoolean(13, cableIncl);
+            pstmt.setBoolean(14, internet);
+            pstmt.setBoolean(15, parking);
+            pstmt.setBoolean(16, laundry);
+            pstmt.setBoolean(17, familyRoom);
+            pstmt.setBoolean(18, priBedroom);
+            pstmt.setBoolean(19, shaBedroom);
+            pstmt.setBoolean(20, priKitchen);
+            pstmt.setBoolean(21, shaKitchen);
+            pstmt.setBoolean(22, priWashroom);
+            pstmt.setBoolean(23, shaWashroom);
+            pstmt.setDouble(24, price);
+            pstmt.setDate(25, startDate);
+            pstmt.setDate(26, endDate);
+            pstmt.setString(27, chores);
+            pstmt.setInt(28, availability);
+            pstmt.setInt(29, propertyId);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {

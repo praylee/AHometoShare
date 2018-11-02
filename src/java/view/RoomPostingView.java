@@ -82,11 +82,11 @@ public class RoomPostingView extends HttpServlet {
         String chores = request.getParameter("chores");
         String price = request.getParameter("price");
         String email = request.getParameter("email");
-        int resourceid = 0;
+        //int resourceid = 0;
         
         HostBusinessLayer hostLayer = new HostBusinessLayer();
         PropertyBusinessLayer propertyLayer = new PropertyBusinessLayer();
-        PropertyXResourceLayer propertyXresource = new PropertyXResourceLayer();
+        //PropertyXResourceLayer propertyXresource = new PropertyXResourceLayer();
 
         List<Property> propertyList = propertyLayer.getAllProperty();
         int index = propertyList.size();
@@ -104,7 +104,10 @@ public class RoomPostingView extends HttpServlet {
         
         int hostid = hostLayer.getHostByEmail(email).getHostID();
         
-        Property property = new Property(index+1,hostid,address,city,postalcode,province,country,Integer.parseInt(fammembers),Boolean.parseBoolean(SmokerFriendly),Boolean.parseBoolean(PetFriendly),Double.parseDouble(price),sDate,eDate,chores,Integer.parseInt(availability));
+        Property property = new Property(index+1,hostid,address,city,postalcode,province,country,Integer.parseInt(fammembers),Boolean.parseBoolean(SmokerFriendly),Boolean.parseBoolean(PetFriendly),
+                Boolean.parseBoolean(hydro),Boolean.parseBoolean(water),Boolean.parseBoolean(gas),Boolean.parseBoolean(cable),Boolean.parseBoolean(internet),
+                Boolean.parseBoolean(parking),Boolean.parseBoolean(laundry),Boolean.parseBoolean(familyroom),Boolean.parseBoolean(privatebedroom),Boolean.parseBoolean(sharedbedroom),
+                Boolean.parseBoolean(privatekitchen),Boolean.parseBoolean(sharedkitchen),Boolean.parseBoolean(privatewashroom),Boolean.parseBoolean(sharedwashroom),Double.parseDouble(price),sDate,eDate,chores,Integer.parseInt(availability));
         //Property property = new Property(index+1,1,address,"Ottawa","K1l 3K4","ontario","Canada",3,true,false,1000.0,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),"clean",6);
 
         propertyLayer.addProperty(property);
@@ -113,7 +116,7 @@ public class RoomPostingView extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
         rd.forward(request,response);
 
-        
+        /**
         if (hydro != null && hydro.equals("true")){
             resourceid = 1;
             PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
@@ -252,7 +255,8 @@ public class RoomPostingView extends HttpServlet {
             } catch (ValidationException ex) {
                 Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } 
+        }
+        * */
         
     }
 

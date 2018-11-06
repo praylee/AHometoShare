@@ -44,27 +44,78 @@ Copyright @ 2018
                 
                 
         <script>
+
+            
             function myFilterFunction() {
                 // Declare variables
 
                 var cityOptions = document.getElementById("cityFilter"); //get list of options
-                var selectedCity = cityOptions.options[cityOptions.selectedIndex].text; //get selected city option text
+                var selectedCity = cityOptions.options[cityOptions.selectedIndex].text; //city filter
+                
+                var priceOptions = document.getElementsByName("priceFilter"); //get list of price options
+                var selectedPrice; //price filter
+                
+                for (var i=0; i < priceOptions.length; i ++) {
+                    if (priceOptions[i].checked) {
+                        selectedPrice = priceOptions[i].value; //price filter value
+                        break;
+                    } else {
+                        selectedPrice = "none";
+                    }
+                }
+
+                //window.alert(selectedPrice); //for debugging
             
-               // window.alert(selectedCity); //for debugging - show selected city to filter by
+                //window.alert(selectedCity); //for debugging - show selected city to filter by
                
                 table = document.getElementById("property");
                 tr = table.getElementsByTagName("tr");
                 //window.alert(tr.length); //for debugging
                 for (i = 1; i < tr.length +1; i++) { //check each table row for it's city value
                     var c = document.getElementById("city" + i).value; //the city for property in row i
+                    var p = document.getElementById("price" + i).value; //the price for property in row i
+                    
+                    //var priceMatch = priceFilter(selectedPrice, p);
                    // window.alert(c); //for debugging
-                    if (c === selectedCity) {
+                   
+                   
+                var val;
+                var priceInt = parseInt(p);
+                
+                if (selectedPrice === "1") { // price under $500
+                    if (priceInt < 500) {
+                        val = "true";
+                    } else {
+                        val = "false";
+                    }
+                } else if (selectedPrice === "2") { //price between $500-$800
+                    if (priceInt >= 500 && priceInt <= 800) {
+                        val = "true";
+                    } else {
+                        val = "false";
+                    }
+                } else if (selectedPrice === "3") { //price above $800
+                    if (priceInt > 800) {
+                        val = "true";
+                    } else {
+                        val = "false";
+                    }
+                } else { 
+                    val = "none";
+                }
+                   
+                 //  window.alert(val);
+                   
+                if (selectedCity === "-- Select City --") {
+                    tr[i-1].style.display = ""; //keep all rows displayed
+                } else { //a filter option was used
+                    if (c === selectedCity && (val === "true" || val === "none")) {
                         tr[i-1].style.display = ""; //keep row displayed
                     } else {
                         tr[i-1].style.display = "none"; //hide row
+                        }  
                     }  
                 }
-               
             }
             
             
@@ -120,16 +171,21 @@ Copyright @ 2018
                                 <tr>
                                     <td>
                                         <select id="cityFilter">
+                                            <option value="none">-- Select City --</option>
                                             <option value="mississauga">Mississauga</option>
                                             <option value="hamilton">Hamilton</option>
                                             <option value="peel">Peel Region</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <select id="price">
+                                        <!--select id="priceFilter">
+                                            <option value="none">---</option>
                                             <option name="price" value="low">Low to High</option>
                                             <option name="price" value="high">High to Low</option>
-                                        </select>
+                                        </select-->
+                                        <input type="radio" name="priceFilter" value="1"> Less than $500<br>
+                                        <input type="radio" name="priceFilter" value="2"> $500-$800<br>
+                                        <input type="radio" name="priceFilter" value="3"> Above $800  
                                     </td>
                                     <td>
                                         <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
@@ -174,7 +230,7 @@ Copyright @ 2018
                                     City: <input type="hidden" id="city<%=i%>" name="city" value="<%=property.getCity()%>"><%=property.getCity()%> <br>
                                     Start Date: <input type="hidden" id="start" name="start" value="<%=property.getStartDate()%>"><%=property.getStartDate()%> <br>
                                     End Date: <input type="hidden" id="end" name="end" value="<%=property.getEndDate()%>"><%=property.getEndDate()%> <br>
-                                    Price: <input type="hidden" id="price" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
+                                    Price: <input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
                                     <!--input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" /-->
                                     <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
                                     <input id="submit" name="submit" type="submit" value="View Details" onclick="RenterProfileSearchDetails">

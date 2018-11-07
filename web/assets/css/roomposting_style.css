@@ -285,7 +285,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 input[type="reset"].alt:active {
                         background-color: rgba(144, 144, 144, 0.2);
                 }
-	
+/*upload image format*/
+img{
+  max-width:180px;
+}
+input[type=file]{
+padding:10px;
+background:#2d2d2d;}               
+                
+                
+                
 /* Footer */
 
 .flex {

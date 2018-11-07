@@ -3,6 +3,7 @@
  * Description: Dealing with host's room posting page and insert property's information into Property table and PropertyXResource table in database
  * Create: Oct 23,2018
  * Author: Bin Yang
+ * Modified by Liangliang Du for adding pictures
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -14,10 +15,12 @@ package view;
 
 import business.HostBusinessLayer;
 import business.PropertyBusinessLayer;
+import business.PropertyPictureBusinessLayer;
 import business.PropertyXResourceLayer;
 import business.ResourceBusinessLayer;
 import business.ValidationException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.List;
 import java.sql.Date;
@@ -26,10 +29,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import transferobjects.Property;
+import transferobjects.PropertyPicture;
 import transferobjects.PropertyXResource;
 import transferobjects.Resource;
 
@@ -38,6 +44,8 @@ import transferobjects.Resource;
  *
  * @author Bin Yang
  */
+
+@MultipartConfig(maxFileSize=16177216)
 public class RoomPostingView extends HttpServlet {
     
     /**
@@ -50,7 +58,7 @@ public class RoomPostingView extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+            throws ServletException, IOException, ParseException, ValidationException {
         
         response.setContentType("text/html;charset=UTF-8");
         
@@ -111,10 +119,7 @@ public class RoomPostingView extends HttpServlet {
         //Property property = new Property(index+1,1,address,"Ottawa","K1l 3K4","ontario","Canada",3,true,false,1000.0,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),"clean",6);
 
         propertyLayer.addProperty(property);
-        // Only do this if user was successfully added to database!!!!
-        request.setAttribute("Info", "Room posting Successful.");
-        RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
-        rd.forward(request,response);
+        
 
         /**
         if (hydro != null && hydro.equals("true")){
@@ -257,6 +262,27 @@ public class RoomPostingView extends HttpServlet {
             }
         }
         * */
+ // save image into database     
+  
+    PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
+       
+    List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
+    int pindex = pictureList.size();
+    int property_id = index+1;
+    
+    Part part=request.getPart("inputfile");  
+    String picture = request.getParameter("inputfile");
+    if(part != null){
+        PropertyPicture propertypicture = new PropertyPicture(pindex+1,property_id,picture);
+        InputStream is = part.getInputStream();
+        pPictureLayer.addPicture(propertypicture,is);
+    } 
+        
+        
+     // Only do this if user was successfully added to database!!!!
+        request.setAttribute("Info", "Room posting Successful.");
+        RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
+        rd.forward(request,response);   
         
     }
 
@@ -276,6 +302,8 @@ public class RoomPostingView extends HttpServlet {
             processRequest(request, response);
         } catch (ParseException ex) {
             Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ValidationException ex) {
+            Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -293,6 +321,8 @@ public class RoomPostingView extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
+            Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ValidationException ex) {
             Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

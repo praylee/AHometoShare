@@ -3,6 +3,7 @@ File: roomPosting.jsp
 Description: Host's room posting page for A Home to Share website
 Create: Oct 23,2018
 Author: Bin Yang
+Modified by Liangliang Du for adding pictures
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -17,6 +18,8 @@ Copyright @ 2018
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Room Posting</title>
         <link rel="stylesheet" href="assets/css/roomposting_style.css" />
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     </head>
     <body>
         
@@ -80,7 +83,7 @@ Copyright @ 2018
         <li class="aside aside-3">
             <!-- Form -->
                 <div>
-                    <form method="get" action="RoomPostingView" onsubmit="return checkForm(this)" >
+                    <form id="roomForm" method="post" action="RoomPostingView" onsubmit="" enctype="multipart/form-data">
                         <!--<div class="row uniform">-->
 
                         <h2>Property information</h2>
@@ -145,6 +148,38 @@ Copyright @ 2018
                                         <option value="7">Temporary</option>
                                 </select>
                             </div>
+                        
+                             <!--upload picture-->
+                            <div >
+                                <h4>Upload Picture:</h4>
+                                <input id="inputfile" type='file' name="inputfile" onchange="readURL(this);" />
+                                <img id="img" name="img" src="http://placehold.it/180" alt="your image" />                             
+                            </div>
+                        
+                            <script>
+                                function readURL(input) {    
+                                    if (input.files && input.files[0]) {
+                                        var reader = new FileReader();
+                                         reader.onload = function (e) {
+                                            $('#img')
+                                                .attr('src', e.target.result);
+
+                                        };
+                                         reader.readAsDataURL(input.files[0]);
+                                }
+
+                                    var image_name = $('#inputfile').val();
+                                    if(image_name != ''){
+                                        var extension = $('#inputfile').val().split('.').pop().toLowerCase();
+                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
+                                            alert('Invalid Image File');
+                                            $('#inputfile').val('');
+                                            return false;
+                                        }
+                                    }
+                                }
+                            </script>
+                        
                         
                             <div>
                                 <h4>Please check the following items which are applicable<span style="color:red; font-weight:bold">*</span></h4>

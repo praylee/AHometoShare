@@ -200,10 +200,18 @@ Copyright @ 2018
                         </form>         
                        
                     </div>
-            
+<!--table list format-->
+<style> 
+ td {
+    border-bottom: 1px solid black;
+    padding:5px;
+    height: 50px;
+    
+}
+</style>            
                             
                     <div class="flex flex-3">
-                        <table class="hosttable" id="property">
+                        <table class="hosttable" id="property" width=600px>
                             <%
                                 List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
                                 if (pairList.isEmpty()) { %>
@@ -235,6 +243,10 @@ Copyright @ 2018
                                     <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
                                     <input id="submit" name="submit" type="submit" value="View Details" onclick="RenterProfileSearchDetails">
                                 </td>
+                                 <td>
+                                    Picture:  <br>  
+                                    <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery Image' height=180px width=180px/>                                                       
+                                </td>     
                             </tr>
                             </form>
                             <%}

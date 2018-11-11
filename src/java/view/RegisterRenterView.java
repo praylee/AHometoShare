@@ -72,9 +72,11 @@ public class RegisterRenterView extends HttpServlet {
             try{
                 renterLayer.addRenter(renter);
                 // Only do this if user was successfully added to database!!!!
-                request.setAttribute("Info", "Renter Registration Successful.");
-                RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  //go to registerConfirm if signUp successful
-                rd.forward(request,response);
+                //request.setAttribute("Info", "Renter Registration Successful.");
+                EmailFactory.sendConfirmationEmail(request.getParameter("email"), request.getParameter("firstname"));
+                response.sendRedirect("registerConfirm.jsp"); //go to registerConfirm if signUp successful
+//                RequestDispatcher rd = request.getRequestDispatcher("registerConfirm.jsp");  
+//                rd.forward(request,response);
             }
             catch(ValidationException e) {
 

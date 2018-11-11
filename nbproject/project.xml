@@ -14,6 +14,10 @@
                     <file>${file.reference.Apache_Tomcat_8.0.27-lib}</file>
                     <path-in-war>WEB-INF/classes</path-in-war>
                 </library>
+                <library dirs="200">
+                    <file>${file.reference.javax.mail.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

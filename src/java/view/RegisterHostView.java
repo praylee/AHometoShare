@@ -64,6 +64,7 @@ public class RegisterHostView extends HttpServlet {
           
         try{
             hostLayer.addHost(host);
+            EmailFactory.sendConfirmationEmail(email, fName);
             // Only do this if user was successfully added to database!!!!
             request.setAttribute("Info", "Host Registration Successful.");
             

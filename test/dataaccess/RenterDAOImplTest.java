@@ -7,9 +7,7 @@ package dataaccess;
 
 import java.sql.Date;
 import java.util.List;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -17,7 +15,7 @@ import transferobjects.Renter;
 
 /**
  *
- * @author chris
+ * @author 29751
  */
 public class RenterDAOImplTest {
     
@@ -31,19 +29,26 @@ public class RenterDAOImplTest {
     @AfterClass
     public static void tearDownClass() {
     }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+
+      /**
+     * Test of addRenter method, of class RenterDAOImpl.
+     */
+    @Test
+    public void testAddRenter() {
+        System.out.println("addRenter");       
+        Renter renter = new Renter(1,"chrislabelle@gmail.com", "password","Chris","Chris","5555555555",1,"1999",false,false,false,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),4,2,2,"newspaper",true);
+        RenterDAOImpl instance = new RenterDAOImpl();
+        instance.addRenter(renter);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
+    
+    
     /**
      * Test of getAllRenter method, of class RenterDAOImpl.
      */
-    @Test
+ /*   @Test
     public void testGetAllRenter() {
         System.out.println("getAllRenter");
         RenterDAOImpl instance = new RenterDAOImpl();
@@ -54,23 +59,11 @@ public class RenterDAOImplTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of addRenter method, of class RenterDAOImpl.
-     */
-    @Test
-    public void testAddRenter() {
-        System.out.println("addRenter");
-        Renter renter = null;
-        RenterDAOImpl instance = new RenterDAOImpl();
-        instance.addRenter(renter);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+  
     /**
      * Test of getRenterByRenterId method, of class RenterDAOImpl.
      */
-    @Test
+/*    @Test
     public void testGetRenterByRenterId() {
         System.out.println("getRenterByRenterId");
         int renterId = 0;
@@ -85,7 +78,7 @@ public class RenterDAOImplTest {
     /**
      * Test of getRenterByRenterUname method, of class RenterDAOImpl.
      */
-    @Test
+/*    @Test
     public void testGetRenterByRenterUname() {
         System.out.println("getRenterByRenterUname");
         String username = "";
@@ -100,7 +93,7 @@ public class RenterDAOImplTest {
     /**
      * Test of deleteRenter method, of class RenterDAOImpl.
      */
-    @Test
+/*    @Test
     public void testDeleteRenter() {
         System.out.println("deleteRenter");
         int renterId = 0;
@@ -113,8 +106,8 @@ public class RenterDAOImplTest {
     /**
      * Test of updateRenter method, of class RenterDAOImpl.
      */
-    @Test
-    public void testUpdateRenter_18args() {
+/*    @Test
+    public void testUpdateRenter() {
         System.out.println("updateRenter");
         String email = "";
         String passWord = "";
@@ -141,48 +134,9 @@ public class RenterDAOImplTest {
     }
 
     /**
-     * Test of updateRenter method, of class RenterDAOImpl.
-     */
-    @Test
-    public void testUpdateRenter_13args() {
-        System.out.println("updateRenter");
-        String firstName = "";
-        String lastName = "";
-        String phone = "";
-        int gender = 0;
-        String dateBirth = "";
-        Boolean isStudent = null;
-        Boolean isEmployed = null;
-        Boolean isSmoker = null;
-        Date startDate = null;
-        Date endDate = null;
-        double lowPrice = 0.0;
-        double highPrice = 0.0;
-        int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
-        instance.updateRenter(firstName, lastName, phone, gender, dateBirth, isStudent, isEmployed, isSmoker, startDate, endDate, lowPrice, highPrice, renterId);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of updateRenter method, of class RenterDAOImpl.
-     */
-    @Test
-    public void testUpdateRenter_String_int() {
-        System.out.println("updateRenter");
-        String passWord = "";
-        int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
-        instance.updateRenter(passWord, renterId);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of getRenterByEmail method, of class RenterDAOImpl.
      */
-    @Test
+/*    @Test
     public void testGetRenterByEmail() {
         System.out.println("getRenterByEmail");
         String email = "";
@@ -197,7 +151,7 @@ public class RenterDAOImplTest {
     /**
      * Test of passwordCorrect method, of class RenterDAOImpl.
      */
-    @Test
+/*    @Test
     public void testPasswordCorrect() {
         System.out.println("passwordCorrect");
         String email = "";
@@ -209,5 +163,5 @@ public class RenterDAOImplTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+    */
 }

@@ -29,7 +29,7 @@
 			
         <!-- Banner: the text shows within the main image -->
         <section id="banner">
-                <h1><%out.print(request.getAttribute("Info"));%></h1>
+                <h1>Registration Successful!</h1>
         </section>
 
         <!-- Block 1: Renter information info -->

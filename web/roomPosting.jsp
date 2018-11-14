@@ -40,21 +40,15 @@ Copyright @ 2018
                 </nav>
             </div>
         </header>
-            </header>
+        
 
-			
-        <!-- Main -->
+	<!-- Main -->
        
-          	
-                <!--Main Frame-->
-            <div class="wrapper">
-            
-                <!--Pane 1: a placeholder-->    
-
         <section id="main_section" class="wrapper">
-            <!-- Left side text & image -->
-                <li class="aside aside-2">
-                    <div class="btn-group-vertical">
+            <div>
+                <h2></h2>
+            </div>
+            <div class="btn-group-vertical">
                         <ul id="horizontal-list">
                             <li><hr class="welcome_block" align="left"></li>
                             <li><h3>Hello <%out.print(session.getAttribute("firstname"));%>!</h3><li>
@@ -64,25 +58,8 @@ Copyright @ 2018
                             <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='hostAccountSettings.jsp'" /></li>
                             <li id="menu3"><input type="button" value="Manage Properties" onclick="window.location.href='roomPosting.jsp'" /></li>
                         </ul>
-                    </div>
-                </li>
-            <li class="aside aside-1">
-                    <div>
-                    <header>
-                            <!-- <h2>Welcome, <%out.print(session.getAttribute("firstName"));%>!</h2> -->
-                            <h3>Welcome to A Home to Share!</h3>
-                            <p>Create your posting just in minutes!</p>
-                            <img src="images/renter_registration.jpg" alt="Renter registration image" />
-                    </header>
-                </div>
-                           
-                </li>
-                <!--Pane 2: "My Account" - menu buttons-->
-                
-                
-        <li class="aside aside-3">
-            <!-- Form -->
-                <div>
+            </div>
+            <div>
                     <form id="roomForm" method="post" action="RoomPostingView" onsubmit="" enctype="multipart/form-data">
                         <!--<div class="row uniform">-->
 
@@ -117,12 +94,12 @@ Copyright @ 2018
                         <!-- Break: Email Address(db:email), Phone Number(db:phone) -->
                             <div class="formRow">
                                 <h4>Start Sharing<span style="color:red; font-weight:bold">*</span></h4>
-                                <input type="date" name="startdate" id="startdate" value="" size="30" placeholder="dd-mm-yyyy" maxlength="15" required />
+                                <input type="date" name="startdate" id="startdate" value="" size="30" placeholder="yyyy-mm-dd" maxlength="15" required />
                             </div>
                         
                             <div class="formRow">
                                 <h4>End Sharing<span style="color:red; font-weight:bold">*</span></h4>
-                                <input type="date" name="enddate" id="enddate" value="" size="30" placeholder="dd-mm-yyyy" maxlength="15" />
+                                <input type="date" name="enddate" id="enddate" value="" size="30" placeholder="yyyy-mm-dd" maxlength="15" />
                             </div>
 
                             <div class="formRow2">
@@ -246,7 +223,9 @@ Copyright @ 2018
 
                     </form>
                 </div>
-        </li>
+                <div>
+                    <h2></h2>
+                </div>
         </section>
         
         <!-- Footer -->

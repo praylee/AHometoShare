@@ -41,6 +41,11 @@ public class PropertyDAOImpl implements PropertyDAO {
             + "pets,hydro, water, gas, cable, internet, parking, laundry, family_room, private_bedroom, shared_bedroom, "
             + "private_kitchen, shared_kitchen, private_washroom, shared_washroom,price, host_start_date,host_end_date,shared_chore,availability "
             + "FROM property WHERE property_id = ?";
+    private static final String GET_BY_HOST_ID = "SELECT "
+            + "property_id, host_id,address, city, postal_code,province,country,family_members,smoker, "
+            + "pets,hydro, water, gas, cable, internet, parking, laundry, family_room, private_bedroom, shared_bedroom, "
+            + "private_kitchen, shared_kitchen, private_washroom, shared_washroom,price, host_start_date,host_end_date,shared_chore,availability "
+            + "FROM property WHERE host_id = ?";
     private static final String DELETE_PROPERTY = "DELETE FROM property WHERE property_id = ?";
     private static final String UPDATE_PROPERTY = "UPDATE property SET "
             + "host_id = ? ,address = ?, city = ?, postal_code= ?,province= ?,country= ?,family_members= ?,smoker= ?, "
@@ -141,6 +146,52 @@ public class PropertyDAOImpl implements PropertyDAO {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(GET_BY_PROPERTY_ID);) {
             pstmt.setInt(1, propertyId); //modified by Melissa Rajala
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                property.setPropertyId(rs.getInt("property_id"));
+                property.setHostId(rs.getInt("host_id"));
+                property.setAddress(rs.getString("address"));
+                property.setCity(rs.getString("city"));
+                property.setPostalCode(rs.getString("postal_code"));
+                property.setProvince(rs.getString("province"));
+                property.setCountry(rs.getString("country"));
+                property.setFamMembers(rs.getInt("family_members"));
+                property.setIsSmokerFriendly(rs.getBoolean("smoker"));
+                property.setIsPetFriendly(rs.getBoolean("pets"));
+                property.setHydroIncl(rs.getBoolean("hydro"));
+                property.setWaterIncl(rs.getBoolean("water"));
+                property.setGasIncl(rs.getBoolean("gas"));
+                property.setCableIncl(rs.getBoolean("cable"));
+                property.setInternet(rs.getBoolean("internet"));
+                property.setParking(rs.getBoolean("parking"));
+                property.setLaundry(rs.getBoolean("laundry"));
+                property.setFamilyRoom(rs.getBoolean("family_room"));
+                property.setPriBedroom(rs.getBoolean("private_bedroom"));
+                property.setShaBedroom(rs.getBoolean("shared_bedroom"));
+                property.setPriKitchen(rs.getBoolean("private_kitchen"));
+                property.setShaKitchen(rs.getBoolean("shared_kitchen"));
+                property.setPriWashroom(rs.getBoolean("private_washroom"));
+                property.setShaWashroom(rs.getBoolean("shared_washroom"));
+                property.setPrice(rs.getDouble("price"));
+                property.setStartDate(rs.getDate("host_start_date"));
+                property.setEndDate(rs.getDate("host_end_date"));
+                property.setChores(rs.getString("shared_chore"));
+                property.setAvailability(rs.getInt("availability"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return property;
+    }
+    
+    @Override
+    public Property getPropertyByHostId(int hostId) { 
+
+        Property property = new Property();
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_ID);) {
+            pstmt.setInt(1, hostId); 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 property.setPropertyId(rs.getInt("property_id"));

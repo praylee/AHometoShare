@@ -99,13 +99,13 @@ public class RoomPostingView extends HttpServlet {
         List<Property> propertyList = propertyLayer.getAllProperty();
         int index = propertyList.size();
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date staDate = sdf.parse(startdate);
         java.sql.Date sDate = new java.sql.Date(staDate.getTime());
         
         java.sql.Date eDate;
         if (enddate.equals("")){
-            eDate = new java.sql.Date(sdf.parse("31-12-2099").getTime());
+            eDate = new java.sql.Date(sdf.parse("2099-12-31").getTime());
         } else {
             eDate = new java.sql.Date(sdf.parse(enddate).getTime());
         }
@@ -119,167 +119,25 @@ public class RoomPostingView extends HttpServlet {
         //Property property = new Property(index+1,1,address,"Ottawa","K1l 3K4","ontario","Canada",3,true,false,1000.0,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),"clean",6);
 
         propertyLayer.addProperty(property);
-        
-
-        /**
-        if (hydro != null && hydro.equals("true")){
-            resourceid = 1;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }  
-        
-        if (water != null && water.equals("true")){
-            resourceid = 5;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (gas != null && gas.equals("true")){
-            resourceid = 4;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        if (cable != null && cable.equals("true")){
-            resourceid = 3;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (internet != null && internet.equals("true")){
-            resourceid = 2;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (parking != null && parking.equals("true")){
-            resourceid = 8;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (laundry != null && laundry.equals("true")){
-            resourceid = 6;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (familyroom != null && familyroom.equals("true")){
-            resourceid = 7;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (privatebedroom != null && privatebedroom.equals("true")){
-            resourceid = 9;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (sharedbedroom != null && sharedbedroom.equals("true")){
-            resourceid = 12;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (privatekitchen != null && privatekitchen.equals("true")){
-            resourceid = 11;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (sharedkitchen != null && sharedkitchen.equals("true")){
-            resourceid = 14;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (privatewashroom != null && privatewashroom.equals("true")){
-            resourceid = 10;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-        if (sharedwashroom != null && sharedwashroom.equals("true")){
-            resourceid = 13;
-            PropertyXResource pxr = new PropertyXResource(index+1, resourceid);
-            try {
-                propertyXresource.addPropertyXResource(pxr);
-            } catch (ValidationException ex) {
-                Logger.getLogger(RoomPostingView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        * */
- // save image into database     
-  
-    PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
-       
-    List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
-    int pindex = pictureList.size();
-    int property_id = index+1;
     
-    Part part=request.getPart("inputfile");  
-    String picture = request.getParameter("inputfile");
-    if(part != null){
-        PropertyPicture propertypicture = new PropertyPicture(pindex+1,property_id,picture);
-        InputStream is = part.getInputStream();
-        pPictureLayer.addPicture(propertypicture,is);
-    } 
+        // save image into database     
+
+        PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
+
+        List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
+        int pindex = pictureList.size();
+        int property_id = index+1;
+
+        Part part=request.getPart("inputfile");  
+        String picture = request.getParameter("inputfile");
+        if(part != null){
+            PropertyPicture propertypicture = new PropertyPicture(pindex+1,property_id,picture);
+            InputStream is = part.getInputStream();
+            pPictureLayer.addPicture(propertypicture,is);
+        } 
         
         
-     // Only do this if user was successfully added to database!!!!
+        // Only do this if user was successfully added to database!!!!
         request.setAttribute("Info", "Room posting Successful.");
         RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
         rd.forward(request,response);   

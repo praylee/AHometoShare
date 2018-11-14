@@ -20,4 +20,5 @@ public interface PropertyDAO {
     Property getPropertyByPropertyId(int propertyId);
     void deleteProperty(int propertyId);
     void updateProperty(int hostId, String address, String city, String postalCode, String province,String country,int famMembers,Boolean isSmokerFriendly, Boolean isPetFriendly,Boolean hydroIncl,Boolean waterIncl,Boolean gasIncl,Boolean cableIncl,Boolean internet,Boolean parking,Boolean laundry,Boolean familyRoom,Boolean priBedroom,Boolean shaBedroom,Boolean priKitchen,Boolean shaKitchen,Boolean priWashroom,Boolean shaWashroom,double price,Date startDate,Date endDate,String chores,int availability,int propertyId);
+    Property getPropertyByHostId(int hostId);
 }

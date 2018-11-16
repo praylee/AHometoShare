@@ -73,7 +73,8 @@ public class RegisterHostView extends HttpServlet {
             rd.forward(request,response);
         }
         catch(ValidationException e) {
-            
+            System.out.print("Caught ValidationException: " + e.getMessage());
+            response.sendRedirect("hostRegister.html");
         }
     }
 

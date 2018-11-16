@@ -23,6 +23,13 @@ import transferobjects.Host;
  */
 public class HostBusinessLayer {
     
+    private static final int EMAIL_LENGTH = 42;
+    private static final int FIRST_NAME_LENGTH = 45;
+    private static final int LAST_NAME_LENGTH = 45;
+    private static final int PHONE_LENGTH = 12;
+    private static final int DOB_LENGTH = 4;
+    private static final int REFERRAL_LENGTH = 45;
+    
     private HostDAO hostDAO = null;
     
     public HostBusinessLayer() {
@@ -34,7 +41,7 @@ public class HostBusinessLayer {
     }
     public void addHost(Host host) throws ValidationException {
         try {
-            validateFields(host);
+            validateSignUpFields(host);
             hostDAO.addHost(host);
         }
         catch(ValidationException e) {
@@ -66,9 +73,28 @@ public class HostBusinessLayer {
         return hostDAO.passwordCorrect(email, password);
     }
     
-    private void validateFields(Host host) throws ValidationException {
-        // if email doesn't match [\w\d\._\-!#$%&'*+/=?^_`{|}~]+@[\w\d\.\[\]]+  then throw exception
-        // if password doesn't match whatever we need it to     then throw exception
-        // if price range isn't a number, or is a negative number   then throw exception
+    private void validateSignUpFields(Host host) throws ValidationException {
+        
+        if(host.getFirstName() == null || host.getFirstName().length() > FIRST_NAME_LENGTH) {
+            throw new ValidationException("Invalid first name format");
+        } 
+        if(host.getLastName() == null || host.getLastName().length() > LAST_NAME_LENGTH) {
+            throw new ValidationException("Invalid last name format");
+        }
+        if(host.getEmail() == null || host.getEmail().length() > EMAIL_LENGTH) {
+            throw new ValidationException("Invalid email format");
+        }
+        if(host.getPhone() == null || host.getPhone().length() > PHONE_LENGTH) {
+            throw new ValidationException("Invalid phone format");
+        }
+        if(host.getGender() != 1 && host.getGender() != 0) {
+            throw new ValidationException("Invalid gender value");
+        }
+        if(host.getDateBirth() == null || host.getDateBirth().length() > DOB_LENGTH) {
+            throw new ValidationException("Invalid date of birth");
+        }
+        if(host.getReferralSource() == null || host.getReferralSource().length() > REFERRAL_LENGTH) {
+            throw new ValidationException("Invalid referral source");
+        }
     }
 }

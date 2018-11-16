@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Confirm Registration</title>
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/mainpage_style.css" />
     </head>
     <body>
         <!-- Header -->
@@ -37,7 +37,7 @@
             <div class="inner">
                     <div class="flex flex-3">
                         <header>
-                                <h2>A confirmation email will be sent to the email address you provided.</h2>
+                                <h2 style="padding-left: 75px;">A confirmation email will be sent to the email address you provided.</h2>
                         </header>
                     </div>
             </div>

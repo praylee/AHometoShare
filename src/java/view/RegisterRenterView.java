@@ -79,7 +79,8 @@ public class RegisterRenterView extends HttpServlet {
 //                rd.forward(request,response);
             }
             catch(ValidationException e) {
-
+                System.out.println("Caught validation exception: " + e.getMessage());
+                response.sendRedirect("renterRegister.html");
             }
         }
 //            else{//if email is already existed, need to change a new one

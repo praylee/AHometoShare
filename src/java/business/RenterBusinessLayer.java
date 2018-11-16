@@ -24,6 +24,13 @@ import transferobjects.Renter;
  */
 public class RenterBusinessLayer {
  
+    private static final int EMAIL_LENGTH = 42;
+    private static final int FIRST_NAME_LENGTH = 45;
+    private static final int LAST_NAME_LENGTH = 45;
+    private static final int PHONE_LENGTH = 12;
+    private static final int DOB_LENGTH = 4;
+    private static final int REFERRAL_LENGTH = 45;
+    
     private RenterDAO renterDAO = null;
     
     public RenterBusinessLayer() {
@@ -44,7 +51,7 @@ public class RenterBusinessLayer {
 
     public void addRenter(Renter renter) throws ValidationException {
         try {
-            validateFields(renter);
+            validateSignUpFields(renter);
             renterDAO.addRenter(renter);
         }
         catch(ValidationException e) {
@@ -59,8 +66,10 @@ public class RenterBusinessLayer {
     public boolean renterExists(String email) {   
         if(renterDAO.getRenterByEmail(email) == null) 
             return false;
+        else {
+            return true;
+        }
         
-        return true;
     }
     
     public boolean passwordCorrect(String email, String password) {
@@ -79,7 +88,7 @@ public class RenterBusinessLayer {
     public void updateRenter(String email, String passWord, String firstName, String lastName,
             String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,
             Date startDate,Date endDate,int availability, double lowPrice, double highPrice,String referralSource,
-            Boolean hasCRCheck,int renterId){
+            Boolean hasCRCheck,int renterId) throws ValidationException {
         renterDAO.updateRenter(email, passWord, firstName, lastName, phone, gender, dateBirth, 
                 isStudent, isEmployed, isSmoker, startDate, endDate, availability, lowPrice, highPrice, 
                 referralSource, hasCRCheck, renterId);
@@ -96,12 +105,29 @@ public class RenterBusinessLayer {
         renterDAO.updateRenter(passWord, renterId);
     }
     
-    private void validateFields(Renter renter) throws ValidationException {
-        // if email doesn't match [\w\d\._\-!#$%&'*+/=?^_`{|}~]+@[\w\d\.\[\]]+  then throw exception
-        // if password doesn't match whatever we need it to     then throw exception
-        // if price range isn't a number, or is a negative number   then throw exception
+    private void validateSignUpFields(Renter renter) throws ValidationException {
+        
+        if(renter.getFirstName() == null || renter.getFirstName().length() > FIRST_NAME_LENGTH) {
+            throw new ValidationException("Invalid first name format");
+        } 
+        if(renter.getLastName() == null || renter.getLastName().length() > LAST_NAME_LENGTH) {
+            throw new ValidationException("Invalid last name format");
+        }
+        if(renter.getEmail() == null || renter.getEmail().length() > EMAIL_LENGTH) {
+            throw new ValidationException("Invalid email format");
+        }
+        if(renter.getPhone() == null || renter.getPhone().length() > PHONE_LENGTH) {
+            throw new ValidationException("Invalid phone format");
+        }
+        if(renter.getGender() != 1 && renter.getGender() != 0) {
+            throw new ValidationException("Invalid gender value");
+        }
+        if(renter.getDateBirth() == null || renter.getDateBirth().length() > DOB_LENGTH) {
+            throw new ValidationException("Invalid date of birth");
+        }
+        if(renter.getReferralSource() == null || renter.getReferralSource().length() > REFERRAL_LENGTH) {
+            throw new ValidationException("Invalid referral source");
+        }
     }
-    
-    
 }
 

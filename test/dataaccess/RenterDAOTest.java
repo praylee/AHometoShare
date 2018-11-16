@@ -19,9 +19,9 @@ import transferobjects.Renter;
  *
  * @author chris
  */
-public class RenterDAOImplTest {
+public class RenterDAOTest {
     
-    public RenterDAOImplTest() {
+    public RenterDAOTest() {
     }
     
     @BeforeClass
@@ -41,12 +41,12 @@ public class RenterDAOImplTest {
     }
 
     /**
-     * Test of getAllRenter method, of class RenterDAOImpl.
+     * Test of getAllRenter method, of class RenterDAO.
      */
     @Test
     public void testGetAllRenter() {
         System.out.println("getAllRenter");
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         List<Renter> expResult = null;
         List<Renter> result = instance.getAllRenter();
         assertEquals(expResult, result);
@@ -55,26 +55,26 @@ public class RenterDAOImplTest {
     }
 
     /**
-     * Test of addRenter method, of class RenterDAOImpl.
+     * Test of addRenter method, of class RenterDAO.
      */
     @Test
     public void testAddRenter() {
         System.out.println("addRenter");
         Renter renter = null;
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         instance.addRenter(renter);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getRenterByRenterId method, of class RenterDAOImpl.
+     * Test of getRenterByRenterId method, of class RenterDAO.
      */
     @Test
     public void testGetRenterByRenterId() {
         System.out.println("getRenterByRenterId");
         int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         Renter expResult = null;
         Renter result = instance.getRenterByRenterId(renterId);
         assertEquals(expResult, result);
@@ -83,13 +83,13 @@ public class RenterDAOImplTest {
     }
 
     /**
-     * Test of getRenterByRenterUname method, of class RenterDAOImpl.
+     * Test of getRenterByRenterUname method, of class RenterDAO.
      */
     @Test
     public void testGetRenterByRenterUname() {
         System.out.println("getRenterByRenterUname");
         String username = "";
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         Renter expResult = null;
         Renter result = instance.getRenterByRenterUname(username);
         assertEquals(expResult, result);
@@ -98,20 +98,20 @@ public class RenterDAOImplTest {
     }
 
     /**
-     * Test of deleteRenter method, of class RenterDAOImpl.
+     * Test of deleteRenter method, of class RenterDAO.
      */
     @Test
     public void testDeleteRenter() {
         System.out.println("deleteRenter");
         int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         instance.deleteRenter(renterId);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of updateRenter method, of class RenterDAOImpl.
+     * Test of updateRenter method, of class RenterDAO.
      */
     @Test
     public void testUpdateRenter_18args() {
@@ -134,14 +134,14 @@ public class RenterDAOImplTest {
         String referralSource = "";
         Boolean hasCRCheck = null;
         int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         instance.updateRenter(email, passWord, firstName, lastName, phone, gender, dateBirth, isStudent, isEmployed, isSmoker, startDate, endDate, availability, lowPrice, highPrice, referralSource, hasCRCheck, renterId);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of updateRenter method, of class RenterDAOImpl.
+     * Test of updateRenter method, of class RenterDAO.
      */
     @Test
     public void testUpdateRenter_13args() {
@@ -159,34 +159,34 @@ public class RenterDAOImplTest {
         double lowPrice = 0.0;
         double highPrice = 0.0;
         int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         instance.updateRenter(firstName, lastName, phone, gender, dateBirth, isStudent, isEmployed, isSmoker, startDate, endDate, lowPrice, highPrice, renterId);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of updateRenter method, of class RenterDAOImpl.
+     * Test of updateRenter method, of class RenterDAO.
      */
     @Test
     public void testUpdateRenter_String_int() {
         System.out.println("updateRenter");
         String passWord = "";
         int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         instance.updateRenter(passWord, renterId);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getRenterByEmail method, of class RenterDAOImpl.
+     * Test of getRenterByEmail method, of class RenterDAO.
      */
     @Test
     public void testGetRenterByEmail() {
         System.out.println("getRenterByEmail");
         String email = "";
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         Renter expResult = null;
         Renter result = instance.getRenterByEmail(email);
         assertEquals(expResult, result);
@@ -195,19 +195,57 @@ public class RenterDAOImplTest {
     }
 
     /**
-     * Test of passwordCorrect method, of class RenterDAOImpl.
+     * Test of passwordCorrect method, of class RenterDAO.
      */
     @Test
     public void testPasswordCorrect() {
         System.out.println("passwordCorrect");
         String email = "";
         String password = "";
-        RenterDAOImpl instance = new RenterDAOImpl();
+        RenterDAO instance = new RenterDAOImpl();
         boolean expResult = false;
         boolean result = instance.passwordCorrect(email, password);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+    }
+
+    public class RenterDAOImpl implements RenterDAO {
+
+        public List<Renter> getAllRenter() {
+            return null;
+        }
+
+        public void addRenter(Renter renter) {
+        }
+
+        public Renter getRenterByRenterId(int renterId) {
+            return null;
+        }
+
+        public Renter getRenterByRenterUname(String username) {
+            return null;
+        }
+
+        public void deleteRenter(int renterId) {
+        }
+
+        public void updateRenter(String email, String passWord, String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, Date startDate, Date endDate, int availability, double lowPrice, double highPrice, String referralSource, Boolean hasCRCheck, int renterId) {
+        }
+
+        public void updateRenter(String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, Date startDate, Date endDate, double lowPrice, double highPrice, int renterId) {
+        }
+
+        public void updateRenter(String passWord, int renterId) {
+        }
+
+        public Renter getRenterByEmail(String email) {
+            return null;
+        }
+
+        public boolean passwordCorrect(String email, String password) {
+            return false;
+        }
     }
     
 }

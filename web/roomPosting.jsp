@@ -129,11 +129,75 @@ Copyright @ 2018
                              <!--upload picture-->
                             <div >
                                 <h4>Upload Picture:</h4>
-                                <input id="inputfile" type='file' name="inputfile" onchange="readURL(this);" />
-                                <img id="img" name="img" src="http://placehold.it/180" alt="your image" />                             
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input id="inputfile" type='file' name="inputfile" hidden="hidden" onchange="readURL(this);" />
+                                            <button type="button" id="custom-button"><img id="img"  src="http://placehold.it/180" alt="your image" /> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile2" type='file' name="inputfile2" hidden="hidden" onchange="readURL2(this);" />
+                                            <button type="button" id="custom-button2"><img id="img2"  src="http://placehold.it/180" alt="your image" /> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile3" type='file' name="inputfile3" hidden="hidden" onchange="readURL3(this);" />
+                                            <button type="button" id="custom-button3"><img id="img3"  src="http://placehold.it/180" alt="your image" /> </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input id="inputfile4" type='file' name="inputfile4" hidden="hidden" onchange="readURL4(this);" />
+                                            <button type="button" id="custom-button4"><img id="img4"  src="http://placehold.it/180" alt="your image" /> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile5" type='file' name="inputfile5" hidden="hidden" onchange="readURL5(this);" />
+                                            <button type="button" id="custom-button5"><img id="img5"  src="http://placehold.it/180" alt="your image" /> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile6" type='file' name="inputfile6" hidden="hidden" onchange="readURL6(this);" />
+                                            <button type="button" id="custom-button6"><img id="img6"  src="http://placehold.it/180" alt="your image" /> </button>
+                                        </td>
+                                    </tr>
+                                </table>                               
                             </div>
                         
                             <script>
+                                realFileBtn = document.getElementById("inputfile")
+                                var customBtn = document.getElementById("custom-button");
+                                customBtn.addEventListener("click",function(){
+                                    realFileBtn.click()
+                                });
+                                
+                                realFileBtn2 = document.getElementById("inputfile2")
+                                var customBtn2 = document.getElementById("custom-button2");
+                                customBtn2.addEventListener("click",function(){
+                                    realFileBtn2.click()
+                                });
+                                
+                                realFileBtn3 = document.getElementById("inputfile3")
+                                var customBtn3 = document.getElementById("custom-button3");
+                                customBtn3.addEventListener("click",function(){
+                                    realFileBtn3.click()
+                                });
+                                
+                                realFileBtn4 = document.getElementById("inputfile4")
+                                var customBtn = document.getElementById("custom-button4");
+                                customBtn.addEventListener("click",function(){
+                                    realFileBtn4.click()
+                                });
+                                
+                                realFileBtn5 = document.getElementById("inputfile5")
+                                var customBtn5 = document.getElementById("custom-button5");
+                                customBtn5.addEventListener("click",function(){
+                                    realFileBtn5.click()
+                                });
+                                
+                                realFileBtn6 = document.getElementById("inputfile6")
+                                var customBtn6 = document.getElementById("custom-button6");
+                                customBtn6.addEventListener("click",function(){
+                                    realFileBtn6.click()
+                                });
+                                
                                 function readURL(input) {    
                                     if (input.files && input.files[0]) {
                                         var reader = new FileReader();
@@ -151,6 +215,116 @@ Copyright @ 2018
                                         if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
                                             alert('Invalid Image File');
                                             $('#inputfile').val('');
+                                            return false;
+                                        }
+                                    }
+                                }
+                                
+                                function readURL2(input) {    
+                                    if (input.files && input.files[0]) {
+                                        var reader = new FileReader();
+                                         reader.onload = function (e) {
+                                            $('#img2')
+                                                .attr('src', e.target.result);
+
+                                        };
+                                         reader.readAsDataURL(input.files[0]);
+                                }
+
+                                    var image_name = $('#inputfile2').val();
+                                    if(image_name != ''){
+                                        var extension = $('#inputfile2').val().split('.').pop().toLowerCase();
+                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
+                                            alert('Invalid Image File');
+                                            $('#inputfile2').val('');
+                                            return false;
+                                        }
+                                    }
+                                }
+                                
+                                function readURL3(input) {    
+                                    if (input.files && input.files[0]) {
+                                        var reader = new FileReader();
+                                         reader.onload = function (e) {
+                                            $('#img3')
+                                                .attr('src', e.target.result);
+
+                                        };
+                                         reader.readAsDataURL(input.files[0]);
+                                }
+
+                                    var image_name = $('#inputfile3').val();
+                                    if(image_name != ''){
+                                        var extension = $('#inputfile3').val().split('.').pop().toLowerCase();
+                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
+                                            alert('Invalid Image File');
+                                            $('#inputfile3').val('');
+                                            return false;
+                                        }
+                                    }
+                                }
+                                
+                                function readURL4(input) {    
+                                    if (input.files && input.files[0]) {
+                                        var reader = new FileReader();
+                                         reader.onload = function (e) {
+                                            $('#img4')
+                                                .attr('src', e.target.result);
+
+                                        };
+                                         reader.readAsDataURL(input.files[0]);
+                                }
+
+                                    var image_name = $('#inputfile4').val();
+                                    if(image_name != ''){
+                                        var extension = $('#inputfile4').val().split('.').pop().toLowerCase();
+                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
+                                            alert('Invalid Image File');
+                                            $('#inputfile3').val('');
+                                            return false;
+                                        }
+                                    }
+                                }
+                                
+                                function readURL5(input) {    
+                                    if (input.files && input.files[0]) {
+                                        var reader = new FileReader();
+                                         reader.onload = function (e) {
+                                            $('#img5')
+                                                .attr('src', e.target.result);
+
+                                        };
+                                         reader.readAsDataURL(input.files[0]);
+                                }
+
+                                    var image_name = $('#inputfile5').val();
+                                    if(image_name != ''){
+                                        var extension = $('#inputfile5').val().split('.').pop().toLowerCase();
+                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
+                                            alert('Invalid Image File');
+                                            $('#inputfile5').val('');
+                                            return false;
+                                        }
+                                    }
+                                }
+                                
+                                function readURL6(input) {    
+                                    if (input.files && input.files[0]) {
+                                        var reader = new FileReader();
+                                         reader.onload = function (e) {
+                                            $('#img6')
+                                                .attr('src', e.target.result);
+
+                                        };
+                                         reader.readAsDataURL(input.files[0]);
+                                }
+
+                                    var image_name = $('#inputfile6').val();
+                                    if(image_name != ''){
+                                        var extension = $('#inputfile6').val().split('.').pop().toLowerCase();
+                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
+                                            alert('Invalid Image File');
+                                            $('#inputfile6').val('');
                                             return false;
                                         }
                                     }

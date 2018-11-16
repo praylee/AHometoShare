@@ -136,6 +136,46 @@ public class RoomPostingView extends HttpServlet {
             pPictureLayer.addPicture(propertypicture,is);
         } 
         
+        Part part2=request.getPart("inputfile2");  
+        String picture2 = request.getParameter("inputfile2");
+        if(part != null){
+            PropertyPicture propertypicture = new PropertyPicture(pindex+2,property_id,picture2);
+            InputStream is = part2.getInputStream();
+            pPictureLayer.addPicture(propertypicture,is);
+        } 
+        
+        Part part3=request.getPart("inputfile3");  
+        String picture3 = request.getParameter("inputfile3");
+        if(part != null){
+            PropertyPicture propertypicture = new PropertyPicture(pindex+3,property_id,picture3);
+            InputStream is = part3.getInputStream();
+            pPictureLayer.addPicture(propertypicture,is);
+        } 
+        
+        Part part4=request.getPart("inputfile4");  
+        String picture4 = request.getParameter("inputfile4");
+        if(part != null){
+            PropertyPicture propertypicture = new PropertyPicture(pindex+4,property_id,picture4);
+            InputStream is = part4.getInputStream();
+            pPictureLayer.addPicture(propertypicture,is);
+        } 
+        
+        Part part5=request.getPart("inputfile5");  
+        String picture5 = request.getParameter("inputfile5");
+        if(part != null){
+            PropertyPicture propertypicture = new PropertyPicture(pindex+5,property_id,picture5);
+            InputStream is = part5.getInputStream();
+            pPictureLayer.addPicture(propertypicture,is);
+        } 
+        
+        Part part6=request.getPart("inputfile6");  
+        String picture6 = request.getParameter("inputfile6");
+        if(part != null){
+            PropertyPicture propertypicture = new PropertyPicture(pindex+6,property_id,picture6);
+            InputStream is = part6.getInputStream();
+            pPictureLayer.addPicture(propertypicture,is);
+        } 
+        
         
         // Only do this if user was successfully added to database!!!!
         request.setAttribute("Info", "Room posting Successful.");

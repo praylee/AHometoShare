@@ -45,6 +45,11 @@
         <servlet-class>view.RenterProfileSearchDetails</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PropertyProfile</servlet-name>
+        <servlet-class>view.PropertyProfile</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>ProfileRenterEditView</servlet-name>
         <servlet-class>view.ProfileRenterEditView</servlet-class>
     </servlet>
@@ -99,6 +104,10 @@
     <servlet-mapping>
         <servlet-name>RenterProfileSearchDetails</servlet-name>
         <url-pattern>/RenterProfileSearchDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PropertyProfile</servlet-name>
+        <url-pattern>/PropertyProfile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProfileRenterEditView</servlet-name>

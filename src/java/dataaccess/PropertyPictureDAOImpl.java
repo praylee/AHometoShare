@@ -64,7 +64,7 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(INSERT_PICTURE);) {
             pstmt.setInt(1, propertypicture.getPictureID());
-             pstmt.setInt(2, propertypicture.getPropertyID());
+            pstmt.setInt(2, propertypicture.getPropertyID());
             pstmt.setBlob(3, blob);           
            
             pstmt.executeUpdate();

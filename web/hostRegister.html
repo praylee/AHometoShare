@@ -24,7 +24,7 @@ Copyright @ 2018
                     <a href="index.jsp" class="logo">A Home To Share</a>
                     <nav id="nav">
                         <a href="index.jsp">Home</a>
-                        <a href="index.jsp">How We Work</a>
+                        <a href="how_we_work.jsp">How We Work</a>
                         <a href="faq.jsp">FAQ</a>
                         <a href="index.jsp">Log in</a>
                         <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button">Sign Up</button>
@@ -156,36 +156,6 @@ Copyright @ 2018
                                     <h4>Birth Year<span style="color:red; font-weight:bold">*</span></h4>
                                     <select name="yearBorn" id="yearBorn" required >
                                             <option value="">- Select the year you were born  -</option>
-                                            <option value="2000">2000</option>
-                                            <option value="1999">1999</option>
-                                            <option value="1998">1998</option>
-                                            <option value="1997">1997</option>
-                                            <option value="1996">1996</option>
-                                            <option value="1995">1995</option>
-                                            <option value="1994">1994</option>
-                                            <option value="1993">1993</option>
-                                            <option value="1992">1992</option>
-                                            <option value="1991">1991</option>
-                                            <option value="1990">1990</option>
-                                            <option value="1989">1989</option>
-                                            <option value="1988">1988</option>
-                                            <option value="1987">1987</option>
-                                            <option value="1986">1986</option>
-                                            <option value="1985">1985</option>
-                                            <option value="1984">1984</option>
-                                            <option value="1983">1983</option>
-                                            <option value="1982">1982</option>
-                                            <option value="1981">1981</option>
-                                            <option value="1980">1980</option>
-                                            <option value="1979">1979</option>
-                                            <option value="1978">1978</option>
-                                            <option value="1977">1977</option>
-                                            <option value="1976">1976</option>
-                                            <option value="1975">1975</option>
-                                            <option value="1974">1974</option>
-                                            <option value="1973">1973</option>
-                                            <option value="1972">1972</option>
-                                            <option value="1971">1971</option>
                                             <option value="1970">1970</option>
                                             <option value="1969">1969</option>
                                             <option value="1968">1968</option>
@@ -297,45 +267,64 @@ The password at least six characters that are letters, numbers or the underscore
     </script>      
         <!-- Footer -->
             <footer id="footer">
-                <div class="flex">
+            <div class="row">
+                <div class="footer_column inner1">
+                    <!--a placeholder-->
+                </div>
 
-                    <div>
-                        <h6>Get in Touch</h6>
-                        <div>
-                            <img alt="logo" src="images/team_logo.png" />
-                            <ul>
-                                <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
-                                <li><a href="#">(123) 456-7890</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h6>Join Our Community</h6>
-                        <ul>
-                            <li><a href=index.jsp>How it Works</a></li>
-                            <li><a href=index.jsp>Frequently Asked Questions</a></li>
-                            <li><a href=index.jsp>Homesharing Resources</a></li>
-                            <li><a href=index.jsp>Community Compact</a></li>
+                <div class="footer_column inner2">
+                    <h6>Get in Touch</h6>
+                    <div class="footer_nav">
+                        <img alt="logo" class="" src="images/team_logo.png" />
+                        <ul class="">
+                            <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
+                            <li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
                         </ul>
                     </div>
+                </div> 
 
-                    <div>
-                        <h6>Get Engaged</h6>
-                            <ul>
-                                <li>Live in Toronto and want to help us tackle the affordable housing crisis.</li>
-                                <li><a href="" target="_blank"> <u>Apply</u></a> to be an Ambassador today.</li>
-                            </ul>
-                    </div>
-
-                    <div>
-                        <h6>Follow us on Social</h6>
-                            <a href="https://www.facebook.com/ahometoshare" class=""></a>
-                            &nbsp;&nbsp;
-                            <a href="https://twitter.com/ahometoshare" class=""></a>
-                    </div>
+                <div class="footer_column inner3">
+                    <h6>Join Our Community</h6>
+                    <ul class="footer_nav">
+                        <li><a href="how_we_work.jsp">How We Work</a></li>
+                        <li><a href="faq.jsp">Frequently Asked Questions</a></li>
+                        <li><a href="index.jsp">Placeholder</a></li>
+                        <li><a href="index.jsp">Placeholder</a></li>
+                    </ul>
                 </div>
-            </footer>
+
+                <div class="footer_column inner4">
+                    <h6>Get Engaged</h6>
+                    <ul class="footer_nav">
+                        <li>Live in Toronto and want to help us tackle the affordable housing crisis. 
+                            <a href="index.jsp" target="_blank"><u>Apply</u></a> to be an Ambassador today.
+                        </li>
+                    </ul>                
+                </div>
+
+                <div class="footer_column inner5">
+                    <h6>Follow us on Social</h6>
+                    <a href="https://www.facebook.com/ahometoshare" class="">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <img alt="facebook" class="" src="images/facebook36.png" width=28 height=36 />
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="https://twitter.com/ahometoshare" class="">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <img alt="twitter" class="" src="images/twitter36.png" width=28 height=36 />
+                    </a>
+                </div>
+
+                <div class="footer_column inner6"> 
+                    <!--a placeholder-->
+                </div>
+
+                <p>© 2018 A Home To Share | All right reserved
+                    <a href="index.jsp">&nbsp;&nbsp;&nbsp;Privacy Policy</a>
+                    <a href="index.jsp">&nbsp;&nbsp;&nbsp;Terms of Use</a>
+                </p>
+            </div>            
+        </footer>
 
     </body>
 </html>

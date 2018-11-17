@@ -1,7 +1,7 @@
 /*
     File: subpage_syle.css
     Description: Cascading style sheet for Renter registration form
-    Create: Sept. 30,2018
+    Create: Nov. 13, 2018
     Author: Zhan Shen
     Clients: Michelle Bilek,Farheen Khan
     Course: Software Development Project
@@ -68,10 +68,27 @@
 	}
 /* END CSS Reset */
 
+body {font-family: Arial, Helvetica, sans-serif;}
 
 
-/* --Header------------------------------------------------------------------ */
-
+/* How We Work Header */
+    .subpage {
+        padding-top: 60px;
+    }
+    
+        .subpage #header {
+            background: #5385c1;
+            top: 0;
+            height: 50px;
+            line-height: 50px;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
 	#header {
             color: #ffffff;
             cursor: default;
@@ -81,13 +98,14 @@
             position: absolute;
             text-align: right;
             top: 2.5em;
-            width: 85%;
+            width: 100%;
             z-index: 10001;
 	}
 
             #header .inner {
                 margin: 0 auto;
                 position: relative;
+                right: 200px;
             }
 
             #header .logo {
@@ -95,13 +113,19 @@
                 display: inline-block;
                 font-weight: 600;
                 height: inherit;
-                left: 0;
+                left: 300px;
                 line-height: inherit;
                 margin: 0;
                 padding: 0;
                 position: absolute;
                 top: 0;
                 font-size: 1.1em;
+            }
+            
+            #header .nav {
+                margin-right: -100px;
+                padding: 0;
+                top: 0;
             }
 
             #header a {
@@ -129,92 +153,119 @@
                 padding: 0;
                 background: none;
                 color: #ffffff;
-                margin-left: 20px;
+                margin-left: 10px;
             }
 			
-				
-/* --Banner------------------------------------------------------------------ */
 
-	#banner {
-            padding: 20em 0 12em 0;
-            background-image: url('../../images/banner3.jpg');
-            background-size: cover;
-            background-position: top;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            text-align: center;
-            border-top: 0.3em solid #ffcc00;
-	}
+/* Body contents */
 
-            #banner h1 {
-                font-size: 3em;
-                font-weight: 100;
-                color: #ffffff;
-                line-height: 1em;
-                margin: 0 0 0.5em 0;
-                padding: 0;
-            }
-	
-            #banner p {
-                font-size: 1em;
-                color: #ffffff;
-                margin-bottom: 1.75em;
-            }
+.main_section {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+.main_section div{
+    display: table-cell;
+    padding: 20px;
+    vertical-align: top;
+    clear: none; 
+}
+    .main_section img{
+        /*margin-left: 200px;*/
+    }
 
-/* --Main-------------------------------------------------------------------- */
-    #one h2 {
-        font-size: 2em;
-        color: #555;
-        margin-left: 250px;
+    .card-body1 {
+        border: 1.2px solid #efeded;
+        border-radius: 10px;
+        width: 460px;
+        height: 60px;
         text-align: center;
-        padding: auto;
-    }  
-    
-    #one p {
-        margin-left: 250px;
+        background-color: #efeded;
     }
-    
-    #one img {
-        margin-left: 290px;
-        margin-bottom: 10px;
-    }
-    #one .make_money {margin-left: 280px;}
-    #one .get_help {margin-left: 230px;}
-    #one .build_friendship {margin-left: 180px;}
-    #one .build_img {margin-left: 230px;}
 
-    #two h3 {
-        margin-left: 315px;
+    .card-body2 {
+        border: 1.2px solid #efeded;
+        border-radius: 10px;
+        width: 460px;
+        height: 60px;
+        text-align: center;
+        background-color: #efeded;
     }
     
-    .box_person .comment_img1, .comment_img2 {margin-left: 300px;}
-    .box_person .comment_img3, .comment_img4 {margin-left: 300px;}
-
-    .box_person p {
-        margin-left: 325px;
-        margin-bottom: 40px;
+    .main_section h1 {
+        font-weight: bold;
+        font-size: 2em;
+        margin-top: 180px;
+        margin-left: 50px;
     }
-    
-    .flex .image_fit {
-        margin-left: 150px;
+    .main_section p {
+        margin-top: 20px;
+        max-width: 600px;
+        line-height: 1.6;
+        margin-left: 50px;
     }
-    .flex h3 {
-        margin-left: 150px;
+    .main_section h2 {
+        color: #aaaaaa;
+        font-weight: bold;
         font-size: 1.3em;
-        color: #3d6699
+        margin-top: 6px;
     }
-    .flex h4 {
-        margin-left: 150px;
-        max-width: 300px;
-        font-size: 1em;
-        color: #666;
-        line-height: 1.4;
+    .main_section h3{
+        color: #5385c1;
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-top: 12px;
+    }
+    .main_section h4{
+        margin-top: 5px;
     }
     
+    .placeholder-h1 {height: 60px;}
+    .placeholder-h2 {height: 20px;}
+    .placeholder-v {width: 70px;}
+    
+    .col-1-row-1 {
+        border: 1px solid #5385c1;
+        border-radius: 10px;
+        width: 460px;
+        height: 200px;
+    }
+    
+    .col-1-row-1 p{
+        margin: 0;
+        margin-top: 10px;
+        color: #555;
+    }
+    
+    .col-1-row-2 {
+        width: 460px;
+        height: 200px;
+    }
+    
+    .col-1-row-3 {
+        border: 1px solid #bacee6;
+        border-radius: 10px;
+        width: 1070px;
+        height: 200px;
+        text-align: center;
+        background-color: #bacee6
+    }
+    .col-1-row-3 h4{
+        margin-top: 15px;
+    }
+    .col-1-row-3 p {
+        max-width: 940px;
+        text-align: center;
+        margin-left: 60px;
+    }
+    
+    
 
-/* --Section/Article--------------------------------------------------------- */
+    
 
-	section.special, article.special {
+
+/* Section/Article */
+
+/*	section.special, article.special {
             text-align: center;
 	}
 
@@ -223,11 +274,11 @@
             }
 
 	section.wrapper, article.wrapper {
-            padding: 3.5em 0;
+            padding: 6em 0;
 	}
 
             section.wrapper header, article.wrapper header {
-                margin-bottom: 1.5em;
+                margin-bottom: 4em;
             }
 
                 section.wrapper header h2, article.wrapper header h2 {
@@ -258,10 +309,10 @@
 
                     section.wrapper.style1 h3, article.wrapper.style1 h3 {
                         color: #fff;
-                    }
+                    }*/
 	
 	
-/* --Footer------------------------------------------------------------------ */
+/* Footer */
 
 .flex {
     display: -ms-flexbox;
@@ -275,10 +326,10 @@
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-/*    -moz-justify-content: space-between;
+    -moz-justify-content: space-between;
     -webkit-justify-content: space-between;
     -ms-justify-content: space-between;
-    justify-content: space-between;*/
+    justify-content: space-between;
 }
 
 #footer {
@@ -375,10 +426,8 @@
     #footer * {
         box-sizing: border-box;
     } 
-
-    
-    
-/* --Popup window: Sign Up--------------------------------------------------- */	
+	
+/* Popup window: Sign Up */	
     body {font-family: Arial, Helvetica, sans-serif;}
 
     /* Signup popup background */
@@ -468,7 +517,7 @@
                 box-shadow: inset 0 0 0 2px #dbdbdb;
         }*/
         
-    /*--Signup left side switch toggle----------------------------------------*/    
+    /*Signup left side switch toggle*/    
         .switch {
             position: relative;
             height: 36px;
@@ -553,9 +602,15 @@
             -o-transition: left 0.15s ease-out;
             transition: left 0.15s ease-out;
         }
+    
+    
+    
+    
+    
+    
 
     
-    /*--Signup right side 4 buttons-------------------------------------------*/
+    /*Signup right side 4 buttons*/
         .btn-group2 {
         margin-left: 0px;
         margin-right: 30px;
@@ -597,9 +652,16 @@
     .signupBtn:hover {
             background-color: #3d6699;
         }
+    
+    
+
+    
         
         
-    /* --Popup window: Log in------------------------------------------------ */	
+        
+        
+        
+    /* Popup window: Log in */	
     body {font-family: Arial, Helvetica, sans-serif;}
 
     /* Login popup background */
@@ -784,4 +846,6 @@
     hr {
         margin-right: 30px;
     }
+
+        
         

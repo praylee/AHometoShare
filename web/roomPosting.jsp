@@ -131,203 +131,96 @@ Copyright @ 2018
                                 <table>
                                     <tr>
                                         <td>
-                                            <input id="inputfile" type='file' name="inputfile" hidden="hidden" onchange="readURL(this);" />
-                                            <button type="button" id="custom-button"><img id="img"  src="http://placehold.it/180" alt="your image" /> </button>
+                                            <input id="inputfile" type='file' name="inputfile" hidden="hidden" />
+                                            <button type="button" id="custom-button"><img id="img"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
                                         </td>
                                         <td>
-                                            <input id="inputfile2" type='file' name="inputfile2" hidden="hidden" onchange="readURL2(this);" />
-                                            <button type="button" id="custom-button2"><img id="img2"  src="http://placehold.it/180" alt="your image" /> </button>
+                                            <input id="inputfile2" type='file' name="inputfile2" hidden="hidden" />
+                                            <button type="button" id="custom-button2"><img id="img2"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
                                         </td>
                                         <td>
-                                            <input id="inputfile3" type='file' name="inputfile3" hidden="hidden" onchange="readURL3(this);" />
-                                            <button type="button" id="custom-button3"><img id="img3"  src="http://placehold.it/180" alt="your image" /> </button>
+                                            <input id="inputfile3" type='file' name="inputfile3" hidden="hidden" />
+                                            <button type="button" id="custom-button3"><img id="img3"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input id="inputfile4" type='file' name="inputfile4" hidden="hidden" onchange="readURL4(this);" />
-                                            <button type="button" id="custom-button4"><img id="img4"  src="http://placehold.it/180" alt="your image" /> </button>
+                                            <input id="inputfile4" type='file' name="inputfile4" hidden="hidden" />
+                                            <button type="button" id="custom-button4"><img id="img4"  src="http://placehold.it/180" alt="your image" height=180px width=180px /> </button>
                                         </td>
                                         <td>
-                                            <input id="inputfile5" type='file' name="inputfile5" hidden="hidden" onchange="readURL5(this);" />
-                                            <button type="button" id="custom-button5"><img id="img5"  src="http://placehold.it/180" alt="your image" /> </button>
+                                            <input id="inputfile5" type='file' name="inputfile5" hidden="hidden" />
+                                            <button type="button" id="custom-button5"><img id="img5"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
                                         </td>
                                         <td>
-                                            <input id="inputfile6" type='file' name="inputfile6" hidden="hidden" onchange="readURL6(this);" />
-                                            <button type="button" id="custom-button6"><img id="img6"  src="http://placehold.it/180" alt="your image" /> </button>
+                                            <input id="inputfile6" type='file' name="inputfile6" hidden="hidden"  />
+                                            <button type="button" id="custom-button6"><img id="img6"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
                                         </td>
                                     </tr>
                                 </table>                               
                             </div>
                         
                             <script>
-                                realFileBtn = document.getElementById("inputfile")
-                                var customBtn = document.getElementById("custom-button");
-                                customBtn.addEventListener("click",function(){
-                                    realFileBtn.click()
-                                });
-                                
-                                realFileBtn2 = document.getElementById("inputfile2")
+                                var fileIds = ["inputfile","inputfile2" ,"inputfile3","inputfile4","inputfile5","inputfile6"];                            
+                                var Imgs = ['#img','#img2','#img3','#img4','#img5','#img6'];
+                                var Files = ['#inputfile','#inputfile2','#inputfile3','#inputfile4','#inputfile5','#inputfile6'];
+ 
+                                var customBtn = document.getElementById("custom-button");                            
+                                customBtn.addEventListener("click",function() {
+                                    readURL(fileIds[0],Imgs[0],Files[0]);
+                                });                                                                     
+
                                 var customBtn2 = document.getElementById("custom-button2");
                                 customBtn2.addEventListener("click",function(){
-                                    realFileBtn2.click()
+                                    readURL(fileIds[1],Imgs[1],Files[1]);
                                 });
-                                
-                                realFileBtn3 = document.getElementById("inputfile3")
+ 
                                 var customBtn3 = document.getElementById("custom-button3");
                                 customBtn3.addEventListener("click",function(){
-                                    realFileBtn3.click()
+                                    readURL(fileIds[2],Imgs[2],Files[2]);
                                 });
                                 
-                                realFileBtn4 = document.getElementById("inputfile4")
-                                var customBtn = document.getElementById("custom-button4");
-                                customBtn.addEventListener("click",function(){
-                                    realFileBtn4.click()
+                                var customBtn4 = document.getElementById("custom-button4");
+                                customBtn4.addEventListener("click",function(){
+                                    readURL(fileIds[3],Imgs[3],Files[3]);
                                 });
-                                
-                                realFileBtn5 = document.getElementById("inputfile5")
+
                                 var customBtn5 = document.getElementById("custom-button5");
                                 customBtn5.addEventListener("click",function(){
-                                    realFileBtn5.click()
+                                    readURL(fileIds[4],Imgs[4],Files[4]);
                                 });
                                 
-                                realFileBtn6 = document.getElementById("inputfile6")
                                 var customBtn6 = document.getElementById("custom-button6");
                                 customBtn6.addEventListener("click",function(){
-                                    realFileBtn6.click()
+                                    readURL(fileIds[5],Imgs[5],Files[5]);
                                 });
-                                
-                                function readURL(input) {    
-                                    if (input.files && input.files[0]) {
-                                        var reader = new FileReader();
-                                         reader.onload = function (e) {
-                                            $('#img')
-                                                .attr('src', e.target.result);
+                                                                                               
+                                function readURL(fileId,img,file) {    
+                                    realFileBtn = document.getElementById(fileId);
+                                    realFileBtn.click();
+                                    realFileBtn.addEventListener("change",function(){
+                                        if (this.files && this.files[0]) {
+                                            var reader = new FileReader();
+                                             reader.onload = function (e) {
+                                                $(img)
+                                                    .attr('src', e.target.result);
 
-                                        };
-                                         reader.readAsDataURL(input.files[0]);
-                                }
-
-                                    var image_name = $('#inputfile').val();
-                                    if(image_name != ''){
-                                        var extension = $('#inputfile').val().split('.').pop().toLowerCase();
-                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
-                                            alert('Invalid Image File');
-                                            $('#inputfile').val('');
-                                            return false;
+                                            };
+                                             reader.readAsDataURL(this.files[0]);
                                         }
-                                    }
-                                }
-                                
-                                function readURL2(input) {    
-                                    if (input.files && input.files[0]) {
-                                        var reader = new FileReader();
-                                         reader.onload = function (e) {
-                                            $('#img2')
-                                                .attr('src', e.target.result);
 
-                                        };
-                                         reader.readAsDataURL(input.files[0]);
-                                }
-
-                                    var image_name = $('#inputfile2').val();
-                                    if(image_name != ''){
-                                        var extension = $('#inputfile2').val().split('.').pop().toLowerCase();
-                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
-                                            alert('Invalid Image File');
-                                            $('#inputfile2').val('');
-                                            return false;
+                                        var image_name = $(file).val();
+                                        if(image_name != ''){
+                                            var extension = $(file).val().split('.').pop().toLowerCase();
+                                            if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
+                                                alert('Invalid Image File');
+                                                $(file).val('');
+                                                return false;
+                                            }
                                         }
-                                    }
+                                    });
                                 }
                                 
-                                function readURL3(input) {    
-                                    if (input.files && input.files[0]) {
-                                        var reader = new FileReader();
-                                         reader.onload = function (e) {
-                                            $('#img3')
-                                                .attr('src', e.target.result);
-
-                                        };
-                                         reader.readAsDataURL(input.files[0]);
-                                }
-
-                                    var image_name = $('#inputfile3').val();
-                                    if(image_name != ''){
-                                        var extension = $('#inputfile3').val().split('.').pop().toLowerCase();
-                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
-                                            alert('Invalid Image File');
-                                            $('#inputfile3').val('');
-                                            return false;
-                                        }
-                                    }
-                                }
-                                
-                                function readURL4(input) {    
-                                    if (input.files && input.files[0]) {
-                                        var reader = new FileReader();
-                                         reader.onload = function (e) {
-                                            $('#img4')
-                                                .attr('src', e.target.result);
-
-                                        };
-                                         reader.readAsDataURL(input.files[0]);
-                                }
-
-                                    var image_name = $('#inputfile4').val();
-                                    if(image_name != ''){
-                                        var extension = $('#inputfile4').val().split('.').pop().toLowerCase();
-                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
-                                            alert('Invalid Image File');
-                                            $('#inputfile3').val('');
-                                            return false;
-                                        }
-                                    }
-                                }
-                                
-                                function readURL5(input) {    
-                                    if (input.files && input.files[0]) {
-                                        var reader = new FileReader();
-                                         reader.onload = function (e) {
-                                            $('#img5')
-                                                .attr('src', e.target.result);
-
-                                        };
-                                         reader.readAsDataURL(input.files[0]);
-                                }
-
-                                    var image_name = $('#inputfile5').val();
-                                    if(image_name != ''){
-                                        var extension = $('#inputfile5').val().split('.').pop().toLowerCase();
-                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
-                                            alert('Invalid Image File');
-                                            $('#inputfile5').val('');
-                                            return false;
-                                        }
-                                    }
-                                }
-                                
-                                function readURL6(input) {    
-                                    if (input.files && input.files[0]) {
-                                        var reader = new FileReader();
-                                         reader.onload = function (e) {
-                                            $('#img6')
-                                                .attr('src', e.target.result);
-
-                                        };
-                                         reader.readAsDataURL(input.files[0]);
-                                }
-
-                                    var image_name = $('#inputfile6').val();
-                                    if(image_name != ''){
-                                        var extension = $('#inputfile6').val().split('.').pop().toLowerCase();
-                                        if($.inArray(extension,['gif','png','jpg','jpeg']) == -1){
-                                            alert('Invalid Image File');
-                                            $('#inputfile6').val('');
-                                            return false;
-                                        }
-                                    }
-                                }
                             </script>
                         
                         

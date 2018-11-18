@@ -27,9 +27,9 @@ Copyright @ 2018
                     <a href="index.jsp" class="logo">A Home To Share</a>
                     <nav id="nav">
                         <a href="index.jsp">Home</a>
-                        <a href="index.jsp">How We Work</a>
-                        <a href="index.jsp">FAQ</a>
-                        <a href="faq.jsp">Log in</a>
+                        <a href="how_we_work.jsp">How We Work</a>
+                        <a href="faq.jsp">FAQ</a>
+                        <a href="index.jsp">Log in</a>
                         <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button">Sign Up</button>
                     </nav>
                 </div>
@@ -239,45 +239,64 @@ The password at least six characters that are letters, numbers or the underscore
     
         <!-- Footer -->
             <footer id="footer">
-                <div class="flex">
+            <div class="row">
+                <div class="footer_column inner1">
+                    <!--a placeholder-->
+                </div>
 
-                    <div>
-                        <h6>Get in Touch</h6>
-                        <div>
-                            <img alt="logo" src="images/team_logo.png" />
-                            <ul>
-                                <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
-                                <li><a href="#">(123) 456-7890</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h6>Join Our Community</h6>
-                        <ul>
-                            <li><a href=index.jsp>How it Works</a></li>
-                            <li><a href=index.jsp>Frequently Asked Questions</a></li>
-                            <li><a href=index.jsp>Homesharing Resources</a></li>
-                            <li><a href=index.jsp>Community Compact</a></li>
+                <div class="footer_column inner2">
+                    <h6>Get in Touch</h6>
+                    <div class="footer_nav">
+                        <img alt="logo" class="" src="images/team_logo.png" />
+                        <ul class="">
+                            <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
+                            <li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
                         </ul>
                     </div>
+                </div> 
 
-                    <div>
-                        <h6>Get Engaged</h6>
-                            <ul>
-                                <li>Live in Toronto and want to help us tackle the affordable housing crisis.</li>
-                                <li><a href="" target="_blank"> <u>Apply</u></a> to be an Ambassador today.</li>
-                            </ul>
-                    </div>
-
-                    <div>
-                        <h6>Follow us on Social</h6>
-                            <a href="https://www.facebook.com/ahometoshare" class=""></a>
-                            &nbsp;&nbsp;
-                            <a href="https://twitter.com/ahometoshare" class=""></a>
-                    </div>
+                <div class="footer_column inner3">
+                    <h6>Join Our Community</h6>
+                    <ul class="footer_nav">
+                        <li><a href="how_we_work.jsp">How We Work</a></li>
+                        <li><a href="faq.jsp">Frequently Asked Questions</a></li>
+                        <li><a href="index.jsp">Placeholder</a></li>
+                        <li><a href="index.jsp">Placeholder</a></li>
+                    </ul>
                 </div>
-            </footer>
+
+                <div class="footer_column inner4">
+                    <h6>Get Engaged</h6>
+                    <ul class="footer_nav">
+                        <li>Live in Toronto and want to help us tackle the affordable housing crisis. 
+                            <a href="index.jsp" target="_blank"><u>Apply</u></a> to be an Ambassador today.
+                        </li>
+                    </ul>                
+                </div>
+
+                <div class="footer_column inner5">
+                    <h6>Follow us on Social</h6>
+                    <a href="https://www.facebook.com/ahometoshare" class="">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <img alt="facebook" class="" src="images/facebook36.png" width=28 height=36 />
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="https://twitter.com/ahometoshare" class="">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <img alt="twitter" class="" src="images/twitter36.png" width=28 height=36 />
+                    </a>
+                </div>
+
+                <div class="footer_column inner6"> 
+                    <!--a placeholder-->
+                </div>
+
+                <p>© 2018 A Home To Share | All right reserved
+                    <a href="index.jsp">&nbsp;&nbsp;&nbsp;Privacy Policy</a>
+                    <a href="index.jsp">&nbsp;&nbsp;&nbsp;Terms of Use</a>
+                </p>
+            </div>            
+        </footer> 
 
     </body>
 </html>

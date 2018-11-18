@@ -129,54 +129,18 @@ public class RoomPostingView extends HttpServlet {
         int pindex = pictureList.get(pictureList.size() - 1).getPictureID();  //Bin Yang
         int property_id = index+1;
 
-        Part part=request.getPart("inputfile");  
-        String picture = request.getParameter("inputfile");
-        if(part != null){
-            PropertyPicture propertypicture = new PropertyPicture(pindex+1,property_id,picture);
-            InputStream is = part.getInputStream();
-            pPictureLayer.addPicture(propertypicture,is);
-        } 
-        
-        Part part2=request.getPart("inputfile2");  
-        String picture2 = request.getParameter("inputfile2");
-        if(part != null){
-            PropertyPicture propertypicture = new PropertyPicture(pindex+2,property_id,picture2);
-            InputStream is = part2.getInputStream();
-            pPictureLayer.addPicture(propertypicture,is);
-        } 
-        
-        Part part3=request.getPart("inputfile3");  
-        String picture3 = request.getParameter("inputfile3");
-        if(part != null){
-            PropertyPicture propertypicture = new PropertyPicture(pindex+3,property_id,picture3);
-            InputStream is = part3.getInputStream();
-            pPictureLayer.addPicture(propertypicture,is);
-        } 
-        
-        Part part4=request.getPart("inputfile4");  
-        String picture4 = request.getParameter("inputfile4");
-        if(part != null){
-            PropertyPicture propertypicture = new PropertyPicture(pindex+4,property_id,picture4);
-            InputStream is = part4.getInputStream();
-            pPictureLayer.addPicture(propertypicture,is);
-        } 
-        
-        Part part5=request.getPart("inputfile5");  
-        String picture5 = request.getParameter("inputfile5");
-        if(part != null){
-            PropertyPicture propertypicture = new PropertyPicture(pindex+5,property_id,picture5);
-            InputStream is = part5.getInputStream();
-            pPictureLayer.addPicture(propertypicture,is);
-        } 
-        
-        Part part6=request.getPart("inputfile6");  
-        String picture6 = request.getParameter("inputfile6");
-        if(part != null){
-            PropertyPicture propertypicture = new PropertyPicture(pindex+6,property_id,picture6);
-            InputStream is = part6.getInputStream();
-            pPictureLayer.addPicture(propertypicture,is);
-        } 
-        
+        String files[] = {"inputfile","inputfile2","inputfile3","inputfile4","inputfile5","inputfile6"};
+        for(int f=0;f<files.length;f++){
+            Part part=request.getPart(files[f]);          
+            if(part != null){        
+                String picture = request.getParameter(files[f]);
+                PropertyPicture propertypicture = new PropertyPicture(pindex+1+f,property_id,picture);
+                InputStream is = part.getInputStream();
+                if( is.read() != -1)
+                    pPictureLayer.addPicture(propertypicture,is);
+            }            
+        }
+
         // Only do this if user was successfully added to database!!!!
         request.setAttribute("Info", "Room posting Successful.");
         RequestDispatcher rd = request.getRequestDispatcher("roomPosting.jsp");  //go to registerConfirm if signUp successful

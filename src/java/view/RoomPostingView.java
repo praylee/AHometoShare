@@ -97,7 +97,7 @@ public class RoomPostingView extends HttpServlet {
         //PropertyXResourceLayer propertyXresource = new PropertyXResourceLayer();
 
         List<Property> propertyList = propertyLayer.getAllProperty();
-        int index = propertyList.size();
+        int index = propertyList.get(propertyList.size() - 1).getpropertyID();
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date staDate = sdf.parse(startdate);
@@ -125,7 +125,8 @@ public class RoomPostingView extends HttpServlet {
         PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
 
         List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
-        int pindex = pictureList.size();
+        //int pindex = pictureList.size();
+        int pindex = pictureList.get(pictureList.size() - 1).getPictureID();  //Bin Yang
         int property_id = index+1;
 
         Part part=request.getPart("inputfile");  
@@ -176,10 +177,9 @@ public class RoomPostingView extends HttpServlet {
             pPictureLayer.addPicture(propertypicture,is);
         } 
         
-        
         // Only do this if user was successfully added to database!!!!
         request.setAttribute("Info", "Room posting Successful.");
-        RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
+        RequestDispatcher rd = request.getRequestDispatcher("roomPosting.jsp");  //go to registerConfirm if signUp successful
         rd.forward(request,response);   
         
     }

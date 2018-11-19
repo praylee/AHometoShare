@@ -74,9 +74,9 @@ Copyright @ 2018
                 for (i = 1; i < tr.length +1; i++) { //check each table row for it's city value
                     var c = document.getElementById("city" + i).value; //the city for property in row i
                     var p = document.getElementById("price" + i).value; //the price for property in row i
-                    
+                    var date = document.getElementById("start" + i).value;
                     //var priceMatch = priceFilter(selectedPrice, p);
-                   // window.alert(c); //for debugging
+                    window.alert(date); //for debugging
                    
                    
                 var val;
@@ -106,7 +106,7 @@ Copyright @ 2018
                    
                  //  window.alert(val);
                    
-                if (selectedCity === "-- Select City --") {
+                if (selectedCity === "-- Select City --" && (val === "true" || val === "none")) {
                     tr[i-1].style.display = ""; //keep all rows displayed
                 } else { //a filter option was used
                     if (c === selectedCity && (val === "true" || val === "none")) {
@@ -166,7 +166,7 @@ Copyright @ 2018
                                 <tr>
                                     <th>Filter by location</th>
                                     <th>Sort by price</th> 
-                                    <th>Filter by requirements</th>
+                                    <!--th>Filter by requirements</th-->
                                 </tr>
                                 <tr>
                                     <td>
@@ -178,20 +178,16 @@ Copyright @ 2018
                                         </select>
                                     </td>
                                     <td>
-                                        <!--select id="priceFilter">
-                                            <option value="none">---</option>
-                                            <option name="price" value="low">Low to High</option>
-                                            <option name="price" value="high">High to Low</option>
-                                        </select-->
                                         <input type="radio" name="priceFilter" value="1"> Less than $500<br>
                                         <input type="radio" name="priceFilter" value="2"> $500-$800<br>
                                         <input type="radio" name="priceFilter" value="3"> Above $800  
                                     </td>
-                                    <td>
+                                    <!--td>
+                                        TO DO: Add more filtering capabilities
                                         <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
                                         <input type="checkbox" name="req" value="parking"> Parking <br>
                                         <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
-                                    </td>
+                                    </td-->
                                     <td>
                                         <input id="filter" type="button" value="Filter" onclick="myFilterFunction();" />
                                     </td>
@@ -232,13 +228,11 @@ Copyright @ 2018
                                     <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
                                     <input type="hidden" id="propID" name="propID" value="<%=property.getpropertyID()%>">
                                     <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">
-                                    Host Name: <input type="hidden" id="hostName" name="hostName" value="<%=host.getFirstName()%>"><%=host.getFirstName()%> <br>
-                                    Host Email <input type="hidden" id="hostEmail" name="hostEmail" value="<%=host.getEmail()%>"><%=host.getEmail()%> <br>
                                     Address: <input type="hidden" id="address" name="address" value="<%=property.getAddress()%>"><%=property.getAddress()%> <br>
                                     City: <input type="hidden" id="city<%=i%>" name="city" value="<%=property.getCity()%>"><%=property.getCity()%> <br>
-                                    Start Date: <input type="hidden" id="start" name="start" value="<%=property.getStartDate()%>"><%=property.getStartDate()%> <br>
-                                    End Date: <input type="hidden" id="end" name="end" value="<%=property.getEndDate()%>"><%=property.getEndDate()%> <br>
-                                    Price: <input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
+                                    Start Date: <input type="hidden" id="start<%=i%>" name="start" value="<%=property.getStartDate()%>"><%=property.getStartDate()%> <br>
+                                    End Date: <input type="hidden" id="end<%=i%>" name="end" value="<%=property.getEndDate()%>"><%=property.getEndDate()%> <br>
+                                    Price: $<input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
                                     <!--input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" /-->
                                     <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
                                     <input id="submit" name="submit" type="submit" value="View Details" onclick="RenterProfileSearchDetails">

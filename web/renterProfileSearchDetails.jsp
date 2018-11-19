@@ -78,27 +78,56 @@ Copyright @ 2018
                                 Property property = (Property) request.getAttribute("property");
                                 Host host = (Host) request.getAttribute("host");
                             %>
+                            Host: <%=host.getFirstName()%> <%=host.getLastName()%> <br><br> 
                             
-                            <h4><strong>About the Host</strong></h4> <br>
-                            Host is: <%=host.getFirstName()%> <%=host.getLastName()%> <br>
-                            
-                            <br><br>
+                            Start Date: <%=property.getStartDate()%> <br>
+                            End Date: <%=property.getEndDate()%> <br>
+                            Price: $<%=property.getPrice()%> <br><br>
                             
                             <h4>About the Property</h4> <br>
                             
-                            City is: <%=property.getCity()%> <br>
-                            Address is: <%=property.getAddress()%> <br>
-                            Postal Code is: <%=property.getPostalCode()%> <br>
-                            Province is: <%=property.getProvince()%> <br>
-                            Country is: <%=property.getCountry()%> <br>
-                            Start Date is: <%=property.getStartDate()%> <br>
-                            End Date is: <%=property.getEndDate()%> <br>
-                            Price is: <%=property.getPrice()%> <br>
-                            Family Members: <%=property.getFamMembers()%> <br>
-                            Chores: <%=property.getChores()%> <br>
-                            Smoker Friendly: <%=property.getIsSmokerFriendly()%> <br>
-                            Pet Friendly: <%=property.getIsPetFriendly()%> <br>
+                            Address: <%=property.getAddress()%>, <%=property.getCity()%>, <%=property.getProvince()%>, <%=property.getCountry()%> <br>
+                            Postal Code: <%=property.getPostalCode()%> <br><br>
                             
+                            
+                            <h4>Property Details</h4> <br>
+                            Family Members: <%=property.getFamMembers()%> <br>
+                            Chores: <%=property.getChores()%> <br><br>
+                            
+                            <table border="1" class="detailsTable">
+                                <tr>
+                                    <th>Smoker Friendly?</th>
+                                    <th>Pet Friendly?</th> 
+                                    <th>Hydro Included?</th>
+                                    <th>Water Included?</th>
+                                    <th>Gas Included?</th> 
+                                    <th>Cable Included?</th>
+                                    <th>Internet Included?</th>
+                                    <th>Parking Available?</th> 
+                                    <th>Laundry On-Site?</th>
+                                    <th>Private Bedroom?</th>
+                                    <th>Private Kitchen?</th> 
+                                    <th>Private Washroom?</th>
+                                </tr>
+                                <tr>
+                                    <td><%=property.getIsSmokerFriendly()%></td>
+                                    <td><%=property.getIsPetFriendly()%></td>
+                                    <td><%=property.getHydroIncl()%></td>
+                                    <td><%=property.getWaterIncl()%></td>
+                                    <td><%=property.getGasIncl()%></td>
+                                    <td><%=property.getCableIncl()%></td>
+                                    <td><%=property.getInternet()%></td>
+                                    <td><%=property.getParking()%></td>
+                                    <td><%=property.getLaundry()%></td>
+                                    <td><%=property.getPriBedroom()%></td>
+                                    <td><%=property.getPriKitchen()%></td>
+                                    <td><%=property.getPriWashroom()%></td>
+                                </tr>
+                            </table>
+                            
+                           
+                            Pictures  <br><br>  
+                            <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery Image' height=180px width=180px/>                                                       
                             
                             
  

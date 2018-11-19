@@ -88,7 +88,7 @@ public class PropertyDAOImpl implements PropertyDAO {
                 property.setShaWashroom(rs.getBoolean("shared_washroom"));
                 property.setPrice(rs.getDouble("price"));
                 property.setStartDate(rs.getDate("host_start_date"));
-                property.setStartDate(rs.getDate("host_end_date"));
+                property.setEndDate(rs.getDate("host_end_date"));
                 property.setChores(rs.getString("shared_chore"));
                 property.setAvailability(rs.getInt("availability"));
                 properties.add(property);

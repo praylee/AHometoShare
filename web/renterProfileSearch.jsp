@@ -74,9 +74,8 @@ Copyright @ 2018
                 for (i = 1; i < tr.length +1; i++) { //check each table row for it's city value
                     var c = document.getElementById("city" + i).value; //the city for property in row i
                     var p = document.getElementById("price" + i).value; //the price for property in row i
-                    var date = document.getElementById("start" + i).value;
                     //var priceMatch = priceFilter(selectedPrice, p);
-                    window.alert(date); //for debugging
+                    //window.alert(c); //for debugging
                    
                    
                 var val;

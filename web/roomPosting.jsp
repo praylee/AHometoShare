@@ -56,7 +56,7 @@ Copyright @ 2018
                         <ul style="list-style:none;">
                             <li id="menu1"><input type="button" value="My Profile" class="" onclick="window.location.href='hostProfile.jsp'" /></li>
                             <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='hostAccountSettings.jsp'" /></li>
-                            <li id="menu3"><input type="button" value="Manage Properties" onclick="window.location.href='PropertyProfile'" /></li>
+                            <li id="menu3"><input type="button" value="Manage Properties" onclick="window.location.href='roomPosting.jsp'" /></li>
                         </ul>
             </div>
             <div>
@@ -64,6 +64,7 @@ Copyright @ 2018
                         <!--<div class="row uniform">-->
 
                         <h2>Property information</h2>
+
                         <!-- Break: First Name(db:first_name), Last Name(db:last_name) -->
                             <div class="formRow">
                                 <h4>Address<span style="color:red; font-weight:bold">*</span></h4>

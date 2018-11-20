@@ -41,7 +41,7 @@ public class PropertyBusinessLayer {
         return propertyDAO.getPropertyByPropertyId(propertyId);
     }
     
-    public Property getPropertyByHostId(int hostId){
+    public List<Property> getPropertyByHostId(int hostId){
         return propertyDAO.getPropertyByHostId(hostId);
     }
     

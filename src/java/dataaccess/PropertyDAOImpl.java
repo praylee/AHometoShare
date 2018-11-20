@@ -3,6 +3,7 @@
  * Description:This class implements interface PropertyDAO. This class is responsible to get data from Table Property.
  * Create: Sep,30,2018
  * Author: Xia Sheng
+ * Modified by: Bin Yang
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -186,14 +187,15 @@ public class PropertyDAOImpl implements PropertyDAO {
     }
     
     @Override
-    public Property getPropertyByHostId(int hostId) { 
-
-        Property property = new Property();
+    public List<Property> getPropertyByHostId(int hostId) {
+        List<Property> properties = Collections.EMPTY_LIST;
         try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_ID);) {
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_ID);){
             pstmt.setInt(1, hostId); 
             ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
+            properties = new ArrayList<>(400);
+            while (rs.next()) {
+                Property property = new Property();
                 property.setPropertyId(rs.getInt("property_id"));
                 property.setHostId(rs.getInt("host_id"));
                 property.setAddress(rs.getString("address"));
@@ -220,15 +222,15 @@ public class PropertyDAOImpl implements PropertyDAO {
                 property.setShaWashroom(rs.getBoolean("shared_washroom"));
                 property.setPrice(rs.getDouble("price"));
                 property.setStartDate(rs.getDate("host_start_date"));
-                property.setEndDate(rs.getDate("host_end_date"));
+                property.setStartDate(rs.getDate("host_end_date"));
                 property.setChores(rs.getString("shared_chore"));
                 property.setAvailability(rs.getInt("availability"));
+                properties.add(property);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PropertyDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-
         }
-        return property;
+        return properties;
     }
 
     @Override

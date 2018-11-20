@@ -97,7 +97,7 @@ public class RoomPostingView extends HttpServlet {
         //PropertyXResourceLayer propertyXresource = new PropertyXResourceLayer();
 
         List<Property> propertyList = propertyLayer.getAllProperty();
-        int index = propertyList.size();
+        int index = propertyList.get(propertyList.size() - 1).getpropertyID();
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date staDate = sdf.parse(startdate);
@@ -141,7 +141,7 @@ public class RoomPostingView extends HttpServlet {
         
         // Only do this if user was successfully added to database!!!!
         request.setAttribute("Info", "Room posting Successful.");
-        RequestDispatcher rd = request.getRequestDispatcher("hostProfile.jsp");  //go to registerConfirm if signUp successful
+        RequestDispatcher rd = request.getRequestDispatcher("PropertyProfile");  //go to the host property profile again.
         rd.forward(request,response);   
         
     }

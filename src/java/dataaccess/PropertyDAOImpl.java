@@ -186,15 +186,14 @@ public class PropertyDAOImpl implements PropertyDAO {
     }
     
     @Override
-    public List<Property> getPropertyByHostId(int hostId) {
-        List<Property> properties = Collections.EMPTY_LIST;
+    public Property getPropertyByHostId(int hostId) { 
+
+        Property property = new Property();
         try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_ID);){
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_HOST_ID);) {
             pstmt.setInt(1, hostId); 
             ResultSet rs = pstmt.executeQuery();
-            properties = new ArrayList<>(400);
-            while (rs.next()) {
-                Property property = new Property();
+            if (rs.next()) {
                 property.setPropertyId(rs.getInt("property_id"));
                 property.setHostId(rs.getInt("host_id"));
                 property.setAddress(rs.getString("address"));
@@ -221,15 +220,15 @@ public class PropertyDAOImpl implements PropertyDAO {
                 property.setShaWashroom(rs.getBoolean("shared_washroom"));
                 property.setPrice(rs.getDouble("price"));
                 property.setStartDate(rs.getDate("host_start_date"));
-                property.setStartDate(rs.getDate("host_end_date"));
+                property.setEndDate(rs.getDate("host_end_date"));
                 property.setChores(rs.getString("shared_chore"));
                 property.setAvailability(rs.getInt("availability"));
-                properties.add(property);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PropertyDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+
         }
-        return properties;
+        return property;
     }
 
     @Override

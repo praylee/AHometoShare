@@ -53,7 +53,7 @@ Copyright @ 2018
                         <ul style="list-style:none;">
                             <li id="menu1"><input type="button" value="My Profile" class="" onclick="window.location.href='hostProfile.jsp'" /></li>
                             <li id="menu2"><input type="button" value="Account Settings" class="" onclick="window.location.href='hostAccountSettings.jsp'" /></li>
-                            <li id="menu3"><input type="button" value="Manage Properties" class="" onclick="window.location.href='PropertyProfile'" /></li>
+                            <li id="menu3"><input type="button" value="Manage Properties" class="" onclick="window.location.href='roomPosting.jsp'" /></li>
                         </ul>
                     </div>
                 </li>    

@@ -90,8 +90,8 @@ public class PropertyDAOImplTest {
         System.out.println("getPropertyByHostId");
         int hostId = 0;
         PropertyDAOImpl instance = new PropertyDAOImpl();
-        List<Property> expResult = null;
-        List<Property> result = instance.getPropertyByHostId(hostId);
+        Property expResult = null;
+        Property result = instance.getPropertyByHostId(hostId);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

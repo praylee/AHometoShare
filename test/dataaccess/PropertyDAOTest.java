@@ -144,8 +144,8 @@ public class PropertyDAOTest {
         System.out.println("getPropertyByHostId");
         int hostId = 0;
         PropertyDAO instance = new PropertyDAOImpl();
-        Property expResult = null;
-        Property result = instance.getPropertyByHostId(hostId);
+        List<Property> expResult = null;
+        List<Property> result = instance.getPropertyByHostId(hostId);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -170,7 +170,7 @@ public class PropertyDAOTest {
         public void updateProperty(int hostId, String address, String city, String postalCode, String province, String country, int famMembers, Boolean isSmokerFriendly, Boolean isPetFriendly, Boolean hydroIncl, Boolean waterIncl, Boolean gasIncl, Boolean cableIncl, Boolean internet, Boolean parking, Boolean laundry, Boolean familyRoom, Boolean priBedroom, Boolean shaBedroom, Boolean priKitchen, Boolean shaKitchen, Boolean priWashroom, Boolean shaWashroom, double price, Date startDate, Date endDate, String chores, int availability, int propertyId) {
         }
 
-        public Property getPropertyByHostId(int hostId) {
+        public List<Property> getPropertyByHostId(int hostId) {
             return null;
         }
     }

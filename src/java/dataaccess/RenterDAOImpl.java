@@ -40,7 +40,7 @@ public class RenterDAOImpl implements RenterDAO {
             + "low_price, high_price, referral_source,criminality_check "
             + ") VALUES(?,?,AES_ENCRYPT(?,'secret'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";    //Encrypt password - Bin
     private static final String GET_BY_RENTER_ID = "SELECT "
-            + "id,email, password, "
+            + "id, email, password, "
             + "first_name, last_name,phone, gender, date_of_birth, student, "
             + "employed, smoker, rent_start_date, rent_end_date,availability, "
             + "low_price, high_price, referral_source,criminality_check "

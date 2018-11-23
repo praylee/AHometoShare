@@ -94,11 +94,14 @@ public class RenterBusinessLayer {
                 referralSource, hasCRCheck, renterId);
     }
     
+    public void updateRenter(Date startDate, Date endDate, double lowPrice, double highPrice, int renterId){
+        renterDAO.updateRenter(startDate, endDate, lowPrice, highPrice, renterId);
+    }
+    
     public void updateRenter(String firstName, String lastName,
-            String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,
-            Date startDate, Date endDate, double lowPrice, double highPrice, int renterId){
+            String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,int renterId){
         renterDAO.updateRenter(firstName, lastName, phone, gender, dateBirth, 
-                isStudent, isEmployed, isSmoker, startDate, endDate, lowPrice, highPrice, renterId);
+                isStudent, isEmployed, isSmoker, renterId);
     }
     
     public void updateRenter(String passWord, int renterId){

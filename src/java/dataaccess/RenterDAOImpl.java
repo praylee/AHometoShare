@@ -63,6 +63,11 @@ public class RenterDAOImpl implements RenterDAO {
     
     private static final String UPDATE_RENTER_EDIT_PROFILE = "UPDATE renter SET "
             + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
+            + "employed= ?, smoker= ? "
+            + "WHERE id= ?";
+    
+    private static final String UPDATE_RENTER_EDIT_RENTING_DETAILS = "UPDATE renter SET "
+            + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
             + "employed= ?, smoker= ?, rent_start_date= ?, rent_end_date= ?, "
             + "low_price= ?, high_price= ? "
             + "WHERE id= ?";
@@ -258,7 +263,25 @@ public class RenterDAOImpl implements RenterDAO {
     }
     
     @Override
-    public void updateRenter(String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, Date startDate, Date endDate, double lowPrice, double highPrice, int renterId) {
+    public void updateRenter(Date startDate, Date endDate, double lowPrice, double highPrice, int renterId) {
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER_EDIT_PROFILE);) {
+
+            
+            pstmt.setDate(1, startDate);
+            pstmt.setDate(2, endDate);
+            pstmt.setDouble(3, lowPrice);
+            pstmt.setDouble(4, highPrice);
+            pstmt.setInt(5, renterId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public void updateRenter(String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, int renterId) {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER_EDIT_PROFILE);) {
 
@@ -270,11 +293,7 @@ public class RenterDAOImpl implements RenterDAO {
             pstmt.setBoolean(6, isStudent);
             pstmt.setBoolean(7, isEmployed);
             pstmt.setBoolean(8, isSmoker);
-            pstmt.setDate(9, startDate);
-            pstmt.setDate(10, endDate);
-            pstmt.setDouble(11, lowPrice);
-            pstmt.setDouble(12, highPrice);
-            pstmt.setInt(13, renterId);
+            pstmt.setInt(9, renterId);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {

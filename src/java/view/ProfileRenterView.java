@@ -65,7 +65,7 @@ public class ProfileRenterView extends HttpServlet {
         boolean isSmoker;
         try {isSmoker = request.getParameterValues("isSmoker")[0].equals("on");}
         catch(NullPointerException e) {isSmoker = false;}
-
+        /*
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         Date startDate = null;
@@ -96,12 +96,12 @@ public class ProfileRenterView extends HttpServlet {
             updateOk = false;
             invalidReason = "Invalid price parameter.";
         }
-
+        */
 
         if(updateOk) {
             RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
             renterBusiness.updateRenter(firstName, lastName, phone, gender, birthYear, 
-                    isStudent, isEmployed, isSmoker, sqlStartDate, sqlEndDate, lowPrice, highPrice, Integer.parseInt(session.getAttribute("renterId").toString()));
+                    isStudent, isEmployed, isSmoker, Integer.parseInt(session.getAttribute("renterId").toString()));
 
             Renter renter = renterBusiness.getRenterByEmail(session.getAttribute("email").toString());
             session.setSessionAttributes(renter, true);

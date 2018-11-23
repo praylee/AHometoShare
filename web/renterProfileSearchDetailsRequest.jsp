@@ -1,7 +1,7 @@
 <%-- 
-File: renterProfileSearchDetails.jsp
+File: renterProfileSearchDetailsRequest.jsp
 Description: Page for host property details within the renter profile.
-Create: Oct 21,2018
+Create: Nov 21,2018
 Author: Melissa Rajala
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
@@ -10,11 +10,9 @@ Project: A Home to Share
 Copyright @ 2018
 --%>
 
-<%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="transferobjects.Host"%>
-<%@page import="transferobjects.Property"%>
-<%@page import="java.util.List"%>
+<%@page import="transferobjects.Renter"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -69,76 +67,19 @@ Copyright @ 2018
                     <li class="aside aside-3">
                         <div class="property-search-details-content">
 
-                            <h2>Property Details</h2>
-
-                            <hr width=600px;>   
-                            
                             
                             <%
-                                Property property = (Property) request.getAttribute("property");
+                                Renter renter = (Renter) request.getAttribute("renter");
                                 Host host = (Host) request.getAttribute("host");
                             %>
                             
-                            <form action="RenterProfileSearchDetails" method="get">
+                            <br>                               
+                            <%=renter.getFirstName()%>,<br><br> 
                             
-                            <input type="hidden" id="bookingHost" name="bookingHost" value="<%=host.getHostID()%>">
-                                
-                            Host: <%=host.getFirstName()%> <%=host.getLastName()%> <br><br> 
+                            An e-mail has been sent to A Home To Share indicating your request to book from <%=host.getFirstName()%>. <br><br><br>
                             
-                            Start Date: <%=property.getStartDate()%> <br>
-                            End Date: <%=property.getEndDate()%> <br>
-                            Price: $<%=property.getPrice()%> <br><br>
-                            
-                            <h4>About the Property</h4> <br>
-                            
-                            Address: <%=property.getAddress()%>, <%=property.getCity()%>, <%=property.getProvince()%>, <%=property.getCountry()%> <br>
-                            Postal Code: <%=property.getPostalCode()%> <br><br>
-                            
-                            
-                            <h4>Property Details</h4> <br>
-                            Family Members: <%=property.getFamMembers()%> <br>
-                            Chores: <%=property.getChores()%> <br><br>
-                            
-                            <table border="1" class="detailsTable">
-                                <tr>
-                                    <th>Smoker Friendly?</th>
-                                    <th>Pet Friendly?</th> 
-                                    <th>Hydro Included?</th>
-                                    <th>Water Included?</th>
-                                    <th>Gas Included?</th> 
-                                    <th>Cable Included?</th>
-                                    <th>Internet Included?</th>
-                                    <th>Parking Available?</th> 
-                                    <th>Laundry On-Site?</th>
-                                    <th>Private Bedroom?</th>
-                                    <th>Private Kitchen?</th> 
-                                    <th>Private Washroom?</th>
-                                </tr>
-                                <tr>
-                                    <td><%=property.getIsSmokerFriendly()%></td>
-                                    <td><%=property.getIsPetFriendly()%></td>
-                                    <td><%=property.getHydroIncl()%></td>
-                                    <td><%=property.getWaterIncl()%></td>
-                                    <td><%=property.getGasIncl()%></td>
-                                    <td><%=property.getCableIncl()%></td>
-                                    <td><%=property.getInternet()%></td>
-                                    <td><%=property.getParking()%></td>
-                                    <td><%=property.getLaundry()%></td>
-                                    <td><%=property.getPriBedroom()%></td>
-                                    <td><%=property.getPriKitchen()%></td>
-                                    <td><%=property.getPriWashroom()%></td>
-                                </tr>
-                            </table>
-                            
-                           
-                            Pictures  <br><br>  
-                            <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery Image' height=180px width=180px/>                                                       
-                            
-                            <input type="submit" value="Request to Book this Property">
-                            
-                            </form> 
- 
-                            <input type="button" value="Back to Search" onclick="window.location.href='RenterProfileSearch'" />
+                            We will be in touch shortly!
+
 
                         </div>
                     </li>

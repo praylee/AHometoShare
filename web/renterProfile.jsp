@@ -137,8 +137,8 @@ Copyright @ 2018
                                 <%=Boolean.parseBoolean(session.getAttribute("isSmoker").toString()) ? "checked" : ""%>>Smoker?</input>
                             </li>
                         </div>
-
-                    <!-- Break: Renting Details -->
+                    
+                    <!-- Break: Renting Details
                         <h2 class="renting_details">Renting details</h2>
 
                         <hr width=600px;>
@@ -166,6 +166,7 @@ Copyright @ 2018
                             <li><input type="text" name="highPrice" id="highPrice" 
                                        value="<%=session.getAttribute("highPrice")%>" maxlength="10" pattern="[0-9\.]+" required /></li>
                         </div>
+                        -->
                         <!--
                         <span id="entryError"><%out.print(session.getAttribute("invalidReason") == null ? "" : session.getAttribute("invalidReason"));%></span>
                         -->

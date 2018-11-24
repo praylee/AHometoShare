@@ -40,46 +40,53 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
         response.setContentType("text/html;charset=UTF-8");
             
 
-           HostSession session = new HostSession(request.getSession());           
-            boolean updateOk = true;
-            String invalidReason = null;
+            HostSession session = new HostSession(request.getSession());    
             
-            String firstName = request.getParameter("firstname");
-            String lastName = request.getParameter("lastname");
-            String phone = request.getParameter("phone");
-            int gender = Integer.parseInt(request.getParameter("gender"));
-            String birthYear = request.getParameter("dateBirth");
-            String referralSource=request.getParameter("referralSource");
-            
-            boolean retired;
-            try {retired = request.getParameterValues("isRetired")[0].equals("on");}
-            catch(NullPointerException e) {retired = false;}
-            
-            boolean pets;
-            try {pets = request.getParameterValues("isPets")[0].equals("on");}
-            catch(NullPointerException e) {pets = false;}
-            
-            boolean smoker;
-            try {smoker = request.getParameterValues("isSmoker")[0].equals("on");}
-            catch(NullPointerException e) {smoker = false;}
-            
-            if(updateOk) {
-                HostBusinessLayer hostBusiness = new HostBusinessLayer();
-                hostBusiness.updateHost(firstName, lastName, phone, gender, birthYear, 
-                        retired, pets, smoker, referralSource,Integer.parseInt(session.getAttribute("hostId").toString()));
-                
-                Host host = hostBusiness.getHostByEmail(session.getAttribute("email").toString());
-                session.setSessionAttributes(host, true);
-                try{session.removeAttribute("invalidReason");}
-            catch(NullPointerException e){}
-            response.sendRedirect("hostProfile.jsp");
-        }
-            else {
-                request.setAttribute("invalidReason", invalidReason);
-                RequestDispatcher hp = request.getRequestDispatcher("hostProfile.jsp");  // send error message
-                hp.forward(request,response);
+            if(session.getAttribute("hostId") == null) {
+                System.out.println("Session has expried.");
+                session.endSession();
+                response.sendRedirect("index.jsp");
             }
-    
+            else {
+                boolean updateOk = true;
+                String invalidReason = null;
+
+                String firstName = request.getParameter("firstname");
+                String lastName = request.getParameter("lastname");
+                String phone = request.getParameter("phone");
+                int gender = Integer.parseInt(request.getParameter("gender"));
+                String birthYear = request.getParameter("dateBirth");
+                String referralSource=request.getParameter("referralSource");
+
+                boolean retired;
+                try {retired = request.getParameterValues("isRetired")[0].equals("on");}
+                catch(NullPointerException e) {retired = false;}
+
+                boolean pets;
+                try {pets = request.getParameterValues("isPets")[0].equals("on");}
+                catch(NullPointerException e) {pets = false;}
+
+                boolean smoker;
+                try {smoker = request.getParameterValues("isSmoker")[0].equals("on");}
+                catch(NullPointerException e) {smoker = false;}
+
+                if(updateOk) {
+                    HostBusinessLayer hostBusiness = new HostBusinessLayer();
+                    hostBusiness.updateHost(firstName, lastName, phone, gender, birthYear, 
+                            retired, pets, smoker, referralSource,Integer.parseInt(session.getAttribute("hostId").toString()));
+
+                    Host host = hostBusiness.getHostByEmail(session.getAttribute("email").toString());
+                    session.setSessionAttributes(host, true);
+                    try{session.removeAttribute("invalidReason");}
+                    catch(NullPointerException e){}
+                    response.sendRedirect("hostProfile.jsp");
+                }
+                else {
+                    request.setAttribute("invalidReason", invalidReason);
+                    RequestDispatcher hp = request.getRequestDispatcher("hostProfile.jsp");  // send error message
+                    hp.forward(request,response);
+                }  
+            }
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -54,7 +54,11 @@ public class HostBusinessLayer {
     
     public Host getHostByEmail(String email){
         return hostDAO.getHostByEmail(email);
-    } 
+    }
+    
+    public boolean hostExists(String email) {
+        return getHostByEmail(email) != null;
+    }
     
     public void deleteHost(int hostId){
         hostDAO.deleteHost(hostId);

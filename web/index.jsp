@@ -125,6 +125,7 @@ Copyright @ 2018
                                 <a href="#" class="loginBtn">Login with Facebook</a>
                                 <a href="#" class="loginBtn">Login with Linkedin</a>
                                 <a href="#" class="loginBtn">Login with Google</a>
+                                <button name="forgotPasswordBtn" id="forgotPasswordBtn" class="loginBtn">Forgot Password</button>
                             </div>
                         </div>
                     <hr>
@@ -162,33 +163,92 @@ Copyright @ 2018
                     </section>
                 </div>
             </div>
+                                
+            <!--Forgot password Popup Window when clicks button: Forgot password--> 
+            <div id="forgotPasswordPopup" class="loginPopup" >
+             <!--Forogot password content--> 
+                <div class="loginPopup-content">
+                    <span class="close2">&times;</span>
+                    <section class="loginPopup_container">
+                        <div class="loginPopup-right_half">
+                            <form method="post" action="ForgotPassword" onsubmit="" >
+                                <div class="formRow">
+                                    <h4 align="left">Enter the email address associated with your account</h4>
+                                    <!-- Modified by Chris -->
+                                    <input type="email" name="forgotPasswordEmail" id="forgotPasswordEmail" size="30" placeholder="Email Address" maxlength="42" required />                                    
+                                </div>
+                                <br>
+                                <div class="loginError">
+                                    <%
+                                        if(request.getAttribute("forgotPasswordFeedback") != null) {
+                                            out.print(request.getAttribute("forgotPasswordFeedback"));
+                                        }
+                                    %>
+                                </div>
+                                <div class="btn-group4">
+                                    <button id="loginemailBtn" type="submit" class="unstyled-button2" >Send new password to this email address</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
             
              <!--Javascript functions for popup windows: Login--> 
                 <script>
                     // Get the popup
                     var loginPopup = document.getElementById("loginPopup");
-                    // Get the button that opens the popup
+                    // Get forgot passwrod popup
+                    var forgotPasswordPopup = document.getElementById("forgotPasswordPopup");
+                    // Get the button that opens the login popup
                     var loginBtn = document.getElementById("loginBtn");
-                    // Get the <span2> element that closes the popup
-                    var span2 = document.getElementsByClassName("close2")[0];
+                    // Get the button that opens forgot password popup
+                    var forgotPasswordBtn = document.getElementById("forgotPasswordBtn");
+                    // Get the <span2> element that closes the login popup
+                    var exit1 = document.getElementsByClassName("close2")[0];
+                    // Get the <span2> element that closes the forgot password popup
+                    exit2 = document.getElementsByClassName("close2")[1];
+                    
+                    
                     // When the user clicks the button, open the popup 
                     loginBtn.onclick = function() {
                         loginPopup.style.display = "block";
+                        forgotPasswordPopup.style.display = "none";
                     };
+                    
+                    // WHen the user clicks the 'forgot password' button
+                    forgotPasswordBtn.onclick = function() {
+                        loginPopup.style.display = "none";
+                        forgotPasswordPopup.style.display = "block";
+                    };
+                    
                     // When the user clicks on <span2> (x), close the popup
-                    span2.onclick = function() {
+                    exit1.onclick = function() {
                         loginPopup.style.display = "none";
                     };
+                    
+                    
+                    // When the user clicks on <span2> (x), close the popup
+                    exit2.onclick = function() {
+                        forgotPasswordPopup.style.display = "none";
+                    };
+                    
                     // When the user clicks anywhere outside of the popup, close it
                     window.onclick = function(event) {
                         if (event.target === loginPopup) {
                             loginPopup.style.display = "none";
-                            
+                        }
+                        else if(event.target === forgotPasswordPopup) {
+                            forgotPasswordPopup.style.display = "none";
                         }
                     };
                     
                     if(<%=request.getAttribute("isLoginValid")%> === false) {
                         loginPopup.style.display = "block";
+                    }
+                    
+                    if(<%=request.getAttribute("isForgotPasswordEmailValid")%> === false) {
+                        forgotPasswordPopup.style.display = "block";
                     }
                     
                     

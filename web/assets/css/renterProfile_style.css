@@ -505,30 +505,28 @@ body {font-family: Arial, Helvetica, sans-serif;}
         margin-bottom: 60px;
         
         -moz-appearance: none;
-            -webkit-appearance: none;
-            -ms-appearance: none;
-            appearance: none;
-            -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-            -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-            -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-            /*background-color: #ffffff;*/
-            border-radius: 0;
-            border: 0;
-            /*color: #5385c1 !important;*/
-            cursor: pointer;
-            display: inline-block;
-            font-weight: 600;
-            /*height: 2.85em;*/
-            line-height: 1.95em;
-            padding: 0 1.8em;
-            text-align: center;
-            text-decoration: none;
-            white-space: nowrap;
-            /*width: 100%;*/
-            border: 1px solid rgba(144, 144, 144, 0.2);
-       
-        
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        /*background-color: #ffffff;*/
+        border-radius: 0;
+        border: 0;
+        /*color: #5385c1 !important;*/
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        /*height: 2.85em;*/
+        line-height: 1.95em;
+        padding: 0 1.8em;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        /*width: 100%;*/
+        border: 1px solid rgba(144, 144, 144, 0.2); 
     }
     
     #save_cancel_btn button:hover{

@@ -1,7 +1,7 @@
 <%-- 
 File: faq.jsp
 Description: A page for displaying frequently asked questions about the business
-Create: Oct.30, 2018
+Create: Oct. 30, 2018
 Author: Zhan Shen
 Modified on: Nov. 13, 2018
 Modified by Zhan Shen: updated and reorganized the layout
@@ -151,7 +151,7 @@ Copyright @ 2018
             
             <!--Pane 3: FAQ - right side-->
                 <div class="colunm aside-3">
-                    <div style="border-left:1px solid #bbb; height:1720px"></div>
+                    <div style="border-left:1px solid #bbb; height:1750px"></div>
 
                 </div>
             

@@ -1,7 +1,7 @@
 /*
     File: faq_syle.css
     Description: Cascading style sheet for "Frequently Asked Questions" page
-    Create: Oct.30,2018
+    Create: Oct. 30, 2018
     Author: Zhan Shen
     Clients: Michelle Bilek, Farheen Khan
     Course: Software Development Project
@@ -154,6 +154,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         position: relative;
         bottom: 0;
         width:100%;
+        top: 150px;
     }
 
         #footer p{

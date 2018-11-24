@@ -18,7 +18,7 @@ Copyright @ 2018
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Room Posting</title>
-        <link rel="stylesheet" href="assets/css/roomPosting_style.css" />
+        <link rel="stylesheet" href="assets/css/roomPostings_style.css" />
         <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     </head>

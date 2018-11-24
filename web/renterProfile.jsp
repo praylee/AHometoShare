@@ -26,7 +26,7 @@ Copyright @ 2018
                 <a href="index.jsp" class="logo">A Home To Share</a>
                 <nav id="nav">
                     <a href="index.jsp">Home</a>
-                    <a href="how_we_work.jsp">How We Work</a>
+                    <a href="howWeWork.jsp">How We Work</a>
                     <a href="faq.jsp">FAQ</a>
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
@@ -210,7 +210,7 @@ Copyright @ 2018
                     <ul class="footer_nav">
                         <li><a href="how_we_work.jsp">How We Work</a></li>
                         <li><a href="faq.jsp">Frequently Asked Questions</a></li>
-                        <li><a href="about_us.jsp">About Us</a></li>
+                        <li><a href="aboutUs.jsp">About Us</a></li>
                         <li><a href="index.jsp">Placeholder</a></li>
                     </ul>
                 </div>

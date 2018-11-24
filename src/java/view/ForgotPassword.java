@@ -62,7 +62,7 @@ public class ForgotPassword extends HttpServlet {
             }
             
             EmailFactory.sendPasswordResetEmail(email, randomPassword);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("registerConfirm.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
         else {

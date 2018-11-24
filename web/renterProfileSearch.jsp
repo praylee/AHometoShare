@@ -20,7 +20,7 @@ Copyright @ 2018
 <html>
     <head>
         <title>Renter Host Property Search</title>
-        <link rel="stylesheet" href="assets/css/subpage_style.css" />
+        <link rel="stylesheet" href="assets/css/renterProfileSearch_style.css" />
     </head>
         
     <body class="subpage">
@@ -43,9 +43,7 @@ Copyright @ 2018
                 
                 
                 
-        <script>
-
-            
+        <script>          
             function myFilterFunction() {
                 // Declare variables
 
@@ -149,111 +147,99 @@ Copyright @ 2018
                 </li>    
 
 
-                <!--Pane 3: "My Account" content container-->
-                    <!--Pane 3: "My Account" - Renter host property search contents-->
+                <!--Pane 3: "Search Host Listings" content container-->
                     <li class="aside aside-3">
                         <div class="property-search-content">
 
-                            <h2>Search Host Properties</h2>
+                            <h2>Search host properties</h2>
 
                             <hr width=600px;>    
-                            
+
+                            <div class="flex flex-3">
+                                <form method="get" action="RenterProfileSearch" >
+                                    <table class="filtertable">
+                                        <tr>
+                                            <th><em style='font-weight:bold'>Filter by location</em></th>
+                                            <th><em style='font-weight:bold'>Sort by price</em></th> 
+                                            <!--th>Filter by requirements</th-->
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select id="cityFilter">
+                                                    <option value="none">-- Select City --</option>
+                                                    <option value="mississauga">Mississauga</option>
+                                                    <option value="hamilton">Hamilton</option>
+                                                    <option value="peel">Peel Region</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <h5><input type="radio" name="priceFilter" value="1">Less than $500</h5><br>
+                                                <h5><input type="radio" name="priceFilter" value="2"> $500 - $800</h5><br>
+                                                <h5><input type="radio" name="priceFilter" value="3"> Above $800</h5>  
+                                            </td>
+                                            <!--td>
+                                                TO DO: Add more filtering capabilities
+                                                <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
+                                                <input type="checkbox" name="req" value="parking"> Parking <br>
+                                                <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
+                                            </td-->
+                                            <td>
+                                                <input id="filter" type="button" value="Filter" onclick="myFilterFunction();" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
                             
                             <div class="flex flex-3">
-                        <form method="get" action="RenterProfileSearch" >
-                            <table class="filtertable">
-                                <tr>
-                                    <th>Filter by location</th>
-                                    <th>Sort by price</th> 
-                                    <!--th>Filter by requirements</th-->
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select id="cityFilter">
-                                            <option value="none">-- Select City --</option>
-                                            <option value="mississauga">Mississauga</option>
-                                            <option value="hamilton">Hamilton</option>
-                                            <option value="peel">Peel Region</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="radio" name="priceFilter" value="1"> Less than $500<br>
-                                        <input type="radio" name="priceFilter" value="2"> $500-$800<br>
-                                        <input type="radio" name="priceFilter" value="3"> Above $800  
-                                    </td>
-                                    <!--td>
-                                        TO DO: Add more filtering capabilities
-                                        <input type="checkbox" name="req" value="prvbath"> Private Bathroom <br>
-                                        <input type="checkbox" name="req" value="parking"> Parking <br>
-                                        <input type="checkbox" name="req" value="prvkitchen"> Private Kitchen 
-                                    </td-->
-                                    <td>
-                                        <input id="filter" type="button" value="Filter" onclick="myFilterFunction();" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>         
-                       
-                    </div>
-<!--table list format-->
-<style> 
- td {
-    border-bottom: 1px solid black;
-    padding:5px;
-    height: 50px;
-    
-}
-</style>            
-                            
-                    <div class="flex flex-3">
-                        <table class="hosttable" id="property" width=600px>
-                            <%
-                                List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
-                                if (pairList.isEmpty()) { %>
-                                <h6>There are no available listings at this time.</h6>
-                                <%
-                                    } else {
-                                    int i = 0;
-                                    for (Entry entry: pairList){
-                                    Host host = (Host) entry.getKey();
-                                    Property property = (Property) entry.getValue();
-                                    i++;
-                            %>
-                            <form method="post" action="RenterProfileSearchDetails">
-                            <tr> 
-                                
-                                <td>
-                                    <h4> Property <%=i%> </h4>
-                                    <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
-                                    <input type="hidden" id="propID" name="propID" value="<%=property.getpropertyID()%>">
-                                    <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">
-                                    Address: <input type="hidden" id="address" name="address" value="<%=property.getAddress()%>"><%=property.getAddress()%> <br>
-                                    City: <input type="hidden" id="city<%=i%>" name="city" value="<%=property.getCity()%>"><%=property.getCity()%> <br>
-                                    Start Date: <input type="hidden" id="start<%=i%>" name="start" value="<%=property.getStartDate()%>"><%=property.getStartDate()%> <br>
-                                    End Date: <input type="hidden" id="end<%=i%>" name="end" value="<%=property.getEndDate()%>"><%=property.getEndDate()%> <br>
-                                    Price: $<input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
-                                    <!--input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" /-->
-                                    <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
-                                    <input id="submit" name="submit" type="submit" value="View Details" onclick="RenterProfileSearchDetails">
-                                </td>
-                                 <td>
-                                    Picture:  <br>  
-                                    <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery Image' height=180px width=180px/>                                                       
-                                </td>     
-                            </tr>
-                            </form>
-                            <%}
+                                <table class="hosttable" id="property" width=600px>
+                                    <%
+                                        List<Entry<Host,Property>> pairList = (ArrayList<Entry<Host, Property>>) request.getAttribute("hostproperties");
+                                        if (pairList.isEmpty()) { %>
+                                        <h6>There are no available listings at this time.</h6>
+                                        <%
+                                            } else {
+                                            int i = 0;
+                                            for (Entry entry: pairList){
+                                            Host host = (Host) entry.getKey();
+                                            Property property = (Property) entry.getValue();
+                                            i++;
+                                    %>
+                                    <form method="post" action="RenterProfileSearchDetails">
+                                    <tr> 
 
-                             }
-                            %>                         
-                        </table>
-                    </div>        
+                                        <td>
+                                            <h4><em style='font-weight:bold'>Property</em> <%=i%> </h4>
+                                            <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
+                                            <input type="hidden" id="propID" name="propID" value="<%=property.getpropertyID()%>">
+                                            <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">
+                                            <h4><em style='font-weight:bold'>Address:</em> <input type="hidden" id="address" name="address" value="<%=property.getAddress()%>"><%=property.getAddress()%> <br>
+                                            <h4><em style='font-weight:bold'>City:</em> <input type="hidden" id="city<%=i%>" name="city" value="<%=property.getCity()%>"><%=property.getCity()%> <br>
+                                            <h4><em style='font-weight:bold'>Start Date:</em> <input type="hidden" id="start<%=i%>" name="start" value="<%=property.getStartDate()%>"><%=property.getStartDate()%> <br>
+                                            <h4><em style='font-weight:bold'>End Date:</em> <input type="hidden" id="end<%=i%>" name="end" value="<%=property.getEndDate()%>"><%=property.getEndDate()%> <br>
+                                            <h4><em style='font-weight:bold'>Price:</em> $<input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
+                                            <!--input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" /-->
+                                            <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
+                                            <input id="submit" name="submit" type="submit" value="View Details" onclick="RenterProfileSearchDetails">
+                                        </td>
+                                         <td>
+                                            <h4><em style='font-weight:bold'>Picture:</em>  <br>  
+                                            <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery Image' height=180px width=180px/>                                                       
+                                        </td>     
+                                    </tr>
+                                    </form>
+                                    <%}
 
+                                     }
+                                    %>                         
+                                </table>
+                            </div>        
                         </div>
                     </li>
-                    <!--Pane 4: a placeholder-->  
+                    
+                <!--Pane 4: a placeholder-->  
                     <li class="aside aside-4"></li>
-                </div>            
+            </div>            
        
         <!-- Footer -->
         <footer id="footer">

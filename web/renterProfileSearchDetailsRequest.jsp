@@ -1,8 +1,10 @@
 <%-- 
 File: renterProfileSearchDetailsRequest.jsp
-Description: Page for host property details within the renter profile.
+Description: A page for confirming property booking request of renters.
 Create: Nov. 21,2018
 Author: Melissa Rajala
+Last modified: Nov. 24, 2018
+Modified by: Zhan Shen
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -18,7 +20,7 @@ Copyright @ 2018
 <html>
     <head>
         <title>Property Details</title>
-        <link rel="stylesheet" href="assets/css/subpage_style.css" />
+        <link rel="stylesheet" href="assets/css/renterProfileSearchDetailsRequest_style.css" />
     </head>
         
     <body class="subpage">
@@ -33,7 +35,7 @@ Copyright @ 2018
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
-                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
+                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
                     <button id="logoutBtn" class="unstyled-button" onclick="window.location.href='LogoutRedirect'" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
                 </nav>
             </div>
@@ -66,28 +68,27 @@ Copyright @ 2018
                     <!--Pane 3: "My Account" - Host Property Details contents-->
                     <li class="aside aside-3">
                         <div class="property-search-details-content">
-
+                        
+                            <h2>Booking request message</h2>
+                            
+                            <hr width=600px;>   
                             
                             <%
                                 Renter renter = (Renter) request.getAttribute("renter");
                                 Host host = (Host) request.getAttribute("host");
                             %>
+                                                                                  
+                            <h5><%=renter.getFirstName()%>,</h5>
                             
-                            <br>                               
-                            <%=renter.getFirstName()%>,<br><br> 
-                            
-                            An e-mail has been sent to A Home To Share indicating your request to book from <%=host.getFirstName()%>. <br><br><br>
-                            
-                            We will be in touch shortly!
-
-
+                            <h5>An e-mail has been sent to A Home To Share indicating your request to book from <%=host.getFirstName()%>.</h5>
+                            <br>
+                            <h5>We will be in touch shortly!</h5>
                         </div>
                     </li>
                     <!--Pane 4: a placeholder-->  
                     <li class="aside aside-4"></li>
-                </div>            
+            </div>            
        
-        <!-- Footer -->
         <!-- Footer -->
         <footer id="footer">
             <div class="row">

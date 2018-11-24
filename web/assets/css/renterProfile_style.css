@@ -1,9 +1,9 @@
 /*
-    File: subpage_syle.css
-    Description: Cascading style sheet for Renter registration form
-    Create: Oct,05,2018
+    File: renterProfile_syle.css
+    Description: Cascading style sheet for "renterProfile" page
+    Create: Oct. 05, 2018
     Author: Zhan Shen
-    Clients: Michelle Bilek,Farheen Khan
+    Clients: Michelle Bilek, Farheen Khan
     Course: Software Development Project
     Professor: Dr. Anu Thomas
     Project: A Home to Share
@@ -206,7 +206,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                     background-color: rgba(144, 144, 144, 0.2);
                 }
 	
-/* Footer */
+/* --Footer------------------------------------------------------------------ */
 
 .flex {
     display: -ms-flexbox;
@@ -226,44 +226,99 @@ body {font-family: Arial, Helvetica, sans-serif;}
     justify-content: space-between;
 }
 
-footer {
-    background-color: #efeded;
-    padding: 30px;
-    text-align: left;
-    color: #555;
-   
-}
+#footer {
+        background-color: #efeded;
+        font-size: small;
+        position: relative;
+        bottom: 0;
+        width:100%;
+    }
 
-    #footer .flex {
-        table-layout: auto;
-        width: 80%;  
-        padding-top: 30px;
-        padding-bottom: 30px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    #footer h6 {
-        font-size: 1.2em;
-    }
-    
-    #footer ul {
-        margin-top: 10px;
-    }
-    
-    #footer li {
-        line-height: 1.5;
-        word-wrap: break-word;
-    }
-    #footer img {
-        padding-top: 8px;
-    }
-    
-    #footer a {
-        text-decoration: none;
-        margin-top: 15px;
-        color: #555;
+        #footer p{
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .footer_column {
+            float: left;
+            height: 130px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
         
+        #footer h6 {
+            font-size: 1em;
+            color: #555;
+            font-weight: bold;
+        }
+
+        #footer ul {
+            margin-top: 10px;
+        }
+
+        #footer li {
+            line-height: 1.7;
+            word-wrap: break-word;
+            color: #555;
+        }
+        #footer img {
+            padding-top: 8px;
+        }
+
+        #footer a {
+            text-decoration: none;
+            margin-top: 15px;
+            color: #555;
+        }
+
+        #footer u {
+            color: #5385c1;
+        }
+
+        #footer p {
+            color: #555;
+        }    
+
+    .inner1 {
+        /*background: gold;*/
+        width: 15%;
+    }
+
+    .inner2 {
+        /*background: green;*/
+        width: 14%;
+    }
+
+    .inner3 {
+        width: 16%;
+        /*background: green;*/
+    }
+
+    .inner4 {
+        width: 31%;
+        padding-right: 30px;
+        max-width: 470px;
+        /*background: #b6701e;*/
+    }
+
+    .inner5 {
+        width: 15%;
+        /*background: green;*/
+    }
+
+    .inner6 {
+        width: 9%;
+        /*background: green;*/
+    }  
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    
+    #footer * {
+        box-sizing: border-box;
     }
 
 	   

@@ -1,7 +1,7 @@
 <%-- 
-File: index.jsp
-Description: Home page for A Home to Share website
-Create: Sept.30,2018
+File: how_we_work.jsp
+Description: How We Work page
+Create: Nov,13,2018
 Author: Zhan Shen
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
@@ -17,28 +17,27 @@ Copyright @ 2018
         <title>A Home To Share</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="assets/css/mainpage_style.css" />
+        <link rel="stylesheet" href="assets/css/howWeWork_style.css" />
     </head>
 	
-    <body>
-
-    <!-- Header -->
-        <header id="header">
-            <div class="inner">
-                <a href="index.jsp" class="logo">A Home To Share</a>
-                <nav id="nav">
-                    <a href="index.jsp">Home</a>
-                    <a href="how_we_work.jsp">How We Work</a>
-                    <a href="faq.jsp">FAQ</a>
-                    <button id="loginBtn" onclick="window.location.href='LogInView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Log in</button>
-                    <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Sign Up</button>
-                    <a href="
-                       <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
-                       style="
-                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
-                    <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>" onclick="window.location.href='LogoutRedirect'">Log out</button>
-                </nav>
-            </div>
+    <body class="subpage">
+        <!-- Header -->
+            <header id="header">
+                <div class="inner">
+                    <a href="index.jsp" class="logo">A Home To Share</a>
+                    <nav class="nav">
+                        <a href="index.jsp">Home</a>
+                        <a href="how_we_work.jsp">How We Work</a>
+                        <a href="faq.jsp">FAQ</a>
+                        <button id="loginBtn" onclick="window.location.href='LogInView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Log in</button>
+                        <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Sign Up</button>
+                        <a href="
+                           <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
+                           style="
+                           <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
+                        <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>" onclick="window.location.href='LogoutRedirect'">Log out</button>
+                    </nav>
+                </div>
 
 
          <!--Signup Popup Window when clicks button: Sign Up-->
@@ -198,131 +197,162 @@ Copyright @ 2018
                 
         </header>
 
-
-    <!-- Banner: the text shows within the main image -->
-            <section id="banner">
-                <h1>Welcome to A Home To Share</h1>
-                <p>Benefit from the extra space in your home</p>
-            </section>
-
-    <!-- Block 1: Core benefits info -->
-        <section id="one" class="wrapper">
-            <div class="inner">
-                <div class="flex flex-3">
-                    <header>
-                        <h2>A Home to Share is a trusted service for integenerational home sharing</h2>
-                        <p>Placeholder: detailed description</p>
-                    </header>
-                    <footer>
-                        <div class="flex flex-3">
-                            <article>
-                                <div>
-                                    <img src="images/home_block1_01.png" alt="block1_01 image"/>	
-                                </div>
-                                <h3 class="make_money">Make Money</h3>
-                            </article>
-
-                            <article>
-                                <div>
-                                    <img src="images/home_block1_02.png" alt="block1_02 image"/>	
-                                </div>
-                                <h3 class="get_help">Get help around the home</h3>
-                            </article>
-
-                            <article>
-                                <div>
-                                    <img class="build_img" src="images/home_block1_03.png" alt="block1_03 image"/>	
-                                </div>
-                                <h3 class="build_friendship">Build new friendships</h3>
-                            </article>	
-                        </div>
-                    </footer>
+    <!-- Main -->
+        <!-- Block 1 -->
+        <section class="main_section">
+                <div>
+                    <img src="images/how_we_work01.jpg" alt="Renter registration image" style="width:500px;height:500px;"/>
                 </div>
+                
+                <div>
+                    <h1>How It Works</h1>
+                    <p>A Home To Share helps make intergenerational home sharing safe and easy by providing screening, customizable home sharing agreements, and ongoing support. </p>
+                </div>
+        </section>    
+            
+    <!-- Block 2 -->
+        <section class="main_section">
+            <div class="card-body1">
+                <h2 class="">HOW IT WORKS</h2>
+                <h3 class="">As a Host</h3>
+            </div>
+            <div class="placeholder-v"></div>
+            <div class="card-body2">
+                <h2 class="">HOW IT WORKS</h2>
+                <h3 class="">As a Guest</h3>
+            </div>
+        </section> 
+    <div class="placeholder-h1"></div>
+
+    <!-- Block 3 -->
+        <section class="main_section">
+            <div class="col-1-row-1">
+                <img src="images/host-icon.png" alt="Host icon image" style="width:80px; height:80px; margin-left:360px;">
+                <h4 class="timeline-title">Create your free profile and room listing</h4>
+                <p>
+                    Create a listing for your spare room using our simple signup
+                    process. Include a brief description of your home and
+                    neighborhood, photos, and your monthly price. Make your
+                    listing even more appealing by adding information about
+                    yourself so Guests can get to know you!
+                </p>
+            </div>
+            <div class="placeholder-v"></div>
+            <div class="col-1-row-1">
+                <img src="images/guest-icon.png" alt="Guest icon image" style="width:80px;height:80px; margin-left:20px;">
+                <h4 class="timeline-title">Create your free profile</h4>
+                <p>
+                    Help your future Hosts get to know you by telling 
+                    them your hobbies, interests, and anything else 
+                    you’d like to share about yourself. 
+                </p>
             </div>
         </section>
-
-    <!-- Block 2: User Comments -->
-        <section id="two" class="wrapper style1 special">
-            <div class="inner">
-                <header>
-                    <h2>We don't want to brag, but...</h2>
-                </header>
-                <div class="flex">
-                    <section>
-                        <div class="box_person">
-                            <div class="comment_img1">
-                                <img src="images/home_block2_01.png" alt="User 1">
-                            </div>
-                            <h3>A great service</h3>
-                            <p>I have really appreciated support's help...</p>
-                        </div>
-                        <div class="box_person">
-                            <div class="comment_img2">
-                                <img src="images/home_block2_02.png" alt="User 2">
-                            </div>
-                            <h3>Save my money</h3>
-                            <p>Comments........</p>
-                        </div>
-                        </section>
-                    <section>
-                        <div class="box_person">
-                            <div class="comment_img3">
-                                <img src="images/home_block2_03.png" alt="User 3">
-                            </div>
-                            <h3>It's easy to use</h3>
-                            <p>Comments........</p>
-                        </div>
-                        <div class="box_person">
-                            <div class="comment_img4">
-                                <img src="images/home_block2_04.png" alt="User 4">
-                            </div>
-                            <h3>We built a good friendship</h3>
-                            <p>Comments........</p>
-                        </div>
-                    </section>
-                </div>
+    
+        <div class="placeholder-h2"></div>
+        
+        <section class="main_section">
+            <div class="col-1-row-1">
+                <img src="images/host-icon.png" alt="Host icon image" style="width:80px;height:80px; margin-left:360px;">
+                <h4 class="timeline-title">Review your booking requests</h4>
+                <p>
+                    We require all Hosts and Guests to complete our 
+                    screening process, which includes a criminal record 
+                    check and two reference checks. Only screened Guests 
+                    will be able to request bookings, and we will need 
+                    your verification before you can respond to them directly. 
+                </p>
+            </div>
+            <div class="placeholder-v"></div>
+            <div class="col-1-row-1">
+                <img src="images/guest-icon.png" alt="Guest icon image" style="width:80px;height:80px; margin-left:20px;">
+                <h4 class="timeline-title">Explore listings</h4>
+                <p>
+                    Search our list of verified Hosts by location, date, 
+                    and price to find the right home share. Before you 
+                    can message Hosts you must complete our screening process, 
+                    which includes a criminal record check and two reference 
+                    checks. 
+                </p>
             </div>
         </section>
-
-    <!-- Block 3: How A Home To Share works -->
-        <section id="three" class="wrapper special">
-            <div class="inner">
-                <header class="align-center">
-                    <h2>How A Home To Share works</h2>
-                </header>
-                <div class="flex">
-                    <article>
-                        <div class="image_fit">
-                            <img src="images/home_block3_01.jpg" alt="Pic 01" />
-                        </div>
-                        <header>
-                            <h3>1. Create your free profile</h3>
-                        </header>
-                        <h4>We verify ID and check references</h4>
-                    </article>
-                    <article>
-                        <div class="image_fit">
-                            <img src="images/home_block3_02.jpg" alt="Pic 02" />
-                        </div>
-                        <header>
-                            <h3>2. Connect to housemates</h3>
-                        </header>
-                        <h4>Connect and chat through out platform, then meet in person</h4>
-                    </article>
-                    <article>
-                        <div class="image_fit">
-                            <img src="images/home_block3_03.jpg" alt="Pic 03" />
-                        </div>
-                        <header>
-                            <h3>3. We support your through our</h3>
-                        </header>
-                        <h4>- Customizable homeshare agreement</h4>
-                        <h4>- Automated payment system</h4>
-                        <h4>- Ongoing service</h4>
-                    </article>
-                </div>
+        
+        <div class="placeholder-h2"></div>
+        
+        <section class="main_section">
+            <div class="col-1-row-2">
+                
+            </div>
+            <div class="placeholder-v"></div>
+            <div class="col-1-row-1">
+                <img src="images/guest-icon.png" alt="Guest icon image" style="width:80px;height:80px; margin-left:20px;">
+                <h4 class="timeline-title">Send a booking request</h4>
+                <p>
+                    Contact us to reach out to Hosts. Send them a 
+                    personalized note telling them about yourself 
+                    and why you are interested in home sharing with them.  
+                </p>
             </div>
         </section>
+        
+        <div class="placeholder-h2"></div>
+        
+        <section class="main_section">
+            <div class="col-1-row-3">
+                <img src="images/host-guest.png" alt="Host & Guest icon image" style="width:180px;height:90px; margin-left:20px;">
+                <h4 class="timeline-title">Message</h4>
+                <p>
+                    Upfront communication is key to a successful home 
+                    share. We will connect Host and Guest over the phone 
+                    or meet in person to make sure you've found the right 
+                    fit. Discuss the Host's home sharing agreement to 
+                    clarify the rules and expectations on both sides. 
+                </p>
+            </div>
+        </section>
+        
+        <div class="placeholder-h2"></div>
+        
+        <section class="main_section">
+            <div class="col-1-row-3">
+                <img src="images/host-guest.png" alt="Host & Guest icon image" style="width:180px;height:90px; margin-left:20px;">
+                <h4 class="timeline-title">Confirm the booking</h4>
+                <p>
+                    When both Host and Guest are ready to move forward, 
+                    A Home To Share makes it easy to confirm the terms 
+                    of the home share and schedule automatic rent payments.
+                    Our one-time Host match fee of $95-$195 is simply 
+                    deducted from the first month's rent payment. 
+                </p>
+            </div>
+        </section>
+        
+        <div class="placeholder-h2"></div>
+        
+        <section class="main_section">
+            <div class="col-1-row-3">
+                <img src="images/host-guest.png" alt="Host & Guest icon image" style="width:180px;height:90px; margin-left:20px;">
+                <h4 class="timeline-title">Move in and enjoy your home share!</h4>
+                <p>
+                    A Home To Share makes sending and receiving rent 
+                    payments a breeze with our secure payment system. 
+                    Charges occur instantaneously, and generally take 
+                    5-7 business days to be deposited into the Host’s 
+                    account. A Home To Share charges just 10% of monthly 
+                    rent for ongoing use of the A Home To Share platform, 
+                    including automated rent payments and support throughout 
+                    the duration of the home share.  
+                </p>
+            </div>
+        </section>
+        <div class="placeholder-h2"></div>
+        <div class="placeholder-h2"></div>
+        <div class="placeholder-h2"></div>
+        
+
+     
+     <!-- Block 4 -->
+     
 
     <!-- Footer -->
         <footer id="footer">

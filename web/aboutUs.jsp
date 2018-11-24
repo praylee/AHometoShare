@@ -1,9 +1,9 @@
 <%-- 
-File: how_we_work.jsp
+File: about_us.jsp
 Description: How We Work page
-Create: Nov,13,2018
+Create: Nov,23,2018
 Author: Zhan Shen
-Clients: Michelle Bilek,Farheen Khan
+Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
 Project: A Home to Share
@@ -17,7 +17,7 @@ Copyright @ 2018
         <title>A Home To Share</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="assets/css/how_we_work.css" />
+        <link rel="stylesheet" href="assets/css/aboutUs_style.css" />
     </head>
 	
     <body class="subpage">
@@ -34,7 +34,7 @@ Copyright @ 2018
                         <a href="
                            <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                            style="
-                           <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
+                           <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
                         <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>" onclick="window.location.href='LogoutRedirect'">Log out</button>
                     </nav>
                 </div>
@@ -188,170 +188,87 @@ Copyright @ 2018
                     
                     if(<%=request.getAttribute("isLoginValid")%> === false) {
                         loginPopup.style.display = "block";
-                    }
-                    
-                    
+                    }          
                 </script>
-                
-                
-                
         </header>
 
     <!-- Main -->
         <!-- Block 1 -->
-        <section class="main_section">
+        <section class="main_section">             
                 <div>
-                    <img src="images/how_we_work01.jpg" alt="Renter registration image" style="width:500px;height:500px;"/>
-                </div>
-                
-                <div>
-                    <h1>How It Works</h1>
-                    <p>A Home To Share helps make intergenerational home sharing safe and easy by providing screening, customizable home sharing agreements, and ongoing support. </p>
+                    <h1>What is A Home To Share?</h1>
+                    <h6><img src="images/bulletpoint36.png" alt="bulletpoint icon image" style="width:15px;height:15px;"> Seniors have too much house.</h6>  
+                    <h6><img src="images/bulletpoint36.png" alt="bulletpoint icon image" style="width:15px;height:15px;"> Youth have none.</h6> 
+                    <h6><img src="images/bulletpoint36.png" alt="bulletpoint icon image" style="width:15px;height:15px;"> An affordable housing option is A Home to Share.
+                    </h6>
                 </div>
         </section>    
-            
-    <!-- Block 2 -->
-        <section class="main_section">
-            <div class="card-body1">
-                <h2 class="">HOW IT WORKS</h2>
-                <h3 class="">As a Host</h3>
-            </div>
-            <div class="placeholder-v"></div>
-            <div class="card-body2">
-                <h2 class="">HOW IT WORKS</h2>
-                <h3 class="">As a Guest</h3>
-            </div>
-        </section> 
-    <div class="placeholder-h1"></div>
-
-    <!-- Block 3 -->
-        <section class="main_section">
-            <div class="col-1-row-1">
-                <img src="images/host-icon.png" alt="Host icon image" style="width:80px; height:80px; margin-left:360px;">
-                <h4 class="timeline-title">Create your free profile and room listing</h4>
-                <p>
-                    Create a listing for your spare room using our simple signup
-                    process. Include a brief description of your home and
-                    neighborhood, photos, and your monthly price. Make your
-                    listing even more appealing by adding information about
-                    yourself so Guests can get to know you!
-                </p>
-            </div>
-            <div class="placeholder-v"></div>
-            <div class="col-1-row-1">
-                <img src="images/guest-icon.png" alt="Guest icon image" style="width:80px;height:80px; margin-left:20px;">
-                <h4 class="timeline-title">Create your free profile</h4>
-                <p>
-                    Help your future Hosts get to know you by telling 
-                    them your hobbies, interests, and anything else 
-                    you’d like to share about yourself. 
-                </p>
-            </div>
-        </section>
     
-        <div class="placeholder-h2"></div>
-        
-        <section class="main_section">
-            <div class="col-1-row-1">
-                <img src="images/host-icon.png" alt="Host icon image" style="width:80px;height:80px; margin-left:360px;">
-                <h4 class="timeline-title">Review your booking requests</h4>
-                <p>
-                    We require all Hosts and Guests to complete our 
-                    screening process, which includes a criminal record 
-                    check and two reference checks. Only screened Guests 
-                    will be able to request bookings, and we will need 
-                    your verification before you can respond to them directly. 
-                </p>
-            </div>
-            <div class="placeholder-v"></div>
-            <div class="col-1-row-1">
-                <img src="images/guest-icon.png" alt="Guest icon image" style="width:80px;height:80px; margin-left:20px;">
-                <h4 class="timeline-title">Explore listings</h4>
-                <p>
-                    Search our list of verified Hosts by location, date, 
-                    and price to find the right home share. Before you 
-                    can message Hosts you must complete our screening process, 
-                    which includes a criminal record check and two reference 
-                    checks. 
-                </p>
-            </div>
-        </section>
-        
-        <div class="placeholder-h2"></div>
-        
-        <section class="main_section">
-            <div class="col-1-row-2">
-                
-            </div>
-            <div class="placeholder-v"></div>
-            <div class="col-1-row-1">
-                <img src="images/guest-icon.png" alt="Guest icon image" style="width:80px;height:80px; margin-left:20px;">
-                <h4 class="timeline-title">Send a booking request</h4>
-                <p>
-                    Contact us to reach out to Hosts. Send them a 
-                    personalized note telling them about yourself 
-                    and why you are interested in home sharing with them.  
-                </p>
-            </div>
-        </section>
-        
+        <!-- Block 2 -->
         <div class="placeholder-h2"></div>
         
         <section class="main_section">
             <div class="col-1-row-3">
-                <img src="images/host-guest.png" alt="Host & Guest icon image" style="width:180px;height:90px; margin-left:20px;">
-                <h4 class="timeline-title">Message</h4>
-                <p>
-                    Upfront communication is key to a successful home 
-                    share. We will connect Host and Guest over the phone 
-                    or meet in person to make sure you've found the right 
-                    fit. Discuss the Host's home sharing agreement to 
-                    clarify the rules and expectations on both sides. 
+                <img src="images/about_us.png" alt="For Rent icon image" style="width:180px;height:90px; margin-left:20px;">
+                <p align="left">
+                    Canada's rents are rising while the vacancy rates are
+                    shrinking, yet our country has one coveted real estate
+                    asset collecting dust: empty bedrooms,  and millions of
+                    them. 
+                </p>
+                <p align="left">
+                    A growing number of the country's seniors are living
+                    in homes too big, while young Canadians can’t access
+                    affordable apartments and have no credit or rental 
+                    history to access rental apartments.  
+                </p>
+                <p align="left">
+                    A Home to Share provides a solution: sharing living
+                    space already existing, to a mutual benefit for seniors
+                    and youth. 
+                </p>
+                <p align="left">
+                    With A Home to Share, a senior homeowner offers a room
+                    in their home and shared living space in exchange for
+                    small chores and companionship.  
+                </p>
+                <p align="left">
+                    A Home to Share matches senior homeowners and cash
+                    strapped youth creating an intergenerational home
+                    sharing service.
+                </p>
+                <p align="left">
+                    We make it easy for home renter to find helpful
+                    housemates and making an affordable housing option
+                    for young people. 
                 </p>
             </div>
         </section>
         
+        <div class="placeholder-h2"></div>
         <div class="placeholder-h2"></div>
         
         <section class="main_section">
             <div class="col-1-row-3">
-                <img src="images/host-guest.png" alt="Host & Guest icon image" style="width:180px;height:90px; margin-left:20px;">
-                <h4 class="timeline-title">Confirm the booking</h4>
+                <img src="images/homesharing_circle.png" alt="HomeSharing icon image" style="width:125px;height:125px; margin-left:20px;">
+                <h4 class="timeline-title">With a Home to Share you can:</h4>
                 <p>
-                    When both Host and Guest are ready to move forward, 
-                    A Home To Share makes it easy to confirm the terms 
-                    of the home share and schedule automatic rent payments.
-                    Our one-time Host match fee of $95-$195 is simply 
-                    deducted from the first month's rent payment. 
+                    <em style='font-weight:bold'>Make Money:</em> By turning your spare room into monthly income. 
+                </p>
+                <p>
+                    <em style='font-weight:bold'>Get Help Around the House:</em> Find someone who can help you with your household maintenance and chores.  
+                </p>
+                <p>
+                    <em style='font-weight:bold'>Build New Friendships:</em> Connect with a great person from another generation.  
                 </p>
             </div>
         </section>
         
-        <div class="placeholder-h2"></div>
-        
-        <section class="main_section">
-            <div class="col-1-row-3">
-                <img src="images/host-guest.png" alt="Host & Guest icon image" style="width:180px;height:90px; margin-left:20px;">
-                <h4 class="timeline-title">Move in and enjoy your home share!</h4>
-                <p>
-                    A Home To Share makes sending and receiving rent 
-                    payments a breeze with our secure payment system. 
-                    Charges occur instantaneously, and generally take 
-                    5-7 business days to be deposited into the Host’s 
-                    account. A Home To Share charges just 10% of monthly 
-                    rent for ongoing use of the A Home To Share platform, 
-                    including automated rent payments and support throughout 
-                    the duration of the home share.  
-                </p>
+        <section class="main_section">             
+            <div>
+                <h5>"This is more about sharing a house!"</h5>
             </div>
         </section>
-        <div class="placeholder-h2"></div>
-        <div class="placeholder-h2"></div>
-        <div class="placeholder-h2"></div>
-        
-
-     
-     <!-- Block 4 -->
      
 
     <!-- Footer -->
@@ -377,7 +294,7 @@ Copyright @ 2018
                     <ul class="footer_nav">
                         <li><a href="how_we_work.jsp">How We Work</a></li>
                         <li><a href="faq.jsp">Frequently Asked Questions</a></li>
-                        <li><a href="index.jsp">Placeholder</a></li>
+                        <li><a href="about_us.jsp">About Us</a></li>
                         <li><a href="index.jsp">Placeholder</a></li>
                     </ul>
                 </div>

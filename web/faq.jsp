@@ -292,7 +292,7 @@ Copyright @ 2018
                     <ul class="footer_nav">
                         <li><a href="how_we_work.jsp">How We Work</a></li>
                         <li><a href="faq.jsp">Frequently Asked Questions</a></li>
-                        <li><a href="index.jsp">Placeholder</a></li>
+                        <li><a href="about_us.jsp">About Us</a></li>
                         <li><a href="index.jsp">Placeholder</a></li>
                     </ul>
                 </div>

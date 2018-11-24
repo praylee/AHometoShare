@@ -65,7 +65,7 @@ public class EmailFactory {
         }
     }
     
-    public static void sendPasswordResetEmail(String sendToEmail, String name, String newPassword) {
+    public static void sendPasswordResetEmail(String sendToEmail, String newPassword) {
 
         String toEmail = sendToEmail;
         Properties properties = new Properties();
@@ -89,7 +89,7 @@ public class EmailFactory {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             message.setSubject("A Home to Share Registration Confirmation");
             message.setText(
-                "Hello " + name + ",\n\n"
+                "Hello,\n\n"
                 + "Your password has been reset to:\n\n"
                 + "\t" + newPassword + "\n\n"
                 + "You can now use your new password to login. If you would like to change this password:\n"

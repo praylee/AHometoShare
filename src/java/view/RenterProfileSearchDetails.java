@@ -13,6 +13,7 @@ package view;
 
 import business.HostBusinessLayer;
 import business.PropertyBusinessLayer;
+import business.RenterBusinessLayer;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import transferobjects.Host;
 import transferobjects.Property;
+import transferobjects.Renter;
 
 /**
  *
@@ -61,7 +63,32 @@ public class RenterProfileSearchDetails extends HttpServlet {
        
         processRequest(request, response);
 
+        System.out.println("in get after request to book");
+        
+        //host of property for request
+        int bookingHostID = Integer.parseInt(request.getParameter("bookingHost"));
+        HostBusinessLayer hostBusiness = new HostBusinessLayer();
+        Host bookingHost = hostBusiness.getHostByHostId(bookingHostID); 
 
+
+        //send an email to a home to share for booking request.
+        RenterSession rSession = new RenterSession(request.getSession());
+        Object rIDObject = rSession.getAttribute("email");
+        
+        String rEmail = (String) rIDObject;
+        
+        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
+        Renter bookingRenter = renterBusiness.getRenterByEmail(rEmail);
+
+        
+        EmailFactory email = new EmailFactory();
+        email.sendBookingRequest("info@ahometoshare.ca", bookingRenter, bookingHost); //this should send to A Home to Share
+        
+        request.setAttribute("host", bookingHost); //send host of property
+        request.setAttribute("renter", bookingRenter); //send renter who is requesting
+       
+        RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearchDetailsRequest.jsp"); 
+        rd.forward(request,response);
        
         
     }

@@ -125,20 +125,22 @@ public class RoomPostingView extends HttpServlet {
         PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
 
         List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
-        int pindex = pictureList.size();
+        int pindex = pictureList.get(pictureList.size() - 1).getPictureID();
         int property_id = index+1;
+        
         String files[] = {"inputfile","inputfile2","inputfile3","inputfile4","inputfile5","inputfile6"};
+        int realnumber=0;
         for(int f=0;f<files.length;f++){
             Part part=request.getPart(files[f]);          
-            if(part != null){        
-                String picture = request.getParameter(files[f]);
-                PropertyPicture propertypicture = new PropertyPicture(pindex+1+f,property_id,picture);
+            if(part != null && part.getSize()> 0){        
+                realnumber++;
+                PropertyPicture propertypicture = new PropertyPicture(pindex+realnumber,property_id,null);
                 InputStream is = part.getInputStream();
-                if( is.read() != -1)
-                    pPictureLayer.addPicture(propertypicture,is);
+                
+                pPictureLayer.addPicture(propertypicture,is);
             }            
         }
-        
+      
         // Only do this if user was successfully added to database!!!!
         request.setAttribute("Info", "Room posting Successful.");
         RequestDispatcher rd = request.getRequestDispatcher("PropertyProfile");  //go to the host property profile again.

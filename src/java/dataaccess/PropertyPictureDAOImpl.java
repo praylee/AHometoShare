@@ -34,7 +34,7 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
     private static final String GET_ALL_PICTURE = "SELECT picture_id, property_id, picture FROM propertypicture ORDER BY picture_id";
  //   private static final String INSERT_PICTURE = "INSERT INTO propertypicture (picture_id, property_id, picture) VALUES(?,?,LOAD_FILE(?))";
     private static final String INSERT_PICTURE = "INSERT INTO propertypicture (picture_id, property_id, picture) VALUES(?,?,?)";
-    private static final String GET_PICTURE_BY_ID = "SELECT picture FROM propertypicture WHERE picture_id = ?";
+    private static final String GET_PICTURE_BY_ID = "SELECT * FROM propertypicture WHERE picture_id = ?";
     private static final String GET_FIRST_PICTURE_BY_PROPERTY = "SELECT picture FROM propertypicture WHERE property_id = ?";
     private static final String DELETE_PICTURE = "DELETE FROM propertypicture WHERE picture_id = ?";
 
@@ -50,11 +50,11 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
                 PropertyPicture propertypicture = new PropertyPicture();
                 propertypicture.setPictureId(rs.getInt("picture_id"));
                 propertypicture.setPropertyId(rs.getInt("property_id"));
-                propertypicture.setPicture(rs.getString("picture"));
+                propertypicture.setPicture(rs.getBlob("picture"));
                 propertypictures.add(propertypicture);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return propertypictures;
         }
@@ -69,7 +69,7 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
            
             pstmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }     
     }
 
@@ -85,12 +85,12 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
             pstmt.setInt(1, pictureId);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                propertypicture.setPictureId(rs.getInt("pictureId"));
+                propertypicture.setPictureId(rs.getInt("picture_id"));
                 propertypicture.setPropertyId(rs.getInt("property_id"));
-                propertypicture.setPicture(rs.getString("picture"));
+                propertypicture.setPicture(rs.getBlob("picture"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return propertypicture;
     }
@@ -109,7 +109,7 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
               return picture;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -122,7 +122,7 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(ResourceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

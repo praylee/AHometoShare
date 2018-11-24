@@ -1,5 +1,5 @@
 <%-- 
-File: hostrPofile.jsp
+File: display_picture.jsp
 Description: A page for logged-in hosts to view and edit profile details
 Create: Nov.01,2018
 Author: Liangliang Du
@@ -32,7 +32,7 @@ Copyright @ 2018
          
         outs.close();  
         outs = null;  
-        response.flushBuffer();//下面这三句是一定要加上的，否则就会报错。  
+        response.flushBuffer();
         out.clear();  
         out = pageContext.pushBody();
     

@@ -42,77 +42,85 @@ public class ProfileRenterView extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         
         RenterSession session = new RenterSession(request.getSession());
-        boolean updateOk = true;
-        String invalidReason = null;
-
-        String firstName = request.getParameter("firstname");
-        String lastName = request.getParameter("lastname");
-        String phone = request.getParameter("phoneNum");
-        int gender = Integer.parseInt(request.getParameter("gender"));
-        String birthYear = request.getParameter("yearBorn");
-
-        boolean isStudent;
-        try {isStudent = request.getParameterValues("isStudent")[0].equals("on");}
-        catch(NullPointerException e) {isStudent = false;}
-
-        boolean isEmployed;
-        try {isEmployed = request.getParameterValues("isEmployed")[0].equals("on");}
-        catch(NullPointerException e) {isEmployed = false;}
-
-        boolean isSmoker;
-        try {isSmoker = request.getParameterValues("isSmoker")[0].equals("on");}
-        catch(NullPointerException e) {isSmoker = false;}
-        /*
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-        Date startDate = null;
-        Date endDate = null;
-        try {
-                startDate = formatter.parse(request.getParameter("startDate"));
-                endDate = formatter.parse(request.getParameter("endDate"));
-        } catch (ParseException e) {
-
-            try {
-                startDate = formatter.parse(session.getAttribute("startDate").toString());
-                endDate = formatter.parse(session.getAttribute("endDate").toString());
-            }
-            catch(ParseException pe) {}
-                updateOk = false;
-                invalidReason = "Improper date format";
-        }
-        java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
-        java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
-
-        double lowPrice = Double.parseDouble(session.getAttribute("lowPrice").toString());
-        double highPrice = Double.parseDouble(session.getAttribute("highPrice").toString());
-        try {
-            lowPrice = Double.parseDouble(request.getParameter("lowPrice"));
-            highPrice = Double.parseDouble(request.getParameter("highPrice"));
-        }
-        catch(NumberFormatException e) {
-            updateOk = false;
-            invalidReason = "Invalid price parameter.";
-        }
-        */
-
-        if(updateOk) {
-            RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-            renterBusiness.updateRenter(firstName, lastName, phone, gender, birthYear, 
-                    isStudent, isEmployed, isSmoker, Integer.parseInt(session.getAttribute("renterId").toString()));
-
-            Renter renter = renterBusiness.getRenterByEmail(session.getAttribute("email").toString());
-            session.setSessionAttributes(renter, true);
-            try{session.removeAttribute("invalidReason");}
-            catch(NullPointerException e){}
-            response.sendRedirect("renterProfile.jsp");
+        
+        if(session.getAttribute("renterId") == null) {
+            System.out.println("Session has expried.");
+            session.endSession();
+            response.sendRedirect("index.jsp");
         }
         else {
-            session.setAttribute("invalidReason", invalidReason);
-            response.sendRedirect("renterProfile.jsp");
-        }    
+            boolean updateOk = true;
+            String invalidReason = null;
+
+            String firstName = request.getParameter("firstname");
+            String lastName = request.getParameter("lastname");
+            String phone = request.getParameter("phoneNum");
+            int gender = Integer.parseInt(request.getParameter("gender"));
+            String birthYear = request.getParameter("yearBorn");
+
+            boolean isStudent;
+            try {isStudent = request.getParameterValues("isStudent")[0].equals("on");}
+            catch(NullPointerException e) {isStudent = false;}
+
+            boolean isEmployed;
+            try {isEmployed = request.getParameterValues("isEmployed")[0].equals("on");}
+            catch(NullPointerException e) {isEmployed = false;}
+
+            boolean isSmoker;
+            try {isSmoker = request.getParameterValues("isSmoker")[0].equals("on");}
+            catch(NullPointerException e) {isSmoker = false;}
+            /*
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date startDate = null;
+            Date endDate = null;
+            try {
+                    startDate = formatter.parse(request.getParameter("startDate"));
+                    endDate = formatter.parse(request.getParameter("endDate"));
+            } catch (ParseException e) {
+
+                try {
+                    startDate = formatter.parse(session.getAttribute("startDate").toString());
+                    endDate = formatter.parse(session.getAttribute("endDate").toString());
+                }
+                catch(ParseException pe) {}
+                    updateOk = false;
+                    invalidReason = "Improper date format";
+            }
+            java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
+            java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
+
+            double lowPrice = Double.parseDouble(session.getAttribute("lowPrice").toString());
+            double highPrice = Double.parseDouble(session.getAttribute("highPrice").toString());
+            try {
+                lowPrice = Double.parseDouble(request.getParameter("lowPrice"));
+                highPrice = Double.parseDouble(request.getParameter("highPrice"));
+            }
+            catch(NumberFormatException e) {
+                updateOk = false;
+                invalidReason = "Invalid price parameter.";
+            }
+            */
+
+            if(updateOk) {
+                RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
+                renterBusiness.updateRenter(firstName, lastName, phone, gender, birthYear, 
+                        isStudent, isEmployed, isSmoker, 
+                        Integer.parseInt(session.getAttribute("renterId").toString()));
+
+                Renter renter = renterBusiness.getRenterByEmail(session.getAttribute("email").toString());
+                session.setSessionAttributes(renter, true);
+                try{session.removeAttribute("invalidReason");}
+                catch(NullPointerException e){}
+                response.sendRedirect("renterProfile.jsp");
+            }
+            else {
+                session.setAttribute("invalidReason", invalidReason);
+                response.sendRedirect("renterProfile.jsp");
+            }   
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

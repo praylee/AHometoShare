@@ -61,7 +61,7 @@ Copyright @ 2018
             <!--Pane 3: "My Account" - My Profile contents-->
             <li class="aside aside-3">
                 <div class="my_profile_content">
-                    <form method="get" action="ProfileRenterView" onsubmit="return checkForm(this)" >
+                    <form method="get" action="ProfileRenterView" onsubmit="" >
 
                     <h2>Personal details</h2>
 

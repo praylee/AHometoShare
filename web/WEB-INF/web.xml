@@ -65,8 +65,8 @@
         <servlet-class>view.DeleteHostProperty</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OnForgotPassword</servlet-name>
-        <servlet-class>view.OnForgotPassword</servlet-class>
+        <servlet-name>ForgotPassword</servlet-name>
+        <servlet-class>view.ForgotPassword</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeView</servlet-name>
@@ -133,8 +133,8 @@
         <url-pattern>/DeleteHostProperty</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OnForgotPassword</servlet-name>
-        <url-pattern>/OnForgotPassword</url-pattern>
+        <servlet-name>ForgotPassword</servlet-name>
+        <url-pattern>/ForgotPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -251,6 +251,13 @@ Copyright @ 2018
                         forgotPasswordPopup.style.display = "block";
                     }
                     
+                    if(<%=request.getAttribute("isForgotPasswordEmailValid")%> !== null) {
+                        if(<%=request.getAttribute("isForgotPasswordEmailValid")%> === true) {
+                            alert("Password has been reset and been sent to your accoutn");
+                        }
+                        
+                    }
+                    
                     
                 </script>
                 

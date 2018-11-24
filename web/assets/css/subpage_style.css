@@ -1,9 +1,9 @@
 /*
     File: subpage_syle.css
-    Description: Cascading style sheet for Renter registration form
-    Create: Oct,05,2018
+    Description: Cascading style sheet for "Renter registration", "Host Account Settings"
+    Create: Oct. 05,2018
     Author: Zhan Shen
-    Clients: Michelle Bilek,Farheen Khan
+    Clients: Michelle Bilek, Farheen Khan
     Course: Software Development Project
     Professor: Dr. Anu Thomas
     Project: A Home to Share
@@ -611,8 +611,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     .btn-group-vertical hr {
        /*border-top: 12px solid #ffcc00;*/
        display: inline-block;
-       width: 3px;
-       height: 4px;
+       width: 11px;
+       height: 12px;
        margin-right: 0;
        margin-bottom: 0;
        margin-left: 2px;

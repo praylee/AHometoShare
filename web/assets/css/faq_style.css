@@ -1,7 +1,7 @@
 /*
     File: faq_syle.css
-    Description: Cascading style sheet for Frequently asked questions page
-    Create: Oct,30,2018
+    Description: Cascading style sheet for "Frequently Asked Questions" page
+    Create: Oct.30,2018
     Author: Zhan Shen
     Clients: Michelle Bilek, Farheen Khan
     Course: Software Development Project
@@ -73,7 +73,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 		
-/* FAQ header */
+/* --FAQ header-------------------------------------------------------------- */
     .subpage {
         padding-top: 120px;
     }
@@ -147,7 +147,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }     
 
 	
-/* Footer */
+/* --Footer------------------------------------------------------------------ */
     #footer {
         background-color: #efeded;
         font-size: small;
@@ -241,7 +241,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
     
-/*FAQ layout*/
+/* --FAQ content---------------------------------------------------------------*/
     * {
         box-sizing: border-box;
     } 
@@ -377,11 +377,3 @@ body {font-family: Arial, Helvetica, sans-serif;}
         margin-left: 3px;
     }
     
-        
-    
-        
-       
-
-            
-        
-        

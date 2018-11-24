@@ -1,9 +1,9 @@
 <%-- 
 File: renterProfileSearchDetails.jsp
 Description: Page for host property details within the renter profile.
-Create: Oct 21,2018
+Create: Oct. 21, 2018
 Author: Melissa Rajala
-Clients: Michelle Bilek,Farheen Khan
+Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
 Project: A Home to Share
@@ -35,7 +35,7 @@ Copyright @ 2018
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
-                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
+                       <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Account</a>
                     <button id="logoutBtn" class="unstyled-button" onclick="window.location.href='LogoutRedirect'" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">Log out</button>
                 </nav>
             </div>
@@ -147,56 +147,65 @@ Copyright @ 2018
                 </div>            
        
         <!-- Footer -->
+        <!-- Footer -->
         <footer id="footer">
-            <div class="inner">
-                <div class="flex">
-                    <div class="single-footer-widget">
-                        <h6>Get in Touch</h6>
-                        <div class='get-in-touch-section'>
-                            <img alt="logo" class="" src="images/team_logo.png" />
-                            <ul class="footer-nav-section-nav pL0">
-                                <li><a href="mailto:hello@nesterly.io">info@ahometoshare.ca</a></li>
-                                <li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3  col-md-3">
-                        <div class="single-footer-widget">
-                            <h6>Join Our Community</h6>
-                            <ul class="footer-nav-section-nav pL0">
-                                <li><a href="/how-it-works">How it Works</a></li>
-                                <li><a href="/faq">Frequently Asked Questions</a></li>
-                                <li><a href="/homesharing_resources">Homesharing Resources</a></li>
-                                <li><a href="/community_compact">Community Compact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3">
-                        <div class="single-footer-widget">
-                            <h6>Get Engaged</h6>
-                                <ul class="footer-nav-section-nav pL0">
-                                    <li>Live in Toronto and want to help us tackle the affordable housing crisis. <a href="" target="_blank"> <u>Apply</u></a> to be an Ambassador today.
-                                    </li>
-                                </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3  col-md-3">
-                        <div class="single-footer-widget">
-                            <h6>Follow us on Social</h6>
-                                <a href="https://www.facebook.com/ahometoshare" class="btn btn-facebook waves-effect waves-light">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                                &nbsp;&nbsp;
-                                <a href="https://twitter.com/ahometoshare" class="btn btn-twitter waves-effect waves-light">
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                </a>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="footer_column inner1">
+                    <!--a placeholder-->
                 </div>
-            </div>
+
+                <div class="footer_column inner2">
+                    <h6>Get in Touch</h6>
+                    <div class="footer_nav">
+                        <img alt="logo" class="" src="images/team_logo.png" />
+                        <ul class="">
+                            <li><a href="mailto:info@ahometoshare.ca">info@ahometoshare.ca</a></li>
+                            <li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
+                        </ul>
+                    </div>
+                </div> 
+
+                <div class="footer_column inner3">
+                    <h6>Join Our Community</h6>
+                    <ul class="footer_nav">
+                        <li><a href="how_we_work.jsp">How We Work</a></li>
+                        <li><a href="faq.jsp">Frequently Asked Questions</a></li>
+                        <li><a href="about_us.jsp">About Us</a></li>
+                        <li><a href="index.jsp">Placeholder</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer_column inner4">
+                    <h6>Get Engaged</h6>
+                    <ul class="footer_nav">
+                        <li>Live in Toronto and want to help us tackle the affordable housing crisis. 
+                            <a href="index.jsp" target="_blank"><u>Apply</u></a> to be an Ambassador today.
+                        </li>
+                    </ul>       
+                </div>
+
+                <div class="footer_column inner5">
+                    <h6>Follow us on Social</h6>
+                    <a href="https://www.facebook.com/ahometoshare" class="">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <img alt="facebook" class="" src="images/facebook36.png" width=28.5 height=36 />
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="https://twitter.com/ahometoshare" class="">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <img alt="twitter" class="" src="images/twitter36.png" width=28.5 height=36 />
+                    </a>
+                </div>
+
+                <div class="footer_column inner6"> 
+                    <!--a placeholder-->
+                </div>
+
+                <p>© 2018 A Home To Share | All right reserved
+                    <a href="index.jsp">&nbsp;&nbsp;&nbsp;Privacy Policy</a>
+                    <a href="index.jsp">&nbsp;&nbsp;&nbsp;Terms of Use</a>
+                </p>
+            </div>            
         </footer> 
     </body>
 </html>

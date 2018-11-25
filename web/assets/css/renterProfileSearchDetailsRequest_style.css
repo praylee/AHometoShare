@@ -390,5 +390,51 @@ body {font-family: Arial, Helvetica, sans-serif;}
         padding-right: 80px;
         color: #555;
     }
+    
+    #submit_reset_btn {
+        width: 500px;
+    }
+    
+    #submit_reset_btn button {
+        float: left;
+        width: 180px;
+        height: 40px;
+        margin-top: 10px;
+        margin-bottom: 60px;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        border-radius: 0;
+        border: 0;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        /*height: 2.85em;*/
+        line-height: 1.95em;
+        padding: 0 1.8em;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        width: 48%;
+        border: 1px solid rgba(144, 144, 144, 0.2);     
+    }
+    
+    #submit_reset_btn button:hover{
+            background-color: rgba(144, 144, 144, 0.1);
+        }
+        
+        #reset_btn {
+            color: #555 !important;
+            background-color: #ffffff;
+        }
+        
+        #reset_btn:hover {
+            color: #5385c1 !important;
+        }
 
     

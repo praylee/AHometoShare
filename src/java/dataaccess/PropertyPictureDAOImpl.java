@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import transferobjects.PropertyPicture;
-import transferobjects.Resource;
 
 
 public class PropertyPictureDAOImpl implements PropertyPictureDAO {

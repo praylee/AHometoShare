@@ -16,8 +16,6 @@ package view;
 import business.HostBusinessLayer;
 import business.PropertyBusinessLayer;
 import business.PropertyPictureBusinessLayer;
-import business.PropertyXResourceLayer;
-import business.ResourceBusinessLayer;
 import business.ValidationException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,8 +34,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import transferobjects.Property;
 import transferobjects.PropertyPicture;
-import transferobjects.PropertyXResource;
-import transferobjects.Resource;
 
 
 /**

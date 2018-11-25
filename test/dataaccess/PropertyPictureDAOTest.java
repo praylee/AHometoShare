@@ -70,15 +70,30 @@ public class PropertyPictureDAOTest {
     }
 
     /**
-     * Test of getPictureById method, of class PropertyPictureDAO.
+     * Test of getAllPicturesByProperty method, of class PropertyPictureDAO.
      */
     @Test
-    public void testGetPictureById() {
-        System.out.println("getPictureById");
+    public void testGetAllPicturesByProperty() {
+        System.out.println("getAllPicturesByProperty");
+        int propertyId = 0;
+        PropertyPictureDAO instance = new PropertyPictureDAOImpl();
+        List<PropertyPicture> expResult = null;
+        List<PropertyPicture> result = instance.getAllPicturesByProperty(propertyId);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getAllPicturesById method, of class PropertyPictureDAO.
+     */
+    @Test
+    public void testGetAllPicturesById() {
+        System.out.println("getAllPicturesById");
         int pictureId = 0;
         PropertyPictureDAO instance = new PropertyPictureDAOImpl();
-        PropertyPicture expResult = null;
-        PropertyPicture result = instance.getPictureById(pictureId);
+        List<Blob> expResult = null;
+        List<Blob> result = instance.getAllPicturesById(pictureId);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -121,7 +136,11 @@ public class PropertyPictureDAOTest {
         public void addPicture(PropertyPicture propertypicture, InputStream blob) {
         }
 
-        public PropertyPicture getPictureById(int pictureId) {
+        public List<PropertyPicture> getAllPicturesByProperty(int propertyId) {
+            return null;
+        }
+
+        public List<Blob> getAllPicturesById(int pictureId) {
             return null;
         }
 

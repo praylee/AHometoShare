@@ -12,6 +12,8 @@ Project: A Home to Share
 Copyright @ 2018
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -60,7 +62,7 @@ Copyright @ 2018
                 </ul>
             </div>
             <div>
-                <form id="roomForm" method="post" action="RoomPostingView" onsubmit="" enctype="multipart/form-data">
+                <form id="roomForm" method="post" action='RoomPostingView' onsubmit="return checkDate();" enctype="multipart/form-data">
                     <!--<div class="row uniform">-->
 
                     <h2>Property information</h2>
@@ -103,6 +105,19 @@ Copyright @ 2018
                             <input type="date" name="enddate" id="enddate" value="" size="30" placeholder="yyyy-mm-dd" maxlength="15" />
                         </div>
 
+                        <script>
+                            function checkDate(){
+                                var sdate = new Date(document.getElementById("startdate").value);
+                                var edate = new Date(document.getElementById("enddate").value);
+                                if (edate > sdate){
+                                    return true;
+                                }else {
+                                    alert("Your ending date for sharing this property should not be equal or before the starting date. Please correct it and input the date again.");
+                                    return false;  
+                                }
+                            }
+                        </script>
+                        
                         <div class="formRow2">
                             <h4>How many people are living in the house?<span style="color:red; font-weight:bold">*</span></h4>
                             <select name="fammembers" id="fammembers" required >

@@ -11,16 +11,18 @@
  */
 package transferobjects;
 
+import java.sql.Blob;
+
 
 public class PropertyPicture {
     private int pictureId;
     private int propertyId;
-    private String picture;
+    private Blob picture;
    
    public PropertyPicture(){
     }
 
-    public PropertyPicture(int pictureId,int propertyId, String picture) {
+    public PropertyPicture(int pictureId,int propertyId, Blob picture) {
     setPictureId(pictureId);
     setPropertyId(propertyId);
     setPicture(picture);   
@@ -33,7 +35,7 @@ public class PropertyPicture {
         return propertyId;
     }
      
-    public String getPicture() {
+    public Blob getPicture() {
         return picture;
     }
     
@@ -44,7 +46,7 @@ public class PropertyPicture {
         this.propertyId=propertyId;
     }
     
-    public void setPicture(String picture){
+    public void setPicture(Blob picture){
         this.picture=picture;
     }
 }

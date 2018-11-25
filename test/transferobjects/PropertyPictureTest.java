@@ -5,6 +5,7 @@
  */
 package transferobjects;
 
+import java.sql.Blob;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -72,8 +73,8 @@ public class PropertyPictureTest {
     public void testGetPicture() {
         System.out.println("getPicture");
         PropertyPicture instance = new PropertyPicture();
-        String expResult = "";
-        String result = instance.getPicture();
+        Blob expResult = null;
+        Blob result = instance.getPicture();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -111,7 +112,7 @@ public class PropertyPictureTest {
     @Test
     public void testSetPicture() {
         System.out.println("setPicture");
-        String picture = "";
+        Blob picture = null;
         PropertyPicture instance = new PropertyPicture();
         instance.setPicture(picture);
         // TODO review the generated test code and remove the default call to fail.

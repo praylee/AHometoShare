@@ -130,39 +130,39 @@ Copyright @ 2018
                         <!--Upload images-->
                         <div >
                             <h4>Upload Picture:</h4>
-                            <table class="image_table">
-                                <tr>
-                                    <td class="image_grid">
-                                        <input id="inputfile" type='file' name="inputfile" hidden="hidden" />
-                                        <button type="button" id="custom-button"><img id="img"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
-                                    </td>
-                                    <td class="image_grid">
-                                        <input id="inputfile2" type='file' name="inputfile2" hidden="hidden" />
-                                        <button type="button" id="custom-button2"><img id="img2"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
-                                    </td>
-                                    <td class="image_grid">
-                                        <input id="inputfile3" type='file' name="inputfile3" hidden="hidden" />
-                                        <button type="button" id="custom-button3"><img id="img3"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input id="inputfile4" type='file' name="inputfile4" hidden="hidden" />
-                                        <button type="button" id="custom-button4"><img id="img4"  src="http://placehold.it/180" alt="your image" height=180px width=180px /> </button>
-                                    </td>
-                                    <td>
-                                        <input id="inputfile5" type='file' name="inputfile5" hidden="hidden" />
-                                        <button type="button" id="custom-button5"><img id="img5"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
-                                    </td>
-                                    <td>
-                                        <input id="inputfile6" type='file' name="inputfile6" hidden="hidden"  />
-                                        <button type="button" id="custom-button6"><img id="img6"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
-                                    </td>
-                                </tr>
-                            </table>                               
-                        </div>
+                             <table>
+                                    <tr>
+                                         <td>
+                                            <input id="inputfile" type='file' name="inputfile" hidden="hidden" />                                           
+                                            <button type="button" id="custom-button"><img id="img"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile2" type='file' name="inputfile2" hidden="hidden" />
+                                            <button type="button" id="custom-button2"><img id="img2"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile3" type='file' name="inputfile3" hidden="hidden" />
+                                            <button type="button" id="custom-button3"><img id="img3"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input id="inputfile4" type='file' name="inputfile4" hidden="hidden" />
+                                            <button type="button" id="custom-button4"><img id="img4"  src="http://placehold.it/180" alt="your image" height=180px width=180px /> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile5" type='file' name="inputfile5" hidden="hidden" />
+                                            <button type="button" id="custom-button5"><img id="img5"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
+                                        </td>
+                                        <td>
+                                            <input id="inputfile6" type='file' name="inputfile6" hidden="hidden"  />
+                                            <button type="button" id="custom-button6"><img id="img6"  src="http://placehold.it/180" alt="your image" height=180px width=180px/> </button>
+                                        </td>
+                                    </tr>
+                             </table>
+                            </div>
 
-                        <script>
+                        <script>                         
                             var fileIds = ["inputfile","inputfile2" ,"inputfile3","inputfile4","inputfile5","inputfile6"];                            
                             var Imgs = ['#img','#img2','#img3','#img4','#img5','#img6'];
                             var Files = ['#inputfile','#inputfile2','#inputfile3','#inputfile4','#inputfile5','#inputfile6'];
@@ -171,7 +171,6 @@ Copyright @ 2018
                             customBtn.addEventListener("click",function() {
                                 readURL(fileIds[0],Imgs[0],Files[0]);
                             });                                                                     
-
                             var customBtn2 = document.getElementById("custom-button2");
                             customBtn2.addEventListener("click",function(){
                                 readURL(fileIds[1],Imgs[1],Files[1]);
@@ -186,7 +185,6 @@ Copyright @ 2018
                             customBtn4.addEventListener("click",function(){
                                 readURL(fileIds[3],Imgs[3],Files[3]);
                             });
-
                             var customBtn5 = document.getElementById("custom-button5");
                             customBtn5.addEventListener("click",function(){
                                 readURL(fileIds[4],Imgs[4],Files[4]);
@@ -206,11 +204,9 @@ Copyright @ 2018
                                          reader.onload = function (e) {
                                             $(img)
                                                 .attr('src', e.target.result);
-
                                         };
                                          reader.readAsDataURL(this.files[0]);
                                     }
-
                                     var image_name = $(file).val();
                                     if(image_name != ''){
                                         var extension = $(file).val().split('.').pop().toLowerCase();

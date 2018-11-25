@@ -3,6 +3,8 @@ File: renterProfileSearchDetails.jsp
 Description: Page for host property details within the renter profile.
 Create: Oct. 21, 2018
 Author: Melissa Rajala
+Modified by: Zhan Shen
+Last modification: Nov. 25, 2018
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -23,7 +25,7 @@ Copyright @ 2018
 <html>
     <head>
         <title>Property Details</title>
-        <link rel="stylesheet" href="assets/css/subpage_style.css" />
+        <link rel="stylesheet" href="assets/css/renterProfileSearchDetails_style.css" />
     </head>
         
     <body class="subpage">
@@ -71,85 +73,84 @@ Copyright @ 2018
                     <!--Pane 3: "My Account" - Host Property Details contents-->
                     <li class="aside aside-3">
                         <div class="property-search-details-content">
-
-                            <h2>Property Details</h2>
-
-                            <hr width=600px;>   
-                            
-                            
+                                                    
                             <%
                                 Property property = (Property) request.getAttribute("property");
                                 Host host = (Host) request.getAttribute("host");
                             %>
                             
                             <form action="RenterProfileSearchDetails" method="post">
-                            
-                            <input type="hidden" id="bookingHost" name="bookingHost" value="<%=host.getHostID()%>">
+                                <h2>Property details</h2>
+
+                                <hr width=600px;>
                                 
-                            Host: <%=host.getFirstName()%> <%=host.getLastName()%> <br><br> 
+                                <input type="hidden" id="bookingHost" name="bookingHost" value="<%=host.getHostID()%>">
+
+                                <h5>Host name: <%=host.getFirstName()%> <%=host.getLastName()%></h5>
+
+                                <h5>Start date: <%=property.getStartDate()%></h5>
+
+                                <h5>End date: <%=property.getEndDate()%></h5>
+
+                                <h5>Price: $<%=property.getPrice()%></h5>
+
+                                <h4>About the property</h4>
+
+                                <h5>Address: <%=property.getAddress()%>, <%=property.getCity()%>, <%=property.getProvince()%>, <%=property.getCountry()%></h5>
+                                <h5>Postal code: <%=property.getPostalCode()%></h5>
+
+
+                                <h4>Property details</h4>
+
+                                <table border="1" class="detailsTable">
+                                    <tr>
+                                        <td><em style='font-weight:bold'>Family Members:</em>   <%=property.getFamMembers()%></td>
+                                        <td><em style='font-weight:bold'>Chores:</em>   <%=property.getChores()%></td>
+                                    </tr>
+                                    <tr>
+                                        <td><em style='font-weight:bold'>Smoker friendly:</em>   <%=property.getIsSmokerFriendly()==false?"No":"Yes"%></td>
+                                        <td><em style='font-weight:bold'>Pet friendly:</em>   <%=property.getIsPetFriendly()==false?"No":"Yes"%></td>
+                                    </tr>
+                                    <tr>
+                                        <td><em style='font-weight:bold'>Hydro included:</em>   <%=property.getHydroIncl()==false?"No":"Yes"%></td>
+                                        <td><em style='font-weight:bold'>Water included:</em>   <%=property.getWaterIncl()==false?"No":"Yes"%></td>
+                                    </tr>
+                                    <tr>
+                                        <td><em style='font-weight:bold'>Gas included:</em>   <%=property.getGasIncl()==false?"No":"Yes"%></td>
+                                        <td><em style='font-weight:bold'>Cable included:</em>   <%=property.getCableIncl()==false?"No":"Yes"%></td>
+                                    </tr>
+                                    <tr>
+                                        <td><em style='font-weight:bold'>Internet included:</em>   <%=property.getInternet()==false?"No":"Yes"%></td>
+                                        <td><em style='font-weight:bold'>Parking available:</em>   <%=property.getParking()==false?"No":"Yes"%></td>
+                                    </tr>
+                                    <tr>
+                                        <td><em style='font-weight:bold'>Laundry on-Site:</em>   <%=property.getLaundry()==false?"No":"Yes"%></td>
+                                        <td><em style='font-weight:bold'>Private bedroom:</em>   <%=property.getPriBedroom()==false?"No":"Yes"%></td>
+                                    </tr>
+                                    <tr>
+                                        <td><em style='font-weight:bold'>Private kitchen:</em>   <%=property.getPriKitchen()==false?"No":"Yes"%></td>
+                                        <td><em style='font-weight:bold'>Private washroom:</em>   <%=property.getPriWashroom()==false?"No":"Yes"%></td>
+                                    </tr>                                    
+                                </table>
+
+                                <h4>Property images</h4><br>
+
+                                <% 
+                                    PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
+                                    List<PropertyPicture> pictures = pPictureLayer.getAllPicturesByProperty(property.getpropertyID());
+                                    for(PropertyPicture picture : pictures){
+                                %>
+                                <img src="display_pictures.jsp?pictureId=<%=picture.getPictureID()%>" alt='Propery Image' height=130px width=130px/>
+                                <%   
+                                    }
+                                %>
+                            </form>
                             
-                            Start Date: <%=property.getStartDate()%> <br>
-                            End Date: <%=property.getEndDate()%> <br>
-                            Price: $<%=property.getPrice()%> <br><br>
-                            
-                            <h4>About the Property</h4> <br>
-                            
-                            Address: <%=property.getAddress()%>, <%=property.getCity()%>, <%=property.getProvince()%>, <%=property.getCountry()%> <br>
-                            Postal Code: <%=property.getPostalCode()%> <br><br>
-                            
-                            
-                            <h4>Property Details</h4> <br>
-                            Family Members: <%=property.getFamMembers()%> <br>
-                            Chores: <%=property.getChores()%> <br><br>
-                            
-                            <table border="1" class="detailsTable">
-                                <tr>
-                                    <th>Smoker Friendly?</th>
-                                    <th>Pet Friendly?</th> 
-                                    <th>Hydro Included?</th>
-                                    <th>Water Included?</th>
-                                    <th>Gas Included?</th> 
-                                    <th>Cable Included?</th>
-                                    <th>Internet Included?</th>
-                                    <th>Parking Available?</th> 
-                                    <th>Laundry On-Site?</th>
-                                    <th>Private Bedroom?</th>
-                                    <th>Private Kitchen?</th> 
-                                    <th>Private Washroom?</th>
-                                </tr>
-                                <tr>
-                                    <td><%=property.getIsSmokerFriendly()%></td>
-                                    <td><%=property.getIsPetFriendly()%></td>
-                                    <td><%=property.getHydroIncl()%></td>
-                                    <td><%=property.getWaterIncl()%></td>
-                                    <td><%=property.getGasIncl()%></td>
-                                    <td><%=property.getCableIncl()%></td>
-                                    <td><%=property.getInternet()%></td>
-                                    <td><%=property.getParking()%></td>
-                                    <td><%=property.getLaundry()%></td>
-                                    <td><%=property.getPriBedroom()%></td>
-                                    <td><%=property.getPriKitchen()%></td>
-                                    <td><%=property.getPriWashroom()%></td>
-                                </tr>
-                            </table>
-                                    
-                            Pictures  <br><br> 
-                            
-                            <% 
-                                PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
-                                List<PropertyPicture> pictures = pPictureLayer.getAllPicturesByProperty(property.getpropertyID());
-                                for(PropertyPicture picture : pictures){
-                            %>
-                            <img src="display_pictures.jsp?pictureId=<%=picture.getPictureID()%>" alt='Propery Image' height=130px width=130px/>
-                            <%   
-                                }
-                            %>
-                            <br><br>                                                        
-                            <input type="submit" value="Request to Book this Property">
-                            
-                            </form> 
- 
-                            <input type="button" value="Back to Search" onclick="window.location.href='RenterProfileSearch'" />
+                            <br><br>
+                            <div id="submit_reset_btn">
+                                <button id="submit_btn" type="submit">Request to book this property</button>
+                                <button id="reset_btn" type="button" onclick="window.location.href='RenterProfileSearch'">Back to search</button>
+                            </div>
 
                         </div>
                     </li>
@@ -157,7 +158,6 @@ Copyright @ 2018
                     <li class="aside aside-4"></li>
                 </div>            
        
-        <!-- Footer -->
         <!-- Footer -->
         <footer id="footer">
             <div class="row">

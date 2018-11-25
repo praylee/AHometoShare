@@ -1,8 +1,9 @@
 /*
-    File: renterProfileSearch_style.css
-    Description: Cascading style sheet for "renterProfileSearch" page
-    Create: Oct.24,2018
-    Author: Zhan Shen
+    File: roomPosting_style.css
+    Description: Cascading style sheet for "roomPosting" page
+    Create: Oct. 28,2018
+    Last modified: Nov.23, 2018
+    Author: Bin Yang, Zhan Shen
     Clients: Michelle Bilek, Farheen Khan
     Course: Software Development Project
     Professor: Dr. Anu Thomas
@@ -73,7 +74,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 		
-/* --Search Host Properties header----------------------------------------------------- */
+/* --Renter Profile Search Details header----------------------------------------------------- */
     .subpage {
         padding-top: 120px;
     }
@@ -145,8 +146,69 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 color: #ffffff;
                 margin-left: 10px;
             }
+        
+        
+/* --Buttons: Sign Up, Reset------------------------------------------------- */
+        ul.actions.fit {
+            display: table;
+            margin-left: -1em;
+            padding: 0;
+            table-layout: fixed;
+            width: calc(100% + 1em);
+        }
+
+	ul.actions.fit li {
+            display: table-cell;
+            padding: 0 0 0 1em;
+        }
+        
+        input[type="submit"],
+	input[type="reset"] {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            background-color: #5385c1;
+            border-radius: 0;
+            border: 0;
+            color: #ffffff !important;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            height: 2.85em;
+            line-height: 1.95em;
+            padding: 0 1.5em;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            width: 80%;
+	}
+
+            input[type="submit"]:hover,
+            input[type="reset"]:hover {
+                background-color: #3d6699;
+            }
+
+            input[type="reset"].alt {
+                background-color: transparent;
+                box-shadow: inset 0 0 0 2px #dbdbdb;
+                color: #555 !important;
+            }
+
+                input[type="reset"].alt:hover {
+                    background-color: rgba(144, 144, 144, 0.075);
+                }
+
+                input[type="reset"].alt:active {
+                    background-color: rgba(144, 144, 144, 0.2);
+                }
 	
 /* --Footer------------------------------------------------------------------ */
+
 .flex {
     display: -ms-flexbox;
     -ms-flex-wrap: wrap;
@@ -171,7 +233,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
         position: relative;
         bottom: 0;
         width:100%;
-        top: 150px;
     }
 
         #footer p{
@@ -261,8 +322,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
         box-sizing: border-box;
     }
 
+	   
     
-/* --Renter: Search Host Properties main content--------------------------------------------------------*/
+
+    
+/* --Host: Property Details main body-------------------------------------*/
  .wrapper {
         display: flex;
         flex-flow: row wrap;
@@ -272,22 +336,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     .wrapper > * {
         padding: 10px;
         flex: 1;
-    }
 
-    .aside-1 {
-        /*background: gold;*/
-    }
-
-    .aside-2 {
-            /*background: green;*/
-    }
-
-    .aside-3 {
-        /*background: greenyellow;*/
-    }
-
-    .aside-4 {
-        /*background: #bbb;*/
     }
     
     .btn-group-vertical {
@@ -317,6 +366,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         margin-right: 30px;
     }
 
+        input[type="submit"],
         input[type="button"] {
             -moz-appearance: none;
             -webkit-appearance: none;
@@ -362,8 +412,36 @@ body {font-family: Arial, Helvetica, sans-serif;}
             border-right: none;
             border-bottom: none;
         }
+    
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"]{
+        height: 25px;
+        margin-top: 8px;
+        width: 230px;
+    }
+    
+    #fammembers, #availability {
+        height: 30px;
+        margin-top: 8px;
+        width: 235px;
+    }
+    
+    input[type="checkbox"] {
+        margin-top: 25px;
+    }
         
+    .image_table {
+        margin-top: 10px;
+    }
+    .image_grid{
+        padding-bottom: 5px;
+        padding-right: 5px;
+    }
+    
     h2 {
+        font-size:1.3em;
         margin-top: 9px;
     }
 
@@ -373,55 +451,39 @@ body {font-family: Arial, Helvetica, sans-serif;}
         margin-left: 3px;
     }
     
+    h4 {
+        font-size:.95em;
+        font-weight: bold;
+        margin-top: 35px;
+    }
+    
     h5 {
-        font-size:0.9em;
-        color: #555;
+        font-size:.95em;
+        margin-top: 15px;
     }
     
-    .property-search-content h2 {
-        font-size:1.3em;
-    }
-    
-    th {
-        padding-top: 10px;
-        padding-right: 80px;
+    tr {
         color: #555;
+        font-size: .95em;
+        padding: 30px;
     }
     
     td {
-        border-bottom: 1px solid #ccc;
+        padding-right: 100px;
         padding-top: 15px;
-        padding-bottom: 15px;
-    }
-    
-    td h4{
-        line-height: 25px; 
-        color: #555;
         font-size: .9em;
     }
     
-    #filter {
-        position: relative;
-        top: 60px;
+    #submit_reset_btn {
+        width: 500px;
     }
     
-    #cityFilter {
-        height: 25px;
+    #submit_reset_btn button {
+        float: left;
         width: 180px;
-    }
-    
-    #filter {
-            color: #FFF !important;
-            background-color:#5385c1; 
-            height: 2.5em;
-        }
-        
-        #filter:hover {
-            color: #5385c1 !important;
-            background-color: rgba(144, 144, 144, 0.1);
-        }
-    
-    input[type="submit"] {
+        height: 40px;
+        margin-top: 10px;
+        margin-bottom: 60px;
         -moz-appearance: none;
         -webkit-appearance: none;
         -ms-appearance: none;
@@ -430,25 +492,56 @@ body {font-family: Arial, Helvetica, sans-serif;}
         -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-        background-color: #ffffff;
         border-radius: 0;
         border: 0;
-        color: #5385c1 !important;
         cursor: pointer;
         display: inline-block;
         font-weight: 600;
-        height: 2.5em;
+        /*height: 2.85em;*/
         line-height: 1.95em;
         padding: 0 1.8em;
-        text-align: left;
+        text-align: center;
         text-decoration: none;
         white-space: nowrap;
-        width: 40%;
-        border: 1px solid rgba(144, 144, 144, 0.2);
-        margin-top: 12px;
+        width: 48%;
+        border: 1px solid rgba(144, 144, 144, 0.2);     
     }
     
-    input[type="submit"]:hover{
-        background-color: rgba(144, 144, 144, 0.1);
-    }
-    
+    #submit_reset_btn button:hover{
+            background-color: rgba(144, 144, 144, 0.1);
+        }
+      
+        #submit_btn {
+            color: #FFF !important;
+            background-color:#5385c1; 
+            width: 300px;
+        }
+        
+        #submit_btn:hover {
+            color: #5385c1 !important;
+        }
+        
+        #reset_btn {
+            margin-left: 20px;
+            color: #555 !important;
+            background-color: #ffffff;
+        }
+        
+        #reset_btn:hover {
+            color: #5385c1 !important;
+        }
+        
+        .host_name {
+            display: inline-block;
+        }
+        
+        .start_date {
+            display: inline-block;
+        }
+
+        
+       
+
+            
+        
+        

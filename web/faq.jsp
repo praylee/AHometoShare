@@ -16,7 +16,7 @@ Copyright @ 2018
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My Profile</title>
+        <title>Frequently Asked Questions</title>
         <link rel="stylesheet" href="assets/css/faq_style.css" />
     </head>
     

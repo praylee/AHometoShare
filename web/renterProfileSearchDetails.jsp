@@ -25,6 +25,7 @@ Copyright @ 2018
 <html>
     <head>
         <title>Property Details</title>
+
         <link rel="stylesheet" href="assets/css/renterProfileSearchDetails_style.css" />
         
         <style>
@@ -87,10 +88,11 @@ Copyright @ 2018
                             %>
                             
                             <form action="RenterProfileSearchDetails" method="get">
+
                                 <h2>Property details</h2>
 
                                 <hr width=600px;>
-                                
+                            
                                 <input type="hidden" id="bookingHost" name="bookingHost" value="<%=host.getHostID()%>">
 
                                 <h5>Host name: <%=host.getFirstName()%> <%=host.getLastName()%></h5>
@@ -153,7 +155,6 @@ Copyright @ 2018
                                 <%   
                                     }
                                 %>
-                            
                             
                             <br><br>
                             <div id="submit_reset_btn">

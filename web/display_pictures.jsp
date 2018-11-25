@@ -1,7 +1,7 @@
 <%-- 
-File: display_picture.jsp
+File: display_pictures.jsp
 Description: A page for logged-in hosts to view and edit profile details
-Create: Nov.01,2018
+Create: Nov.24,2018
 Author: Liangliang Du
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
@@ -17,23 +17,25 @@ Copyright @ 2018
 <%@ page import="java.util.*"%> 
 <%@ page import="java.math.*"%> 
 <% 
-    String property_no = request.getParameter("property_no"); 
+    String picture_no = request.getParameter("pictureId"); 
 
     PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
-    Blob picture = pPictureLayer.getFirstPictureByProperty(Integer.valueOf(property_no));
-    if(picture != null){
+    List<Blob> pictures = pPictureLayer.getAllPicturesById(Integer.valueOf(picture_no));
+    byte[] imgData = null;
+    for(Blob picture:pictures){
         long size = picture.length(); 
-        byte[] bs = picture.getBytes(1, (int)size); 
-        response.setContentType("image/*"); 
-        OutputStream outs = response.getOutputStream(); 
-        outs.write(bs); 
-        outs.flush(); 
-         
-        outs.close();  
-        outs = null;  
-        response.flushBuffer();
-        out.clear();  
-        out = pageContext.pushBody();
-    
+        imgData = picture.getBytes(1, (int)size); 
     }
+              
+    response.setContentType("image/*"); 
+    OutputStream outs = response.getOutputStream(); 
+    outs.write(imgData); 
+    outs.flush(); 
+
+    outs.close();  
+    outs = null;  
+    response.flushBuffer();
+    out.clear();  
+    out = pageContext.pushBody();
+    
 %> 

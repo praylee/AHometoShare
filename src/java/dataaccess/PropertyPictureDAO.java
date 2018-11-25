@@ -18,7 +18,8 @@ import transferobjects.PropertyPicture;
 public interface PropertyPictureDAO {
     List<PropertyPicture> getAllPictures();
     void addPicture(PropertyPicture propertypicture,InputStream blob);
-    PropertyPicture getPictureById(int pictureId); 
+    List<PropertyPicture> getAllPicturesByProperty(int propertyId);
+    List<Blob> getAllPicturesById(int pictureId);
     void deletePicture(int pictureId);           
     Blob getFirstPictureByProperty(int propertyId);
 }

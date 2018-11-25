@@ -5,10 +5,6 @@
         <servlet-class>view.HomeView</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SignUpView</servlet-name>
-        <servlet-class>view.SignUpView</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LogInView</servlet-name>
         <servlet-class>view.LogInView</servlet-class>
     </servlet>
@@ -75,10 +71,6 @@
     <servlet-mapping>
         <servlet-name>HomeView</servlet-name>
         <url-pattern>/HomeView</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SignUpView</servlet-name>
-        <url-pattern>/SignUpView</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogInView</servlet-name>

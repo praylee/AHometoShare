@@ -66,7 +66,9 @@ public class RenterProfileSearchDetails extends HttpServlet {
         System.out.println("in get after request to book");
         
         //host of property for request
-        int bookingHostID = Integer.parseInt(request.getParameter("bookingHost"));
+        String book = request.getParameter("bookingHost");
+        if (book != null){
+        int bookingHostID = Integer.parseInt(book);
         HostBusinessLayer hostBusiness = new HostBusinessLayer();
         Host bookingHost = hostBusiness.getHostByHostId(bookingHostID); 
 
@@ -89,7 +91,7 @@ public class RenterProfileSearchDetails extends HttpServlet {
        
         RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearchDetailsRequest.jsp"); 
         rd.forward(request,response);
-       
+        }
         
     }
 

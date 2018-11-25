@@ -209,7 +209,7 @@ Copyright @ 2018
                                     <tr> 
 
                                         <td>
-                                            <h4><em style='font-weight:bold'>Property</em> <%=i%> </h4>
+                                            <h4><em style='font-weight:bold'>Property</em> <%=property.getpropertyID()%> </h4>
                                             <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
                                             <input type="hidden" id="propID" name="propID" value="<%=property.getpropertyID()%>">
                                             <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">
@@ -220,7 +220,7 @@ Copyright @ 2018
                                             <h4><em style='font-weight:bold'>Price:</em> $<input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
                                             <!--input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" /-->
                                             <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
-                                            <input id="submit" name="submit" type="submit" value="View Details" onclick="RenterProfileSearchDetails">
+                                            <input id="submit" name="submit" type="submit" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'">
                                         </td>
                                          <td>
                                             <h4><em style='font-weight:bold'>Picture:</em>  <br>  

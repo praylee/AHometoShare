@@ -32,9 +32,9 @@ import transferobjects.Resource;
 public class PropertyPictureDAOImpl implements PropertyPictureDAO {
 
     private static final String GET_ALL_PICTURE = "SELECT picture_id, property_id, picture FROM propertypicture ORDER BY picture_id";
- //   private static final String INSERT_PICTURE = "INSERT INTO propertypicture (picture_id, property_id, picture) VALUES(?,?,LOAD_FILE(?))";
     private static final String INSERT_PICTURE = "INSERT INTO propertypicture (picture_id, property_id, picture) VALUES(?,?,?)";
-    private static final String GET_PICTURE_BY_ID = "SELECT * FROM propertypicture WHERE picture_id = ?";
+    private static final String GET_PICTURE_BY_PROPERTY_ID = "SELECT * FROM propertypicture WHERE property_id = ?";
+    private static final String GET_PICTURES_BY_PICTURE_ID = "SELECT picture FROM propertypicture WHERE picture_id = ?";
     private static final String GET_FIRST_PICTURE_BY_PROPERTY = "SELECT picture FROM propertypicture WHERE property_id = ?";
     private static final String DELETE_PICTURE = "DELETE FROM propertypicture WHERE picture_id = ?";
 
@@ -77,23 +77,50 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
     
     
     @Override
-    public PropertyPicture getPictureById(int pictureId) {
+    public List<PropertyPicture> getAllPicturesByProperty(int propertyId) {
         
-        PropertyPicture propertypicture = new PropertyPicture();
+        List<PropertyPicture> propertypictures = Collections.EMPTY_LIST;
         try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(GET_PICTURE_BY_ID);) {
-            pstmt.setInt(1, pictureId);
+                PreparedStatement pstmt = con.prepareStatement(GET_PICTURE_BY_PROPERTY_ID);) {
+            pstmt.setInt(1, propertyId);
             ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
+            propertypictures = new ArrayList<>(400);
+            while (rs.next()) {
+                PropertyPicture propertypicture = new PropertyPicture();
                 propertypicture.setPictureId(rs.getInt("picture_id"));
                 propertypicture.setPropertyId(rs.getInt("property_id"));
                 propertypicture.setPicture(rs.getBlob("picture"));
+                propertypictures.add(propertypicture);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return propertypicture;
+        return propertypictures;
     }
+    
+    
+     @Override
+    public List<Blob> getAllPicturesById(int pictureId) {
+        List<Blob> pictures = Collections.EMPTY_LIST;
+        try (Connection con = new DataSource().createConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_PICTURES_BY_PICTURE_ID);) {
+            pstmt.setInt(1, pictureId);
+            ResultSet rs = pstmt.executeQuery();
+            pictures = new ArrayList<>(400);
+            while (rs.next()) {
+                Blob picture = rs.getBlob("picture");
+                pictures.add(picture);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pictures;
+    }
+    
+    
+    
+    
+    
     
     @Override
     public Blob getFirstPictureByProperty(int propertyId) {
@@ -125,4 +152,6 @@ public class PropertyPictureDAOImpl implements PropertyPictureDAO {
             Logger.getLogger(PropertyPictureDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+   
 }

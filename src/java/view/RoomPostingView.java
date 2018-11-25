@@ -93,7 +93,9 @@ public class RoomPostingView extends HttpServlet {
         //PropertyXResourceLayer propertyXresource = new PropertyXResourceLayer();
 
         List<Property> propertyList = propertyLayer.getAllProperty();
-        int index = propertyList.get(propertyList.size() - 1).getpropertyID();
+        int index = -1;
+        if (propertyList.size()>0)
+            index = propertyList.get(propertyList.size() - 1).getpropertyID();
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date staDate = sdf.parse(startdate);
@@ -114,31 +116,33 @@ public class RoomPostingView extends HttpServlet {
                 Boolean.parseBoolean(privatekitchen),Boolean.parseBoolean(sharedkitchen),Boolean.parseBoolean(privatewashroom),Boolean.parseBoolean(sharedwashroom),Double.parseDouble(price),sDate,eDate,chores,Integer.parseInt(availability));
         //Property property = new Property(index+1,1,address,"Ottawa","K1l 3K4","ontario","Canada",3,true,false,1000.0,new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()),"clean",6);
 
+        
         propertyLayer.addProperty(property);
     
-        // save image into database     
-
-        PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
-
-        List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
-     
-        int pindex = -1;
-        if(pictureList.size()>0)
-            pindex = pictureList.get(pictureList.size() - 1).getPictureID();
-
-        int property_id = index+1;
-        
-        String files[] = {"inputfile","inputfile2","inputfile3","inputfile4","inputfile5","inputfile6"};
-        int realnumber=0;
-        for(int f=0;f<files.length;f++){
-            Part part=request.getPart(files[f]);          
-            if(part != null && part.getSize()> 0){        
-                realnumber++;
-                PropertyPicture propertypicture = new PropertyPicture(pindex+realnumber,property_id,null);
-                InputStream is = part.getInputStream();
-                
-                pPictureLayer.addPicture(propertypicture,is);
-            }            
+        // save image into database  
+        //after add property table, get the last added one    
+        List<Property> properties = propertyLayer.getAllProperty();        
+        if(properties.size()>0){
+            int property_id = properties.get(properties.size()-1).getpropertyID();
+            
+            PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
+            List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
+            int pindex = -1;
+            if(pictureList.size()>0)
+                pindex = pictureList.get(pictureList.size() - 1).getPictureID();            
+            String files[] = {"inputfile","inputfile2","inputfile3","inputfile4","inputfile5","inputfile6"};
+            for(int f=0;f<files.length;f++){
+                Part part=request.getPart(files[f]);          
+                if(part != null && part.getSize()> 0){        
+                    PropertyPicture propertypicture = new PropertyPicture(pindex+1,property_id,null);
+                    InputStream is = part.getInputStream();
+                    pPictureLayer.addPicture(propertypicture,is);
+                    pictureList = pPictureLayer.getAllPictures();
+                    if(pictureList.size()>0)
+                        pindex = pictureList.get(pictureList.size() - 1).getPictureID();
+                                       
+                }            
+            }
         }
       
         // Only do this if user was successfully added to database!!!!

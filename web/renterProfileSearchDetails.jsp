@@ -24,6 +24,17 @@ Copyright @ 2018
     <head>
         <title>Property Details</title>
         <link rel="stylesheet" href="assets/css/subpage_style.css" />
+        
+        <style>
+            img {
+            border-radius: 8px;
+            }
+            .img_container > img:hover {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        
     </head>
         
     <body class="subpage">
@@ -82,7 +93,7 @@ Copyright @ 2018
                                 Host host = (Host) request.getAttribute("host");
                             %>
                             
-                            <form action="RenterProfileSearchDetails" method="post">
+                            <form action="RenterProfileSearchDetails" method="get">
                             
                             <input type="hidden" id="bookingHost" name="bookingHost" value="<%=host.getHostID()%>">
                                 
@@ -140,7 +151,9 @@ Copyright @ 2018
                                 List<PropertyPicture> pictures = pPictureLayer.getAllPicturesByProperty(property.getpropertyID());
                                 for(PropertyPicture picture : pictures){
                             %>
+                            <div class="img_container">
                             <img src="display_pictures.jsp?pictureId=<%=picture.getPictureID()%>" alt='Propery Image' height=130px width=130px/>
+                            </div>
                             <%   
                                 }
                             %>

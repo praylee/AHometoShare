@@ -125,7 +125,11 @@ public class RoomPostingView extends HttpServlet {
         PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
 
         List<PropertyPicture> pictureList = pPictureLayer.getAllPictures();
-        int pindex = pictureList.get(pictureList.size() - 1).getPictureID();
+     
+        int pindex = -1;
+        if(pictureList.size()>0)
+            pindex = pictureList.get(pictureList.size() - 1).getPictureID();
+
         int property_id = index+1;
         
         String files[] = {"inputfile","inputfile2","inputfile3","inputfile4","inputfile5","inputfile6"};

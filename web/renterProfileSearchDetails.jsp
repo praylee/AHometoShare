@@ -10,11 +10,14 @@ Project: A Home to Share
 Copyright @ 2018
 --%>
 
+<%@page import="transferobjects.PropertyPicture"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="transferobjects.Host"%>
 <%@page import="transferobjects.Property"%>
 <%@page import="java.util.List"%>
+<%@page import="business.PropertyPictureBusinessLayer"%>
+<%@ page import="java.sql.*, javax.sql.*" %> 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -79,7 +82,7 @@ Copyright @ 2018
                                 Host host = (Host) request.getAttribute("host");
                             %>
                             
-                            <form action="RenterProfileSearchDetails" method="get">
+                            <form action="RenterProfileSearchDetails" method="post">
                             
                             <input type="hidden" id="bookingHost" name="bookingHost" value="<%=host.getHostID()%>">
                                 
@@ -129,11 +132,19 @@ Copyright @ 2018
                                     <td><%=property.getPriWashroom()%></td>
                                 </tr>
                             </table>
+                                    
+                            Pictures  <br><br> 
                             
-                           
-                            Pictures  <br><br>  
-                            <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery Image' height=180px width=180px/>                                                       
-                            
+                            <% 
+                                PropertyPictureBusinessLayer pPictureLayer = new PropertyPictureBusinessLayer();
+                                List<PropertyPicture> pictures = pPictureLayer.getAllPicturesByProperty(property.getpropertyID());
+                                for(PropertyPicture picture : pictures){
+                            %>
+                            <img src="display_pictures.jsp?pictureId=<%=picture.getPictureID()%>" alt='Propery Image' height=130px width=130px/>
+                            <%   
+                                }
+                            %>
+                            <br><br>                                                        
                             <input type="submit" value="Request to Book this Property">
                             
                             </form> 

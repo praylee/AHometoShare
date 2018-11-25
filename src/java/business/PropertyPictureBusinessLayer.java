@@ -45,9 +45,13 @@ public class PropertyPictureBusinessLayer {
         }
     }
     
-    public PropertyPicture getPictureById(int pictureId){
-        return pPictureDAO.getPictureById(pictureId);
+     public List<PropertyPicture> getAllPicturesByProperty(int propertyId){
+        return pPictureDAO.getAllPicturesByProperty(propertyId);
     } 
+     
+    public List<Blob> getAllPicturesById(int pictureId) {
+        return pPictureDAO.getAllPicturesById(pictureId);
+    }
     
     public void deletePicture(int pictureId){
         pPictureDAO.deletePicture(pictureId);

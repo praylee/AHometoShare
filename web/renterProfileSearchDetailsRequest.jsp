@@ -84,6 +84,10 @@ Copyright @ 2018
                             <br>
                             <h5>We will be in touch shortly!</h5>
                         </div>
+                        <br><br>
+                        <div id="submit_reset_btn">
+                            <button id="reset_btn" type="button" onclick="window.location.href='RenterProfileSearch'">Back to search</button>
+                        </div>
                     </li>
                     <!--Pane 4: a placeholder-->  
                     <li class="aside aside-4"></li>

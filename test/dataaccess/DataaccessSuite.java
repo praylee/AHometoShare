@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author chris
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({dataaccess.PropertyDAOImplTest.class, dataaccess.RenterDAOImplTest.class, dataaccess.PropertyXResourceDAOImplTest.class, dataaccess.ResourceDAOImplTest.class, dataaccess.PropertyDAOTest.class, dataaccess.ResourceDAOTest.class, dataaccess.PropertyXResourceDAOTest.class, dataaccess.PropertyPictureDAOImplTest.class, dataaccess.HostDAOImplTest.class, dataaccess.PropertyPictureDAOTest.class, dataaccess.RenterDAOTest.class, dataaccess.HostDAOTest.class, dataaccess.DataSourceTest.class})
+@Suite.SuiteClasses({dataaccess.PropertyDAOImplTest.class, dataaccess.RenterDAOImplTest.class, dataaccess.PropertyPictureDAOImplTest.class, dataaccess.HostDAOImplTest.class, dataaccess.PropertyPictureDAOTest.class, dataaccess.RenterDAOTest.class, dataaccess.HostDAOTest.class, dataaccess.PropertyDAOTest.class, dataaccess.DataSourceTest.class})
 public class DataaccessSuite {
 
     @BeforeClass

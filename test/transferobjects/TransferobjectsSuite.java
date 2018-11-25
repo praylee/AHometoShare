@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author chris
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({transferobjects.PropertyTest.class, transferobjects.RenterTest.class, transferobjects.ResourceTest.class, transferobjects.PropertyXResourceTest.class, transferobjects.HostTest.class, transferobjects.PropertyPictureTest.class})
+@Suite.SuiteClasses({transferobjects.PropertyTest.class, transferobjects.RenterTest.class, transferobjects.HostTest.class, transferobjects.PropertyPictureTest.class})
 public class TransferobjectsSuite {
 
     @BeforeClass

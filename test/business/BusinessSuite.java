@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author chris
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({business.HostBusinessLayerTest.class, business.ValidationExceptionTest.class, business.ListofValBusinessLayerTest.class, business.PropertyBusinessLayerTest.class, business.PropertyPictureBusinessLayerTest.class, business.PropertyXResourceLayerTest.class, business.ResourceBusinessLayerTest.class, business.RenterBusinessLayerTest.class})
+@Suite.SuiteClasses({business.HostBusinessLayerTest.class, business.ValidationExceptionTest.class, business.PropertyBusinessLayerTest.class, business.PropertyPictureBusinessLayerTest.class, business.RenterBusinessLayerTest.class})
 public class BusinessSuite {
 
     @BeforeClass

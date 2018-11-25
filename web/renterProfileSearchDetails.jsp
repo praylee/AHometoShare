@@ -26,6 +26,13 @@ Copyright @ 2018
     <head>
         <title>Property Details</title>
         <link rel="stylesheet" href="assets/css/renterProfileSearchDetails_style.css" />
+        
+        <style>
+            .img_container > img:hover {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
     </head>
         
     <body class="subpage">
@@ -79,7 +86,7 @@ Copyright @ 2018
                                 Host host = (Host) request.getAttribute("host");
                             %>
                             
-                            <form action="RenterProfileSearchDetails" method="post">
+                            <form action="RenterProfileSearchDetails" method="get">
                                 <h2>Property details</h2>
 
                                 <hr width=600px;>
@@ -140,17 +147,20 @@ Copyright @ 2018
                                     List<PropertyPicture> pictures = pPictureLayer.getAllPicturesByProperty(property.getpropertyID());
                                     for(PropertyPicture picture : pictures){
                                 %>
-                                <img src="display_pictures.jsp?pictureId=<%=picture.getPictureID()%>" alt='Propery Image' height=130px width=130px/>
+                                <div class="img_container">
+                                    <img src="display_pictures.jsp?pictureId=<%=picture.getPictureID()%>" alt='Propery Image' height=130px width=130px/>
+                                </div>
                                 <%   
                                     }
                                 %>
-                            </form>
+                            
                             
                             <br><br>
                             <div id="submit_reset_btn">
                                 <button id="submit_btn" type="submit">Request to book this property</button>
                                 <button id="reset_btn" type="button" onclick="window.location.href='RenterProfileSearch'">Back to search</button>
                             </div>
+                        </form>
 
                         </div>
                     </li>

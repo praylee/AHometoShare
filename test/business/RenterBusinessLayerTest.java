@@ -69,20 +69,6 @@ public class RenterBusinessLayerTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getRenterByRenterUname method, of class RenterBusinessLayer.
-     */
-    @Test
-    public void testGetRenterByRenterUname() {
-        System.out.println("getRenterByRenterUname");
-        String username = "";
-        RenterBusinessLayer instance = new RenterBusinessLayer();
-        Renter expResult = null;
-        Renter result = instance.getRenterByRenterUname(username);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of addRenter method, of class RenterBusinessLayer.
@@ -186,22 +172,6 @@ public class RenterBusinessLayerTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of updateRenter method, of class RenterBusinessLayer.
-     */
-    @Test
-    public void testUpdateRenter_5args() {
-        System.out.println("updateRenter");
-        Date startDate = null;
-        Date endDate = null;
-        double lowPrice = 0.0;
-        double highPrice = 0.0;
-        int renterId = 0;
-        RenterBusinessLayer instance = new RenterBusinessLayer();
-        instance.updateRenter(startDate, endDate, lowPrice, highPrice, renterId);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of updateRenter method, of class RenterBusinessLayer.

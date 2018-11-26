@@ -44,10 +44,7 @@ public class RenterBusinessLayer {
     public Renter getRenterByRenterId(int renterId) {
         return renterDAO.getRenterByRenterId(renterId);
     }
-    
-    public Renter getRenterByRenterUname(String username) {
-        return renterDAO.getRenterByRenterUname(username);
-    }
+
 
     public void addRenter(Renter renter) throws ValidationException {
         try {
@@ -69,11 +66,6 @@ public class RenterBusinessLayer {
     
     public boolean passwordCorrect(String email, String password) {
         return renterDAO.passwordCorrect(email, password); //updated by Zhan
-//        boolean correct = false;
-//        if(renterDAO.passwordCorrect(email, password)) {
-//            correct = true;
-//        }
-//        return correct;
     }
     
     public void deleteRenter(int renterId){
@@ -88,10 +80,7 @@ public class RenterBusinessLayer {
                 isStudent, isEmployed, isSmoker, startDate, endDate, availability, lowPrice, highPrice, 
                 referralSource, hasCRCheck, renterId);
     }
-    
-    public void updateRenter(Date startDate, Date endDate, double lowPrice, double highPrice, int renterId){
-        renterDAO.updateRenter(startDate, endDate, lowPrice, highPrice, renterId);
-    }
+
     
     public void updateRenter(String firstName, String lastName,
             String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,int renterId){

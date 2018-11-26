@@ -140,19 +140,6 @@ public class RenterDAOImplTest {
         instance.updateRenter(email, passWord, firstName, lastName, phone, gender, dateBirth, isStudent, isEmployed, isSmoker, startDate, endDate, availability, lowPrice, highPrice, referralSource, hasCRCheck, renterId);
     }
 
-    /**
-     * Test of updateRenter method, of class RenterDAOImpl.
-     */
-    @Test
-    public void testUpdateRenter_5args() {
-        System.out.println("updateRenter");
-        Date startDate = new java.sql.Date(100);
-        Date endDate = new java.sql.Date(100);
-        double lowPrice = 60.0;
-        double highPrice = 70.0;
-        int renterId = this.renterId;
-        instance.updateRenter(startDate, endDate, lowPrice, highPrice, renterId);
-    }
 
     /**
      * Test of updateRenter method, of class RenterDAOImpl.

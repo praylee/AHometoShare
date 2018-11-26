@@ -82,20 +82,6 @@ public class RenterDAOImplTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getRenterByRenterUname method, of class RenterDAOImpl.
-     */
-    @Test
-    public void testGetRenterByRenterUname() {
-        System.out.println("getRenterByRenterUname");
-        String username = "";
-        RenterDAOImpl instance = new RenterDAOImpl();
-        Renter expResult = null;
-        Renter result = instance.getRenterByRenterUname(username);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of deleteRenter method, of class RenterDAOImpl.
@@ -140,22 +126,6 @@ public class RenterDAOImplTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of updateRenter method, of class RenterDAOImpl.
-     */
-    @Test
-    public void testUpdateRenter_5args() {
-        System.out.println("updateRenter");
-        Date startDate = null;
-        Date endDate = null;
-        double lowPrice = 0.0;
-        double highPrice = 0.0;
-        int renterId = 0;
-        RenterDAOImpl instance = new RenterDAOImpl();
-        instance.updateRenter(startDate, endDate, lowPrice, highPrice, renterId);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of updateRenter method, of class RenterDAOImpl.

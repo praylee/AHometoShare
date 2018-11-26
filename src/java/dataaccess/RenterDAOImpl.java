@@ -58,18 +58,12 @@ public class RenterDAOImpl implements RenterDAO {
             + "email = ?, password= ?, "
             + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
             + "employed= ?, smoker= ?, rent_start_date= ?, rent_end_date= ?,availability= ?, "
-            + "low_price= ?, high_price= ?, referral_source= ?,criminality_check = ?"
+            + "low_price= ?, high_price= ?, referral_source= ?,criminality_check = ? "
             + "WHERE id= ?";
     
     private static final String UPDATE_RENTER_EDIT_PROFILE = "UPDATE renter SET "
             + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
             + "employed= ?, smoker= ? "
-            + "WHERE id= ?";
-    
-    private static final String UPDATE_RENTER_EDIT_RENTING_DETAILS = "UPDATE renter SET "
-            + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
-            + "employed= ?, smoker= ?, rent_start_date= ?, rent_end_date= ?, "
-            + "low_price= ?, high_price= ? "
             + "WHERE id= ?";
     
     private static final String UPDATE_RENTER_PASSWORD = "UPDATE renter SET "
@@ -154,43 +148,9 @@ public class RenterDAOImpl implements RenterDAO {
 
         Renter renter = new Renter();
         try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(GET_BY_RENTER_ID);
-                ResultSet rs = pstmt.executeQuery();) {
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_RENTER_ID);) {
             pstmt.setInt(1, renterId);
-            if (rs.next()) {
-                renter.setRenterId(rs.getInt("id"));
-                renter.setEmail(rs.getString("email"));
-                renter.setPassWord(rs.getString("password"));
-                renter.setFirstName(rs.getString("first_name"));
-                renter.setLastName(rs.getString("last_name"));
-                renter.setPhone(rs.getString("phone"));
-                renter.setGender(rs.getInt("gender"));
-                renter.setDOB(rs.getString("date_of_birth"));
-                renter.setIsStudent(rs.getBoolean("student"));
-                renter.setIsEmployed(rs.getBoolean("employed"));
-                renter.setIsSmoker(rs.getBoolean("smoker"));
-                renter.setStartDate(rs.getDate("rent_start_date"));
-                renter.setEndDate(rs.getDate("rent_end_date"));
-                renter.setAvailability(rs.getInt("availability"));
-                renter.setLowPrice(rs.getInt("low_price"));
-                renter.setHighPrice(rs.getInt("high_price"));
-                renter.setReferralSource(rs.getString("referral_source"));
-                renter.setHasCRCheck(rs.getBoolean("criminality_check"));
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return renter;
-    }
-    
-    @Override
-    public Renter getRenterByRenterUname(String username) { //added by Melissa
-        Renter renter = new Renter();
-        try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(GET_BY_RENTER_EMAIL);
-                ResultSet rs = pstmt.executeQuery()) {
-            pstmt.setString(2, username);
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 renter.setRenterId(rs.getInt("id"));
                 renter.setEmail(rs.getString("email"));
@@ -255,24 +215,6 @@ public class RenterDAOImpl implements RenterDAO {
             pstmt.setString(16, referralSource);
             pstmt.setBoolean(17, hasCRCheck);
             pstmt.setInt(18, renterId);
-            pstmt.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RenterDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @Override
-    public void updateRenter(Date startDate, Date endDate, double lowPrice, double highPrice, int renterId) {
-        try (Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER_EDIT_PROFILE);) {
-
-            
-            pstmt.setDate(1, startDate);
-            pstmt.setDate(2, endDate);
-            pstmt.setDouble(3, lowPrice);
-            pstmt.setDouble(4, highPrice);
-            pstmt.setInt(5, renterId);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {

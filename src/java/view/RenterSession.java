@@ -11,7 +11,7 @@ import transferobjects.Renter;
 
 /**
  *
- * @author chris
+ * @author Christopher Labelle
  */
 public class RenterSession {
     

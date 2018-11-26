@@ -10,7 +10,7 @@ import transferobjects.Host;
 
 /**
  *
- * @author chris
+ * @author Christopher Labelle
  */
 public class HostSession {
     

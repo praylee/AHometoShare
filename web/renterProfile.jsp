@@ -17,7 +17,11 @@ Copyright @ 2018
     <head>
         <title>A Home To Share</title>
         <link rel="stylesheet" href="assets/css/renterProfile_style.css" />
+        
+        
     </head>
+    
+    
     
     <body class="subpage">
         <!-- Header -->

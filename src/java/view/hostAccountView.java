@@ -36,57 +36,65 @@ public class hostAccountView extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        
-        String email = request.getParameter("email");
-        String btnUpdate = request.getParameter("update");
-        String btnDelete = request.getParameter("delete");
-   
-        HostBusinessLayer hostBusiness = new HostBusinessLayer();
+        HostSession session = new HostSession(request.getSession());
+        if(session.getAttribute("hostId") == null) {
+            System.out.println("Session has expried.");
+            session.endSession();
+            response.sendRedirect("index.jsp");
+        }
+        else {
+            String email = request.getParameter("email");
+            String btnUpdate = request.getParameter("update");
+            String btnDelete = request.getParameter("delete");
 
-        if(btnUpdate != null){ //click update password button
+            HostBusinessLayer hostBusiness = new HostBusinessLayer();
 
-            String old_password = request.getParameter("old_pwd");
-            String new_password = request.getParameter("new_pwd");
-            String confirm_new_pwd = request.getParameter("confirm_new_pwd");
-  
-            if(hostBusiness.passwordCorrect(email, old_password)){ //match old password
-           
-                String upperCaseChars = "(.*[A-Z].*)";           
-                String lowerCaseChars = "(.*[a-z].*)";        
-                String numbers = "(.*[0-9].*)";
-                
-                if(new_password.length() < 6 || !new_password.matches(upperCaseChars) || !new_password.matches(lowerCaseChars) || !new_password.matches(numbers)){
-                    request.setAttribute("new_pwd_info", "Password must be at least 6 characters and it must contain at least one captial letter and  one number. E.g.: Canada123");                 
+            if(btnUpdate != null){ //click update password button
+
+                String old_password = request.getParameter("old_pwd");
+                String new_password = request.getParameter("new_pwd");
+                String confirm_new_pwd = request.getParameter("confirm_new_pwd");
+
+                if(hostBusiness.passwordCorrect(email, old_password)){ //match old password
+
+                    String upperCaseChars = "(.*[A-Z].*)";           
+                    String lowerCaseChars = "(.*[a-z].*)";        
+                    String numbers = "(.*[0-9].*)";
+
+                    if(new_password.length() < 6 || !new_password.matches(upperCaseChars) || !new_password.matches(lowerCaseChars) || !new_password.matches(numbers)){
+                        request.setAttribute("new_pwd_info", "Password must be at least 6 characters and it must contain at least one captial letter and  one number. E.g.: Canada123");                 
+                    }
+                    else{
+                        if(new_password.equals(old_password))
+                            request.setAttribute("new_pwd_info", "Please enter a different password with the old password.");
+                        else if(!confirm_new_pwd.equals(new_password))
+                            request.setAttribute("confirm_pwd_info", "Your password and confirmation password do not match.");
+                        else{//update password into database
+                            try{
+                                hostBusiness.updateHost(new_password,hostBusiness.getHostByEmail(email).getHostID()); 
+
+                                if(hostBusiness.passwordCorrect(email, new_password))
+                                   request.setAttribute("update_info", "Password was updated successfully.");
+                                else 
+                                   request.setAttribute("update_info", "Password was not updated successfully."); 
+                            }catch(Exception e){
+                                request.setAttribute("update_info", "Update password failed.Please check database connection");
+                            }
+                        }                  
+                    }
+                    RequestDispatcher rd = request.getRequestDispatcher("hostAccountSettings.jsp");  
+                    rd.forward(request,response);
                 }
                 else{
-                    if(new_password.equals(old_password))
-                        request.setAttribute("new_pwd_info", "Please enter a different password with the old password.");
-                    else if(!confirm_new_pwd.equals(new_password))
-                        request.setAttribute("confirm_pwd_info", "Your password and confirmation password do not match.");
-                    else{//update password into database
-                        try{
-                            hostBusiness.updateHost(new_password,hostBusiness.getHostByEmail(email).getHostID()); 
-
-                            if(hostBusiness.passwordCorrect(email, new_password))
-                               request.setAttribute("update_info", "Password was updated successfully.");
-                            else 
-                               request.setAttribute("update_info", "Password was not updated successfully."); 
-                        }catch(Exception e){
-                            request.setAttribute("update_info", "Update password failed.Please check database connection");
-                        }
-                    }                  
+                    request.setAttribute("old_pwd_info", "The password you have entered does not match your current password.");
+                    RequestDispatcher rd = request.getRequestDispatcher("hostAccountSettings.jsp");  
+                    rd.forward(request,response);  
                 }
-                RequestDispatcher rd = request.getRequestDispatcher("hostAccountSettings.jsp");  
-                rd.forward(request,response);
             }
-            else{
-                request.setAttribute("old_pwd_info", "The password you have entered does not match your current password.");
-                RequestDispatcher rd = request.getRequestDispatcher("hostAccountSettings.jsp");  
-                rd.forward(request,response);  
+            if(btnDelete != null){ // click delete account button
+                hostBusiness.deleteHost(hostBusiness.getHostByEmail(email).getHostID());  
+                response.sendRedirect("LogoutRedirect");
             }
-        }
-        if(btnDelete != null){ // click delete account button
-            hostBusiness.deleteHost(hostBusiness.getHostByEmail(email).getHostID());  
-            response.sendRedirect("LogoutRedirect");
         }
     }
 

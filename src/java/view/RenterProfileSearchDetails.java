@@ -44,7 +44,16 @@ public class RenterProfileSearchDetails extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("Made it to Host Property Details (Renter Searching)!");
 
-
+        RenterSession session = new RenterSession(request.getSession());
+        
+        if(session.getAttribute("renterId") == null) {
+            System.out.println("Session has expried.");
+            session.endSession();
+            response.sendRedirect("index.jsp");
+        }
+        else {
+            // do something
+        }
 
     }
 

@@ -41,9 +41,16 @@ public class DeleteHostProperty extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("Made it to Host Property Details (Renter Searching)!");
-
-
-
+        
+        HostSession session = new HostSession(request.getSession());
+        if(session.getAttribute("hostId") == null) {
+            System.out.println("Session has expried.");
+            session.endSession();
+            response.sendRedirect("index.jsp");
+        }
+        else {
+            // do something
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

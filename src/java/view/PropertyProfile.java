@@ -46,19 +46,27 @@ public class PropertyProfile extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HostSession session = new HostSession(request.getSession());
-        HostBusinessLayer hostBusiness = new HostBusinessLayer();
-        Host host = hostBusiness.getHostByEmail(session.getAttribute("email").toString());
-        int hostID = host.getHostID();
         
-        PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
-        List<Property> propertiesList = propertyBusiness.getPropertyByHostId(hostID);
-             
-        request.setAttribute("hostproperties", propertiesList); //send list of both Host and Property pairs
+        if(session.getAttribute("hostId") == null) {
+            System.out.println("Session has expried.");
+            session.endSession();
+            response.sendRedirect("index.jsp");
+        }
+        else {
+        
+            HostBusinessLayer hostBusiness = new HostBusinessLayer();
+            Host host = hostBusiness.getHostByEmail(session.getAttribute("email").toString());
+            int hostID = host.getHostID();
 
-        RequestDispatcher rd = request.getRequestDispatcher("propertyProfile.jsp"); 
-        rd.forward(request,response); 
+            PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
+            List<Property> propertiesList = propertyBusiness.getPropertyByHostId(hostID);
+
+            request.setAttribute("hostproperties", propertiesList); //send list of both Host and Property pairs
+
+            RequestDispatcher rd = request.getRequestDispatcher("propertyProfile.jsp"); 
+            rd.forward(request,response); 
             
-
+        }
 
     }
 

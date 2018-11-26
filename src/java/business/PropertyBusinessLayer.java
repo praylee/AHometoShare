@@ -1,6 +1,6 @@
 /*
  * File: PropertyBusinessLayer.java
- * Description:
+ * Description: Business layer for the Property
  * Create: Sep,30,2018
  * Author: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
@@ -19,7 +19,7 @@ import transferobjects.Property;
 
 /**
  *
- * @author 29751
+ * @author Melissa
  */
 public class PropertyBusinessLayer {
 

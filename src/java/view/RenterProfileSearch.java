@@ -1,6 +1,6 @@
 /*
- * File: ProfileRenterView.java
- * Description:
+ * File: RenterProfileSearch.java
+ * Description: The view layer for renters searching of properties.
  * Create: Sep,30,2018
  * Author: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
@@ -43,11 +43,14 @@ public class RenterProfileSearch extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
+        
         System.out.println("Made it to Renter Profile Search!");
         
         RenterSession session = new RenterSession(request.getSession());
         
+        //checking for session expiration
         if(session.getAttribute("renterId") == null) {
             System.out.println("Session has expried.");
             session.endSession();
@@ -55,11 +58,11 @@ public class RenterProfileSearch extends HttpServlet {
         }
         else {
             PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
-            List<Property> propertiesList = propertyBusiness.getAllProperty();
+            List<Property> propertiesList = propertyBusiness.getAllProperty(); //list of all properties
 
 
             HostBusinessLayer hostBusiness = new HostBusinessLayer();
-            List<Host> hostList = hostBusiness.getAllHost();
+            List<Host> hostList = hostBusiness.getAllHost(); //list of all hosts
 
             List<Map.Entry<Host,Property>> pairList = new ArrayList<Map.Entry<Host, Property>>();
 
@@ -68,13 +71,12 @@ public class RenterProfileSearch extends HttpServlet {
                 Host propertyOwner = null;
                 for (Host host: hostList) {
                     if (host.getHostID() == hostID) {
-                        propertyOwner = host;
+                        propertyOwner = host; //get host for the property
                         break;
                     }
                 }
                 Map.Entry<Host, Property> entry = new AbstractMap.SimpleEntry<Host, Property>(propertyOwner, property);
-                pairList.add(entry);
-
+                pairList.add(entry); //add property owner (host) and property to list
             }
 
             request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
@@ -95,13 +97,8 @@ public class RenterProfileSearch extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-       
+            throws ServletException, IOException {      
         processRequest(request, response);
-
-
-       
-        
     }
 
     /**

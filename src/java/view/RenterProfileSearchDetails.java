@@ -1,6 +1,6 @@
 /*
  * File: RenterProfileSearchDetails.java
- * Description:
+ * Description: The view layer for detailed information on a selected property
  * Create: Sep,30,2018
  * Author: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
@@ -46,6 +46,7 @@ public class RenterProfileSearchDetails extends HttpServlet {
 
         RenterSession session = new RenterSession(request.getSession());
         
+        //checking for session expiration
         if(session.getAttribute("renterId") == null) {
             System.out.println("Session has expried.");
             session.endSession();
@@ -72,34 +73,35 @@ public class RenterProfileSearchDetails extends HttpServlet {
        
         processRequest(request, response);
 
-        System.out.println("in get after request to book");
+        System.out.println("In get after request to book"); //process a renter booking request
         
-        //host of property for request
+        //host id of property for request
         String book = request.getParameter("bookingHost");
+        
         if (book != null){
-        int bookingHostID = Integer.parseInt(book);
-        HostBusinessLayer hostBusiness = new HostBusinessLayer();
-        Host bookingHost = hostBusiness.getHostByHostId(bookingHostID); 
+            int bookingHostID = Integer.parseInt(book); //get integer value of host id
+            HostBusinessLayer hostBusiness = new HostBusinessLayer();
+            Host bookingHost = hostBusiness.getHostByHostId(bookingHostID);  //get host from database
 
-
-        //send an email to a home to share for booking request.
-        RenterSession rSession = new RenterSession(request.getSession());
-        Object rIDObject = rSession.getAttribute("email");
+            //get current renter by session
+            RenterSession rSession = new RenterSession(request.getSession());
+            Object rIDObject = rSession.getAttribute("email");
         
-        String rEmail = (String) rIDObject;
+            String rEmail = (String) rIDObject; //get current renter's email address
         
-        RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
-        Renter bookingRenter = renterBusiness.getRenterByEmail(rEmail);
-
+            RenterBusinessLayer renterBusiness = new RenterBusinessLayer();
+            Renter bookingRenter = renterBusiness.getRenterByEmail(rEmail); //get current renter by email
         
-        EmailFactory email = new EmailFactory();
-        email.sendBookingRequest("info@ahometoshare.ca", bookingRenter, bookingHost); //this should send to A Home to Share
+            //send an email to A Home to Share for booking request
+            EmailFactory email = new EmailFactory();
+            email.sendBookingRequest("info@ahometoshare.ca", bookingRenter, bookingHost);
         
-        request.setAttribute("host", bookingHost); //send host of property
-        request.setAttribute("renter", bookingRenter); //send renter who is requesting
+            
+            request.setAttribute("host", bookingHost); //send host of property
+            request.setAttribute("renter", bookingRenter); //send renter who is requesting
        
-        RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearchDetailsRequest.jsp"); 
-        rd.forward(request,response);
+            RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearchDetailsRequest.jsp"); 
+            rd.forward(request,response);
         }
         
     }
@@ -115,34 +117,25 @@ public class RenterProfileSearchDetails extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
 
-//                String valOfI = request.getParameter("valOfI");
+        //get host and property to display details - navigated here from RenterProfileSearch
+        
         int propertyID = Integer.parseInt(request.getParameter("propID"));
         int hostID = Integer.parseInt(request.getParameter("hostID"));
 
         System.out.println("Host id is: " + hostID);
         System.out.println("Property id is: " + propertyID);
-//        int inthostID = 0;
-//        try {
-//            inthostID = Integer.parseInt(hostID);
-//        } catch (NumberFormatException e) {
-//            e.printStackTrace();
-//        }
+
         PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
         Property property = propertyBusiness.getPropertyById(propertyID);
 
         
         HostBusinessLayer hostBusiness = new HostBusinessLayer();
         Host host = hostBusiness.getHostByHostId(hostID); 
-//        Host host = hostBusiness.getHostByEmail(hostEmail);
-        
-//        System.out.println(host.getFirstName());
         
         request.setAttribute("property", property); //send selected property
         request.setAttribute("host", host); //send host of property
-            
-        
+
         RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearchDetails.jsp"); 
         rd.forward(request,response); 
     }

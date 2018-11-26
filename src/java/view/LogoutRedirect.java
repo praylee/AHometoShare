@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author chris
+ * @author Christopher Labelle
  */
 public class LogoutRedirect extends HttpServlet {
 

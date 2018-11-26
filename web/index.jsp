@@ -3,6 +3,7 @@ File: index.jsp
 Description: Home page for A Home to Share website
 Create: Sept.30,2018
 Author: Zhan Shen
+Modified by: Christopher Labelle
 Clients: Michelle Bilek,Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas

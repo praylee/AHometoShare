@@ -18,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import transferobjects.Renter;
 import business.RenterBusinessLayer;
 import transferobjects.Host;
@@ -26,7 +25,7 @@ import transferobjects.Host;
 
 /**
  *
- * @author Chris
+ * @author Christopher Labelle
  * Modified by Liangliang Du: checking user is a renter or host by email 
  * Modified by Xia Sheng: add host login session
  * Modified by Melissa Rajala: add property and host information for search capability

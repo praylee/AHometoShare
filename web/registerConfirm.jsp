@@ -1,7 +1,7 @@
 <%-- 
     Document   : registerConfirm
     Created on : 6-Oct-2018, 11:13:05 AM
-    Author     : chris
+    Author     : Christopher Labelle
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

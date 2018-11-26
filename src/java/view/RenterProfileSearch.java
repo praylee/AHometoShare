@@ -46,36 +46,42 @@ public class RenterProfileSearch extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("Made it to Renter Profile Search!");
         
-        PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
-        List<Property> propertiesList = propertyBusiness.getAllProperty();
-              
-              
-        HostBusinessLayer hostBusiness = new HostBusinessLayer();
-        List<Host> hostList = hostBusiness.getAllHost();
-            
-        List<Map.Entry<Host,Property>> pairList = new ArrayList<Map.Entry<Host, Property>>();
-
-        for (Property property: propertiesList) {
-            int hostID = property.getHostID();
-            Host propertyOwner = null;
-            for (Host host: hostList) {
-                if (host.getHostID() == hostID) {
-                    propertyOwner = host;
-                    break;
-                }
-            }
-            Map.Entry<Host, Property> entry = new AbstractMap.SimpleEntry<Host, Property>(propertyOwner, property);
-            pairList.add(entry);
-                
+        RenterSession session = new RenterSession(request.getSession());
+        
+        if(session.getAttribute("renterId") == null) {
+            System.out.println("Session has expried.");
+            session.endSession();
+            response.sendRedirect("index.jsp");
         }
-              
-        request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
-
-        RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearch.jsp"); 
-        rd.forward(request,response); 
-            
+        else {
+            PropertyBusinessLayer propertyBusiness = new PropertyBusinessLayer();
+            List<Property> propertiesList = propertyBusiness.getAllProperty();
 
 
+            HostBusinessLayer hostBusiness = new HostBusinessLayer();
+            List<Host> hostList = hostBusiness.getAllHost();
+
+            List<Map.Entry<Host,Property>> pairList = new ArrayList<Map.Entry<Host, Property>>();
+
+            for (Property property: propertiesList) {
+                int hostID = property.getHostID();
+                Host propertyOwner = null;
+                for (Host host: hostList) {
+                    if (host.getHostID() == hostID) {
+                        propertyOwner = host;
+                        break;
+                    }
+                }
+                Map.Entry<Host, Property> entry = new AbstractMap.SimpleEntry<Host, Property>(propertyOwner, property);
+                pairList.add(entry);
+
+            }
+
+            request.setAttribute("hostproperties", pairList); //send list of both Host and Property pairs
+
+            RequestDispatcher rd = request.getRequestDispatcher("renterProfileSearch.jsp"); 
+            rd.forward(request,response); 
+        }    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

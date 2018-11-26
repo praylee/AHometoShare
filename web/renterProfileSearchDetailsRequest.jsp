@@ -63,9 +63,7 @@ Copyright @ 2018
                     </div>
                 </li>    
 
-
-                <!--Pane 3: "My Account" content container-->
-                    <!--Pane 3: "My Account" - Host Property Details contents-->
+                    <!--Pane 3: Renter request confirmation contents-->
                     <li class="aside aside-3">
                         <div class="property-search-details-content">
                         

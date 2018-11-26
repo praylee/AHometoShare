@@ -1,6 +1,6 @@
 <%-- 
 File: renterProfileSearch.jsp
-Description: Page for searching host listings within the renter profile.
+Description: Page for searching host property listings within the renter profile.
 Create: Oct. 21, 2018
 Author: Melissa Rajala
 Clients: Michelle Bilek, Farheen Khan
@@ -45,7 +45,6 @@ Copyright @ 2018
                 
         <script>          
             function myFilterFunction() {
-                // Declare variables
 
                 var cityOptions = document.getElementById("cityFilter"); //get list of options
                 var selectedCity = cityOptions.options[cityOptions.selectedIndex].text; //city filter
@@ -72,54 +71,47 @@ Copyright @ 2018
                 for (i = 1; i < tr.length +1; i++) { //check each table row for it's city value
                     var c = document.getElementById("city" + i).value; //the city for property in row i
                     var p = document.getElementById("price" + i).value; //the price for property in row i
-                    //var priceMatch = priceFilter(selectedPrice, p);
+
                     //window.alert(c); //for debugging
-                   
-                   
-                var val;
-                var priceInt = parseInt(p);
+                    
+                    var val;
+                    var priceInt = parseInt(p); //get integer value of price
                 
-                if (selectedPrice === "1") { // price under $500
-                    if (priceInt < 500) {
-                        val = "true";
-                    } else {
-                        val = "false";
+                    //check price filter
+                    if (selectedPrice === "1") { // price under $500
+                        if (priceInt < 500) {
+                            val = "true";
+                        } else {
+                            val = "false";
+                        }
+                    } else if (selectedPrice === "2") { //price between $500-$800
+                        if (priceInt >= 500 && priceInt <= 800) {
+                            val = "true";
+                        } else {
+                            val = "false";
+                        }
+                    } else if (selectedPrice === "3") { //price above $800
+                        if (priceInt > 800) {
+                            val = "true";
+                        } else {
+                            val = "false";
+                        }
+                    } else { 
+                        val = "none";
                     }
-                } else if (selectedPrice === "2") { //price between $500-$800
-                    if (priceInt >= 500 && priceInt <= 800) {
-                        val = "true";
-                    } else {
-                        val = "false";
-                    }
-                } else if (selectedPrice === "3") { //price above $800
-                    if (priceInt > 800) {
-                        val = "true";
-                    } else {
-                        val = "false";
-                    }
-                } else { 
-                    val = "none";
-                }
-                   
-                 //  window.alert(val);
-                   
-                if (selectedCity === "-- Select City --" && (val === "true" || val === "none")) {
-                    tr[i-1].style.display = ""; //keep all rows displayed
-                } else { //a filter option was used
-                    if (c === selectedCity && (val === "true" || val === "none")) {
-                        tr[i-1].style.display = ""; //keep row displayed
-                    } else {
-                        tr[i-1].style.display = "none"; //hide row
+
+                    //set which table rows to display based on selected city and price filter
+                    if (selectedCity === "-- Select City --" && (val === "true" || val === "none")) {
+                        tr[i-1].style.display = ""; //keep all rows displayed
+                    } else { //a filter option was used
+                        if (c === selectedCity && (val === "true" || val === "none")) {
+                            tr[i-1].style.display = ""; //keep row displayed
+                        } else {
+                            tr[i-1].style.display = "none"; //hide row
+                            }  
                         }  
-                    }  
+                    }
                 }
-            }
-            
-            
-            function propertyDetails() {
-                var propertyID = document.getElementById("propID").value;
-                window.alert(propertyID);
-            }
             
         </script>        
                 
@@ -219,7 +211,6 @@ Copyright @ 2018
                                             <h4><em style='font-weight:bold'>End Date:</em> <input type="hidden" id="end<%=i%>" name="end" value="<%=property.getEndDate()%>"><%=property.getEndDate()%> <br>
                                             <h4><em style='font-weight:bold'>Price:</em> $<input type="hidden" id="price<%=i%>" name="price" value="<%=property.getPrice()%>"><%=property.getPrice()%> <br>
                                             <!--input type="button" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'" /-->
-                                            <!--input type="button" value="View Details" onclick="propertyDetails();" /-->
                                             <input id="submit" name="submit" type="submit" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'">
                                         </td>
                                          <td>

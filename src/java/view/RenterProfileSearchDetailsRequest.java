@@ -1,6 +1,6 @@
 /*
- * File: RenterProfileSearchDetails.java
- * Description:
+ * File: RenterProfileSearchDetailsRequest.java
+ * Description: The view layer for renter request for booking property confirmation
  * Create: Sep,30,2018
  * Author: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
@@ -11,18 +11,12 @@
  */
 package view;
 
-import business.HostBusinessLayer;
-import business.PropertyBusinessLayer;
-import business.RenterBusinessLayer;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import transferobjects.Host;
-import transferobjects.Property;
-import transferobjects.Renter;
+
 
 /**
  *
@@ -46,6 +40,7 @@ public class RenterProfileSearchDetailsRequest extends HttpServlet {
 
         RenterSession session = new RenterSession(request.getSession());
         
+        //checking for session expiration
         if(session.getAttribute("renterId") == null) {
             System.out.println("Session has expried.");
             session.endSession();

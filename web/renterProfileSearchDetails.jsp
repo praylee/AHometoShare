@@ -77,8 +77,7 @@ Copyright @ 2018
                 </li>    
 
 
-                <!--Pane 3: "My Account" content container-->
-                    <!--Pane 3: "My Account" - Host Property Details contents-->
+                    <!--Pane 3: Selected Host Property Details contents-->
                     <li class="aside aside-3">
                         <div class="property-search-details-content">
                                                     

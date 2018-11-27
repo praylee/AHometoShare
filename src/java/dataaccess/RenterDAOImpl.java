@@ -62,7 +62,7 @@ public class RenterDAOImpl implements RenterDAO {
             + "low_price= ?, high_price= ?, referral_source= ?,criminality_check = ? "
             + "WHERE id= ?";
     
-    private static final String UPDATE_RENTER_EDIT_PROFILE = "UPDATE renter SET "
+    private static final String UPDATE_RENTER_EDIT_PROFILE = "UPDATE renter SET " // updated by Christohper Labelle
             + "first_name= ?, last_name= ?,phone= ?, gender= ?, date_of_birth= ?, student= ?, "
             + "employed= ?, smoker= ? "
             + "WHERE id= ?";
@@ -71,7 +71,7 @@ public class RenterDAOImpl implements RenterDAO {
             + "password= AES_ENCRYPT(?,'secret') "
             + "WHERE id= ?";
     
-    private static final String GET_RENTER_BY_EMAIL = "SELECT "
+    private static final String GET_RENTER_BY_EMAIL = "SELECT " // added by Christopher Labelle
             + "id,email, password, "
             + "first_name, last_name,phone, gender, date_of_birth, student, "
             + "employed, smoker, rent_start_date, rent_end_date,availability, "
@@ -226,7 +226,7 @@ public class RenterDAOImpl implements RenterDAO {
         }
     }
     
-    @Override
+    @Override // added by Christopher Labelle
     public void updateRenter(String firstName, String lastName, String phone, int gender, String dateBirth, Boolean isStudent, Boolean isEmployed, Boolean isSmoker, int renterId) {
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(UPDATE_RENTER_EDIT_PROFILE);) {
@@ -262,7 +262,7 @@ public class RenterDAOImpl implements RenterDAO {
     }
     
     @Override
-    public Renter getRenterByEmail(String email) { //added by Chris
+    public Renter getRenterByEmail(String email) { //added by Christopher Labelle
         
         try (Connection con = new DataSource().createConnection();
                 PreparedStatement pstmt = con.prepareStatement(GET_RENTER_BY_EMAIL);) {
@@ -304,7 +304,7 @@ public class RenterDAOImpl implements RenterDAO {
     }
     
     @Override
-    public boolean passwordCorrect(String email, String password) { // added by Chris
+    public boolean passwordCorrect(String email, String password) { // added by Christopher Labelle
         try (Connection con = new DataSource().createConnection();
          PreparedStatement pstmt = con.prepareStatement(PASSWORD_CORRECT);) {
 

@@ -95,6 +95,8 @@ public class ProfileRenterEditView extends HttpServlet {
                 renterBusiness.deleteRenter(renterBusiness.getRenterByEmail(email).getRenterID());  
                 response.sendRedirect("LogoutRedirect");
             }
+            
+          // written by Christopher Labelle  
 //        boolean updateOk = true;
 //        String invalidReason = null;
 //        HttpSession session = request.getSession();

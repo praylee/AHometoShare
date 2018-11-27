@@ -21,7 +21,7 @@ import transferobjects.Renter;
 
 /**
  *
- * @author Chris Labelle
+ * @author Christopher Labelle
  */
 public class ProfileRenterView extends HttpServlet {
 

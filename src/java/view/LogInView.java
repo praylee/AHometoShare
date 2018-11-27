@@ -28,7 +28,6 @@ import transferobjects.Host;
  * @author Christopher Labelle
  * Modified by Liangliang Du: checking user is a renter or host by email 
  * Modified by Xia Sheng: add host login session
- * Modified by Melissa Rajala: add property and host information for search capability
  */
 public class LogInView extends HttpServlet {
 

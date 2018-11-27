@@ -47,7 +47,7 @@ public class RenterProfileSearchDetailsRequest extends HttpServlet {
             response.sendRedirect("index.jsp");
         }
         else {
-            // do something
+            // do something - currently nothing needs to happen here
         }
 
     }

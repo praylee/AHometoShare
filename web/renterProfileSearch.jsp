@@ -201,7 +201,6 @@ Copyright @ 2018
                                     <tr> 
 
                                         <td>
-                                            <h4><em style='font-weight:bold'>Property</em> <%=property.getpropertyID()%> </h4>
                                             <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
                                             <input type="hidden" id="propID" name="propID" value="<%=property.getpropertyID()%>">
                                             <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">

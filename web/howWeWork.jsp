@@ -29,6 +29,7 @@ Copyright @ 2018
                         <a href="index.jsp">Home</a>
                         <a href="howWeWork.jsp">How We Work</a>
                         <a href="faq.jsp">FAQ</a>
+                        <!-- Buttons modified with java by Christopher Labelle-->
                         <button id="loginBtn" onclick="window.location.href='LogInView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Log in</button>
                         <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Sign Up</button>
                         <a href="

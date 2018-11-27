@@ -56,11 +56,11 @@ public class RenterBusinessLayer {
         }
     }   
     
-    public Renter getRenterByEmail(String email) {
+    public Renter getRenterByEmail(String email) { // added by Christopher Labelle
         return renterDAO.getRenterByEmail(email);
     }
     
-    public boolean renterExists(String email) {   
+    public boolean renterExists(String email) {  // added by Christopher Labelle 
         return getRenterByEmail(email) != null;
     }
     
@@ -82,7 +82,7 @@ public class RenterBusinessLayer {
     }
 
     
-    public void updateRenter(String firstName, String lastName,
+    public void updateRenter(String firstName, String lastName, // added by Christopher Labelle
             String phone,int gender,String dateBirth, Boolean isStudent,Boolean isEmployed,Boolean isSmoker,int renterId){
         renterDAO.updateRenter(firstName, lastName, phone, gender, dateBirth, 
                 isStudent, isEmployed, isSmoker, renterId);
@@ -92,7 +92,7 @@ public class RenterBusinessLayer {
         renterDAO.updateRenter(passWord, renterId);
     }
     
-    private void validateSignUpFields(Renter renter) throws ValidationException {
+    private void validateSignUpFields(Renter renter) throws ValidationException { // added by Christopher Labelle
         
         if(renter.getFirstName() == null || renter.getFirstName().length() > FIRST_NAME_LENGTH) {
             throw new ValidationException("Invalid first name format");

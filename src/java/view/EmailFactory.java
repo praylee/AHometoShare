@@ -19,6 +19,7 @@ import transferobjects.Renter;
 /**
  *
  * @author Christopher Labelle
+ * Modified By: Melissa Rajala
  */
 public class EmailFactory {
     
@@ -110,7 +111,9 @@ public class EmailFactory {
         }
     }
     
-    
+    /** Added By: Melissa Rajala
+     *      Added sendBookingRequest method to support renter booking of property
+     */
     public static void sendBookingRequest(String sendToEmail, Renter renter, Host host) {
 
         Properties properties = new Properties();

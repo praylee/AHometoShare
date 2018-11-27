@@ -3,6 +3,7 @@
  * Description:This class implements interface RenterDAO. This class is responsible to get data from Table Renter.
  * Create: Sep,30,2018
  * Author: Xia Sheng
+ * Modified By: Melissa Rajala
  * Clients: Michelle Bilek,Farheen Khan
  * Course: Software Development Project
  * Professor: Dr. Anu Thomas
@@ -143,6 +144,9 @@ public class RenterDAOImpl implements RenterDAO {
         }
     }
 
+    /** Modified By: Melissa Rajala
+     *      Moved ResultSet out of the try-with-resources to correct location 
+     */
     @Override
     public Renter getRenterByRenterId(int renterId) {
 

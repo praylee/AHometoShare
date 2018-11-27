@@ -24,7 +24,7 @@ import transferobjects.Property;
 
 /**
  *
- * @author Melissa Rajala
+ * @author Bin Yang
  */
 public class DeleteHostProperty extends HttpServlet {
 

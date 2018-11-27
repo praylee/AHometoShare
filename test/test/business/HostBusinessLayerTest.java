@@ -20,7 +20,7 @@ import transferobjects.Host;
 
 /**
  *
- * @author melissa
+ * @author Melissa Rajala
  */
 public class HostBusinessLayerTest {
 	

@@ -23,7 +23,7 @@ import transferobjects.Renter;
 
 /**
  *
- * @author melissa
+ * @author Melissa Rajala
  */
 public class RenterBusinessLayerTest {
 	
@@ -100,22 +100,6 @@ public class RenterBusinessLayerTest {
         assertEquals(renterID, result);
     }
 
-//    /**
-//     * Test of getRenterByRenterUname method, of class RenterBusinessLayer.
-//     * @throws ValidationException 
-//     */
-//    @Test
-//    public void testGetRenterByRenterUname() throws ValidationException {
-//        System.out.println("getRenterByRenterUname");
-//        
-//        String uname = "frosty@test.com";
-//        
-//        Renter renter = new Renter(renterID, uname, "12345","Keith", "Smith", "613-555-6698", 1, "1990", true, true, false, sd, ed, 1, 300, 600, "friend", false);
-//        instance.addRenter(renter);
-//
-//        String result = instance.getRenterByRenterUname(uname).getEmail();
-//        assertEquals(uname, result);
-//    }
 
     /**
      * Test of addRenter method, of class RenterBusinessLayer.
@@ -226,28 +210,6 @@ public class RenterBusinessLayerTest {
 
     }
 
-//    /**
-//     * Test of updateRenter method, of class RenterBusinessLayer.
-//     * @throws ValidationException 
-//     */
-//    @Test
-//    public void testUpdateRenter_5args() throws ValidationException {
-//        System.out.println("updateRenter");
-//        Date startDate = java.sql.Date.valueOf("2021-01-01");;
-//        Date endDate = java.sql.Date.valueOf("2022-01-01");;
-//        double lowPrice = 0.0;
-//        double highPrice = 0.0;
-//        
-//        Renter renter = new Renter(renterID, "testing@test.com", "whales","Keith", "Smith", "613-555-6698", 1, "1990", true, true, false, sd, ed, 1, 300, 600, "friend", false);
-//        instance.addRenter(renter);
-//
-//        instance.updateRenter(startDate, endDate, lowPrice, highPrice, renterID);
-//        
-//        double result = instance.getRenterByRenterId(renterID).getHighPrice();
-//        
-//        assertEquals(highPrice, result);
-//
-//    }
 
     /**
      * Test of updateRenter method, of class RenterBusinessLayer.

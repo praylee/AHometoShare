@@ -73,7 +73,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 		
-/* Subpage header */
+/* --Header---------------------------------------------------------- */
     .subpage {
         padding-top: 120px;
     }
@@ -145,7 +145,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 color: #ffffff;
             }
 
-/* Subpage main body: Section */
+/* --Main body: Section------------------------------------------------------ */
 
     section.wrapper { 
          padding: 2em 0; 
@@ -216,7 +216,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         }
         
         
-/* Buttons: Sign Up, Reset */
+/* --Buttons: Sign Up, Reset------------------------------------------------- */
         ul.actions.fit {
             display: table;
             margin-left: -1em;
@@ -275,7 +275,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                     background-color: rgba(144, 144, 144, 0.2);
                 }
 	
-/* Footer */
+/* --Footer------------------------------------------------------------------ */
 
 .flex {
     display: -ms-flexbox;
@@ -336,7 +336,7 @@ footer {
     }
 
 	
-/* Popup window: Sign Up */	
+/* --Popup window: Sign Up--------------------------------------------------- */	
 
     /* Signup popup background */
     .signupPopup {
@@ -535,7 +535,7 @@ footer {
     
 
     
-    /*Account Settings layout*/
+    /*--Account Settings layout-----------------------------------------------*/
      .wrapper {
             display: flex;
             flex-flow: row wrap;
@@ -698,9 +698,7 @@ footer {
         
         
         
-/*
-Profile style
-*/ 
+/* --Profile style------------------------------------------------------------*/ 
 .sidenav {
     width: 300px;
     background-color: #111;

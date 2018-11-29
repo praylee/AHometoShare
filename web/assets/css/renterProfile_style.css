@@ -73,7 +73,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 		
-/* Subpage header */
+/* --Header------------------------------------------------------------------ */
     .subpage {
         padding-top: 120px;
     }
@@ -147,7 +147,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             }
         
         
-/* Buttons: Sign Up, Reset */
+/* --Buttons: Sign Up, Reset------------------------------------------------- */
         ul.actions.fit {
             display: table;
             margin-left: -1em;
@@ -325,7 +325,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     
 
     
-/*My Profile layout*/
+/* --My Profile layout--------------------------------------------------------*/
  .wrapper {
         display: flex;
         flex-flow: row wrap;

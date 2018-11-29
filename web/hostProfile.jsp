@@ -3,7 +3,7 @@ File: hostrPofile.jsp
 Description: A page for logged-in hosts to view and edit profile details
 Create: Oct.05,2018
 Author: Xia Sheng
-Modified by Zhan Shen: updated and reorganized the layout
+Modified by Zhan Shen: updated the layout structure
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas

@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import transferobjects.Host;
 import javax.servlet.RequestDispatcher;
 
-/**
- *
- * @author Xia Sheng
- */
+
 public class ProfileHostView extends HttpServlet {
 
     /**

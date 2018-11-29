@@ -1,17 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * File: HostSession.java
+ * Description:
+ * Create: Oct 5,2018
+ * Author: Xia Sheng
+ * Clients: Michelle Bilek,Farheen Khan
+ * Course: Software Development Project
+ * Professor: Dr. Anu Thomas
+ * Project: A Home to Share
+ * Copyright @ 2018
  */
 package view;
 
 import javax.servlet.http.HttpSession;
 import transferobjects.Host;
 
-/**
- *
- * @author Christopher Labelle
- */
+
 public class HostSession {
     
     private HttpSession session;

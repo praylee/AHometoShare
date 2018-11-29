@@ -142,7 +142,7 @@ Copyright @ 2018
                             </select>
                         </div>
 
-                        <!--Upload images-->
+                        <!--Upload images--this function done by Liangliang Du-->
                         <div >
                             <h4>Upload Picture:</h4>
                              <table>
@@ -234,7 +234,7 @@ Copyright @ 2018
                                 });
                             }
                         </script>
-
+                    <!--end of uploading pictures-->
 
                         <div>
                             <h4>Please check the following items which are applicable<span style="color:red; font-weight:bold">*</span></h4>

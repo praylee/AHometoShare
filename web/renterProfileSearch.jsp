@@ -214,7 +214,7 @@ Copyright @ 2018
                                             <input id="submit" name="submit" type="submit" value="View Details" onclick="window.location.href='RenterProfileSearchDetails'">
                                         </td>
                                          <td>
-                                            <h4><em style='font-weight:bold'>Picture:</em>  <br>  
+                                            <h4><em style='font-weight:bold'>Picture:</em>  <br>  <!--add picture funciton by Liangliang Du-->
                                             <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery Image' height=180px width=180px/>                                                       
                                         </td>     
                                     </tr>

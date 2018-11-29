@@ -125,7 +125,7 @@ public class RoomPostingView extends HttpServlet {
 
 
             propertyLayer.addProperty(property);
-
+//belowing part is done by Liangliang Du
             // save image into database  
             //after add property table, get the last added one    
             List<Property> properties = propertyLayer.getAllProperty();        

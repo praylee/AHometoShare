@@ -149,7 +149,7 @@ Copyright @ 2018
                                     List<PropertyPicture> pictures = pPictureLayer.getAllPicturesByProperty(property.getpropertyID());
                                     for(PropertyPicture picture : pictures){
                                 %>
-                                <div class="img_container">
+                                <div class="img_container"> <!--add the picture function by Liangliang Du-->
                                     <img src="display_pictures.jsp?pictureId=<%=picture.getPictureID()%>" alt='Propery Image' height=130px width=130px/>
                                 </div>
                                 <%   

@@ -1,7 +1,7 @@
 /*
  * File: HostBusinessLayer.java
  * Description: transfer function between Java and database
- * Create: Sep,30,2018
+ * Create: Sep.30,2018 by Xia Sheng
  * Author: Liangliang Du
  * Modified:Oct,13,2018
  * Clients: Michelle Bilek,Farheen Khan
@@ -17,10 +17,7 @@ import dataaccess.HostDAOImpl;
 import java.util.List;
 import transferobjects.Host;
 
-/**
- *
- * @author Xia Sheng
- */
+
 public class HostBusinessLayer {
     
     private static final int EMAIL_LENGTH = 42;

@@ -70,7 +70,7 @@ public class LogInView extends HttpServlet {
                     rd.forward(request,response);       
                 }  
         }
-        else if(emailIsRenter == null && emailIsHost != null){ //user is a Host
+        else if(emailIsRenter == null && emailIsHost != null){ //user is a Host, added by Xia Sheng
                 if(hostBusiness.passwordCorrect(email, password)) {
                     Host host = hostBusiness.getHostByEmail(email);
                 HostSession session = new HostSession(request.getSession());

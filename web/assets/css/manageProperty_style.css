@@ -1,7 +1,7 @@
 /*
-    File: hostProfile_style.css
+    File: manageProperty_style.css
     Description: Cascading style sheet for "Manage Properties" page
-    Create: Oct.28,2018
+    Create: Oct. 28, 2018
     Last modified: Nov.23, 2018
     Author: Zhan Shen
     Clients: Michelle Bilek, Farheen Khan
@@ -373,49 +373,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
             border-right: none;
             border-bottom: none;
         }
-        
-/*    .profile_sections {
-        margin-top: 25px;
-    }
-        
-    .profile_sections h4{
-        font-size:.95em;
-        font-weight: bold;
-
-    }*/
-    
-/*    input[type="text"],
-    input[type="tel"],
-    input[type="date"] {
-        height: 25px;
-        margin-top: 8px;
-        width: 230px;
-    }
-    
-    input[type="checkbox"] {
-        margin-top: 25px;
-    }*/
-    
-/*    #checkbox_items li {
-        display: inline-block;
-        font-size:.95em;
-        font-weight: bold;
-        margin-top: 5px;
-    }
-    
-    #checkbox2, #checkbox3 {
-        padding-left: 45px;
-    }
-    
-    .renting_details {
-        margin-top: 38px;
-    }
-        
-    .save_cancel_btn {
-        width: 165px;
-        margin-top: 20px;
-        margin-bottom: 60px;
-    }*/
         
     h2 {
         margin-top: 9px;

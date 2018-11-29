@@ -3,7 +3,7 @@ File: renterProfileSearchDetails.jsp
 Description: Page for host property details within the renter profile.
 Create: Oct. 21, 2018
 Author: Melissa Rajala
-Modified by: Zhan Shen
+Modified by Zhan Shen: updated and reorganized the layout structure
 Last modification: Nov. 25, 2018
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
@@ -45,6 +45,7 @@ Copyright @ 2018
                     <a href="index.jsp">Home</a>
                     <a href="howWeWork.jsp">How We Work</a>
                     <a href="faq.jsp">FAQ</a>
+                    <!-- Buttons modified with java by Christopher Labelle-->
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="

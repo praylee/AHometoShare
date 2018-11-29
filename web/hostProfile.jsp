@@ -3,7 +3,7 @@ File: hostrPofile.jsp
 Description: A page for logged-in hosts to view and edit profile details
 Create: Oct.05,2018
 Author: Xia Sheng
-Modified by Zhan Shen: updated and reorganized the layout
+Modified by Zhan Shen: updated the layout structure
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -28,6 +28,7 @@ Copyright @ 2018
                     <a href="index.jsp">Home</a>
                     <a href="howWeWork.jsp">How We Work</a>
                     <a href="faq.jsp">FAQ</a>
+                    <!-- Buttons modified with java by Christopher Labelle-->
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="

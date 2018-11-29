@@ -25,7 +25,7 @@ import transferobjects.Property;
 
 /**
  *
- * @author melissa
+ * @author Melissa Rajala
  */
 public class PropertyBusinessLayerTest {
 	

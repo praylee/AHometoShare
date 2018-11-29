@@ -28,7 +28,6 @@ import transferobjects.Host;
  * @author Christopher Labelle
  * Modified by Liangliang Du: checking user is a renter or host by email 
  * Modified by Xia Sheng: add host login session
- * Modified by Melissa Rajala: add property and host information for search capability
  */
 public class LogInView extends HttpServlet {
 
@@ -71,7 +70,7 @@ public class LogInView extends HttpServlet {
                     rd.forward(request,response);       
                 }  
         }
-        else if(emailIsRenter == null && emailIsHost != null){ //user is a Host
+        else if(emailIsRenter == null && emailIsHost != null){ //user is a Host, added by Xia Sheng
                 if(hostBusiness.passwordCorrect(email, password)) {
                     Host host = hostBusiness.getHostByEmail(email);
                 HostSession session = new HostSession(request.getSession());

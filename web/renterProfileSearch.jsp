@@ -3,6 +3,8 @@ File: renterProfileSearch.jsp
 Description: Page for searching host property listings within the renter profile.
 Create: Oct. 21, 2018
 Author: Melissa Rajala
+Modified by Zhan Shen: updated and reorganized the layout structure
+Last modification: Nov. 25, 2018
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas
@@ -32,6 +34,7 @@ Copyright @ 2018
                     <a href="index.jsp">Home</a>
                     <a href="howWeWork.jsp">How We Work</a>
                     <a href="faq.jsp">FAQ</a>
+                    <!-- Buttons modified with java by Christopher Labelle-->
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
@@ -201,7 +204,6 @@ Copyright @ 2018
                                     <tr> 
 
                                         <td>
-                                            <h4><em style='font-weight:bold'>Property</em> <%=property.getpropertyID()%> </h4>
                                             <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
                                             <input type="hidden" id="propID" name="propID" value="<%=property.getpropertyID()%>">
                                             <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">

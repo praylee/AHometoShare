@@ -1,3 +1,4 @@
+
 <%-- 
 File: propertyProfile.jsp
 Description: Page for searching host listings within the renter profile.
@@ -33,6 +34,7 @@ Copyright @ 2018
                     <a href="index.jsp">Home</a>
                     <a href="index.jsp">How We Work</a>
                     <a href="faq.jsp">FAQ</a>
+                    <!-- Buttons modified with java by Christopher Labelle-->
                     <a href="
                        <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
                        style="
@@ -69,14 +71,13 @@ Copyright @ 2018
                 <!--Pane 3: "My Account" - Renter host property search contents-->
                 <li class="aside aside-3">
                     <div class="property-search-content">
-                        <!--  PayPal button added by Liangliang Du-->                           
+                         <!--  PayPal button added by Liangliang Du-->                           
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                         <input type="hidden" name="cmd" value="_s-xclick" />
                         <input type="hidden" name="hosted_button_id" value="KY4JUNELADXW8" />
                         <input type="image" src="https://www.pediatricsofflorence.com/wp-content/uploads/2018/06/Make-a-Payment-button.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
                         <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
                         </form>
-                        
                         <h2>My properties</h2>
 
                         <hr width=600px;>       
@@ -99,7 +100,6 @@ Copyright @ 2018
                                 <form method="post" action="DeleteHostProperty">
                                     <tr> 
                                         <td>
-                                            <h4><em style='font-weight:bold'>Property</em> <%=property.getpropertyID()%></h4>
                                             <input type="hidden" id="valOfI" name="valOfI" value="<%=i%>">
                                             <input type="hidden" id="propID" name="propID" value="<%=property.getpropertyID()%>">
                                             <input type="hidden" id="hostID" name="hostID" value="<%=property.getHostID()%>">
@@ -115,7 +115,7 @@ Copyright @ 2018
                                             <input id="delete" name="delete" type="submit" value="Delete" onclick="if (confirm('Are you sure you want to delete this property?')) form.action ='DeleteHostProperty'; else return false;">
                                         </td>
                                         <td>
-                                            <h4><em style='font-weight:bold'>Picture:</em> <br>  
+                                            <h4><em style='font-weight:bold'>Picture:</em> <br>  <!--pictures done by Liangliang Du-->
                                             <img src="display_picture.jsp?property_no=<%=property.getpropertyID()%>" alt='Propery image' height=180px width=180px/></h4>                                                        
                                         </td>
                                         
@@ -204,3 +204,4 @@ Copyright @ 2018
         </footer>
     </body>
 </html>
+

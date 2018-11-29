@@ -31,6 +31,7 @@ Copyright @ 2018
                     <a href="index.jsp">Home</a>
                     <a href="howWeWork.jsp">How We Work</a>
                     <a href="faq.jsp">FAQ</a>
+                    <!-- Buttons modified with java by Christopher Labelle-->
                     <button id="loginBtn" onclick="window.location.href='LogInView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Log in</button>
                     <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Sign Up</button>
                     <a href="
@@ -145,7 +146,7 @@ Copyright @ 2018
                                 <br>
                                 <div class="loginError">
                                     <%
-                                        // added by Chris
+                                        // added by Christopher Labelle
                                         if(request.getAttribute("info") != null) {
                                             out.print(request.getAttribute("info"));
                                         }
@@ -175,12 +176,12 @@ Copyright @ 2018
                             <form method="post" action="ForgotPassword" onsubmit="" >
                                 <div class="formRow">
                                     <h4 align="left">Enter the email address associated with your account</h4>
-                                    <!-- Modified by Chris -->
+                                    <!-- Modified by Christopher Labelle -->
                                     <input type="email" name="forgotPasswordEmail" id="forgotPasswordEmail" size="30" placeholder="Email Address" maxlength="42" required />                                    
                                 </div>
                                 <br>
                                 <div class="loginError">
-                                    <%
+                                    <% // added by Christopher Labelle
                                         if(request.getAttribute("forgotPasswordFeedback") != null) {
                                             out.print(request.getAttribute("forgotPasswordFeedback"));
                                         }
@@ -200,14 +201,17 @@ Copyright @ 2018
                     // Get the popup
                     var loginPopup = document.getElementById("loginPopup");
                     // Get forgot passwrod popup
+                    // added by Christopher Labelle
                     var forgotPasswordPopup = document.getElementById("forgotPasswordPopup");
                     // Get the button that opens the login popup
                     var loginBtn = document.getElementById("loginBtn");
                     // Get the button that opens forgot password popup
+                    // added by Christopher Labelle
                     var forgotPasswordBtn = document.getElementById("forgotPasswordBtn");
                     // Get the <span2> element that closes the login popup
                     var exit1 = document.getElementsByClassName("close2")[0];
                     // Get the <span2> element that closes the forgot password popup
+                    // added by Christopher Labelle
                     exit2 = document.getElementsByClassName("close2")[1];
                     
                     
@@ -218,7 +222,7 @@ Copyright @ 2018
                     };
                     
                     // WHen the user clicks the 'forgot password' button
-                    forgotPasswordBtn.onclick = function() {
+                    forgotPasswordBtn.onclick = function() { // added by Christopher Labelle
                         loginPopup.style.display = "none";
                         forgotPasswordPopup.style.display = "block";
                     };
@@ -230,7 +234,7 @@ Copyright @ 2018
                     
                     
                     // When the user clicks on <span2> (x), close the popup
-                    exit2.onclick = function() {
+                    exit2.onclick = function() { // added by Christopher Labelle
                         forgotPasswordPopup.style.display = "none";
                     };
                     
@@ -239,19 +243,22 @@ Copyright @ 2018
                         if (event.target === loginPopup) {
                             loginPopup.style.display = "none";
                         }
-                        else if(event.target === forgotPasswordPopup) {
+                        else if(event.target === forgotPasswordPopup) { // added by Christopher Labelle
                             forgotPasswordPopup.style.display = "none";
                         }
                     };
                     
+                    // added by Christopher Labelle
                     if(<%=request.getAttribute("isLoginValid")%> === false) {
                         loginPopup.style.display = "block";
                     }
                     
+                    // added by Christopher Labelle
                     if(<%=request.getAttribute("isForgotPasswordEmailValid")%> === false) {
                         forgotPasswordPopup.style.display = "block";
                     }
                     
+                    // added by Christopher Labelle
                     if(<%=request.getAttribute("isForgotPasswordEmailValid")%> !== null) {
                         if(<%=request.getAttribute("isForgotPasswordEmailValid")%> === true) {
                             alert("Password has been reset and been sent to your accoutn");

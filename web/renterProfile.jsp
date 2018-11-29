@@ -3,7 +3,8 @@ File: renterPofile.jsp
 Description: A page for logged-in renters to view and edit profile details
 Create: Sept.30,2018
 Author: Christopher Labelle
-Modified by Zhan Shen: updated and reorganized the layout
+Modified by Zhan Shen: updated and reorganized the layout structure
+Last modification: Nov. 25, 2018
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas

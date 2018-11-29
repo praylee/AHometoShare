@@ -3,6 +3,8 @@ File: renterProfileSearch.jsp
 Description: Page for searching host property listings within the renter profile.
 Create: Oct. 21, 2018
 Author: Melissa Rajala
+Modified by Zhan Shen: updated and reorganized the layout structure
+Last modification: Nov. 25, 2018
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas

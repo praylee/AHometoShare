@@ -4,7 +4,7 @@ Description: A page for confirming property booking request of renters.
 Create: Nov. 21,2018
 Author: Melissa Rajala
 Last modified: Nov. 24, 2018
-Modified by: Zhan Shen
+Modified by Zhan Shen: updated and reorganized the layout structure
 Clients: Michelle Bilek, Farheen Khan
 Course: Software Development Project
 Professor: Dr. Anu Thomas

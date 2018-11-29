@@ -1,5 +1,5 @@
 /*
-    File: about_us_style.css
+    File: aboutUs_style.css
     Description: Cascading style sheet for "About Us" page
     Create: Nov. 23, 2018
     Author: Zhan Shen
@@ -514,7 +514,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
             
             .switch-input:checked + .switch-label-on ~ .switch-selection {
                 left: 82px;
-              /* Note: left: 50%; doesn't transition in WebKit */
             }
 
         .switch-selection {
@@ -649,7 +648,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }
     
         .loginBtn {
-
             -moz-appearance: none;
             -webkit-appearance: none;
             -ms-appearance: none;

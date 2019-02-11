@@ -2,8 +2,8 @@
 <Context path="/ahometoshare">
     <Resource name="jdbc/ahometoshare" auth="Container"
               type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/ahometoshare"
+              url="jdbc:mysql://localhost:3306/ahometoshare?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"
               username="cst8334" password="8334"
-              maxTotal="100" maxIdle="30" maxWaitMillis="1000"/>
+              maxTotal="100" maxIdle="30" maxWaitMillis="1000" />
 </Context>
 

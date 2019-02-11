@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'org.apache.tomcat:dbcp:6.0.53'
+    implementation 'mysql:mysql-connector-java:8.0.14'
+    implementation 'javax.mail:javax.mail-api:1.6.2'
+    compile group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '9.0.14'
+
+}
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="AHometoShare:test" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output-test url="file://$MODULE_DIR$/../../out/test/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/test" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="AHometoShare.main" exported="" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-catalina:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:dbcp:6.0.53" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mysql:mysql-connector-java:8.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.mail:javax.mail-api:1.6.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-jsp-api:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-util-scan:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-api:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-coyote:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-servlet-api:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-util:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-juli:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-annotations-api:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-jni:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-jaspic-api:9.0.14" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.google.protobuf:protobuf-java:3.6.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-el-api:9.0.14" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="AHometoShare.main" />
+</module>

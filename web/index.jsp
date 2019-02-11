@@ -1,4 +1,4 @@
-<%-- 
+<%--
 File: index.jsp
 Description: Home page for A Home to Share website
 Create: Sept.30,2018
@@ -20,7 +20,7 @@ Copyright @ 2018
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/css/mainpage_style.css" />
     </head>
-	
+
     <body>
 
     <!-- Header -->
@@ -35,7 +35,7 @@ Copyright @ 2018
                     <button id="loginBtn" onclick="window.location.href='LogInView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Log in</button>
                     <button id="signupBtn" onclick="window.location.href='SignUpView'" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: none;" : "display: inline;"%>">Sign Up</button>
                     <a href="
-                       <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>" 
+                       <%=session.getAttribute("isLoggedIn") != null ? (session.getAttribute("userType").toString().equals("renter") ? "renterProfile.jsp" : "hostProfile.jsp") : "index.jsp"%>"
                        style="
                        <%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>">My Profile</a>
                     <button id="logoutBtn" class="unstyled-button" style="<%=session.getAttribute("isLoggedIn") != null ? "display: inline;" : "display: none;"%>" onclick="window.location.href='LogoutRedirect'">Log out</button>
@@ -46,7 +46,7 @@ Copyright @ 2018
          <!--Signup Popup Window when clicks button: Sign Up-->
             <div id="signupPopup" class="signupPopup">
 
-             <!--Signup Popup content--> 
+             <!--Signup Popup content-->
                 <div class="signupPopup-content">
                     <span class="close1">&times;</span>
 
@@ -73,8 +73,8 @@ Copyright @ 2018
                     </section>
                 </div>
             </div>
-            
-             <!--Javascript functions for popup windows: Sign Up--> 
+
+             <!--Javascript functions for popup windows: Sign Up-->
                 <script>
                     // Get the popup
                     var signupPopup = document.getElementById("signupPopup");
@@ -82,7 +82,7 @@ Copyright @ 2018
                     var signupBtn = document.getElementById("signupBtn");
                     // Get the <span1> element that closes the popup
                     var span1 = document.getElementsByClassName("close1")[0];
-                    // When the user clicks the button, open the popup 
+                    // When the user clicks the button, open the popup
                     signupBtn.onclick = function() {
                         signupPopup.style.display = "block";
                     };
@@ -96,28 +96,28 @@ Copyright @ 2018
                             signupPopup.style.display = "none";
                         }
                     };
-                    
-                    // Host & Renter toggle switch 
+
+                    // Host & Renter toggle switch
                     var signupEmailBtn = document.getElementById("emailBtn");
                     signupEmailBtn.onclick = function(){
                         var hostSelected = document.getElementById("userHost");
-                        //When Host is selected, the page goes to Host Registratoin form                
-                        if (hostSelected.checked) { 
-                            window.location.href="hostRegister.html";                
+                        //When Host is selected, the page goes to Host Registratoin form
+                        if (hostSelected.checked) {
+                            window.location.href="hostRegister.html";
                         }
                         //When Rrenter is selected, the page goes to Renter Registration form
-                        else 
-                            window.location.href="renterRegister.html";  
+                        else
+                            window.location.href="renterRegister.html";
                     };
-                    
+
                 </script>
-                
-                
-                
-            <!--Login Popup Window when clicks button: Log in--> 
+
+
+
+            <!--Login Popup Window when clicks button: Log in-->
             <div id="loginPopup" class="loginPopup" >
 
-             <!--Login Popup content--> 
+             <!--Login Popup content-->
                 <div class="loginPopup-content">
                     <span class="close2">&times;</span>
 
@@ -136,7 +136,7 @@ Copyright @ 2018
                                 <div class="formRow">
                                     <h4 align="left">Login with email</h4>
                                     <!-- Modified by Chris -->
-                                    <input type="email" name="loginEmail" id="loginEmail" value="<%=(request.getAttribute("email") == null ? "" : request.getAttribute("email"))%>" size="30" placeholder="Email Address" maxlength="42" required />                                    
+                                    <input type="email" name="loginEmail" id="loginEmail" value="<%=(request.getAttribute("email") == null ? "" : request.getAttribute("email"))%>" size="30" placeholder="Email Address" maxlength="42" required />
                                 </div>
 
                                 <div class="formRow">
@@ -157,7 +157,7 @@ Copyright @ 2018
 
                                 <div class="btn-group4">
                                 <!--    <a href="renterProfile.jsp" class="loginBtn" ></a> -->
-                                
+
                                 <button id="loginemailBtn" type="submit" class="unstyled-button2" >Login with email</button>
                                 </div>
                             </form>
@@ -165,10 +165,10 @@ Copyright @ 2018
                     </section>
                 </div>
             </div>
-                                
-            <!--Forgot password Popup Window when clicks button: Forgot password--> 
+
+            <!--Forgot password Popup Window when clicks button: Forgot password-->
             <div id="forgotPasswordPopup" class="loginPopup" >
-             <!--Forogot password content--> 
+             <!--Forogot password content-->
                 <div class="loginPopup-content">
                     <span class="close2">&times;</span>
                     <section class="loginPopup_container">
@@ -177,7 +177,7 @@ Copyright @ 2018
                                 <div class="formRow">
                                     <h4 align="left">Enter the email address associated with your account</h4>
                                     <!-- Modified by Christopher Labelle -->
-                                    <input type="email" name="forgotPasswordEmail" id="forgotPasswordEmail" size="30" placeholder="Email Address" maxlength="42" required />                                    
+                                    <input type="email" name="forgotPasswordEmail" id="forgotPasswordEmail" size="30" placeholder="Email Address" maxlength="42" required />
                                 </div>
                                 <br>
                                 <div class="loginError">
@@ -195,8 +195,8 @@ Copyright @ 2018
                     </section>
                 </div>
             </div>
-            
-             <!--Javascript functions for popup windows: Login--> 
+
+             <!--Javascript functions for popup windows: Login-->
                 <script>
                     // Get the popup
                     var loginPopup = document.getElementById("loginPopup");
@@ -213,31 +213,31 @@ Copyright @ 2018
                     // Get the <span2> element that closes the forgot password popup
                     // added by Christopher Labelle
                     exit2 = document.getElementsByClassName("close2")[1];
-                    
-                    
-                    // When the user clicks the button, open the popup 
+
+
+                    // When the user clicks the button, open the popup
                     loginBtn.onclick = function() {
                         loginPopup.style.display = "block";
                         forgotPasswordPopup.style.display = "none";
                     };
-                    
+
                     // WHen the user clicks the 'forgot password' button
                     forgotPasswordBtn.onclick = function() { // added by Christopher Labelle
                         loginPopup.style.display = "none";
                         forgotPasswordPopup.style.display = "block";
                     };
-                    
+
                     // When the user clicks on <span2> (x), close the popup
                     exit1.onclick = function() {
                         loginPopup.style.display = "none";
                     };
-                    
-                    
+
+
                     // When the user clicks on <span2> (x), close the popup
                     exit2.onclick = function() { // added by Christopher Labelle
                         forgotPasswordPopup.style.display = "none";
                     };
-                    
+
                     // When the user clicks anywhere outside of the popup, close it
                     window.onclick = function(event) {
                         if (event.target === loginPopup) {
@@ -247,30 +247,30 @@ Copyright @ 2018
                             forgotPasswordPopup.style.display = "none";
                         }
                     };
-                    
+
                     // added by Christopher Labelle
                     if(<%=request.getAttribute("isLoginValid")%> === false) {
                         loginPopup.style.display = "block";
                     }
-                    
+
                     // added by Christopher Labelle
                     if(<%=request.getAttribute("isForgotPasswordEmailValid")%> === false) {
                         forgotPasswordPopup.style.display = "block";
                     }
-                    
+
                     // added by Christopher Labelle
                     if(<%=request.getAttribute("isForgotPasswordEmailValid")%> !== null) {
                         if(<%=request.getAttribute("isForgotPasswordEmailValid")%> === true) {
                             alert("Password has been reset and been sent to your accoutn");
                         }
-                        
+
                     }
-                    
-                    
+
+
                 </script>
-                
-                
-                
+
+
+
         </header>
 
 
@@ -292,24 +292,24 @@ Copyright @ 2018
                         <div class="flex flex-3">
                             <article>
                                 <div>
-                                    <img src="images/home_block1_01.png" alt="block1_01 image"/>	
+                                    <img src="images/home_block1_01.png" alt="block1_01 image"/>
                                 </div>
                                 <h3 class="make_money">Make Money</h3>
                             </article>
 
                             <article>
                                 <div>
-                                    <img src="images/home_block1_02.png" alt="block1_02 image"/>	
+                                    <img src="images/home_block1_02.png" alt="block1_02 image"/>
                                 </div>
                                 <h3 class="get_help">Get help around the home</h3>
                             </article>
 
                             <article>
                                 <div>
-                                    <img class="build_img" src="images/home_block1_03.png" alt="block1_03 image"/>	
+                                    <img class="build_img" src="images/home_block1_03.png" alt="block1_03 image"/>
                                 </div>
                                 <h3 class="build_friendship">Build new friendships</h3>
-                            </article>	
+                            </article>
                         </div>
                     </footer>
                 </div>
@@ -415,7 +415,7 @@ Copyright @ 2018
                             <li><a class="remove-cursor" href="#">(123) 456-7890</a></li>
                         </ul>
                     </div>
-                </div> 
+                </div>
 
                 <div class="footer_column inner3">
                     <h6>Join Our Community</h6>
@@ -430,10 +430,10 @@ Copyright @ 2018
                 <div class="footer_column inner4">
                     <h6>Get Engaged</h6>
                     <ul class="footer_nav">
-                        <li>Live in Toronto and want to help us tackle the affordable housing crisis. 
+                        <li>Live in Toronto and want to help us tackle the affordable housing crisis.
                             <a href="index.jsp" target="_blank"><u>Apply</u></a> to be an Ambassador today.
                         </li>
-                    </ul>       
+                    </ul>
                 </div>
 
                 <div class="footer_column inner5">
@@ -449,7 +449,7 @@ Copyright @ 2018
                     </a>
                 </div>
 
-                <div class="footer_column inner6"> 
+                <div class="footer_column inner6">
                     <!--a placeholder-->
                 </div>
 
@@ -457,7 +457,7 @@ Copyright @ 2018
                     <a href="index.jsp">&nbsp;&nbsp;&nbsp;Privacy Policy</a>
                     <a href="index.jsp">&nbsp;&nbsp;&nbsp;Terms of Use</a>
                 </p>
-            </div>            
+            </div>
         </footer>
     </body>
 </html>

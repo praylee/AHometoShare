@@ -197,7 +197,7 @@ Copyright @ 2018
                         </p>
                     </article>
                     
-                    <h3How do I price the room?</h3>
+                    <h3>How do I price the room?</h3>
                     <article class="article">
                         <p>Hosts choose how to price their rooms. That said, one 
                             of A Home To Share’s key goals is to expand the supply 

@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="AHomeToShare">
+    <output-path>$PROJECT_DIR$/out/artifacts/AHomeToShare</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="CST8334.AHometoShare/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: com.google.protobuf:protobuf-java:3.6.1" />
+          <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:8.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:dbcp:6.0.53" />
+          <element id="library" level="project" name="javax.mail" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-el-api:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-annotations-api:9.0.14" />
+          <element id="library" level="project" name="Gradle: javax.mail:javax.mail-api:1.6.2" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-api:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-catalina:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-coyote:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-jaspic-api:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-jni:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-jsp-api:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-juli:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-servlet-api:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-util-scan:9.0.14" />
+          <element id="library" level="project" name="Gradle: org.apache.tomcat:tomcat-util:9.0.14" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="AHometoShare" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

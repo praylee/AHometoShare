@@ -15,6 +15,8 @@ package business;
 import dataaccess.HostDAO;
 import dataaccess.HostDAOImpl;
 import java.util.List;
+
+import business.ValidationException;
 import transferobjects.Host;
 
 
